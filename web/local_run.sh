@@ -2,17 +2,9 @@
 
 . ./sripts/exportvars.sh
 
-echo "Killing local test server"
-ps ax | grep run_server.py | awk '{print $1}' | xargs kill
+. ./local_stop.sh
 
-echo "Killing mongo database file"
-pgrep mongod | xargs kill
-
-echo "Activating virtual environment"
-. ./venv/bin/activate
-
-echo "Updating dependencies"
-pip install -r requirements.txt
+. ./scripts/installdeps.sh
 
 echo "Removing existing database files"
 rm -r "$dbpath"

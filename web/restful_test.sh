@@ -1,9 +1,5 @@
 #!/bin/bash
 
-endl="echo -e \n\n"
-
-. ./sripts/exportvars.sh
-
 . ./local_run.sh
 
 $endl
