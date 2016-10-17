@@ -8,6 +8,6 @@ aniso8601>=0.82
 gunicorn>=19.6.0
 itsdangerous>=0.24
 pymongo>=3.3.0
-pytz>=2016.3
+pytz>=2013.7
 six>=1.10.0
 marshmallow>=2.10.3
