@@ -1,13 +1,14 @@
 # 2016-group-13
-
-<!-- TOC START min:4 max:6 link:true update:true -->
+## Guidelines
+<!-- TOC START min:2 max:5 link:true update:true -->
+  - [Guidelines](#guidelines)
       - [Git Guidelines](#git-guidelines)
         - [Git Setup:](#git-setup--)
         - [Getting Started on Feature Branch:](#getting-started-on-feature-branch--)
         - [Continuing work on Feature Branch:](#continuing-work-on-feature-branch)
         - [Deploying Feature Branch to Master Branch:](#deploying-feature-branch-to-master-branch)
         - [Resolve Feature Conflicts on Master Branch:](#resolve-feature-conflicts-on-master-branch)
-      - [Heroku](#heroku)
+      - [Heroku Guidelines](#heroku-guidelines)
         - [Heroku Setup:](#heroku-setup)
         - [Remote Heroku Deploy:](#remote-heroku-deploy)
         - [Run Heroku Locally:](#run-heroku-locally)
@@ -78,7 +79,7 @@ git merge origin/master
 git push  
 ```
 
-####Heroku
+####Heroku Guidelines
 
 #####Heroku Setup:
 ```bash
