@@ -12,26 +12,26 @@ from md5 import md5
 
 class Login(restful.Resource):
     def post(self):
-        username_form  = request.form['username']
+        username_form  = request.get_json()['username']
         user = mongo.db.users.find_one({"username": username_form})
 
         if not user:
-            raise ServerError('Invalid username')
+            return {"statusCode": 200, "response": "Does not exist"}
 
-        password_form  = request.form['password']
+        password_form  = request.get_json()['password']
         encrypted_pass = md5(password_form).hexdigest()
 
-        if user.password == encrypted_pass:
+        if user["password"] == encrypted_pass:
             session[username_form] = username_form
-            return {"statusCode": 200, user}
+            return {"statusCode": 200, "user": str(user)}
 
-        raise ServerError('Invalid password')
+        return {"statusCode": 200, "response": "Invalid Password"}
 
 class Register(restful.Resource):
     def post(self):
-        user = {"username": request.form['username'],
-                "password": md5(request.form['password']).hexdigest(),
-                "name": request.form['username']}
+        user = {"username": request.get_json()['username'],
+                "password": md5(request.get_json()['password']).hexdigest(),
+                "name": request.get_json()['name']}
         mongo.db.users.insert(user)
         return user
 
@@ -40,8 +40,11 @@ class Root(restful.Resource):
         return {
             'status': 'OK',
             'mongo': str(mongo.db),
-            mongo.db.users.find()
+            'users': str(list(mongo.db.users.find()))
         }
+
+    def post(self):
+        return self.get()
 
 '''
 @app.route('/login', methods=['GET', 'POST'])
@@ -134,8 +137,8 @@ def logout(asdasd,das das d):
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
 api.add_resource(Root, '/')
-api.add_resource(ReadingList, '/readings/')
-api.add_resource(Reading, '/readings/<ObjectId:reading_id>')
+# api.add_resource(ReadingList, '/readings/')
+# api.add_resource(Reading, '/readings/<ObjectId:reading_id>')
 
-api.add_resource(Finder, '/find')
-api.add_resource(Inserter, '/ins')
+# api.add_resource(Finder, '/find')
+# api.add_resource(Inserter, '/ins')
