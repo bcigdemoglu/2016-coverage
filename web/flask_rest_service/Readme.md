@@ -2,10 +2,6 @@
 - [Login](#login)
 - [Register](#register)
 - [Send Friend Request](#send friend request)
-- [Register](#register)
-- [Login](#login)
-- [Register](#register)
-
 
 <!-- TOC END -->
 
