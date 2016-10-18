@@ -15,6 +15,8 @@
 		7E7798ED1DB5593600E9079C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7798EB1DB5593600E9079C /* LaunchScreen.storyboard */; };
 		7E7798F81DB5593600E9079C /* UserLoginAndRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7798F71DB5593600E9079C /* UserLoginAndRegistrationTests.swift */; };
 		7E7799031DB5593600E9079C /* UserLoginAndRegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */; };
+		7E7799131DB5668300E9079C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799121DB5668300E9079C /* RegisterPageViewController.swift */; };
+		7E7799151DB56D9800E9079C /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799141DB56D9800E9079C /* LoginPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		7E7798FE1DB5593600E9079C /* UserLoginAndRegistrationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserLoginAndRegistrationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginAndRegistrationUITests.swift; sourceTree = "<group>"; };
 		7E7799041DB5593600E9079C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E7799121DB5668300E9079C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		7E7799141DB56D9800E9079C /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				7E7798EB1DB5593600E9079C /* LaunchScreen.storyboard */,
 				7E7798EE1DB5593600E9079C /* Info.plist */,
 				7E7798E61DB5593600E9079C /* UserLoginAndRegistration.xcdatamodeld */,
+				7E7799121DB5668300E9079C /* RegisterPageViewController.swift */,
+				7E7799141DB56D9800E9079C /* LoginPageViewController.swift */,
 			);
 			path = UserLoginAndRegistration;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E7799131DB5668300E9079C /* RegisterPageViewController.swift in Sources */,
 				7E7798E81DB5593600E9079C /* UserLoginAndRegistration.xcdatamodeld in Sources */,
 				7E7798E21DB5593500E9079C /* ViewController.swift in Sources */,
+				7E7799151DB56D9800E9079C /* LoginPageViewController.swift in Sources */,
 				7E7798E01DB5593500E9079C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +494,7 @@
 				7E7799091DB5593600E9079C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7E77990A1DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistrationTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +503,7 @@
 				7E77990C1DB5593600E9079C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7E77990D1DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistrationUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +512,7 @@
 				7E77990F1DB5593600E9079C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
