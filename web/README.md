@@ -22,7 +22,8 @@ sudo python get-pip.py
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install mongodb
-brew install mongodb
+sudo chown root /usr/local/bin/brew
+sudo brew install mongodb
 
 # Install virtual environment
 sudo pip install virtualenv
