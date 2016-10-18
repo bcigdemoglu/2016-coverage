@@ -1,7 +1,11 @@
 <!-- TOC START min:1 max:3 link:true update:true -->
 - [Login](#login)
 - [Register](#register)
-- [Get All Users](#get-all-users)
+- [Send Friend Request](#send friend request)
+- [Register](#register)
+- [Login](#login)
+- [Register](#register)
+
 
 <!-- TOC END -->
 
@@ -136,7 +140,7 @@
 
 * **URL**
 
-  /getItinerayLists
+  /getItineraryLists
 
 * **Method:**
 
@@ -165,7 +169,7 @@
 
 * **URL**
 
-  /getItinerayID
+  /getItineraryID
 
 * **Method:**
 
