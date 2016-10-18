@@ -25,7 +25,7 @@ class RegisterPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func registerButtonTapped(sender: AnyObject) {
+    @IBAction func registerButtonTapped(_ sender: AnyObject) {
         let userName = userNameTextField.text;
         let userEmail = userEmailTextField.text;
         let userPassword = userPasswordTextField.text;
