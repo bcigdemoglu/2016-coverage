@@ -165,7 +165,7 @@
 
 * **URL**
 
-  /getItinerayLists
+  /getItinerayID
 
 * **Method:**
 
@@ -186,8 +186,10 @@
 
    * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "User doesn't exist" }`
-    
-     * **Code:** 404 NOT FOUND <br />
+       
+   OR
+  
+   * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "Itinerary doesn't exist" }`
 
 * **Sample Call:**
