@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./sripts/exportvars.sh
+. ./scripts/exportvars.sh
 
 . ./local_stop.sh
 
