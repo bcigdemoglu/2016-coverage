@@ -129,3 +129,68 @@
 
 * **Sample Call:**
 
+
+# Get Itinerary Lists
+----
+  Returns user's list of day itineraries.
+
+* **URL**
+
+  /getItinerayLists
+
+* **Method:**
+
+  `GET`
+
+* **Data Params**
+
+  `{"user": username,
+    "last_Sync_TimeStamp": timeStamp}`
+
+* **Success Response:**
+
+  * **Code:** 200 SUCCESS <br />
+    **Content:** `{ "ItineraryList": ArrayList<Itinerary> }`
+
+* **Error Response:**
+
+   * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "User doesn't exist" }`
+
+* **Sample Call:**
+
+# Get Itinerary
+----
+  Returns a specific Day Itinerary.
+
+* **URL**
+
+  /getItinerayLists
+
+* **Method:**
+
+  `GET`
+
+* **Data Params**
+
+  `{"user": username,
+    "listID": id,
+    "last_Sync_TimeStamp": timeStamp}`
+
+* **Success Response:**
+
+  * **Code:** 200 SUCCESS <br />
+    **Content:** `{ "Itinerary": Itinerary }`
+
+* **Error Response:**
+
+   * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "User doesn't exist" }`
+    
+     * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "Itinerary doesn't exist" }`
+
+* **Sample Call:**
+
+
+
