@@ -1,29 +1,33 @@
-**Show User**
+<!-- TOC START min:1 max:3 link:true update:true -->
+- [Login](#login)
+- [Register](#register)
+- [Get All Users](#get-all-users)
+
+<!-- TOC END -->
+
+
+
+# Login
 ----
-  Returns json data about a single user.
+  Returns user info if login successful.
 
 * **URL**
 
-  /users/:id
+  /login
 
 * **Method:**
 
-  `GET`
-
-*  **URL Params**
-
-   **Required:**
-
-   `id=[integer]`
+  `POST`
 
 * **Data Params**
 
-  None
+  `{"username": username,
+    "password": password}`
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `{ id : 12, name : "Michael Bloom" }`
+  * **Code:** 200 OK <br />
+    **Content:** `{ "username" : "amy1", "name" : "Amy He", "password": "3b24g23b23y3t3hg" }`
 
 * **Error Response:**
 
@@ -33,17 +37,59 @@
   OR
 
   * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+    **Content:** `{ error : "Incorrect password" }`
 
 * **Sample Call:**
 
-  ```javascript
-    $.ajax({
-      url: "/users/1",
-      dataType: "json",
-      type : "GET",
-      success : function(r) {
-        console.log(r);
-      }
-    });
-  ```
+# Register
+----
+  Returns user info if registration successful.
+
+* **URL**
+
+  /register
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+`{"username": username,
+              "password": password,
+              "name": name}`
+
+* **Success Response:**
+
+  * **Code:** 201 CREATED <br />
+    **Content:** `{ "username" : "amy1", "name" : "Amy He", "password": "3b24g23b23y3t3hg" }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "User already exists" }`
+
+* **Sample Call:**
+
+# Get All Users
+  ----
+  All user info.
+
+* **URL**
+
+  /
+
+* **Method:**
+
+  `GET`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** `{'users': list_of_users}`
+
+* **Sample Call:**

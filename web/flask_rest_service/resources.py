@@ -15,7 +15,7 @@ class Login(restful.Resource):
         user = mongo.db.users.find_one({"username": username_form})
 
         if not user:
-            return {"error": "Invalid username"}, 401
+            return {"error": "Invalid username"}, 400
 
         password_form  = request.get_json()['password']
         encrypted_pass = hashpwd(password_form)
