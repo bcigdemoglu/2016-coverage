@@ -17,6 +17,13 @@ $endl
 
 curl -v POST \
     -H "Content-Type: application/json" \
+    -d '{}' \
+    "$apiserver"/testdb/populatedb
+
+$endl
+
+curl -v POST \
+    -H "Content-Type: application/json" \
     -d '{"username":"ali", "password":"ali123"}' \
     "$apiserver"/login
 
@@ -44,6 +51,13 @@ curl -v POST \
     -d '{"username":"ali",
          "password":"ali123"}' \
     "$apiserver"/login
+
+$endl
+
+curl -v -X GET \
+    -H "Content-Type: application/json" \
+    -d '{}' \
+    "$apiserver"/
 
 $endl
 

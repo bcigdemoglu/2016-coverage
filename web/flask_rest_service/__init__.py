@@ -4,6 +4,7 @@ import flask_restful as restful
 from flask_pymongo import PyMongo
 from flask import make_response
 from bson.json_util import dumps
+from md5 import md5
 
 MONGO_URL = os.environ.get('MONGODB_URI')
 if not MONGO_URL:
@@ -23,5 +24,8 @@ def output_json(obj, code, headers=None):
 DEFAULT_REPRESENTATIONS = {'application/json': output_json}
 api = restful.Api(app)
 api.representations = DEFAULT_REPRESENTATIONS
+
+def hashpwd(password):
+    return md5(password).hexdigest()
 
 import flask_rest_service.resources
