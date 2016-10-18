@@ -12,7 +12,6 @@ class LoginPageViewController: UIViewController {
 
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,10 +23,21 @@ class LoginPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func loginButtonTapped(sender: AnyObject) {
         let userEmail = userEmailTextField.text;
         let userPassword = userPasswordTextField.text;
         //Alex: send userName, userEmail, and userPassword to the server here
     }
-    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

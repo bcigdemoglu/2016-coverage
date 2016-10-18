@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E406F081DB5B0EC008DE202 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E406F071DB5B0EC008DE202 /* LoginPageViewController.swift */; };
 		7E7798E01DB5593500E9079C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7798DF1DB5593500E9079C /* AppDelegate.swift */; };
 		7E7798E21DB5593500E9079C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7798E11DB5593500E9079C /* ViewController.swift */; };
 		7E7798E51DB5593500E9079C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7798E31DB5593500E9079C /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		7E7798F81DB5593600E9079C /* UserLoginAndRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7798F71DB5593600E9079C /* UserLoginAndRegistrationTests.swift */; };
 		7E7799031DB5593600E9079C /* UserLoginAndRegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */; };
 		7E7799131DB5668300E9079C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799121DB5668300E9079C /* RegisterPageViewController.swift */; };
-		7E7799151DB56D9800E9079C /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799141DB56D9800E9079C /* LoginPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E406F071DB5B0EC008DE202 /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 		7E7798DC1DB5593500E9079C /* UserLoginAndRegistration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserLoginAndRegistration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7798DF1DB5593500E9079C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E7798E11DB5593500E9079C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginAndRegistrationUITests.swift; sourceTree = "<group>"; };
 		7E7799041DB5593600E9079C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E7799121DB5668300E9079C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
-		7E7799141DB56D9800E9079C /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 				7E7798EE1DB5593600E9079C /* Info.plist */,
 				7E7798E61DB5593600E9079C /* UserLoginAndRegistration.xcdatamodeld */,
 				7E7799121DB5668300E9079C /* RegisterPageViewController.swift */,
-				7E7799141DB56D9800E9079C /* LoginPageViewController.swift */,
+				7E406F071DB5B0EC008DE202 /* LoginPageViewController.swift */,
 			);
 			path = UserLoginAndRegistration;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 				7E7799131DB5668300E9079C /* RegisterPageViewController.swift in Sources */,
 				7E7798E81DB5593600E9079C /* UserLoginAndRegistration.xcdatamodeld in Sources */,
 				7E7798E21DB5593500E9079C /* ViewController.swift in Sources */,
-				7E7799151DB56D9800E9079C /* LoginPageViewController.swift in Sources */,
+				7E406F081DB5B0EC008DE202 /* LoginPageViewController.swift in Sources */,
 				7E7798E01DB5593500E9079C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
