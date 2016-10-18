@@ -5,6 +5,7 @@
 - [Respond to Friend Request](#respond-to-friend-request)
 - [Get Itinerary Lists](#get-itinerary-lists)
 - [Get Itinerary](#get-itinerary)
+- [Remove Itinerary](#remove-itinerary)
 
 <!-- TOC END -->
 
@@ -196,3 +197,39 @@
     **Content:** `{ error : "Itinerary doesn't exist" }`
 
 * **Sample Call:**
+
+# Remove Itinerary
+----
+  Returns the Itinerary ID when removed from list of itineraries
+
+* **URL**
+
+  /removeItinerary
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+  `{"user": username,
+    "listID": id,
+    "last_Sync_TimeStamp": timeStamp}`
+
+* **Success Response:**
+
+  * **Code:** 200 SUCCESS <br />
+    **Content:** `{ "ItineraryID": ItineraryID }`
+
+* **Error Response:**
+
+   * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "User doesn't exist" }`
+
+   OR
+
+   * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "Itinerary doesn't exist" }`
+
+* **Sample Call:**
+
