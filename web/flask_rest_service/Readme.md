@@ -71,25 +71,61 @@
 
 * **Sample Call:**
 
-# Get All Users
-  ----
-  All user info.
+# Send Friend Request
+----
+  Returns requesting user and requested user info if friend request is successfully sent.
 
 * **URL**
 
-  /
+  /friendRequest
 
 * **Method:**
 
-  `GET`
+  `POST`
 
 * **Data Params**
 
-  None
+  `{"requestingUser": username,
+    "requestedUser": friendUsername}`
 
 * **Success Response:**
 
-  * **Code:** 200 OK <br />
-    **Content:** `{'users': list_of_users}`
+  * **Code:** 200 SUCCESS <br />
+    **Content:** `{ "requestingUser": username, "requestedUser": friendUsername}`
+
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "Requested or requesting user doesn't exist" }`
 
 * **Sample Call:**
+
+# Respond to Friend Request
+----
+  Returns boolean whether friend requested or not.
+
+* **URL**
+
+  /friendRequestRespond
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+  `{"requestingUser": username,
+    "requestedUser": friendUsername, "respond": accept}`
+
+* **Success Response:**
+
+  * **Code:** 200 SUCCESS <br />
+    **Content:** `{ "respond": accept}`
+
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "Requested or requesting user doesn't exist" }`
+
+* **Sample Call:**
+
