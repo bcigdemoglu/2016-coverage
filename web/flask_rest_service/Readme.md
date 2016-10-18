@@ -1,7 +1,10 @@
 <!-- TOC START min:1 max:3 link:true update:true -->
 - [Login](#login)
 - [Register](#register)
-- [Send Friend Request](#send friend request)
+- [Send Friend Request](#send-friend-request)
+- [Respond to Friend Request](#respond-to-friend-request)
+- [Get Itinerary Lists](#get-itinerary-lists)
+- [Get Itinerary](#get-itinerary)
 
 <!-- TOC END -->
 
@@ -186,13 +189,10 @@
 
    * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "User doesn't exist" }`
-       
+
    OR
-  
+
    * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "Itinerary doesn't exist" }`
 
 * **Sample Call:**
-
-
-
