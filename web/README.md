@@ -14,6 +14,13 @@ This is the Python-Flask backend repo for 2016-group-13.
 git clone https://github.com/mbugrahanc/2016-group-13-backend.git
 cd 2016-group-13-backend
 
+# Download https://bootstrap.pypa.io/get-pip.py
+# Install pip
+sudo python get-pip.py
+
+# Install brew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Install mongodb
 brew install mongodb
 
@@ -26,6 +33,9 @@ heroku login
 
 # Activate virtual environment (must be run every time)
 . venv/bin/activate
+
+# You must see [venv] in front of your terminal now
+# DO NOT PROCEED IF YOU DO NOT SEE [venv]
 
 # Update dependencies
 pip install -r requirements.txt
