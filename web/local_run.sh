@@ -9,8 +9,11 @@
 echo "Removing existing database files"
 rm -r "$dbpath"
 
-echo "Creating clean database folder"
+echo "Creating clean database folders"
 mkdir -p "$dbpath"
+
+echo "Create logpath if not existing"
+mkdir -p "$logpath"
 
 echo "Starting mongo"
 mongod --fork --logpath "$dblog" --port "$dbport" --dbpath "$dbpath"

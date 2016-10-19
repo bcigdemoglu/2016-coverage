@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export dbpath="./data/db"
+export logpath="./log"
 export dblog="./log/mongod.log"
 export dbport="27017"
 export apiport="5000"
