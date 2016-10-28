@@ -2,7 +2,8 @@
 //  ViewController.swift
 //  UserLoginAndRegistration
 //
-//  Created by Amy He on 10/17/16.
+//  Created by Amy He and Naina Rao on 10/17/16.
+//  Lots of tears and days of my life went into this. Please be kind
 //  Copyright © 2016 Amy He. All rights reserved.
 //
 
