@@ -2,6 +2,7 @@
 //  AppDelegate.swift
 //  UserLoginAndRegistration
 //
+//  I really hope I didn't screw this up
 //  Created by Amy He on 10/17/16.
 //  Copyright © 2016 Amy He. All rights reserved.
 //
