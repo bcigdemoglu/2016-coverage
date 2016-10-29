@@ -14,7 +14,6 @@ class LoginPageViewController: UIViewController {
     @IBOutlet weak var userPasswordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -27,7 +26,15 @@ class LoginPageViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: AnyObject) {
         let userEmail = userEmailTextField.text;
         let userPassword = userPasswordTextField.text;
+        
+        if (userEmail == "" || userPassword == "") {
+            displayAlertMessage(myMessage:"All fields are required.");
+            return;
+        }
+        
         //Alex: send userName, userEmail, and userPassword to the server here
+        //When login not successful, call displayAlertMessage()
+        //When login successful, call change page to the ListView
         //this code was found and altered from: http://stackoverflow.com/questions/26364914/http-request-in-swift-with-post-method
         var request = URLRequest(url: URL(string: "http://oose-2016-group-13.herokuapp.com/login")!)
         request.httpMethod = "POST"
@@ -49,15 +56,13 @@ class LoginPageViewController: UIViewController {
         }
         task.resume()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func displayAlertMessage(myMessage:String) {
+        let alertController = UIAlertController(title: "Alert", message: myMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
-    */
+
 
 }

@@ -13,6 +13,7 @@ class RegisterPageViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
+    @IBOutlet weak var userPasswordRepeatTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,30 @@ class RegisterPageViewController: UIViewController {
         let userName = userNameTextField.text;
         let userEmail = userEmailTextField.text;
         let userPassword = userPasswordTextField.text;
-        //Alex: send userName, userEmail, and userPassword to the server here
+        let repeatPassword = userPasswordRepeatTextField.text;
+        
+        if (userName == "" || userEmail == "" || userPassword == "" || repeatPassword == "") {
+            displayAlertMessage(myMessage:"All fields are required.");
+            return;
+        }
+        
+        if (userPassword != repeatPassword) {
+            displayAlertMessage(myMessage:"Passwords do not match.");
+            return;
+        }
+        
+        //ALEX: Send registration information to server here. Make sure to check whether the userEmail is already registered. If it is, call displayAlertMessage() with the appropriate error message.
+        
+        return;
     }
+    
+    func displayAlertMessage(myMessage:String) {
+        let alertController = UIAlertController(title: "Alert", message: myMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+
 }
