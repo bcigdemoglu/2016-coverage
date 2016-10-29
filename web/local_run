@@ -2,7 +2,7 @@
 
 . ./scripts/exportvars.sh
 
-. ./local_stop.sh
+./local_stop
 
 . ./scripts/installdeps.sh
 
