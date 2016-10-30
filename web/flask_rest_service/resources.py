@@ -6,12 +6,12 @@ import flask_restful as restful
 from flask_restful import reqparse
 from flask_rest_service import app, api, hashpwd
 from bson.objectid import ObjectId
-# import testdb
+import testdb
 
 class Login(restful.Resource):
     def post(self):
         username_form  = request.get_json()['username']
-        user = mongo.db.users.find_one({"username": username_form})
+        user = app.db.db.users.find_one({"username": username_form})
 
         if not user:
             return {"error": "Invalid username"}, 400
@@ -31,10 +31,10 @@ class Register(restful.Resource):
                 "password": hashpwd(request.get_json()['password']),
                 "name": request.get_json()['name']}
 
-        if mongo.db.users.find_one({"username": user["username"]}):
+        if app.db.db.users.find_one({"username": user["username"]}):
             return {"error": "User already exists"}, 400
 
-        mongo.db.users.insert(user)
+        app.db.db.users.insert(user)
         return user, 201
 
 class Root(restful.Resource):
@@ -47,7 +47,7 @@ class Root(restful.Resource):
 class PopulateDB(restful.Resource):
     def post(self):
         testdb.populateUsers()
-        return {'users': list(mongo.db.users.find())}, 201
+        return {'users': list(app.db.db.users.find())}, 201
 
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
