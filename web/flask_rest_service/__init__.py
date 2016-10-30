@@ -4,7 +4,7 @@ import flask_restful as restful
 from flask_pymongo import PyMongo
 from flask import make_response
 from bson.json_util import dumps
-from md5 import md5
+from hashlib import md5
 
 MONGO_URL = os.environ.get('MONGODB_URI')
 if not MONGO_URL:
