@@ -6,7 +6,6 @@ import flask_restful as restful
 from flask_restful import reqparse
 from flask_rest_service import app, api, hashpwd
 from bson.objectid import ObjectId
-import testdb
 
 class Login(restful.Resource):
     def post(self):
@@ -46,7 +45,11 @@ class Root(restful.Resource):
 
 class PopulateDB(restful.Resource):
     def post(self):
-        testdb.populateUsers()
+        usernames = ["alex", "naina", "amy", "bugi"]
+        for username in usernames:
+            app.db.db.users.insert({"username": username,
+                                   "password": hashpwd(username + "123"),
+                                   "name": username.title()})
         return {'users': list(app.db.db.users.find())}, 201
 
 api.add_resource(Login, '/login')
