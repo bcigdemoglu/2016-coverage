@@ -17,6 +17,7 @@
 		7E7798F81DB5593600E9079C /* UserLoginAndRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7798F71DB5593600E9079C /* UserLoginAndRegistrationTests.swift */; };
 		7E7799031DB5593600E9079C /* UserLoginAndRegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */; };
 		7E7799131DB5668300E9079C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799121DB5668300E9079C /* RegisterPageViewController.swift */; };
+		BC6B67311DC69409005D0F2E /* PlanIt-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6B67301DC69409005D0F2E /* PlanIt-Logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		7E406F071DB5B0EC008DE202 /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
-		7E7798DC1DB5593500E9079C /* UserLoginAndRegistration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserLoginAndRegistration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E7798DC1DB5593500E9079C /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7798DF1DB5593500E9079C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E7798E11DB5593500E9079C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7E7798E41DB5593500E9079C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,13 +47,14 @@
 		7E7798E91DB5593600E9079C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E7798EC1DB5593600E9079C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E7798EE1DB5593600E9079C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E7798F31DB5593600E9079C /* UserLoginAndRegistrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserLoginAndRegistrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E7798F31DB5593600E9079C /* PlanItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7798F71DB5593600E9079C /* UserLoginAndRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginAndRegistrationTests.swift; sourceTree = "<group>"; };
 		7E7798F91DB5593600E9079C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E7798FE1DB5593600E9079C /* UserLoginAndRegistrationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserLoginAndRegistrationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E7798FE1DB5593600E9079C /* PlanItUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanItUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginAndRegistrationUITests.swift; sourceTree = "<group>"; };
 		7E7799041DB5593600E9079C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E7799121DB5668300E9079C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		BC6B67301DC69409005D0F2E /* PlanIt-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlanIt-Logo.png"; path = "../../../../Downloads/PlanIt-Logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,9 +95,9 @@
 		7E7798DD1DB5593500E9079C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7E7798DC1DB5593500E9079C /* UserLoginAndRegistration.app */,
-				7E7798F31DB5593600E9079C /* UserLoginAndRegistrationTests.xctest */,
-				7E7798FE1DB5593600E9079C /* UserLoginAndRegistrationUITests.xctest */,
+				7E7798DC1DB5593500E9079C /* PlanIt.app */,
+				7E7798F31DB5593600E9079C /* PlanItTests.xctest */,
+				7E7798FE1DB5593600E9079C /* PlanItUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 		7E7798DE1DB5593500E9079C /* UserLoginAndRegistration */ = {
 			isa = PBXGroup;
 			children = (
+				BC6B67301DC69409005D0F2E /* PlanIt-Logo.png */,
 				7E7798DF1DB5593500E9079C /* AppDelegate.swift */,
 				7E7798E11DB5593500E9079C /* ViewController.swift */,
 				7E7798E31DB5593500E9079C /* Main.storyboard */,
@@ -137,9 +140,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7E7798DB1DB5593500E9079C /* UserLoginAndRegistration */ = {
+		7E7798DB1DB5593500E9079C /* PlanIt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E7799071DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistration" */;
+			buildConfigurationList = 7E7799071DB5593600E9079C /* Build configuration list for PBXNativeTarget "PlanIt" */;
 			buildPhases = (
 				7E7798D81DB5593500E9079C /* Sources */,
 				7E7798D91DB5593500E9079C /* Frameworks */,
@@ -149,14 +152,14 @@
 			);
 			dependencies = (
 			);
-			name = UserLoginAndRegistration;
+			name = PlanIt;
 			productName = UserLoginAndRegistration;
-			productReference = 7E7798DC1DB5593500E9079C /* UserLoginAndRegistration.app */;
+			productReference = 7E7798DC1DB5593500E9079C /* PlanIt.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7E7798F21DB5593600E9079C /* UserLoginAndRegistrationTests */ = {
+		7E7798F21DB5593600E9079C /* PlanItTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E77990A1DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistrationTests" */;
+			buildConfigurationList = 7E77990A1DB5593600E9079C /* Build configuration list for PBXNativeTarget "PlanItTests" */;
 			buildPhases = (
 				7E7798EF1DB5593600E9079C /* Sources */,
 				7E7798F01DB5593600E9079C /* Frameworks */,
@@ -167,14 +170,14 @@
 			dependencies = (
 				7E7798F51DB5593600E9079C /* PBXTargetDependency */,
 			);
-			name = UserLoginAndRegistrationTests;
+			name = PlanItTests;
 			productName = UserLoginAndRegistrationTests;
-			productReference = 7E7798F31DB5593600E9079C /* UserLoginAndRegistrationTests.xctest */;
+			productReference = 7E7798F31DB5593600E9079C /* PlanItTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7E7798FD1DB5593600E9079C /* UserLoginAndRegistrationUITests */ = {
+		7E7798FD1DB5593600E9079C /* PlanItUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E77990D1DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistrationUITests" */;
+			buildConfigurationList = 7E77990D1DB5593600E9079C /* Build configuration list for PBXNativeTarget "PlanItUITests" */;
 			buildPhases = (
 				7E7798FA1DB5593600E9079C /* Sources */,
 				7E7798FB1DB5593600E9079C /* Frameworks */,
@@ -185,9 +188,9 @@
 			dependencies = (
 				7E7799001DB5593600E9079C /* PBXTargetDependency */,
 			);
-			name = UserLoginAndRegistrationUITests;
+			name = PlanItUITests;
 			productName = UserLoginAndRegistrationUITests;
-			productReference = 7E7798FE1DB5593600E9079C /* UserLoginAndRegistrationUITests.xctest */;
+			productReference = 7E7798FE1DB5593600E9079C /* PlanItUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -216,7 +219,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7E7798D71DB5593500E9079C /* Build configuration list for PBXProject "UserLoginAndRegistration" */;
+			buildConfigurationList = 7E7798D71DB5593500E9079C /* Build configuration list for PBXProject "PlanIt" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -229,9 +232,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7E7798DB1DB5593500E9079C /* UserLoginAndRegistration */,
-				7E7798F21DB5593600E9079C /* UserLoginAndRegistrationTests */,
-				7E7798FD1DB5593600E9079C /* UserLoginAndRegistrationUITests */,
+				7E7798DB1DB5593500E9079C /* PlanIt */,
+				7E7798F21DB5593600E9079C /* PlanItTests */,
+				7E7798FD1DB5593600E9079C /* PlanItUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E7798ED1DB5593600E9079C /* LaunchScreen.storyboard in Resources */,
+				BC6B67311DC69409005D0F2E /* PlanIt-Logo.png in Resources */,
 				7E7798EA1DB5593600E9079C /* Assets.xcassets in Resources */,
 				7E7798E51DB5593500E9079C /* Main.storyboard in Resources */,
 			);
@@ -297,12 +301,12 @@
 /* Begin PBXTargetDependency section */
 		7E7798F51DB5593600E9079C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7E7798DB1DB5593500E9079C /* UserLoginAndRegistration */;
+			target = 7E7798DB1DB5593500E9079C /* PlanIt */;
 			targetProxy = 7E7798F41DB5593600E9079C /* PBXContainerItemProxy */;
 		};
 		7E7799001DB5593600E9079C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7E7798DB1DB5593500E9079C /* UserLoginAndRegistration */;
+			target = 7E7798DB1DB5593500E9079C /* PlanIt */;
 			targetProxy = 7E7798FF1DB5593600E9079C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -448,7 +452,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oosegroup13.UserLoginAndRegistrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserLoginAndRegistration.app/UserLoginAndRegistration";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanIt.app/PlanIt";
 			};
 			name = Debug;
 		};
@@ -461,7 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oosegroup13.UserLoginAndRegistrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserLoginAndRegistration.app/UserLoginAndRegistration";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanIt.app/PlanIt";
 			};
 			name = Release;
 		};
@@ -492,7 +496,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7E7798D71DB5593500E9079C /* Build configuration list for PBXProject "UserLoginAndRegistration" */ = {
+		7E7798D71DB5593500E9079C /* Build configuration list for PBXProject "PlanIt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E7799051DB5593600E9079C /* Debug */,
@@ -501,7 +505,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7E7799071DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistration" */ = {
+		7E7799071DB5593600E9079C /* Build configuration list for PBXNativeTarget "PlanIt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E7799081DB5593600E9079C /* Debug */,
@@ -510,7 +514,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7E77990A1DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistrationTests" */ = {
+		7E77990A1DB5593600E9079C /* Build configuration list for PBXNativeTarget "PlanItTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E77990B1DB5593600E9079C /* Debug */,
@@ -519,7 +523,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7E77990D1DB5593600E9079C /* Build configuration list for PBXNativeTarget "UserLoginAndRegistrationUITests" */ = {
+		7E77990D1DB5593600E9079C /* Build configuration list for PBXNativeTarget "PlanItUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E77990E1DB5593600E9079C /* Debug */,
