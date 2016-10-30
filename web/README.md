@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/jhu-oose/2016-group-13.svg?token=fuXm9fRdis1gWqh7sYen&branch=master)](https://travis-ci.com/jhu-oose/2016-group-13)
 # 2016-group-13-backend
 
 This is the Python-Flask backend repo for 2016-group-13.
