@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:UserLoginAndRegistration.xcodeproj">
+      location = "self:/Users/csstudent/Desktop/2016-group-13/xcode/PlanIt.xcodeproj">
    </FileRef>
 </Workspace>

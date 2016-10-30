@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7E7798DB1DB5593500E9079C"
-               BuildableName = "UserLoginAndRegistration.app"
-               BlueprintName = "UserLoginAndRegistration"
-               ReferencedContainer = "container:UserLoginAndRegistration.xcodeproj">
+               BuildableName = "PlanIt.app"
+               BlueprintName = "PlanIt"
+               ReferencedContainer = "container:PlanIt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7E7798F21DB5593600E9079C"
-               BuildableName = "UserLoginAndRegistrationTests.xctest"
-               BlueprintName = "UserLoginAndRegistrationTests"
-               ReferencedContainer = "container:UserLoginAndRegistration.xcodeproj">
+               BuildableName = "PlanItTests.xctest"
+               BlueprintName = "PlanItTests"
+               ReferencedContainer = "container:PlanIt.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7E7798FD1DB5593600E9079C"
-               BuildableName = "UserLoginAndRegistrationUITests.xctest"
-               BlueprintName = "UserLoginAndRegistrationUITests"
-               ReferencedContainer = "container:UserLoginAndRegistration.xcodeproj">
+               BuildableName = "PlanItUITests.xctest"
+               BlueprintName = "PlanItUITests"
+               ReferencedContainer = "container:PlanIt.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7E7798DB1DB5593500E9079C"
-            BuildableName = "UserLoginAndRegistration.app"
-            BlueprintName = "UserLoginAndRegistration"
-            ReferencedContainer = "container:UserLoginAndRegistration.xcodeproj">
+            BuildableName = "PlanIt.app"
+            BlueprintName = "PlanIt"
+            ReferencedContainer = "container:PlanIt.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7E7798DB1DB5593500E9079C"
-            BuildableName = "UserLoginAndRegistration.app"
-            BlueprintName = "UserLoginAndRegistration"
-            ReferencedContainer = "container:UserLoginAndRegistration.xcodeproj">
+            BuildableName = "PlanIt.app"
+            BlueprintName = "PlanIt"
+            ReferencedContainer = "container:PlanIt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7E7798DB1DB5593500E9079C"
-            BuildableName = "UserLoginAndRegistration.app"
-            BlueprintName = "UserLoginAndRegistration"
-            ReferencedContainer = "container:UserLoginAndRegistration.xcodeproj">
+            BuildableName = "PlanIt.app"
+            BlueprintName = "PlanIt"
+            ReferencedContainer = "container:PlanIt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
