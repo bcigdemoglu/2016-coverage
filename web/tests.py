@@ -5,24 +5,42 @@
     Tests the Flaskr application
 """
 import os
-os.environ["MONGODB_URI"] = "mongodb://localhost:27017/test"
-
+from pymongo import MongoClient
 import unittest
-from flask_pymongo import PyMongo
 from flask_rest_service import app
 
-class FlaskrTestCase(unittest.TestCase):
+class PlanItTestCase(unittest.TestCase):
 
     def setUp(self):
-        app.config['TESTING'] = True
-
+        print("hello")
         self.app = app.test_client()
+        app.config['TESTING'] = True
+        app.config['MONGO_URI'] = "mongodb://localhost:27017/test"
+        # with flask_rest_service.app.app_context():
+        mongo = MongoClient(app.config['MONGO_URI'])
+        db = mongo.test_database
+        app.db = mongo
 
     def tearDown(self):
         """Get rid of the database again after each test"""
-        connection = pymongo.Connection('localhost', 27017)
-        mongo.drop_database('test')
-        connection.close()
+        app.db.drop_database('db')
+        app.db.close()
+
+    # def test_getting_object(self):
+    #   response = self.app.post('/myobject/',
+    #     data=json.dumps(dict(
+    #       name="Another object"
+    #     )),
+    #     content_type = 'application/json')
+
+    #   postResponseJSON = json.loads(response.data.decode())
+    #   postedObjectID = postResponseJSON["_id"]
+
+    #   response = self.app.get('/myobject/'+postedObjectID)
+    #   responseJSON = json.loads(response.data.decode())
+
+    #   self.assertEqual(response.status_code, 200)
+    #   assert 'Another object' in responseJSON["name"]
 
     # def login(self, username, password):
     #     return self.app.post('/login', data=dict(
@@ -33,11 +51,12 @@ class FlaskrTestCase(unittest.TestCase):
     # def logout(self):
     #     return self.app.get('/logout', follow_redirects=True)
 
-    # # Testing functions
-    # def test_empty_db(self):
-    #     """Start with a blank database."""
-    #     rv = self.app.get('/')
-    #     assert 'No entries here so far' in rv.data
+    # Testing functions
+    def test_empty_db(self):
+        """Start with a blank database."""
+        rv = self.app.get('/')
+        print(rv.data)
+        assert 'localhost:27017' in rv.data
 
     # def test_login_logout(self):
     #     """Make sure login and logout works"""

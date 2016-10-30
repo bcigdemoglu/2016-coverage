@@ -4,10 +4,9 @@ Summary
 from flask import request, abort, json, session
 import flask_restful as restful
 from flask_restful import reqparse
-from flask_rest_service import app, api, mongo, hashpwd
+from flask_rest_service import app, api, hashpwd
 from bson.objectid import ObjectId
-import testdb
-
+# import testdb
 
 class Login(restful.Resource):
     def post(self):
@@ -41,8 +40,8 @@ class Register(restful.Resource):
 class Root(restful.Resource):
     def get(self):
         return {
-            'mongo': str(mongo.db),
-            'users': list(mongo.db.users.find())
+            'mongo': str(app.db.db),
+            'users': list(app.db.db.users.find())
         }, 200
 
 class PopulateDB(restful.Resource):
