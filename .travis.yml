@@ -14,4 +14,4 @@ before_script:
   - sleep 15
   - mongo mydb_test --eval 'db.addUser("travis", "test");'
 # command to run tests
-script: web/tests.py -v
+script: python web/tests.py -v
