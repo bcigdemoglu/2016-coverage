@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Creating virtual environment"
+virtualenv venv
+
 echo "Activating virtual environment"
 . ./venv/bin/activate
 

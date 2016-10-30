@@ -8,7 +8,7 @@ from md5 import md5
 
 MONGO_URL = os.environ.get('MONGODB_URI')
 if not MONGO_URL:
-    MONGO_URL = "mongodb://localhost:27017/rest";
+    MONGO_URL = "mongodb://localhost:27017/local";
 
 app = Flask(__name__)
 
