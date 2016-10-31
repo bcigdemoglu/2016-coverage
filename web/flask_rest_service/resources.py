@@ -11,7 +11,8 @@ class Login(restful.Resource):
     def post(self):
         username_form  = request.get_json()['username']
         user = app.db.db.users.find_one({"username": username_form})
-
+        print(type(user))
+        print(user)
         if not user:
             return {"error": "Invalid username"}, 400
 
