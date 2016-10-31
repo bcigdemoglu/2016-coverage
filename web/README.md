@@ -1,12 +1,35 @@
+[![Build Status](https://travis-ci.com/jhu-oose/2016-group-13.svg?token=fuXm9fRdis1gWqh7sYen&branch=master)](https://travis-ci.com/jhu-oose/2016-group-13)
 # 2016-group-13-backend
 
 This is the Python-Flask backend repo for 2016-group-13.
 
 <!-- TOC START min:2 max:5 link:true update:true -->
+  - [Quickstart](#quickstart)
+    - [Start server](#start-server)
+    - [Run all tests locally](#run-all-tests-locally)
+    - [Stop server and cleanup](#stop-server-and-cleanup)
   - [Setting up the environment](#setting-up-the-environment)
   - [Making an API call](#making-an-api-call)
 
 <!-- TOC END -->
+
+## Quickstart
+
+### Start server
+```bash
+./local_start
+```
+
+### Run all tests locally
+Note: This starts and shuts down mongo after completion
+```bash
+./local_test
+```
+
+### Stop server and cleanup
+```bash
+./local_stop
+```
 
 ## Setting up the environment
 ```bash
@@ -42,7 +65,7 @@ heroku login
 pip install -r requirements.txt
 
 # Run tests
-. restful_test.sh
+./local_test
 
 # Deactivate virtual environment once done
 deactivate
@@ -55,7 +78,7 @@ Always run the virtual environment when working locally
 
 To test RESTful API locally (must have mongo installed)
 ```bash
-. restful_test.sh
+./local_test
 ```
 
 Remote database shell access:

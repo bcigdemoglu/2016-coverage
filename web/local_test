@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./local_run.sh
+./local_run
 
 $endl
 
@@ -61,4 +61,4 @@ curl -v -X GET \
 
 $endl
 
-. ./local_stop.sh
+./local_stop

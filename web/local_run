@@ -2,9 +2,9 @@
 
 . ./scripts/exportvars.sh
 
-. ./local_stop.sh
+./local_stop
 
-. ./scripts/installdeps.sh
+bash ./scripts/installdeps.sh
 
 echo "Removing existing database files"
 rm -r "$dbpath"

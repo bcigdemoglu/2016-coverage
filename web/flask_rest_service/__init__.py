@@ -4,17 +4,17 @@ import flask_restful as restful
 from flask_pymongo import PyMongo
 from flask import make_response
 from bson.json_util import dumps
-from md5 import md5
+from hashlib import md5
 
 MONGO_URL = os.environ.get('MONGODB_URI')
 if not MONGO_URL:
-    MONGO_URL = "mongodb://localhost:27017/rest";
+    MONGO_URL = "mongodb://localhost:27017/local";
 
 app = Flask(__name__)
 
 app.config['MONGO_URI'] = MONGO_URL
 app.secret_key = 'kb,v5O,9GBG60^8rg2t;jEy}i63dzR'
-mongo = PyMongo(app)
+app.db = PyMongo(app)
 
 def output_json(obj, code, headers=None):
     resp = make_response(dumps(obj), code)
@@ -27,5 +27,13 @@ api.representations = DEFAULT_REPRESENTATIONS
 
 def hashpwd(password):
     return md5(password).hexdigest()
+
+# def connect_db():
+#     app.db = PyMongo(app)
+
+# def get_db():
+#     if not hasattr(app, 'db'):
+#         connect_db()
+#     return app.db
 
 import flask_rest_service.resources
