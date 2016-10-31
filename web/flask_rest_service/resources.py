@@ -9,7 +9,7 @@ from bson.objectid import ObjectId
 
 class Login(restful.Resource):
     def post(self):
-        print(request)
+        print(request.get_json())
         username_form  = request.get_json()['username']
         print(type(username_form))
         print(username_form)
