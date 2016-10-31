@@ -55,26 +55,6 @@ class DateViewController: UIViewController{
         
         itinerary = Itinerary(name: name)
         
-        var request = URLRequest(url: URL(string: "http://oose-2016-group-13.herokuapp.com/login")!)
-        request.httpMethod = "POST"
-        let postString = "Date: " + strDate
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-        }
-        task.resume()
-
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

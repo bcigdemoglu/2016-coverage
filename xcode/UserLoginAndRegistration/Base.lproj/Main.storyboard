@@ -145,7 +145,7 @@
                                 <rect key="frame" x="0.0" y="134" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SRQ-IQ-KlO" id="wsf-fa-mmW">
-                                    <frame key="frameInset" width="375" height="50"/>
+                                    <frame key="frameInset" width="375" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwJ-cH-HBS">
@@ -220,11 +220,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Choose Date" id="z2V-a3-GCt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JE1-ND-gJp">
-                            <connections>
-                                <segue destination="1H5-Xi-yTD" kind="presentation" id="PMY-Bn-Tvt"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JE1-ND-gJp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="LDY-8k-eRm">
                             <connections>
                                 <segue destination="yo3-RG-aUd" kind="unwind" unwindAction="unwindToItineraryListWithSender:" id="A81-OB-hZ2"/>
@@ -355,7 +351,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="edm-RL-fOE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="e7e-7t-uKw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e7e-7t-uKw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -373,7 +369,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1H5-Xi-yTD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DzX-2u-Sj1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DzX-2u-Sj1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -408,6 +404,10 @@
         <scene sceneID="XWE-hd-Brf">
             <objects>
                 <viewController id="D4c-O9-PIy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Crw-fC-B2F"/>
+                        <viewControllerLayoutGuide type="bottom" id="fLu-nG-y8N"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HZ1-9K-j3X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -419,7 +419,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PMY-Bn-Tvt"/>
         <segue reference="xPn-s2-8D5"/>
     </inferredMetricsTieBreakers>
 </document>
