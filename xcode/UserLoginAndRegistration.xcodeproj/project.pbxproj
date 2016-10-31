@@ -17,6 +17,15 @@
 		7E7798F81DB5593600E9079C /* UserLoginAndRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7798F71DB5593600E9079C /* UserLoginAndRegistrationTests.swift */; };
 		7E7799031DB5593600E9079C /* UserLoginAndRegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */; };
 		7E7799131DB5668300E9079C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7799121DB5668300E9079C /* RegisterPageViewController.swift */; };
+		F95C0E1D1DC52FE500F8679E /* menu icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F95C0E1C1DC52FE500F8679E /* menu icon.png */; };
+		F95C0E541DC68CBC00F8679E /* ItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0E531DC68CBC00F8679E /* ItineraryTableViewCell.swift */; };
+		F95C0E561DC6921100F8679E /* ItineraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0E551DC6921100F8679E /* ItineraryTableViewController.swift */; };
+		F95C0E581DC6940900F8679E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0E571DC6940900F8679E /* Itinerary.swift */; };
+		F95C0E591DC6940900F8679E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0E571DC6940900F8679E /* Itinerary.swift */; };
+		F95C0E5A1DC6940900F8679E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0E571DC6940900F8679E /* Itinerary.swift */; };
+		F95C0E5C1DC6C7FB00F8679E /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0E5B1DC6C7FA00F8679E /* DatePickerDialog.swift */; };
+		F95C0E601DC6CDEE00F8679E /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0E5F1DC6CDEE00F8679E /* DatePicker.swift */; };
+		F9F90B0B1DC6DFAE0047FFA1 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F90B0A1DC6DFAE0047FFA1 /* DateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,13 @@
 		7E7799021DB5593600E9079C /* UserLoginAndRegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginAndRegistrationUITests.swift; sourceTree = "<group>"; };
 		7E7799041DB5593600E9079C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E7799121DB5668300E9079C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		F95C0E1C1DC52FE500F8679E /* menu icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu icon.png"; path = "../../../menu icon.png"; sourceTree = "<group>"; };
+		F95C0E531DC68CBC00F8679E /* ItineraryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewCell.swift; sourceTree = "<group>"; };
+		F95C0E551DC6921100F8679E /* ItineraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewController.swift; sourceTree = "<group>"; };
+		F95C0E571DC6940900F8679E /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
+		F95C0E5B1DC6C7FA00F8679E /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
+		F95C0E5F1DC6CDEE00F8679E /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		F9F90B0A1DC6DFAE0047FFA1 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +119,22 @@
 		7E7798DE1DB5593500E9079C /* UserLoginAndRegistration */ = {
 			isa = PBXGroup;
 			children = (
+				F95C0E5B1DC6C7FA00F8679E /* DatePickerDialog.swift */,
 				7E7798DF1DB5593500E9079C /* AppDelegate.swift */,
 				7E7798E11DB5593500E9079C /* ViewController.swift */,
 				7E7798E31DB5593500E9079C /* Main.storyboard */,
+				F95C0E5F1DC6CDEE00F8679E /* DatePicker.swift */,
+				F95C0E1C1DC52FE500F8679E /* menu icon.png */,
 				7E7798E91DB5593600E9079C /* Assets.xcassets */,
 				7E7798EB1DB5593600E9079C /* LaunchScreen.storyboard */,
 				7E7798EE1DB5593600E9079C /* Info.plist */,
 				7E7798E61DB5593600E9079C /* UserLoginAndRegistration.xcdatamodeld */,
 				7E7799121DB5668300E9079C /* RegisterPageViewController.swift */,
 				7E406F071DB5B0EC008DE202 /* LoginPageViewController.swift */,
+				F95C0E531DC68CBC00F8679E /* ItineraryTableViewCell.swift */,
+				F95C0E551DC6921100F8679E /* ItineraryTableViewController.swift */,
+				F95C0E571DC6940900F8679E /* Itinerary.swift */,
+				F9F90B0A1DC6DFAE0047FFA1 /* DateViewController.swift */,
 			);
 			path = UserLoginAndRegistration;
 			sourceTree = "<group>";
@@ -243,6 +266,7 @@
 			files = (
 				7E7798ED1DB5593600E9079C /* LaunchScreen.storyboard in Resources */,
 				7E7798EA1DB5593600E9079C /* Assets.xcassets in Resources */,
+				F95C0E1D1DC52FE500F8679E /* menu icon.png in Resources */,
 				7E7798E51DB5593500E9079C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,11 +292,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F95C0E541DC68CBC00F8679E /* ItineraryTableViewCell.swift in Sources */,
+				F95C0E581DC6940900F8679E /* Itinerary.swift in Sources */,
+				F95C0E5C1DC6C7FB00F8679E /* DatePickerDialog.swift in Sources */,
+				F95C0E561DC6921100F8679E /* ItineraryTableViewController.swift in Sources */,
 				7E7799131DB5668300E9079C /* RegisterPageViewController.swift in Sources */,
 				7E7798E81DB5593600E9079C /* UserLoginAndRegistration.xcdatamodeld in Sources */,
 				7E7798E21DB5593500E9079C /* ViewController.swift in Sources */,
 				7E406F081DB5B0EC008DE202 /* LoginPageViewController.swift in Sources */,
 				7E7798E01DB5593500E9079C /* AppDelegate.swift in Sources */,
+				F95C0E601DC6CDEE00F8679E /* DatePicker.swift in Sources */,
+				F9F90B0B1DC6DFAE0047FFA1 /* DateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E7798F81DB5593600E9079C /* UserLoginAndRegistrationTests.swift in Sources */,
+				F95C0E591DC6940900F8679E /* Itinerary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E7799031DB5593600E9079C /* UserLoginAndRegistrationUITests.swift in Sources */,
+				F95C0E5A1DC6940900F8679E /* Itinerary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +380,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -393,6 +426,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

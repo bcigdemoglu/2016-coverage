@@ -33,4 +33,19 @@ class UserLoginAndRegistrationTests: XCTestCase {
         }
     }
     
+    //MARK: Planit Tests
+    
+    func testItineraryInitialization() {
+        
+        //Success Tests
+        let potentialItem = Itinerary(name: "Mon Feb 29th")
+        XCTAssertNotNil(potentialItem)
+        
+        //Fail Tests
+        
+        let noName = Itinerary(name: "")
+        XCTAssertNil(noName, "Needs a name!")
+    }
+    
+    
 }
