@@ -55,7 +55,6 @@ class PlanItTestCase(unittest.TestCase):
     def test_empty_db(self):
         """Start with a blank database."""
         rv = self.app.get('/')
-        print(rv.data)
         assert 'localhost:27017' in str(rv.data)
 
     # def test_login_logout(self):

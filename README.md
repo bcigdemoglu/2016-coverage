@@ -1,7 +1,15 @@
 [![Build Status](https://travis-ci.com/jhu-oose/2016-group-13.svg?token=fuXm9fRdis1gWqh7sYen&branch=master)](https://travis-ci.com/jhu-oose/2016-group-13)
 # 2016-group-13
+
+## Quickstart
+Unittest the web server locally (run from root '/')
+```bash
+cd web && ./local_test && cd ..
+```
+
 ## Guidelines
 <!-- TOC START min:2 max:5 link:true update:true -->
+  - [Quickstart](#quickstart)
   - [Guidelines](#guidelines)
       - [Git Guidelines](#git-guidelines)
         - [Git Setup:](#git-setup--)
