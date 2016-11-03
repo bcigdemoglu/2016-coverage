@@ -1,0 +1,161 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module classes</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>classes</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="classes.html#FriendsManager">FriendsManager</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#ItineraryListManager">ItineraryListManager</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#SuggestionHandler">SuggestionHandler</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FriendsManager">class <strong>FriendsManager</strong></a></font></td></tr>
+
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Summary<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="FriendsManager-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initializes&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="FriendsManager-acceptRequest"><strong>acceptRequest</strong></a>(self, requestedUser, requestingUser)</dt><dd><tt>User&nbsp;accepts&nbsp;friends&nbsp;request&nbsp;from&nbsp;other&nbsp;user<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;requestedUser&nbsp;(str):&nbsp;the&nbsp;username&nbsp;of&nbsp;the&nbsp;user&nbsp;being&nbsp;requested<br>
+&nbsp;&nbsp;&nbsp;&nbsp;requestingUser&nbsp;(str):&nbsp;THe&nbsp;username&nbsp;of&nbsp;the&nbsp;requester<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void:</tt></dd></dl>
+
+<dl><dt><a name="FriendsManager-declineRequest"><strong>declineRequest</strong></a>(self, requestedUser, requestingUser)</dt><dd><tt>User&nbsp;denies&nbsp;the&nbsp;request&nbsp;of&nbsp;other&nbsp;user<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;requestedUser&nbsp;(str):&nbsp;The&nbsp;username&nbsp;of&nbsp;the&nbsp;user&nbsp;being&nbsp;requested<br>
+&nbsp;&nbsp;&nbsp;&nbsp;requestingUser&nbsp;(str):&nbsp;The&nbsp;username&nbsp;of&nbsp;the&nbsp;requester<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void:</tt></dd></dl>
+
+<dl><dt><a name="FriendsManager-sendFriendRequest"><strong>sendFriendRequest</strong></a>(self, requestingUser, requestedUser)</dt><dd><tt>User&nbsp;sends&nbsp;friends&nbsp;request&nbsp;to&nbsp;another&nbsp;user<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;requestingUser&nbsp;(str):&nbsp;The&nbsp;username&nbsp;of&nbsp;the&nbsp;user&nbsp;being&nbsp;requested<br>
+&nbsp;&nbsp;&nbsp;&nbsp;requestedUser&nbsp;(str):&nbsp;The&nbsp;username&nbsp;of&nbsp;the&nbsp;requester<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;request&nbsp;went&nbsp;through&nbsp;and&nbsp;false&nbsp;if&nbsp;user&nbsp;requested&nbsp;doesn't&nbsp;exist</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ItineraryListManager">class <strong>ItineraryListManager</strong></a></font></td></tr>
+
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>The&nbsp;Itinerary&nbsp;List&nbsp;Manager<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ItineraryListManager-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initializes&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="ItineraryListManager-deleteItineraryList"><strong>deleteItineraryList</strong></a>(self, userEmail, listID)</dt><dd><tt>Deletes&nbsp;entire&nbsp;itinerary&nbsp;list<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userEmail&nbsp;(str):&nbsp;the&nbsp;User&nbsp;email<br>
+&nbsp;&nbsp;&nbsp;&nbsp;listID&nbsp;(int):&nbsp;the&nbsp;ID&nbsp;of&nbsp;the&nbsp;list&nbsp;being&nbsp;deleted<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void:</tt></dd></dl>
+
+<dl><dt><a name="ItineraryListManager-getListsByUser"><strong>getListsByUser</strong></a>(self, userEmail)</dt><dd><tt>Gets&nbsp;all&nbsp;the&nbsp;lists&nbsp;of&nbsp;the&nbsp;user<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userEmail&nbsp;(str):&nbsp;the&nbsp;user&nbsp;email<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List:&nbsp;Returns&nbsp;ItneraryList[]</tt></dd></dl>
+
+<dl><dt><a name="ItineraryListManager-recieveNewItinerary"><strong>recieveNewItinerary</strong></a>(self, userEmail, itineraryInfo)</dt><dd><tt>Create&nbsp;new&nbsp;Itinerary&nbsp;Item<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userEmail&nbsp;(str):&nbsp;The&nbsp;email&nbsp;of&nbsp;the&nbsp;user<br>
+&nbsp;&nbsp;&nbsp;&nbsp;itineraryInfo&nbsp;(str):&nbsp;The&nbsp;info&nbsp;of&nbsp;the&nbsp;itinerary<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void:</tt></dd></dl>
+
+<dl><dt><a name="ItineraryListManager-registerTimeSlot"><strong>registerTimeSlot</strong></a>(self, userEmail, itineraryInfo)</dt><dd><tt>Registers&nbsp;the&nbsp;specific&nbsp;time&nbsp;slot&nbsp;for&nbsp;the&nbsp;event&nbsp;created<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userEmail&nbsp;(str):&nbsp;Users&nbsp;email<br>
+&nbsp;&nbsp;&nbsp;&nbsp;itineraryInfo&nbsp;(str):&nbsp;The&nbsp;info<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void:</tt></dd></dl>
+
+<dl><dt><a name="ItineraryListManager-unregisterTimeSlot"><strong>unregisterTimeSlot</strong></a>(self, userEmail, itineraryInfo)</dt><dd><tt>Unregisters&nbsp;the&nbsp;specific&nbsp;time&nbsp;slot&nbsp;for&nbsp;the&nbsp;event&nbsp;created<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userEmail&nbsp;(str):&nbsp;Users&nbsp;email<br>
+&nbsp;&nbsp;&nbsp;&nbsp;itineraryInfo&nbsp;(str):&nbsp;The&nbsp;info<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void:</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SuggestionHandler">class <strong>SuggestionHandler</strong></a></font></td></tr>
+
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Suggests&nbsp;optimum&nbsp;path<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SuggestionHandler-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Summary</tt></dd></dl>
+
+<dl><dt><a name="SuggestionHandler-determineSuggestions"><strong>determineSuggestions</strong></a>(self, userName, itineraryListID)</dt><dd><tt>Puts&nbsp;together&nbsp;list&nbsp;of&nbsp;suggestions&nbsp;based&nbsp;on&nbsp;Users&nbsp;itinerary&nbsp;List<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userName&nbsp;(str):&nbsp;The&nbsp;Username.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;itineraryListID&nbsp;(int):&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;users&nbsp;current&nbsp;itinerary&nbsp;list<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;Returns&nbsp;the&nbsp;ID&nbsp;of&nbsp;the&nbsp;list&nbsp;of&nbsp;suggestions</tt></dd></dl>
+
+<dl><dt><a name="SuggestionHandler-recieveFeedBack"><strong>recieveFeedBack</strong></a>(self, userName, yelpPlaceID)</dt><dd><tt>Gives&nbsp;feedback&nbsp;on&nbsp;the&nbsp;location&nbsp;based&nbsp;on&nbsp;the&nbsp;yelpPlaceID<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userName&nbsp;(str):&nbsp;The&nbsp;Username&nbsp;of&nbsp;the&nbsp;user<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yelpPlaceID&nbsp;(int):&nbsp;The&nbsp;specific&nbsp;ID&nbsp;of&nbsp;the&nbsp;location&nbsp;from&nbsp;Yelp<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;the&nbsp;numerical&nbsp;star&nbsp;rating&nbsp;of&nbsp;that&nbsp;the&nbsp;user&nbsp;gives&nbsp;the&nbsp;location</tt></dd></dl>
+
+<dl><dt><a name="SuggestionHandler-recieveSuggestion"><strong>recieveSuggestion</strong></a>(self, userName, suggestionListID)</dt><dd><tt>Recieves&nbsp;the&nbsp;suggestion&nbsp;from&nbsp;the&nbsp;suggestion&nbsp;list<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;userName&nbsp;(str):&nbsp;The&nbsp;username.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;suggestionListID&nbsp;(int):&nbsp;the&nbsp;ID&nbsp;of&nbsp;the&nbsp;list&nbsp;that&nbsp;contains&nbsp;the&nbsp;suggestions<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;Returns&nbsp;the&nbsp;ID&nbsp;of&nbsp;the&nbsp;specific&nbsp;suggestion&nbsp;selected&nbsp;from&nbsp;list</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
