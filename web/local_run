@@ -4,7 +4,7 @@
 
 ./local_stop
 
-bash ./scripts/installdeps.sh
+. ./scripts/installdeps.sh
 
 echo "Removing existing database files"
 rm -r "$dbpath"

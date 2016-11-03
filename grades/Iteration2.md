@@ -10,12 +10,6 @@
 
 ## Things to Improve:
 
-### Basic features
-
-* Mark key features
-
-*(-1 point)*
-
 ### UI sketches
 
 * Make sure all the sketches are represented in the UML diagram.
@@ -49,6 +43,6 @@ Codes look good. There were some things missing like what is itenery? in the res
 
 *(+1 point)*
 
-* Iteration 1 grades : 91/100 *
+* Iteration 1 grades : 92/100 *
 
-** Grade: 92/100 **
+** Grade: 93/100 **
