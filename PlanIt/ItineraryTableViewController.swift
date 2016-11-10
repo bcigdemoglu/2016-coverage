@@ -14,14 +14,40 @@ class ItineraryTableViewController: UITableViewController {
 
     // MARK: Properties 
     
+    @IBOutlet var menuButton: UIBarButtonItem!
+  
     var itineraries = [Itinerary]()
     
     var itinerary: Itinerary?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadSampleItineraries()
+        
+        menuButton.target = self.revealViewController()
+        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+ /**       if revealViewController() != nil {
+            //            revealViewController().rearViewRevealWidth = 62
+            menuButton.target = revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            
+            revealViewController().rightViewRevealWidth = 150
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            **/
+            
+     //   }
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -81,6 +107,32 @@ class ItineraryTableViewController: UITableViewController {
         
     }
 
+    //TO implement later for storage of itineraries
+/**
+    private func loadItems() {
+        if let filePath = pathForItems() , FileManager.default.fileExists(atPath: filePath) {
+            if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [Itinerary] {
+                itineraries = archivedItems
+            }
+        }
+    }
+    
+    private func pathForItems() -> String? {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        
+        if let documents = paths.first, let documentsURL = NSURL(string: documents) {
+            return documentsURL.appendingPathComponent("items.plist")?.path
+        }
+        
+        return nil
+    }
+    
+    private func saveItems() {
+        if let filePath = pathForItems() {
+            NSKeyedArchiver.archiveRootObject(itineraries, toFile: filePath)
+        }
+    }
+ **/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -24,6 +24,8 @@
 		F944DF4C1DC9222E00F59D53 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF461DC9222E00F59D53 /* Itinerary.swift */; };
 		F944DF4D1DC9222E00F59D53 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF471DC9222E00F59D53 /* DateViewController.swift */; };
 		F944DF4F1DC9289300F59D53 /* PlanIt-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F944DF4E1DC9289300F59D53 /* PlanIt-Logo.png */; };
+		F944DF7F1DD4DC5700F59D53 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */; };
+		F944DF871DD4F8B700F59D53 /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF861DD4F8B700F59D53 /* NavigationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,10 @@
 		F944DF461DC9222E00F59D53 /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		F944DF471DC9222E00F59D53 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		F944DF4E1DC9289300F59D53 /* PlanIt-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlanIt-Logo.png"; sourceTree = "<group>"; };
+		F944DF7C1DD4DC5600F59D53 /* PlanIt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlanIt-Bridging-Header.h"; sourceTree = "<group>"; };
+		F944DF7D1DD4DC5700F59D53 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		F944DF861DD4F8B700F59D53 /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +126,10 @@
 				F944DF4E1DC9289300F59D53 /* PlanIt-Logo.png */,
 				F944DF381DC9214600F59D53 /* DatePickerDialog.swift */,
 				F944DF071DC920AC00F59D53 /* AppDelegate.swift */,
+				F944DF781DD4DB9F00F59D53 /* Supporting Files */,
 				F944DF091DC920AC00F59D53 /* ViewController.swift */,
 				F944DF3A1DC9219C00F59D53 /* Main.storyboard */,
+				F944DF861DD4F8B700F59D53 /* NavigationTableViewController.swift */,
 				F944DF3C1DC921EB00F59D53 /* DatePicker.swift */,
 				F944DF3E1DC9220600F59D53 /* Assets.xcassets */,
 				F944DF401DC9221700F59D53 /* LaunchScreen.storyboard */,
@@ -153,6 +161,16 @@
 				F944DF2C1DC920AD00F59D53 /* Info.plist */,
 			);
 			path = PlanItUITests;
+			sourceTree = "<group>";
+		};
+		F944DF781DD4DB9F00F59D53 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F944DF7D1DD4DC5700F59D53 /* SWRevealViewController.h */,
+				F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */,
+				F944DF7C1DD4DC5600F59D53 /* PlanIt-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +241,7 @@
 				TargetAttributes = {
 					F944DF031DC920AC00F59D53 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					F944DF1A1DC920AD00F59D53 = {
@@ -301,6 +320,8 @@
 				F944DF3D1DC921EB00F59D53 /* DatePicker.swift in Sources */,
 				F944DF4C1DC9222E00F59D53 /* Itinerary.swift in Sources */,
 				F944DF4D1DC9222E00F59D53 /* DateViewController.swift in Sources */,
+				F944DF7F1DD4DC5700F59D53 /* SWRevealViewController.m in Sources */,
+				F944DF871DD4F8B700F59D53 /* NavigationTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,10 +454,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PlanIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = oosegroup13.PlanIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlanIt/PlanIt-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -445,10 +469,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PlanIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = oosegroup13.PlanIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlanIt/PlanIt-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
