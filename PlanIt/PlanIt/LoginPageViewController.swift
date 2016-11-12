@@ -31,37 +31,16 @@ class LoginPageViewController: UIViewController {
             return;
         }
         
-        if isValidEmail(testStr: userEmail!) == false {
+        /*if isValidEmail(testStr: userEmail!) == false {
             displayAlertMessage(myMessage:"Not a valid email");
             return;
-        }
+        }*/
         
         //Alex: send userName, userEmail, and userPassword to the server here
         //When login not successful, call displayAlertMessage()
         //When login successful, call change page to the ListView
-        //this code was found and altered from: http://stackoverflow.com/questions/26364914/http-request-in-swift-with-post-method
-        var request = URLRequest(url: URL(string: "http://oose-2016-group-13.herokuapp.com/login")!)
-        request.httpMethod = "POST"
-        let postString = "username: " + userEmail! + ",\npassword: " + userPassword!
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-        }
+        let code = sendLoginRequest(username: userEmail!, password: userPassword!, loginController : self)
         
-        task.resume()
-        
-        self.performSegue(withIdentifier: "ListViewSegue", sender: nil)
        
     }
     
