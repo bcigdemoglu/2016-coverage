@@ -91,3 +91,5 @@ web/ENV/
 # MongoDB local
 web/data/
 web/log/
+
+PlanIt/ConnectionHandler.swift
