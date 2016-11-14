@@ -26,6 +26,6 @@ api = restful.Api(app)
 api.representations = DEFAULT_REPRESENTATIONS
 
 def hashpwd(password):
-    return md5(str(password)).hexdigest()
+    return md5(password.encode('utf-8')).hexdigest()
 
 import flask_rest_service.resources
