@@ -140,7 +140,7 @@
 
 * **URL**
 
-  /itinerarylistshells/<username>
+  /itinerarylistshells/\<username\>
 
 * **Method:**
 
