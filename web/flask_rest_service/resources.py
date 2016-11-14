@@ -9,13 +9,8 @@ from bson.objectid import ObjectId
 
 class Login(restful.Resource):
     def post(self):
-        print(request.get_json())
         username_form  = request.get_json()['username']
-        print(type(username_form))
-        print(username_form)
         user = app.db.db.users.find_one({"username": username_form})
-        print(type(user))
-        print(user)
         if not user:
             return {"error": "Invalid username"}, 400
 
@@ -47,16 +42,62 @@ class Root(restful.Resource):
             'users': list(app.db.db.users.find())
         }, 200
 
+class GetItineraryList(restful.Resource):
+    def get(self, username):
+        user = app.db.db.users.find_one({"username": username})
+        if not user:
+            return {"error": "Invalid username"}, 400
+
+        return {'itineraries':
+            list(app.db.db.itin.find({"createdBy": username}))
+            }, 201
+
 class PopulateDB(restful.Resource):
     def post(self):
         usernames = ["alex", "naina", "amy", "bugi"]
         for username in usernames:
+            # Do not populate if user exists
+            if app.db.db.users.find_one({"username": username}):
+                continue
+
             app.db.db.users.insert({"username": username,
                                    "password": hashpwd(username + "123"),
                                    "name": username.title()})
         return {'users': list(app.db.db.users.find())}, 201
+    def get(self):
+        return self.post()
+
+class PopulateItineraries(restful.Resource):
+    def post(self):
+        usernames = ["alex", "naina", "amy", "bugi"]
+        itineraryCounter = 1
+        for username in usernames:
+            for i in range(5):
+                itineraryName = "itin"+ str(i + 1)
+                itinHash = hash(username + "_" + itineraryName)
+                # Do not populate if itinerary exists
+                if app.db.db.itin.find_one({"uid": itinHash}):
+                    continue
+
+                app.db.db.itin.insert({"createdBy": username,
+                                              "name": itineraryName,
+                                              "uid": itinHash})
+        return {'itineraries': list(app.db.db.itin.find())}, 201
+    def get(self):
+        return self.post()
+
+class DropDB(restful.Resource):
+    def delete(self):
+        userDropped = app.db.db.users.drop()
+        itinDropped = app.db.db.itin.drop()
+        return {"userDropped": userDropped, "itinDropped": itinDropped}, 201
+    def get(self):
+        return self.delete()
 
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
 api.add_resource(Root, '/')
 api.add_resource(PopulateDB, '/testdb/populatedb')
+api.add_resource(PopulateItineraries, '/testdb/populateItineraries')
+api.add_resource(DropDB, '/testdb/dropdb')
+api.add_resource(GetItineraryList, '/itinerarylistshells/<username>')

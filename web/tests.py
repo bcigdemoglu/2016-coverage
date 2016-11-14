@@ -8,11 +8,30 @@ import os
 from pymongo import MongoClient
 import unittest
 from flask_rest_service import app
+from flask import json
 
 class PlanItTestCase(unittest.TestCase):
 
+    def json_post(self, handler, raw_dict):
+        json_header = {'Content-Type' : 'application/json'}
+        return self.app.post(handler, data=json.dumps(raw_dict), headers=json_header)
+
+    '''
+    db.users
+        usernames: alex, naina, amy, bugi
+        passwords: <username> + "123"
+
+    db.itin
+        itineraries:
+            createdBy: <username>
+            name: itin + <1,2,3,4,5>
+            uid: hash(<username> + "_" + itineraries.name)
+    '''
+    def populate(self):
+        self.app.post('/testdb/populatedb', data={})
+        self.app.post('/testdb/populateItineraries', data={})
+
     def setUp(self):
-        print("hello")
         self.app = app.test_client()
         app.config['TESTING'] = True
         app.config['MONGO_URI'] = "mongodb://localhost:27017/test"
@@ -20,6 +39,7 @@ class PlanItTestCase(unittest.TestCase):
         mongo = MongoClient(app.config['MONGO_URI'])
         db = mongo.test_database
         app.db = mongo
+        self.populate()
 
     def tearDown(self):
         """Get rid of the database again after each test"""
@@ -52,10 +72,41 @@ class PlanItTestCase(unittest.TestCase):
     #     return self.app.get('/logout', follow_redirects=True)
 
     # Testing functions
-    def test_empty_db(self):
-        """Start with a blank database."""
+    def test_home(self):
+        """Test home."""
         rv = self.app.get('/')
         assert 'localhost:27017' in str(rv.data)
+
+    def test_login(self):
+        """Test login."""
+        rv = self.json_post('/login', dict(
+                username = 'alex',
+                password = 'alex123'
+                ))
+        assert 'alex' in str(rv.data)
+        assert 'Alex' in str(rv.data)
+
+        rv = self.json_post('/login', dict(
+                username = 'alex',
+                password = 'alex13'
+                ))
+        assert 'Incorrect password' in str(rv.data)
+
+        rv = self.json_post('/login', dict(
+                username = 'bbbb',
+                password = '2312312'
+                ))
+        assert "Invalid username" in str(rv.data)
+
+    def test_getItinerary(self):
+        """Test get itinerary for a user"""
+        rv = self.app.get('/itinerarylistshells/alex')
+        print(rv.data)
+        for i in range(5):
+            assert "itin"+str(i+1) in str(rv.data)
+
+        rv = self.app.get('/itinerarylistshells/bbbb')
+        assert "Invalid username" in str(rv.data)
 
     # def test_login_logout(self):
     #     """Make sure login and logout works"""
