@@ -12,6 +12,12 @@ from flask import json
 
 class PlanItTestCase(unittest.TestCase):
 
+    '''
+    Pretty print json data
+    '''
+    def pprint(data, indent=2):
+        print(json.dumps(json.loads(data), indent=indent))
+
     def json_post(self, handler, raw_dict):
         json_header = {'Content-Type' : 'application/json'}
         return self.app.post(handler, data=json.dumps(raw_dict), headers=json_header)
@@ -101,7 +107,6 @@ class PlanItTestCase(unittest.TestCase):
     def test_getItinerary(self):
         """Test get itinerary for a user"""
         rv = self.app.get('/itinerarylistshells/alex')
-        print(rv.data)
         for i in range(5):
             assert "itin"+str(i+1) in str(rv.data)
 

@@ -140,7 +140,7 @@
 
 * **URL**
 
-  /getItineraryLists
+  /itinerarylistshells/<username>
 
 * **Method:**
 
@@ -148,13 +148,14 @@
 
 * **Data Params**
 
-  `{"user": username,
-    "last_Sync_TimeStamp": timeStamp}`
+  `{}`
 
 * **Success Response:**
 
   * **Code:** 200 SUCCESS <br />
-    **Content:** `{ "ItineraryList": ArrayList<Itinerary> }`
+    **Content:** `
+    { "itineraries":
+    [ "createdBy": username, "name": name', "uid": hash] }`
 
 * **Error Response:**
 
@@ -162,6 +163,53 @@
     **Content:** `{ error : "User doesn't exist" }`
 
 * **Sample Call:**
+`get('/itinerarylistshells/alex')`
+```javascript
+{
+  "itineraries": [
+    {
+      "_id": {
+        "$oid": "582997df35391365c20ae23f"
+      },
+      "createdBy": "alex",
+      "name": "itin1",
+      "uid": "5928551971756020620"
+    },
+    {
+      "_id": {
+        "$oid": "582997df35391365c20ae240"
+      },
+      "createdBy": "alex",
+      "name": "itin2",
+      "uid": "5928551971756020623"
+    },
+    {
+      "_id": {
+        "$oid": "582997df35391365c20ae241"
+      },
+      "createdBy": "alex",
+      "name": "itin3",
+      "uid": "5928551971756020622"
+    },
+    {
+      "_id": {
+        "$oid": "582997df35391365c20ae242"
+      },
+      "createdBy": "alex",
+      "name": "itin4",
+      "uid": "5928551971756020617"
+    },
+    {
+      "_id": {
+        "$oid": "582997df35391365c20ae243"
+      },
+      "createdBy": "alex",
+      "name": "itin5",
+      "uid": "5928551971756020616"
+    }
+  ]
+}
+```
 
 # Get Itinerary
 ----
@@ -232,4 +280,3 @@
     **Content:** `{ error : "Itinerary doesn't exist" }`
 
 * **Sample Call:**
-

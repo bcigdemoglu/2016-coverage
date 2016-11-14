@@ -74,14 +74,15 @@ class PopulateItineraries(restful.Resource):
         for username in usernames:
             for i in range(5):
                 itineraryName = "itin"+ str(i + 1)
-                itinHash = hash(username + "_" + itineraryName)
+                itinHash = str(hash(username + "_" + itineraryName))
+
                 # Do not populate if itinerary exists
                 if app.db.db.itin.find_one({"uid": itinHash}):
                     continue
 
                 app.db.db.itin.insert({"createdBy": username,
-                                              "name": itineraryName,
-                                              "uid": itinHash})
+                                       "name": itineraryName,
+                                       "uid": itinHash})
         return {'itineraries': list(app.db.db.itin.find())}, 201
     def get(self):
         return self.post()
