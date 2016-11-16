@@ -26,14 +26,6 @@ api = restful.Api(app)
 api.representations = DEFAULT_REPRESENTATIONS
 
 def hashpwd(password):
-    return md5(password).hexdigest()
-
-# def connect_db():
-#     app.db = PyMongo(app)
-
-# def get_db():
-#     if not hasattr(app, 'db'):
-#         connect_db()
-#     return app.db
+    return md5(password.encode('utf-8')).hexdigest()
 
 import flask_rest_service.resources
