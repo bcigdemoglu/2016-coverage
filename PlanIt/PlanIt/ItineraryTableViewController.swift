@@ -24,11 +24,14 @@ class ItineraryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         loadSampleItineraries()
+        //loadRealItineraries() { list in
+            self.menuButton.target = self.revealViewController()
+            self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         
-        menuButton.target = self.revealViewController()
-        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            
+        //}
         
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
  /**       if revealViewController() != nil {
             //            revealViewController().rearViewRevealWidth = 62
@@ -58,14 +61,23 @@ class ItineraryTableViewController: UITableViewController {
 
     
     func loadSampleItineraries(){
-        let it1 = Itinerary(name: "Mon Oct 31")!
+        let it1 = Itinerary(name: "Mon Oct 31", uid : "1234567")!
         
-        let it2 = Itinerary(name: "Halloween")!
+        let it2 = Itinerary(name: "Halloween", uid : "12345678910xasdf")!
         
-        itineraries += [it1, it2]
+        self.itineraries += [it1, it2]
     }
     
-    
+    func loadRealItineraries(completionHandler : @escaping ([Itinerary]) -> ()) {
+        getItineraryListShells(userID: "alex") { list, error in
+            if (list != nil) {
+                self.itineraries += list!
+                completionHandler(list!)
+            } else { //might eventually put something here to handle a bad response
+                self.loadSampleItineraries()
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

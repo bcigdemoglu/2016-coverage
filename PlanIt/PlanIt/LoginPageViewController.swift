@@ -39,8 +39,24 @@ class LoginPageViewController: UIViewController {
         //Alex: send userName, userEmail, and userPassword to the server here
         //When login not successful, call displayAlertMessage()
         //When login successful, call change page to the ListView
-        let code = sendLoginRequest(username: userEmail!, password: userPassword!, loginController : self)
+        sendLoginRequest(username: userEmail!, password: userPassword!) {responseCode in
+            switch responseCode {
+            case 200:
+                self.performSegue(withIdentifier: "homeSegue", sender: nil)
+            case 404:
+                self.displayAlertMessage(myMessage: "User doesn't exist")
+            case 401:
+                self.displayAlertMessage(myMessage: "Incorrect password")
+            default:
+                self.displayAlertMessage(myMessage: "Server Error... check to make sure it's up")
+            }
+            
+            
+            
+            
+        }
         
+        //self.performSegue(withIdentifier: "homeSegue", sender: nil)
        
     }
     
