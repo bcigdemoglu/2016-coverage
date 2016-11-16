@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		187CEB99E8FA7975F024956F /* Pods_PlanItUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E43B3196FC8DBB0551C1EB /* Pods_PlanItUITests.framework */; };
 		5F4DAE231DD666FA00450083 /* ConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE221DD666FA00450083 /* ConnectionHandler.swift */; };
+		5F4DAE251DD9206000450083 /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */; };
+		5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE261DD948B400450083 /* ItineraryManager.swift */; };
+		5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE281DD94D9900450083 /* ItineraryShell.swift */; };
 		84AAEAC1797DB61C96BBC033 /* Pods_PlanItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */; };
 		A81D2829E2EA60AB2A211AA8 /* Pods_PlanIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71674194458DDE13383221ED /* Pods_PlanIt.framework */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
@@ -29,7 +32,6 @@
 		F944DF4D1DC9222E00F59D53 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF471DC9222E00F59D53 /* DateViewController.swift */; };
 		F944DF4F1DC9289300F59D53 /* PlanIt-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F944DF4E1DC9289300F59D53 /* PlanIt-Logo.png */; };
 		F944DF7F1DD4DC5700F59D53 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */; };
-		F944DF871DD4F8B700F59D53 /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF861DD4F8B700F59D53 /* NavigationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		11E43B3196FC8DBB0551C1EB /* Pods_PlanItUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanItUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17562A9AE8C3E3AED3467E98 /* Pods-PlanItUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItUITests/Pods-PlanItUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F4DAE221DD666FA00450083 /* ConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionHandler.swift; sourceTree = "<group>"; };
+		5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
+		5F4DAE261DD948B400450083 /* ItineraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryManager.swift; sourceTree = "<group>"; };
+		5F4DAE281DD94D9900450083 /* ItineraryShell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryShell.swift; sourceTree = "<group>"; };
 		68F773566CFD9695C55FD734 /* Pods-PlanIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanIt/Pods-PlanIt.debug.xcconfig"; sourceTree = "<group>"; };
 		71674194458DDE13383221ED /* Pods_PlanIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +91,6 @@
 		F944DF7C1DD4DC5600F59D53 /* PlanIt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlanIt-Bridging-Header.h"; sourceTree = "<group>"; };
 		F944DF7D1DD4DC5700F59D53 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		F944DF861DD4F8B700F59D53 /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,8 +176,8 @@
 				F944DF781DD4DB9F00F59D53 /* Supporting Files */,
 				F944DF091DC920AC00F59D53 /* ViewController.swift */,
 				F944DF3A1DC9219C00F59D53 /* Main.storyboard */,
-				F944DF861DD4F8B700F59D53 /* NavigationTableViewController.swift */,
 				F944DF3C1DC921EB00F59D53 /* DatePicker.swift */,
+				5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */,
 				F944DF3E1DC9220600F59D53 /* Assets.xcassets */,
 				F944DF401DC9221700F59D53 /* LaunchScreen.storyboard */,
 				F944DF161DC920AC00F59D53 /* Info.plist */,
@@ -182,7 +186,9 @@
 				F944DF431DC9222E00F59D53 /* LoginPageViewController.swift */,
 				F944DF441DC9222E00F59D53 /* ItineraryTableViewCell.swift */,
 				F944DF451DC9222E00F59D53 /* ItineraryTableViewController.swift */,
+				5F4DAE261DD948B400450083 /* ItineraryManager.swift */,
 				F944DF461DC9222E00F59D53 /* Itinerary.swift */,
+				5F4DAE281DD94D9900450083 /* ItineraryShell.swift */,
 				F944DF471DC9222E00F59D53 /* DateViewController.swift */,
 			);
 			path = PlanIt;
@@ -500,10 +506,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */,
+				5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */,
 				F944DF4A1DC9222E00F59D53 /* ItineraryTableViewCell.swift in Sources */,
 				F944DF391DC9214600F59D53 /* DatePickerDialog.swift in Sources */,
 				F944DF481DC9222E00F59D53 /* RegisterPageViewController.swift in Sources */,
 				F944DF4B1DC9222E00F59D53 /* ItineraryTableViewController.swift in Sources */,
+				5F4DAE251DD9206000450083 /* NavigationTableViewController.swift in Sources */,
 				F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */,
 				F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */,
 				F944DF491DC9222E00F59D53 /* LoginPageViewController.swift in Sources */,
@@ -511,8 +519,8 @@
 				F944DF3D1DC921EB00F59D53 /* DatePicker.swift in Sources */,
 				F944DF4C1DC9222E00F59D53 /* Itinerary.swift in Sources */,
 				F944DF4D1DC9222E00F59D53 /* DateViewController.swift in Sources */,
+				5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */,
 				F944DF7F1DD4DC5700F59D53 /* SWRevealViewController.m in Sources */,
-				F944DF871DD4F8B700F59D53 /* NavigationTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
