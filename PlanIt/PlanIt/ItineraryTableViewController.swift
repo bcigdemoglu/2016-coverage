@@ -58,11 +58,11 @@ class ItineraryTableViewController: UITableViewController {
 
     
     func loadSampleItineraries(){
-        let it1 = Itinerary(name: "Mon Oct 31")!
+        let it1 = Itinerary(name: "Mon Oct 31", uid : "1234567")!
         
-        let it2 = Itinerary(name: "Halloween")!
+        let it2 = Itinerary(name: "Halloween", uid : "12345678910xasdf")!
         
-        itineraries += [it1, it2]
+        self.itineraries += [it1, it2]
     }
     
     

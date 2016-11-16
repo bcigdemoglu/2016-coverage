@@ -16,13 +16,17 @@ class Itinerary{
     
     var name: String
     //var name: String = ""
+    var uid: String
     
 // MARK: Initialization
 
-   init?(name: String) {
+    init?(name: String, uid: String) {
         self.name = name
-
+        self.uid = uid
         if name.isEmpty {
+            return nil
+        }
+        if uid.isEmpty {
             return nil
         }
     }

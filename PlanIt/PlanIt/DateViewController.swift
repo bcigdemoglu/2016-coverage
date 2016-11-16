@@ -55,8 +55,9 @@ class DateViewController: UIViewController{
         let dateChosen = strDate
         
         let name = dateChosen ?? ""
-        
-        itinerary = Itinerary(name: name)
+        //TODO:  Make sure this get actually set
+        let uid = "newRandomString"
+        itinerary = Itinerary(name: name, uid : uid)
         
                
         // Get the new view controller using segue.destinationViewController.
