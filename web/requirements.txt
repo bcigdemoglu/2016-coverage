@@ -11,3 +11,4 @@ pymongo>=3.3.0
 pytz>=2013.7
 six>=1.10.0
 marshmallow>=2.10.3
+codeclimate-test-reporter>=0.2.0

@@ -7,7 +7,7 @@
 import os
 from pymongo import MongoClient
 import unittest
-from flask_rest_service import app
+from .. import app
 from flask import json
 
 class PlanItTestCase(unittest.TestCase):
