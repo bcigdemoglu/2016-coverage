@@ -8,4 +8,4 @@ install: "pip install -r web/requirements.txt"
 services:
   - mongodb
 # command to run tests
-script: python web/tests.py -v
+script: cd web && python -m flask_rest_service.tests.core_tests && cd ..
