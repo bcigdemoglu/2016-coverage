@@ -4,13 +4,17 @@ Summary
 from flask import request, abort, json, session
 import flask_restful as restful
 from flask_restful import reqparse
-from . import app, api, hashpwd
+from . import api, hashpwd
 from bson.objectid import ObjectId
+from . import app
+
+# def db():
+#     return app.mongo.db
 
 class Login(restful.Resource):
     def post(self):
         username_form  = request.get_json()['username']
-        user = app.db.db.users.find_one({"username": username_form})
+        user = app.mongo.db.users.find_one({"username": username_form})
         if not user:
             return {"error": "Invalid username"}, 400
 
@@ -29,27 +33,27 @@ class Register(restful.Resource):
                 "password": hashpwd(request.get_json()['password']),
                 "name": request.get_json()['name']}
 
-        if app.db.db.users.find_one({"username": user["username"]}):
+        if app.mongo.db.users.find_one({"username": user["username"]}):
             return {"error": "User already exists"}, 400
 
-        app.db.db.users.insert(user)
+        app.mongo.db.users.insert(user)
         return user, 201
 
 class Root(restful.Resource):
     def get(self):
         return {
-            'mongo': str(app.db.db),
-            'users': list(app.db.db.users.find())
+            'mongo': str(app.mongo.db),
+            'users': list(app.mongo.db.users.find())
         }, 200
 
 class GetItineraryList(restful.Resource):
     def get(self, username):
-        user = app.db.db.users.find_one({"username": username})
+        user = app.mongo.db.users.find_one({"username": username})
         if not user:
             return {"error": "Invalid username"}, 400
 
         return {'itineraries':
-            list(app.db.db.itin.find({"createdBy": username}))
+            list(app.mongo.db.itin.find({"createdBy": username}))
             }, 201
 
 class PopulateDB(restful.Resource):
@@ -57,13 +61,13 @@ class PopulateDB(restful.Resource):
         usernames = ["alex", "naina", "amy", "bugi"]
         for username in usernames:
             # Do not populate if user exists
-            if app.db.db.users.find_one({"username": username}):
+            if app.mongo.db.users.find_one({"username": username}):
                 continue
 
-            app.db.db.users.insert({"username": username,
+            app.mongo.db.users.insert({"username": username,
                                    "password": hashpwd(username + "123"),
                                    "name": username.title()})
-        return {'users': list(app.db.db.users.find())}, 201
+        return {'users': list(app.mongo.db.users.find())}, 201
     def get(self):
         return self.post()
 
@@ -77,13 +81,13 @@ class PopulateItineraries(restful.Resource):
                 itinHash = str(hash(username + "_" + itineraryName))
 
                 # Do not populate if itinerary exists
-                if app.db.db.itin.find_one({"uid": itinHash}):
+                if app.mongo.db.itin.find_one({"uid": itinHash}):
                     continue
 
-                app.db.db.itin.insert({"createdBy": username,
+                app.mongo.db.itin.insert({"createdBy": username,
                                        "name": itineraryName,
                                        "uid": itinHash})
-        return {'itineraries': list(app.db.db.itin.find())}, 201
+        return {'itineraries': list(app.mongo.db.itin.find())}, 201
     def get(self):
         return self.post()
 

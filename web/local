@@ -3,7 +3,7 @@
 root="$(dirname "$0")"
 export dbpath="$root/data/db"
 export logpath="$root/log"
-export coverpath="$root/cover"
+export coverpath="$root/htmlcov"
 export dblog="$root/log/mongod.log"
 export testscript="$root/run_server.py"
 
@@ -87,6 +87,9 @@ elif [[ $1 == "r" ]]; then
 # t only run tests
 elif [[ $1 == "t" ]]; then
   localtest
+  if [[ $2 == "i" ]]; then
+    open -a "/Applications/Google Chrome.app" "$coverpath/index.html"
+  fi
 
 # s for stopping servers
 elif [[ $1 == "s" ]]; then

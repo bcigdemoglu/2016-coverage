@@ -35,8 +35,10 @@ class PlanItTestCase(unittest.TestCase):
     '''
     def populate(self):
         self.app.post('/testdb/populatedb', data={})
-        self.app.get('/testdb/populatedb', data={})
         self.app.post('/testdb/populateItineraries', data={})
+
+        # Make sure multiples are not added
+        self.app.get('/testdb/populatedb', data={})
         self.app.get('/testdb/populateItineraries', data={})
 
     def setUp(self):
@@ -51,7 +53,7 @@ class PlanItTestCase(unittest.TestCase):
 
     def tearDown(self):
         """Get rid of the database again after each test"""
-        app.db.drop_database('db')
+        app.db.drop_database('local')
         app.db.close()
 
     # def test_getting_object(self):
@@ -113,7 +115,6 @@ class PlanItTestCase(unittest.TestCase):
                 password = 'test123',
                 name= 'Mr Test'
                 ))
-        print(rv.data)
         assert 'Mr Test' in str(rv.data)
 
         rv = self.json_post('/register', dict(
