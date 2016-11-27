@@ -13,8 +13,8 @@ from . import app
 
 class Login(restful.Resource):
     def post(self):
-        username_form  = request.get_json()['username']
-        user = app.mongo.db.users.find_one({"username": username_form})
+        username  = request.get_json()['username']
+        user = app.mongo.db.users.find_one({"username": username})
         if not user:
             return {"error": "Invalid username"}, 400
 
@@ -22,7 +22,7 @@ class Login(restful.Resource):
         encrypted_pass = hashpwd(password_form)
 
         if user["password"] == encrypted_pass:
-            session[username_form] = username_form
+            session[username] = username
             return user, 200
 
         return {"error": "Incorrect password"}, 401
@@ -45,6 +45,26 @@ class Root(restful.Resource):
             'mongo': str(app.mongo.db),
             'users': list(app.mongo.db.users.find())
         }, 200
+
+class CreateItinerary(restful.Resource):
+    def post(self, username):
+        itinName  = request.get_json()['name']
+        itinDate  = request.get_json()['date']
+
+        user = app.mongo.db.users.find_one({"username": username})
+        if not user:
+            return {"error": "Invalid username"}, 400
+
+        itinHash = str(hash(username + "_" + itinName))
+
+        if app.mongo.db.itin.find_one({"uid": itinHash}):
+            return {"error": "Itinerary name already in use"}, 400
+
+        app.mongo.db.itin.insert({"createdBy": username,
+                                  "name": itinName,
+                                  "uid": itinHash,
+                                  "date": itinDate})
+        return {'uid': itinHash}, 201
 
 class GetItineraryList(restful.Resource):
     def get(self, username):
@@ -86,7 +106,8 @@ class PopulateItineraries(restful.Resource):
 
                 app.mongo.db.itin.insert({"createdBy": username,
                                        "name": itineraryName,
-                                       "uid": itinHash})
+                                       "uid": itinHash,
+                                       "date": "0"})
         return {'itineraries': list(app.mongo.db.itin.find())}, 201
     def get(self):
         return self.post()
@@ -97,3 +118,4 @@ api.add_resource(Root, '/')
 api.add_resource(PopulateDB, '/testdb/populatedb')
 api.add_resource(PopulateItineraries, '/testdb/populateItineraries')
 api.add_resource(GetItineraryList, '/itinerarylistshells/<username>')
+api.add_resource(CreateItinerary, '/createItinerary/<username>')

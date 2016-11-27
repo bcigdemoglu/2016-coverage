@@ -11,5 +11,3 @@ script:
   - nosetests --with-coverage --cover-erase --cover-package=web/flask_rest_service --verbosity=2
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t f5c23638-c7f1-496a-b7ba-d2254ad84fe6
-  - pylint --output-format=html flask_rest_service > /tmp/pylint-report.html
-  - curl -v -m 120 -X POST -F travis-job-id=$TRAVIS_JOB_ID -F pylint-report=@/tmp/pylint-report.html https://pylint.desmondrivet.com/reports

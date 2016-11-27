@@ -15,8 +15,8 @@ class PlanItTestCase(unittest.TestCase):
     '''
     Pretty print json data
     '''
-    def pprint(data, indent=2):
-        print(json.dumps(json.loads(data), indent=indent))
+    # def pprint(data, indent=2):
+    #     print(json.dumps(json.loads(data), indent=indent))
 
     def json_post(self, handler, raw_dict):
         json_header = {'Content-Type' : 'application/json'}
@@ -123,6 +123,27 @@ class PlanItTestCase(unittest.TestCase):
                 name= 'Mr Test'
                 ))
         assert 'User already exists' in str(rv.data)
+
+    def test_createItinerary(self):
+        """Test create itinerary for a user"""
+        rv = self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date= '2015-08-21T00:00:00.000Z'
+                ))
+        itinHash = str(hash('alex' + "_" + 'New Day'))
+        assert itinHash in str(rv.data)
+
+        rv = self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date= '2016-08-21T00:00:00.000Z'
+                ))
+        assert 'Itinerary name already in use' in str(rv.data)
+
+        rv = self.json_post('/createItinerary/bbbb', dict(
+                name = 'New Day',
+                date= '2015-08-21T00:00:00.000Z'
+                ))
+        assert 'Invalid username' in str(rv.data)
 
     def test_getItinerary(self):
         """Test get itinerary for a user"""
