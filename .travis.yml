@@ -2,10 +2,10 @@ language: python
 python:
   - "2.7"
   - "3.5"
-  - pypy
 # command to install dependencies
 install: "pip install -r web/requirements.txt"
 services:
   - mongodb
 # command to run tests
-script: cd web && python -m flask_rest_service.tests.core_tests && cd ..
+script:
+  - nosetests --with-coverage --cover-erase --cover-package=web/flask_rest_service --cover-html --verbosity=2

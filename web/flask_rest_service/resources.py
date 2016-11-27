@@ -4,7 +4,7 @@ Summary
 from flask import request, abort, json, session
 import flask_restful as restful
 from flask_restful import reqparse
-from flask_rest_service import app, api, hashpwd
+from . import app, api, hashpwd
 from bson.objectid import ObjectId
 
 class Login(restful.Resource):
