@@ -87,18 +87,9 @@ class PopulateItineraries(restful.Resource):
     def get(self):
         return self.post()
 
-class DropDB(restful.Resource):
-    def delete(self):
-        userDropped = app.db.db.users.drop()
-        itinDropped = app.db.db.itin.drop()
-        return {"userDropped": userDropped, "itinDropped": itinDropped}, 201
-    def get(self):
-        return self.delete()
-
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
 api.add_resource(Root, '/')
 api.add_resource(PopulateDB, '/testdb/populatedb')
 api.add_resource(PopulateItineraries, '/testdb/populateItineraries')
-api.add_resource(DropDB, '/testdb/dropdb')
 api.add_resource(GetItineraryList, '/itinerarylistshells/<username>')

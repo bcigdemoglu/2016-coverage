@@ -70,15 +70,23 @@ localrun() {
   echo "Test server successfully up"
 }
 
-# t for testing
+localtest() {
+  nosetests --with-coverage --cover-erase --cover-package="$root/flask_rest_service" --cover-html --cover-html-dir="$root/htmlcov" --verbosity=2
+}
+
+# no arguments for testing
 if [[ $1 == "" ]]; then
   localrun
-  nosetests --with-coverage --cover-erase --cover-package="$root/flask_rest_service" --verbosity=2
+  localtest
   localstop > /dev/null 2>&1
 
 # r for starting servers
 elif [[ $1 == "r" ]]; then
   localrun
+
+# t only run tests
+elif [[ $1 == "t" ]]; then
+  localtest
 
 # s for stopping servers
 elif [[ $1 == "s" ]]; then

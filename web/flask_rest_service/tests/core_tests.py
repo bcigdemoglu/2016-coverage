@@ -35,7 +35,9 @@ class PlanItTestCase(unittest.TestCase):
     '''
     def populate(self):
         self.app.post('/testdb/populatedb', data={})
+        self.app.get('/testdb/populatedb', data={})
         self.app.post('/testdb/populateItineraries', data={})
+        self.app.get('/testdb/populateItineraries', data={})
 
     def setUp(self):
         self.app = app.test_client()
@@ -79,12 +81,12 @@ class PlanItTestCase(unittest.TestCase):
 
     # Testing functions
     def test_home(self):
-        """Test home."""
+        """Test root call"""
         rv = self.app.get('/')
         assert 'localhost:27017' in str(rv.data)
 
     def test_login(self):
-        """Test login."""
+        """Test login"""
         rv = self.json_post('/login', dict(
                 username = 'alex',
                 password = 'alex123'
@@ -103,6 +105,23 @@ class PlanItTestCase(unittest.TestCase):
                 password = '2312312'
                 ))
         assert "Invalid username" in str(rv.data)
+
+    def test_register(self):
+        """Test user register"""
+        rv = self.json_post('/register', dict(
+                username = 'tester',
+                password = 'test123',
+                name= 'Mr Test'
+                ))
+        print(rv.data)
+        assert 'Mr Test' in str(rv.data)
+
+        rv = self.json_post('/register', dict(
+                username = 'tester',
+                password = 'test123',
+                name= 'Mr Test'
+                ))
+        assert 'User already exists' in str(rv.data)
 
     def test_getItinerary(self):
         """Test get itinerary for a user"""
@@ -151,6 +170,3 @@ class PlanItTestCase(unittest.TestCase):
     #     assert 'No entries here so far' not in rv.data
     #     assert '&lt;Hello&gt;' in rv.data
     #     assert '<strong>HTML</strong> allowed here' in rv.data
-
-if __name__ == '__main__':
-    unittest.main()
