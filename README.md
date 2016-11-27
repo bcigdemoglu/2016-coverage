@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/jhu-oose/2016-group-13.svg?token=fuXm9fRdis1gWqh7sYen&branch=master)](https://travis-ci.com/jhu-oose/2016-group-13)
+[![codecov](https://codecov.io/gh/mbugrahanc/oose-2016-coverage/branch/master/graph/badge.svg?token=Tika9gx4FK)](https://codecov.io/gh/mbugrahanc/oose-2016-coverage)
 # 2016-group-13
 
 ## Quickstart
