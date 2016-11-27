@@ -8,4 +8,4 @@ services:
   - mongodb
 # command to run tests
 script:
-  - nosetests --with-coverage --cover-erase --cover-package=web/flask_rest_service --cover-html --verbosity=2
+  - nosetests --with-coverage --cover-erase --cover-package=web/flask_rest_service --verbosity=2

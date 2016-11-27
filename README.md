@@ -2,14 +2,16 @@
 # 2016-group-13
 
 ## Quickstart
-Unittest the web server locally (run from root '/')
+### Run local tests & View coverage
+Run from root '/'
 ```bash
-cd web && ./local_test && cd ..
+web/local
 ```
 
 ## Guidelines
 <!-- TOC START min:2 max:5 link:true update:true -->
   - [Quickstart](#quickstart)
+    - [Run local tests & View coverage](#run-local-tests--view-coverage)
   - [Guidelines](#guidelines)
       - [Git Guidelines](#git-guidelines)
         - [Git Setup:](#git-setup--)

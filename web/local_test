@@ -1,7 +1,0 @@
-#!/bin/bash
-
-. ./local_run
-
-nosetests --with-coverage --cover-erase --cover-package=flask_rest_service --cover-html --verbosity=2
-
-. ./local_stop
