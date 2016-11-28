@@ -386,6 +386,27 @@ class PlanItTestCase(unittest.TestCase):
             assert e['start'] in str(rv.data)
             assert e['end'] in str(rv.data)
 
+    def test_getItineraryFromId(self):
+        """Test retrieval of itinerary data from uid"""
+        date = {'date': '2015-08-21T00:00:00.000Z'}
+        # Create sample itinerary for alex for the event day
+        self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date = date['date']
+                ))
+
+        uid = str(hash('alex_' + date['date']))
+        invuid = '00000000000000000000000'
+
+        rv = self.json_get('/getItineraryFromId/bbbb', {'uid': uid})
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_get('/getItineraryFromId/alex', {'uid': invuid})
+        assert 'Itinerary not found' in str(rv.data)
+
+        rv = self.json_get('/getItineraryFromId/alex', {'uid': uid})
+        assert uid in str(rv.data)
+
     @unittest.skipIf(os.environ.get('YELP_CONSUMER_KEY') is None,
                      "Please get Yelp secret keys from Bugrahan")
     def test_searchYelp(self):

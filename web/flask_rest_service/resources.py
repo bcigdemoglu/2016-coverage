@@ -54,8 +54,10 @@ class CreateItinerary(restful.Resource):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
+        itinerary_name = request.get_json().get('name') or request.get_json()['date']
+
         itinerary = {"createdBy": username,
-                     "name": request.get_json()['name'],
+                     "name": itinerary_name,
                      "date": request.get_json()['date'],
                      "uid": ""}
 
@@ -151,6 +153,22 @@ class InviteToEvent(restful.Resource):
         app.mongo.db.event.update({'uid': event['uid']}, event)
         return {'uid': event['uid']}, 201
 
+class GetItineraryFromId(restful.Resource):
+    '''
+        uid -> Itinerary uid
+    '''
+    def get(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        itinerary = app.mongo.db.itin.find_one({'uid': request.get_json()['uid'],
+                                                'createdBy': username})
+
+        if not itinerary:
+            return {"error": "Itinerary not found"}, 400
+
+        return itinerary, 200
+
 class GetEventFromId(restful.Resource):
     '''
         uid -> event uid
@@ -165,7 +183,7 @@ class GetEventFromId(restful.Resource):
         if not event:
             return {"error": "Event not found"}, 400
 
-        return event, 201
+        return event, 200
 
 
 class GetEventsForItinerary(restful.Resource):
@@ -183,7 +201,7 @@ class GetEventsForItinerary(restful.Resource):
         events = app.mongo.db.event.find({'date': request.get_json()['date'],
                                           'acceptedBy': username})
 
-        return {'events': events}, 201
+        return {'events': events}, 200
 
 
 class GetItineraryList(restful.Resource):
@@ -191,10 +209,10 @@ class GetItineraryList(restful.Resource):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
+        itineraries = app.mongo.db.itin.find({"createdBy": username})
+
         # Success
-        return {'itineraries':
-            list(app.mongo.db.itin.find({"createdBy": username}))
-            }, 201
+        return {'itineraries': itineraries }, 200
 
 class SearchYelp(restful.Resource):
     def get(self, query):
@@ -249,4 +267,5 @@ api.add_resource(CreateEvent, '/createEvent/<username>')
 api.add_resource(InviteToEvent, '/inviteToEvent/<username>')
 api.add_resource(GetEventsForItinerary, '/getEventsForItinerary/<username>')
 api.add_resource(GetEventFromId, '/getEventFromId/<username>')
+api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
