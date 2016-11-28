@@ -92,7 +92,7 @@ class CreateEvent(restful.Resource):
 
         # Check for collision between other events
         for e in app.mongo.db.event.find({'date': event['date'],
-                                          'acceptedBy': { '$eq': username }}):
+                                          'acceptedBy': username }):
             if self.checkCollision(event, e):
                 return {"error": "Collision with another event"}, 400
 

@@ -220,9 +220,20 @@ class PlanItTestCase(unittest.TestCase):
                 ))
         # Create sample itinerary for naina for the event day
         self.json_post('/createItinerary/naina', dict(
+                name = 'New Day1',
+                date = '2015-08-21T00:00:00.000Z'
+                ))
+        # Create sample itinerary for bugi for the event day
+        self.json_post('/createItinerary/bugi', dict(
                 name = 'New Day',
                 date = '2015-08-21T00:00:00.000Z'
                 ))
+        # Create sample itinerary for amy for the event day
+        self.json_post('/createItinerary/amy', dict(
+                name = 'New Day',
+                date = '2015-08-21T00:00:00.000Z'
+                ))
+
 
         event = dict(start = '2015-08-21T11:23:00.000Z',
                      end = '2015-08-21T11:25:00.000Z',
@@ -269,6 +280,33 @@ class PlanItTestCase(unittest.TestCase):
                 invited = 'naina'
                 ))
         assert "Already shared with user" in str(rv.data)
+
+        # Share event with amy
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'amy'
+                ))
+        assert uid in str(rv.data)
+
+        # Share event with amy
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'bugi'
+                ))
+        assert uid in str(rv.data)
+
+        # Share event with amy
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'amy'
+                ))
+        assert "Already sent invitation" in str(rv.data)
+
+        rv = self.json_post('/createEvent/amy', dict(
+                uid = uid
+                ))
+        print(rv.data)
+        assert uid in str(rv.data)
 
 
     # def test_login_logout(self):
