@@ -386,8 +386,10 @@ class PlanItTestCase(unittest.TestCase):
             assert e['start'] in str(rv.data)
             assert e['end'] in str(rv.data)
 
+    @unittest.skipIf(os.environ.get('YELP_CONSUMER_KEY') is None,
+                     "Please get Yelp secret keys from Bugrahan")
     def test_searchYelp(self):
-        ''' Simple yelp integration test '''
+        ''' Test yelp integration '''
         rv = self.json_get('/searchYelp/San%20Francisco', {})
         assert 'https://www.yelp.com' in str(rv.data)
 
