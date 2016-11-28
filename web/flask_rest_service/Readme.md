@@ -36,7 +36,7 @@
 * **Success Response:**
 
   * **Code:** 200 OK  
-    **Content:**
+    **Content:**  
     ```javascript
     { "username" : "amy1",
       "name" : "Amy He",
