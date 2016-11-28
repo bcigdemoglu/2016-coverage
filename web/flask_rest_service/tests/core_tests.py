@@ -200,7 +200,76 @@ class PlanItTestCase(unittest.TestCase):
                 ))
 
         rv = self.json_post('/createEvent/naina', sharedEvent)
-        assert str(hash('alex_' + event['start'] + event['end'])) in str(rv.data)
+        assert "User is not invited" in str(rv.data)
+
+        # Share event with naina
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'naina'
+                ))
+        assert uid in str(rv.data)
+
+        rv = self.json_post('/createEvent/naina', sharedEvent)
+        assert uid in str(rv.data)
+
+    def test_shareWithUser(self):
+        # Create sample itinerary for alex for the event day
+        self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date = '2015-08-21T00:00:00.000Z'
+                ))
+        # Create sample itinerary for naina for the event day
+        self.json_post('/createItinerary/naina', dict(
+                name = 'New Day',
+                date = '2015-08-21T00:00:00.000Z'
+                ))
+
+        event = dict(start = '2015-08-21T11:23:00.000Z',
+                     end = '2015-08-21T11:25:00.000Z',
+                     date = '2015-08-21T00:00:00.000Z')
+        rv = self.json_post('/createEvent/alex', event)
+        uid = str(hash('alex_' + event['start'] + event['end']))
+        assert uid in str(rv.data)
+
+        rv = self.json_post('/inviteToEvent/bbbb', event)
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = "invalidid",
+                invited = 'naina'
+                ))
+        assert "Invalid event id" in str(rv.data)
+
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'bbbbb'
+                ))
+        assert "Shared user does not exist" in str(rv.data)
+
+        # Share event with naina
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'naina'
+                ))
+        assert uid in str(rv.data)
+
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'naina'
+                ))
+        assert "Already sent invitation" in str(rv.data)
+
+        rv = self.json_post('/createEvent/naina', dict(
+                uid = uid
+                ))
+        assert uid in str(rv.data)
+
+        rv = self.json_post('/inviteToEvent/alex', dict(
+                uid = uid,
+                invited = 'naina'
+                ))
+        assert "Already shared with user" in str(rv.data)
+
 
     # def test_login_logout(self):
     #     """Make sure login and logout works"""

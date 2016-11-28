@@ -31,7 +31,7 @@ class Register(restful.Resource):
         user = {"username": request.get_json()['username'],
                 "password": hashpwd(request.get_json()['password']),
                 "name": request.get_json()['name'],
-                "friends": ""}
+                "friends": []}
 
         if app.mongo.db.users.find_one({"username": user["username"]}):
             return {"error": "User already exists"}, 400
@@ -78,13 +78,14 @@ class CreateEvent(restful.Resource):
                      "end": request.get_json()['end'],
                      "date": request.get_json()['date'],
                      "yelpId": "",
-                     "sharedWith": [username],
+                     "invited": [username],
                      "acceptedBy": [],
                      "uid": ""}
             event['uid'] = str(hash(username + "_" + event['start'] + event['end']))
         else:
             # If event already exists, retrieve it
             event = app.mongo.db.event.find_one({'uid': request.get_json()['uid']})
+
 
         if (event['start'] >= event['end']):
             return {"error": "Invalid date range"}, 400
@@ -99,8 +100,15 @@ class CreateEvent(restful.Resource):
                                            "date": event['date']}):
             return {"error": "Itinerary for the day not found"}, 400
 
+        # Verify the person is invited
+        if username in event['invited']:
+            # Now remove from invite and add to accepted
+            event['invited'].remove(username)
+            event['acceptedBy'].append(username)
+        else:
+            return {"error": "User is not invited"}, 400
+
         # Sucess
-        event['acceptedBy'].append(username)
         if not request.get_json().get('uid'):
             app.mongo.db.event.insert(event)
         else:
@@ -110,6 +118,35 @@ class CreateEvent(restful.Resource):
     @staticmethod
     def checkCollision(event1, event2):
         return (event1['start'] <= event2['end']) and (event2['start'] <= event1['end'])
+
+class InviteToEvent(restful.Resource):
+    '''
+        invited -> username of the invited friend
+        uid -> event id
+    '''
+    def post(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        event = app.mongo.db.event.find_one({'uid': request.get_json()['uid']})
+
+        if not event:
+            return {"error": "Invalid event id"}, 400
+
+        sharedUser = request.get_json()['invited']
+
+        if not app.mongo.db.users.find_one({"username": sharedUser}):
+            return {"error": "Shared user does not exist"}, 400
+
+        if sharedUser in event['invited']:
+            return {"error": "Already sent invitation"}, 400
+
+        if sharedUser in event['acceptedBy']:
+            return {"error": "Already shared with user"}, 400
+
+        event['invited'].append(sharedUser)
+        app.mongo.db.event.update({'uid': event['uid']}, event)
+        return {'uid': event['uid']}, 201
 
 class GetItineraryList(restful.Resource):
     def get(self, username):
@@ -167,3 +204,4 @@ api.add_resource(PopulateItineraries, '/testdb/populateItineraries')
 api.add_resource(GetItineraryList, '/itinerarylistshells/<username>')
 api.add_resource(CreateItinerary, '/createItinerary/<username>')
 api.add_resource(CreateEvent, '/createEvent/<username>')
+api.add_resource(InviteToEvent, '/inviteToEvent/<username>')
