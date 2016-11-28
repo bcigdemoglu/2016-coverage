@@ -128,16 +128,16 @@ class PlanItTestCase(unittest.TestCase):
         """Test create itinerary for a user"""
         rv = self.json_post('/createItinerary/alex', dict(
                 name = 'New Day',
-                date= '2015-08-21T00:00:00.000Z'
+                date = '2015-08-21T00:00:00.000Z'
                 ))
-        itinHash = str(hash('alex' + "_" + 'New Day'))
+        itinHash = str(hash('alex' + "_" + '2015-08-21T00:00:00.000Z'))
         assert itinHash in str(rv.data)
 
         rv = self.json_post('/createItinerary/alex', dict(
                 name = 'New Day',
-                date= '2016-08-21T00:00:00.000Z'
+                date= '2015-08-21T00:00:00.000Z'
                 ))
-        assert 'Itinerary name already in use' in str(rv.data)
+        assert 'Itinerary date already in use' in str(rv.data)
 
         rv = self.json_post('/createItinerary/bbbb', dict(
                 name = 'New Day',
@@ -153,6 +153,54 @@ class PlanItTestCase(unittest.TestCase):
 
         rv = self.app.get('/itinerarylistshells/bbbb')
         assert "Invalid username" in str(rv.data)
+
+    def test_createEvent(self):
+        """Test create event"""
+        invEvent = dict(start = '2015-08-21T12:23:00.000Z',
+                        end = '2015-08-21T11:25:00.000Z',
+                        date = '2015-08-21T00:00:00.000Z')
+        event = dict(start = '2015-08-21T11:23:00.000Z',
+                     end = '2015-08-21T11:25:00.000Z',
+                     date = '2015-08-21T00:00:00.000Z')
+        eventCollide = dict(start = '2015-08-21T11:24:00.000Z',
+                            end = '2015-08-21T11:24:30.000Z',
+                            date = '2015-08-21T00:00:00.000Z')
+
+        rv = self.json_post('/createEvent/bbbb', event)
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_post('/createEvent/alex', invEvent)
+        assert 'Invalid date range' in str(rv.data)
+
+        rv = self.json_post('/createEvent/alex', event)
+        assert 'Itinerary for the day not found' in str(rv.data)
+
+        # Create sample itinerary for alex for the event day
+        self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date = '2015-08-21T00:00:00.000Z'
+                ))
+
+        rv = self.json_post('/createEvent/alex', event)
+        uid = str(hash('alex_' + event['start'] + event['end']))
+        assert uid in str(rv.data)
+
+        rv = self.json_post('/createEvent/alex', eventCollide)
+        assert 'Collision with another event' in str(rv.data)
+
+        sharedEvent = dict(uid = uid)
+
+        rv = self.json_post('/createEvent/naina', sharedEvent)
+        assert 'Itinerary for the day not found' in str(rv.data)
+
+        # Create sample itinerary for naina for the event day
+        self.json_post('/createItinerary/naina', dict(
+                name = 'New Day',
+                date = '2015-08-21T00:00:00.000Z'
+                ))
+
+        rv = self.json_post('/createEvent/naina', sharedEvent)
+        assert str(hash('alex_' + event['start'] + event['end'])) in str(rv.data)
 
     # def test_login_logout(self):
     #     """Make sure login and logout works"""
