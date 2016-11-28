@@ -33,9 +33,7 @@
       "password": password}
     ```
 
-* **Success Response:**
-
-  * **Code:** 200 OK  
+* **Success Response Code:** 200 OK  
     **Content:**  
     ```javascript
     { "username" : "amy1",
@@ -75,9 +73,7 @@
       "name": name}
     ```
 
-* **Success Response:**
-
-  * **Code:** 201 CREATED  
+* **Success Response Code:** 201 CREATED  
     **Content:**
     ```javascript
     { "username" : "amy1",
@@ -111,9 +107,7 @@
       "date": itinerary_date}
     ```
 
-* **Success Response:**
-
-  * **Code:** 201 CREATED  
+* **Success Response Code:** 201 CREATED  
     **Content:**
     ```javascript
     { "uid": itinerary_uid }
@@ -152,9 +146,7 @@
     { "uid": event_uid }
     ```
 
-* **Success Response:**
-
-  * **Code:** 201 CREATED  
+* **Success Response Code:** 201 CREATED  
     **Content:**
     ```javascript
     { "uid": itinerary_uid }
@@ -193,9 +185,7 @@
       "uid": event_uid}
     ```
 
-* **Success Response:**
-
-  * **Code:** 201 CREATED  
+* **Success Response Code:** 201 CREATED  
     **Content:**
     ```javascript
     { "uid": event_uid }
@@ -233,9 +223,7 @@
     { "uid": event_uid }
     ```
 
-* **Success Response:**
-
-  * **Code:** 200 OK  
+* **Success Response Code:** 200 OK  
     **Content:**
     ```javascript
     { "start": event_start_time,
@@ -270,9 +258,7 @@
     { "date": itinerary_date }
     ```
 
-* **Success Response:**
-
-  * **Code:** 200 OK  
+* **Success Response Code:** 200 OK  
     **Content:**
     ```javascript
     { "events":
@@ -312,9 +298,7 @@
     { "uid": itinerary_uid }
     ```
 
-* **Success Response:**
-
-  * **Code:** 200 OK  
+* **Success Response Code:** 200 OK  
     **Content:**
     ```javascript
     { "createdBy": username,
@@ -346,9 +330,7 @@
     { }
     ```
 
-* **Success Response:**
-
-  * **Code:** 200 OK  
+* **Success Response Code:** 200 OK  
     **Content:**
     ```javascript
     { "itineraries":
@@ -389,9 +371,7 @@
     }
     ```
 
-* **Success Response:**
-
-  * **Code:** 200 OK  
+* **Success Response Code:** 200 OK  
     **Content:** Business info as shown on the website
     ```javascript
     { }
