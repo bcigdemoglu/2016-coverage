@@ -334,7 +334,7 @@
 
 * **URL**
 
-  /getEventFromId/\<username\>
+  /itinerarylistshells/\<username\>
 
 * **Method:**
 
@@ -343,7 +343,7 @@
 * **Data Params**
 
     ```javascript
-    { "date": itinerary_date }
+    { }
     ```
 
 * **Success Response:**
@@ -365,7 +365,7 @@
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "Itinerary for the day not found" }`
+    **Content:** `{ error : "Invalid username" }`
 
 # Yelp Integration
 ---
