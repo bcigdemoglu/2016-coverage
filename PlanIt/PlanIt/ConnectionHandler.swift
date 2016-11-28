@@ -49,25 +49,18 @@ func sendLoginRequest(username: String, password: String, completionHandler : @e
 }
 
 
-/*func sendRegisterRequest(username: String, password: String, name : String) {
+func sendRegisterRequest(username: String, password: String, name : String, completionHandler : @escaping (Int) -> () ) {
     let parameters: Parameters = [
         "username": username,
         "password": password,
         "name" : name
     ]
-
-
-    Alamofire.request(baseURL + "login", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-        print(response.request?.httpBody)  // original URL request
-        print(response.response) // HTTP URL response
-        print(response.data)     // server data
-        print(response.result)   // result of response serialization
-        
-        if let JSON = response.result.value {
-            print("JSON: \(JSON)")
-        }
+    Alamofire.request(baseURL + "register", method: .post, parameters: parameters, encoding: JSONEncoding.default).response { response in
+        print("\(response.data)")
+        let code = (response.response?.statusCode)!
+        completionHandler(code)
     }
-}*/
+}
 
 func getItineraryListShells(userID : String, completionHandler: @escaping ([Itinerary]?, String) -> ()) {
     Alamofire.request(baseURL + "itinerarylistshells/" + userID, method: .get, encoding: JSONEncoding.default).responseJSON { response in
