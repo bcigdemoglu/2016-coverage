@@ -6,6 +6,8 @@
 ### Run local tests & View coverage
 Run from root '/'
 ```bash
+# Install mongodb https://docs.mongodb.com/v3.2/installation/
+[sudo] pip install virtualenv
 web/local
 ```
 

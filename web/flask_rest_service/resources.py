@@ -117,7 +117,7 @@ class CreateEvent(restful.Resource):
 
     @staticmethod
     def checkCollision(event1, event2):
-        return (event1['start'] <= event2['end']) and (event2['start'] <= event1['end'])
+        return (event1['start'] < event2['end']) and (event2['start'] < event1['end'])
 
 class InviteToEvent(restful.Resource):
     '''
@@ -147,6 +147,24 @@ class InviteToEvent(restful.Resource):
         event['invited'].append(sharedUser)
         app.mongo.db.event.update({'uid': event['uid']}, event)
         return {'uid': event['uid']}, 201
+
+class GetEventsForItinerary(restful.Resource):
+    '''
+        date -> Itinerary date
+    '''
+    def post(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        if not app.mongo.db.itin.find_one({"createdBy": username,
+                                           "date": request.get_json()['date']}):
+            return {"error": "Itinerary for the day not found"}, 400
+
+        events = app.mongo.db.event.find({'date': request.get_json()['date'],
+                                          'acceptedBy': username})
+
+        return {'events': events}, 201
+
 
 class GetItineraryList(restful.Resource):
     def get(self, username):
@@ -205,3 +223,4 @@ api.add_resource(GetItineraryList, '/itinerarylistshells/<username>')
 api.add_resource(CreateItinerary, '/createItinerary/<username>')
 api.add_resource(CreateEvent, '/createEvent/<username>')
 api.add_resource(InviteToEvent, '/inviteToEvent/<username>')
+api.add_resource(GetEventsForItinerary, '/getEventsForItinerary/<username>')

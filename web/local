@@ -37,6 +37,9 @@ localstop() {
 localrun() {
   localstop > /dev/null 2>&1
 
+  echo "Installing virtual environment"
+  pip install virtualenv
+
   echo "Creating virtual environment"
   virtualenv "$root/venv"
 

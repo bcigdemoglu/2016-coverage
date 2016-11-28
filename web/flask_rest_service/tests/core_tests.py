@@ -212,7 +212,8 @@ class PlanItTestCase(unittest.TestCase):
         rv = self.json_post('/createEvent/naina', sharedEvent)
         assert uid in str(rv.data)
 
-    def test_shareWithUser(self):
+    def test_inviteToEvent(self):
+        """Test inviting user to event"""
         # Create sample itinerary for alex for the event day
         self.json_post('/createItinerary/alex', dict(
                 name = 'New Day',
@@ -307,6 +308,45 @@ class PlanItTestCase(unittest.TestCase):
                 ))
         print(rv.data)
         assert uid in str(rv.data)
+
+    def test_getEventsForItinerary(self):
+        """Test retrieval of events for an itinerary"""
+        date = {'date': '2015-08-21T00:00:00.000Z'}
+        events = []
+        for i in range(10):
+            hh = str(i)
+            events.append(dict(start = '2015-08-21T'+hh+':23:00.000Z',
+                               end = '2015-08-21T'+hh+':25:00.000Z',
+                               date = '2015-08-21T00:00:00.000Z'))
+
+        rv = self.json_post('/getEventsForItinerary/bbbb', date)
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_post('/getEventsForItinerary/alex', date)
+        assert 'Itinerary for the day not found' in str(rv.data)
+
+        # Create sample itinerary for alex for the event day
+        self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date = date['date']
+                ))
+
+        rv = self.json_post('/getEventsForItinerary/alex', date)
+        assert '{"events": []}' in str(rv.data)
+
+        for e in events:
+            rv = self.json_post('/createEvent/alex', e)
+            uid = str(hash('alex_' + e['start'] + e['end']))
+            assert uid in str(rv.data)
+
+        rv = self.json_post('/getEventsForItinerary/alex', date)
+        for e in events:
+            uid = str(hash('alex_' + e['start'] + e['end']))
+            assert uid in str(rv.data)
+            assert e['start'] in str(rv.data)
+            assert e['end'] in str(rv.data)
+
+
 
 
     # def test_login_logout(self):
