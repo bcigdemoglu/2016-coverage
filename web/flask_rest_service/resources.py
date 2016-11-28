@@ -8,6 +8,7 @@ from . import api, hashpwd
 from bson.objectid import ObjectId
 from . import app
 from datetime import datetime
+from yelpClient import client as yelp_client
 
 class Root(restful.Resource):
     def get(self):
@@ -154,7 +155,7 @@ class GetEventFromId(restful.Resource):
     '''
         uid -> event uid
     '''
-    def post(self, username):
+    def get(self, username):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
@@ -171,7 +172,7 @@ class GetEventsForItinerary(restful.Resource):
     '''
         date -> Itinerary date
     '''
-    def post(self, username):
+    def get(self, username):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
@@ -194,6 +195,10 @@ class GetItineraryList(restful.Resource):
         return {'itineraries':
             list(app.mongo.db.itin.find({"createdBy": username}))
             }, 201
+
+class SearchYelp(restful.Resource):
+    def get(self, query):
+        return {'yelpResponse': str(yelp_client.search(query).businesses[0].__dict__)}, 201
 
 class PopulateDB(restful.Resource):
     def post(self):
@@ -244,3 +249,4 @@ api.add_resource(CreateEvent, '/createEvent/<username>')
 api.add_resource(InviteToEvent, '/inviteToEvent/<username>')
 api.add_resource(GetEventsForItinerary, '/getEventsForItinerary/<username>')
 api.add_resource(GetEventFromId, '/getEventFromId/<username>')
+api.add_resource(SearchYelp, '/searchYelp/<query>')
