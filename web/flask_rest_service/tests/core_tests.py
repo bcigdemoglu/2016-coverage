@@ -346,8 +346,41 @@ class PlanItTestCase(unittest.TestCase):
             assert e['start'] in str(rv.data)
             assert e['end'] in str(rv.data)
 
+    def test_getEventsFromId(self):
+        """Test retrieval of event data from uid"""
+        date = {'date': '2015-08-21T00:00:00.000Z'}
+        events = []
+        for i in range(10):
+            hh = str(i)
+            events.append(dict(start = '2015-08-21T'+hh+':23:00.000Z',
+                               end = '2015-08-21T'+hh+':25:00.000Z',
+                               date = '2015-08-21T00:00:00.000Z'))
+        # Create sample itinerary for alex for the event day
+        self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date = date['date']
+                ))
 
+        uid = str(hash('alex_' + events[0]['start'] + events[0]['end']))
+        invuid = '00000000000000000000000'
 
+        for e in events:
+            rv = self.json_post('/createEvent/alex', e)
+            uid = str(hash('alex_' + e['start'] + e['end']))
+            assert uid in str(rv.data)
+
+        rv = self.json_post('/getEventFromId/bbbb', {'uid': uid})
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_post('/getEventFromId/alex', {'uid': invuid})
+        assert 'Event not found' in str(rv.data)
+
+        for e in events:
+            uid = str(hash('alex_' + e['start'] + e['end']))
+            rv = self.json_post('/getEventFromId/alex', {'uid': uid})
+            assert uid in str(rv.data)
+            assert e['start'] in str(rv.data)
+            assert e['end'] in str(rv.data)
 
     # def test_login_logout(self):
     #     """Make sure login and logout works"""
