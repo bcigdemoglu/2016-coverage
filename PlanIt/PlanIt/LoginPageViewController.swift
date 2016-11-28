@@ -43,7 +43,7 @@ class LoginPageViewController: UIViewController {
             switch responseCode {
             case 200:
                 self.performSegue(withIdentifier: "homeSegue", sender: nil)
-            case 404:
+            case 400:
                 self.displayAlertMessage(myMessage: "User doesn't exist")
             case 401:
                 self.displayAlertMessage(myMessage: "Incorrect password")
