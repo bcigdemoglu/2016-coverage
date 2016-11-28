@@ -47,6 +47,19 @@ class RegisterPageViewController: UIViewController {
             return;
         }
         //ALEX: Send registration information to server here. Make sure to check whether the userEmail is already registered. If it is, call displayAlertMessage() with the appropriate error message.
+        sendRegisterRequest(username: userEmail!, password: userPassword!, name: userName!) { code in
+            switch code {
+            case 201:
+                self.performSegue(withIdentifier: "backToLoginView", sender: nil)
+                return
+            case 400:
+                self.displayAlertMessage(myMessage:"User already exists");
+                return;
+            default:
+                return
+            }
+            
+        }
         self.performSegue(withIdentifier: "backToLoginView", sender: nil)
         return;
     }
