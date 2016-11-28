@@ -8,7 +8,7 @@
 - [Get Events For Itinerary](#get-events-for-itinerary)
 - [Get Itinerary from ID](#get-itinerary-from-id)
 - [Get Itinerary List](#get-itinerary-list)
-- [Search Yelp](#search-yelp)
+- [Yelp Integration](#yelp-integration)
     - [API Website](#api-websitehttpsgithubcomyelpyelp-python)
 
 <!-- TOC END -->
