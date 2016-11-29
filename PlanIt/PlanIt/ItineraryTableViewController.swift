@@ -25,6 +25,8 @@ class ItineraryTableViewController: UITableViewController {
         
         loadSampleItineraries()
         //loadRealItineraries() { list in
+        // list should already be loaded into the necessary places in this class.  Sending it here just incase it is null, then you can handle
+        //that as you see fit
             self.menuButton.target = self.revealViewController()
             self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         
