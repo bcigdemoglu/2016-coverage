@@ -22,6 +22,7 @@ class ItineraryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         
         loadSampleItineraries()
         //loadRealItineraries() { list in
