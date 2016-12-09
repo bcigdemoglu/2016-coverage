@@ -98,3 +98,7 @@ PlanIt/ConnectionHandler.swift
 *.xcuserstate
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
+
+# Yelp secret
+yelp_secret.config
+

@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 app.config['MONGO_URI'] = MONGO_URL
 app.secret_key = 'kb,v5O,9GBG60^8rg2t;jEy}i63dzR'
-app.db = PyMongo(app)
+app.mongo = PyMongo(app)
 
 def output_json(obj, code, headers=None):
     resp = make_response(dumps(obj), code)
@@ -28,4 +28,4 @@ api.representations = DEFAULT_REPRESENTATIONS
 def hashpwd(password):
     return md5(password.encode('utf-8')).hexdigest()
 
-import flask_rest_service.resources
+import resources

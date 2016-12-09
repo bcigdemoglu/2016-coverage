@@ -1,15 +1,20 @@
 [![Build Status](https://travis-ci.com/jhu-oose/2016-group-13.svg?token=fuXm9fRdis1gWqh7sYen&branch=master)](https://travis-ci.com/jhu-oose/2016-group-13)
+[![codecov](https://codecov.io/gh/mbugrahanc/oose-2016-coverage/branch/master/graph/badge.svg?token=Tika9gx4FK)](https://codecov.io/gh/mbugrahanc/oose-2016-coverage)
 # 2016-group-13
 
 ## Quickstart
-Unittest the web server locally (run from root '/')
+### Run local tests & View coverage
+Run from root '/'
 ```bash
-cd web && ./local_test && cd ..
+# Install mongodb https://docs.mongodb.com/v3.2/installation/
+[sudo] pip install virtualenv
+web/local
 ```
 
 ## Guidelines
 <!-- TOC START min:2 max:5 link:true update:true -->
   - [Quickstart](#quickstart)
+    - [Run local tests & View coverage](#run-local-tests--view-coverage)
   - [Guidelines](#guidelines)
       - [Git Guidelines](#git-guidelines)
         - [Git Setup:](#git-setup--)

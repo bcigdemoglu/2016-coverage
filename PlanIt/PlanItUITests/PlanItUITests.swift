@@ -31,6 +31,49 @@ class PlanItUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+        let textField = app.textFields["Email"]
+        textField.tap()
+        textField.typeText("alex")
+        textField.tap()
+        
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("alex123")
+        let loginButton = app.buttons["Login"]
+        loginButton.tap()
+        
+        XCTAssertEqual(app.tables.count, 1)
+        let table = app.tables.element(boundBy: 0)
+        XCTAssertEqual(table.cells.count, 2)
+        let expectedNumberOfElements: UInt = 2
+        XCTAssertEqual(table.cells.count, expectedNumberOfElements)
+        
+        app.navigationBars["PlanIt"].buttons["Add"].tap()
+        //app.datePickers.pickerWheels["6"].swipeUp()
+        
+        app.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: "December")
+        app.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: "22")
+        app.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: "2016")
+        
+        let nextDate = app.staticTexts["Thu Dec 22"]
+        
+        app.navigationBars["Choose Date"].buttons["Done"].tap()
+        
+        XCTAssert(nextDate.exists)
+        XCTAssertEqual(table.cells.count, 3)
+        
+        app.navigationBars["PlanIt"].buttons["menu"].swipeRight()
+        
+        // Also works to assign table
+        //        table = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .table).element
+        
+        table.swipeRight()
+        let homeStaticText = app.tables.staticTexts["Home"]
+        homeStaticText.tap()
+        table.swipeRight()
+        homeStaticText.tap()
     }
     
 }
