@@ -21,19 +21,20 @@ class ItineraryTableViewController: UITableViewController {
     var itinerary: Itinerary?
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         
         loadSampleItineraries()
         //loadRealItineraries() { list in
         // list should already be loaded into the necessary places in this class.  Sending it here just incase it is null, then you can handle
         //that as you see fit
+            super.viewDidLoad()
             self.menuButton.target = self.revealViewController()
             self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
         //}
-        
+    
         
  /**       if revealViewController() != nil {
             //            revealViewController().rearViewRevealWidth = 62
@@ -73,7 +74,7 @@ class ItineraryTableViewController: UITableViewController {
     func loadRealItineraries(completionHandler : @escaping ([Itinerary]) -> ()) {
         getItineraryListShells(userID: "alex") { list, error in
             if (list != nil) {
-                self.itineraries += list!
+                self.itineraries = list!
                 completionHandler(list!)
             } else { //might eventually put something here to handle a bad response
                 self.loadSampleItineraries()
