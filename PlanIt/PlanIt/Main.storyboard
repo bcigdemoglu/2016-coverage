@@ -43,12 +43,11 @@
                                             <color key="backgroundColor" red="0.0" green="0.14471531413612571" blue="0.13729273205499873" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QT-EE-A9q">
-                                            <frame key="frameInset" minX="289" minY="9" width="45" height="32"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeA-KG-Zf7">
+                                            <frame key="frameInset" minX="288" minY="9" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="Delete">
-                                                <color key="titleColor" red="0.89815414507772018" green="0.31222277331207432" blue="0.26824596084956626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.89815414510000002" green="0.31222277329999998" blue="0.26824596080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                     </subviews>
@@ -57,6 +56,7 @@
                                 <color key="backgroundColor" red="0.59999695717990631" green="0.69868978765269407" blue="0.83029064119170981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
                                     <segue destination="O7n-SM-M5G" kind="show" identifier="ShowCalendarSegue" id="JZr-nX-Zv1"/>
                                 </connections>
@@ -78,7 +78,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="deleteButton" destination="2QT-EE-A9q" id="bsn-Bv-2QF"/>
                         <outlet property="menuButton" destination="46F-UA-nPg" id="Bel-01-Ne3"/>
                     </connections>
                 </tableViewController>
