@@ -43,6 +43,14 @@
                                             <color key="backgroundColor" red="0.0" green="0.14471531413612571" blue="0.13729273205499873" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QT-EE-A9q">
+                                            <frame key="frameInset" minX="289" minY="9" width="45" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <state key="normal" title="Delete">
+                                                <color key="titleColor" red="0.89815414507772018" green="0.31222277331207432" blue="0.26824596084956626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
@@ -70,12 +78,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="2QT-EE-A9q" id="bsn-Bv-2QF"/>
                         <outlet property="menuButton" destination="46F-UA-nPg" id="Bel-01-Ne3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aK-ni-JGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2590" y="1131"/>
+            <point key="canvasLocation" x="2589.5999999999999" y="1130.2848575712144"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="HNl-8v-zkg">

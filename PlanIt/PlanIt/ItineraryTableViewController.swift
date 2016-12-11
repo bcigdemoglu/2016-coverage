@@ -15,7 +15,8 @@ class ItineraryTableViewController: UITableViewController {
     // MARK: Properties 
     
     @IBOutlet var menuButton: UIBarButtonItem!
-  
+    @IBOutlet var deleteButton: UIButton!
+    
     var itineraries = [Itinerary]()
     
     var itinerary: Itinerary?
