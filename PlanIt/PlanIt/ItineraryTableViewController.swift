@@ -121,6 +121,24 @@ class ItineraryTableViewController: UITableViewController {
         
         
     }
+    
+    
+    let calendarSegueIdentifier = "ShowCalendarSegue"
+    
+    // MARK: - Navigation
+    //Segue to the calendar view from each itinerary
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("INTO PREPAREFORSEGUE")
+        if  segue.identifier == calendarSegueIdentifier,
+            let destination = segue.destination as? CalendarViewController,
+            let calendarIndex = tableView.indexPathForSelectedRow?.row
+        {
+            let iten = itineraries[calendarIndex]
+            destination.calendarName = iten.name
+            print("iten.name is", iten.name)
+            print(calendarIndex)
+        }
+    }
 
     //TO implement later for storage of itineraries
 /**
@@ -134,7 +152,7 @@ class ItineraryTableViewController: UITableViewController {
     
     private func pathForItems() -> String? {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        
+     
         if let documents = paths.first, let documentsURL = NSURL(string: documents) {
             return documentsURL.appendingPathComponent("items.plist")?.path
         }
