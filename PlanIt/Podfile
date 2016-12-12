@@ -8,6 +8,8 @@ target 'PlanIt' do
   # Pods for PlanIt
   pod ‘Alamofire’, ‘~> 4.0.1’
   pod 'SwiftyJSON'
+  pod 'CalendarLib'
+  pod 'RealmSwift', '>= 0.92.3'
 
   target 'PlanItTests' do
     inherit! :search_paths
