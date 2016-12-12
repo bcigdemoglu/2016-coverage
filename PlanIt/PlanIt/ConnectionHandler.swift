@@ -51,7 +51,7 @@ func sendLoginRequest(username: String, password: String, completionHandler : @e
         print("\(response.data)")
         //let code = (response.response?.statusCode)!
         switch response.result {
-        case .success(let _) :
+        case .success :
                 completionHandler("success")
         case .failure(let error) :
             completionHandler(error.localizedDescription)
