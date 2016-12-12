@@ -82,9 +82,9 @@ func getItineraryListShells(userID : String, completionHandler: @escaping ([Itin
             let json = JSON(value)
             print("JSON: \(json)")
             
-            for (index,subJson):(String, JSON) in json {
-                let name = subJson[0]["name"].string
-                let uid = subJson[0]["uid"].string
+            for (index,subJson) in json["itineraries"] {
+                let name = subJson["name"].string
+                let uid = subJson["uid"].string
                 let shell = Itinerary(name: name!, uid: uid!)
                 array!.append(shell!)
             }
