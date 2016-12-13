@@ -12,6 +12,7 @@
 		5F4DAE251DD9206000450083 /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */; };
 		5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE261DD948B400450083 /* ItineraryManager.swift */; };
 		5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE281DD94D9900450083 /* ItineraryShell.swift */; };
+		5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E7461DFF736C009F83A1 /* Event.swift */; };
 		84AAEAC1797DB61C96BBC033 /* Pods_PlanItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */; };
 		A81D2829E2EA60AB2A211AA8 /* Pods_PlanIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71674194458DDE13383221ED /* Pods_PlanIt.framework */; };
 		BC08F0581DFB4FC700AFA3DC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */; };
@@ -93,6 +94,7 @@
 		5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 		5F4DAE261DD948B400450083 /* ItineraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryManager.swift; sourceTree = "<group>"; };
 		5F4DAE281DD94D9900450083 /* ItineraryShell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryShell.swift; sourceTree = "<group>"; };
+		5FB2E7461DFF736C009F83A1 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		68F773566CFD9695C55FD734 /* Pods-PlanIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanIt/Pods-PlanIt.debug.xcconfig"; sourceTree = "<group>"; };
 		71674194458DDE13383221ED /* Pods_PlanIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +277,7 @@
 				F9BB365F1DFE457E00868664 /* Calendar */,
 				F9BB35A61DFE12BD00868664 /* Calendar Libs */,
 				5F4DAE221DD666FA00450083 /* ConnectionHandler.swift */,
+				5FB2E7461DFF736C009F83A1 /* Event.swift */,
 				F944DF4E1DC9289300F59D53 /* PlanIt-Logo.png */,
 				F944DF381DC9214600F59D53 /* DatePickerDialog.swift */,
 				F944DF071DC920AC00F59D53 /* AppDelegate.swift */,
@@ -772,6 +775,7 @@
 				F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */,
 				F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */,
 				F9BB36291DFE1A6700868664 /* NSCalendar+MGCAdditions.m in Sources */,
+				5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */,
 				F944DF491DC9222E00F59D53 /* LoginPageViewController.swift in Sources */,
 				F9BB36101DFE1A6700868664 /* MGCDayPlannerView.m in Sources */,
 				F9BB360A1DFE1A6700868664 /* MGCCalendarHeaderCell.m in Sources */,

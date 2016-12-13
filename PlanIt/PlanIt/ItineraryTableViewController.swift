@@ -24,17 +24,14 @@ class ItineraryTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         
-        loadSampleItineraries()
-        //loadRealItineraries() { list in
-        // list should already be loaded into the necessary places in this class.  Sending it here just incase it is null, then you can handle
-        //that as you see fit
-            self.menuButton.target = self.revealViewController()
-            self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
+        loadRealItineraries()
+        self.menuButton.target = self.revealViewController()
+        self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
-        //}
         
+    
         
  /**       if revealViewController() != nil {
             //            revealViewController().rearViewRevealWidth = 62
@@ -63,21 +60,25 @@ class ItineraryTableViewController: UITableViewController {
     }
 
     
-    func loadSampleItineraries(){
+    func loadSampleItineraries() {
         let it1 = Itinerary(name: "Mon Oct 31", uid : "1234567")!
-        
+
         let it2 = Itinerary(name: "Halloween", uid : "12345678910xasdf")!
         
-        self.itineraries += [it1, it2]
+        self.itineraries = [it1, it2]
     }
     
-    func loadRealItineraries(completionHandler : @escaping ([Itinerary]) -> ()) {
-        getItineraryListShells(userID: "alex") { list, error in
+    func loadRealItineraries() {
+        getItineraryListShells(userID: "alex") { list, errormsg in
             if (list != nil) {
-                self.itineraries += list!
-                completionHandler(list!)
+                self.itineraries = list!
+                self.tableView.reloadData()
             } else { //might eventually put something here to handle a bad response
-                self.loadSampleItineraries()
+                print(errormsg)
+                self.displayAlertMessage(myMessage: errormsg)
+                //self.loadSampleItineraries()
+                //self.tableView.reloadData()
+                
             }
         }
     }
@@ -95,6 +96,9 @@ class ItineraryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if self.itineraries == nil {
+            return 0
+        }
         return itineraries.count
     }
 
@@ -116,10 +120,17 @@ class ItineraryTableViewController: UITableViewController {
             
             let newIndexPath = IndexPath(row: itineraries.count, section: 0)
             itineraries.append(itinerary)
-            tableView.insertRows(at: [newIndexPath], with: .bottom)
+            //tableView.insertRows(at: [newIndexPath], with: .bottom)
         }
         
         
+    }
+
+    func displayAlertMessage(myMessage:String) {
+        let alertController = UIAlertController(title: "Alert", message: myMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     

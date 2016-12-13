@@ -4,32 +4,47 @@
 This is the Python-Flask backend repo for 2016-group-13.
 
 <!-- TOC START min:2 max:5 link:true update:true -->
-  - [Quickstart](#quickstart)
-    - [Start server](#start-server)
+  - [Testing Backend](#testing-backend)
+    - [Quickstart](#quickstart)
+    - [Start servers](#start-servers)
     - [Run all tests locally](#run-all-tests-locally)
-    - [Stop server and cleanup](#stop-server-and-cleanup)
+    - [Stop server](#stop-server)
+    - [Cleanup](#cleanup)
   - [Setting up the environment](#setting-up-the-environment)
-  - [Making an API call](#making-an-api-call)
+  - [Making an API call through Bash](#making-an-api-call-through-bash)
 
 <!-- TOC END -->
 
-## Quickstart
+## Testing Backend
+Inside '/web' folder.  
+Must have virtualenv and MongoDB setup. See [Setting up the environment](#setting-up-the-environment).
 
-### Start server
+### Quickstart
+Start, test, stop, and cleanup.
 ```bash
-./local_start
+./local
+```
+
+### Start servers
+```bash
+./local r
 ```
 
 ### Run all tests locally
-Note: This starts and shuts down mongo after completion
 ```bash
-./local_test
+# Server must be running
+./local t
 ```
 
-### Stop server and cleanup
+### Stop server
 ```bash
-./local_stop
+./local s
 ```
+### Cleanup
+```bash
+./local c
+```
+
 
 ## Setting up the environment
 ```bash
@@ -65,7 +80,7 @@ heroku login
 pip install -r requirements.txt
 
 # Run tests
-./local_test
+./local
 
 # Deactivate virtual environment once done
 deactivate
@@ -78,7 +93,7 @@ Always run the virtual environment when working locally
 
 To test RESTful API locally (must have mongo installed)
 ```bash
-./local_test
+./local
 ```
 
 Remote database shell access:
@@ -104,7 +119,7 @@ Flask reference:
 http://flask.pocoo.org/docs/0.10/.latex/Flask.pdf
 https://flask-pymongo.readthedocs.io/en/latest/
 
-## Making an API call
+## Making an API call through Bash
 We can make API calls by directing them to https://oose-2016-group-13.herokuapp.com/
 ```bash
 curl -v -X GET \

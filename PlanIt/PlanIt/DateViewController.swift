@@ -55,6 +55,8 @@ class DateViewController: UIViewController{
         let dateChosen = strDate
         
         let name = dateChosen ?? ""
+        //TODO:  Convert Date chosen into the 
+        //createEvent(userID: String, start: <#T##String#>, end: <#T##String#>, date: <#T##String#>, completionHandler: <#T##(Int, String?) -> ()#>)
         //TODO:  Make sure this get actually set
         let uid = "newRandomString"
         itinerary = Itinerary(name: name, uid : uid)
