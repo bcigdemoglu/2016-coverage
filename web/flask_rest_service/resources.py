@@ -63,7 +63,7 @@ class CreateItinerary(restful.Resource):
                      "uid": ""}
 
         # Generate itid
-        itinerary['uid'] = str(hash(username + "_" + itinerary['date']))
+        itinerary['uid'] = str(username + "_" + itinerary['date'])
 
         if app.mongo.db.itin.find_one({"uid": itinerary['uid']}):
             return {"error": "Itinerary date already in use"}, 400
@@ -86,7 +86,7 @@ class CreateEvent(restful.Resource):
                      "invited": [username],
                      "acceptedBy": [],
                      "uid": ""}
-            event['uid'] = str(hash(username + "_" + event['start'] + event['end']))
+            event['uid'] = str(username + "_" + event['start'] + event['end'])
         else:
             # If event already exists, retrieve it
             event = app.mongo.db.event.find_one({'uid': request.get_json()['uid']})
@@ -242,14 +242,14 @@ class PopulateItineraries(restful.Resource):
         for username in usernames:
             for i in range(5):
                 itineraryName = "itin"+ str(i + 1)
-                itinHash = str(hash(username + "_" + itineraryName))
+                itinuid = str(username + "_" + itineraryName)
 
                 # Do not populate if itinerary exists
-                if app.mongo.db.itin.find_one({"uid": itinHash}):
+                if app.mongo.db.itin.find_one({"uid": itinuid}):
                     continue
                 app.mongo.db.itin.insert({"createdBy": username,
                                           "name": itineraryName,
-                                          "uid": itinHash,
+                                          "uid": itinuid,
                                           "date": "0"})
 
         return {'itineraries': list(app.mongo.db.itin.find())}, 201
