@@ -70,7 +70,7 @@ class CreateItinerary(restful.Resource):
 
         # Sucess
         app.mongo.db.itin.insert(itinerary)
-        return {'uid': itinerary['uid']}, 201
+        return itinerary, 201
 
 class CreateEvent(restful.Resource):
     def post(self, username):
@@ -118,7 +118,7 @@ class CreateEvent(restful.Resource):
             app.mongo.db.event.insert(event)
         else:
             app.mongo.db.event.update({'uid': event['uid']}, event)
-        return {'uid': event['uid']}, 201
+        return event, 201
 
     @staticmethod
     def checkCollision(event1, event2):
@@ -152,7 +152,7 @@ class InviteToEvent(restful.Resource):
 
         event['invited'].append(sharedUser)
         app.mongo.db.event.update({'uid': event['uid']}, event)
-        return {'uid': event['uid']}, 201
+        return event, 201
 
 class GetItineraryFromId(restful.Resource):
     '''

@@ -38,12 +38,7 @@
     ```
 
 * **Success Response Code:** 200 OK  
-    **Content:**  
-    ```javascript
-    { "username" : "amy1",
-      "name" : "Amy He",
-      "password": "3b24g23b23y3t3hg" }
-    ```
+    **Content:** See [User Object](#user-object)
 
 * **Error Response:**
 
@@ -78,12 +73,7 @@
     ```
 
 * **Success Response Code:** 201 CREATED  
-    **Content:**
-    ```javascript
-    { "username" : "amy1",
-      "name" : "Amy He",
-      "password": "3b24g23b23y3t3hg" }
-    ```
+    **Content:** See [User Object](#user-object)
 
 * **Error Response:**
 
@@ -112,10 +102,7 @@
     ```
 
 * **Success Response Code:** 201 CREATED  
-    **Content:**
-    ```javascript
-    { "uid": itinerary_uid }
-    ```
+    **Content:** See [Itinerary Object](#itinerary-object)
 
 * **Error Response:**
 
@@ -151,10 +138,7 @@
     ```
 
 * **Success Response Code:** 201 CREATED  
-    **Content:**
-    ```javascript
-    { "uid": itinerary_uid }
-    ```
+    **Content:** See [Event Object](#event-object)
 
 * **Error Response:**
 
@@ -190,10 +174,7 @@
     ```
 
 * **Success Response Code:** 201 CREATED  
-    **Content:**
-    ```javascript
-    { "uid": event_uid }
-    ```
+    **Content:** See [Event Object](#event-object)
 
 * **Error Response:**
 
@@ -228,16 +209,7 @@
     ```
 
 * **Success Response Code:** 200 OK  
-    **Content:**
-    ```javascript
-    { "start": event_start_time,
-      "end": event_end_time,
-      "date": itinerary_date,
-      "yelpId": location_yelp_id,
-      "invited": [ invitation_pending_users ],
-      "acceptedBy": [ users_accepted_or_created_the_event ],
-      "uid": event_uid }
-    ```
+    **Content:** See [Event Object](#event-object)
 
 * **Error Response:**
 
@@ -263,18 +235,11 @@
     ```
 
 * **Success Response Code:** 200 OK  
-    **Content:**
+    **Content:** See [Event Object](#event-object)
     ```javascript
     { "events":
       [
-        // This is an event object
-        { "start": event_start_time,
-          "end": event_end_time,
-          "date": itinerary_date,
-          "yelpId": location_yelp_id,
-          "invited": [ invitation_pending_user_objects ],
-          "acceptedBy": [ accepted_or_event_creator_user_objects ],
-          "uid": event_uid }
+        event_objects
       ]
     }
     ```
@@ -303,13 +268,7 @@
     ```
 
 * **Success Response Code:** 200 OK  
-    **Content:**
-    ```javascript
-    { "createdBy": username,
-      "name": itinerary_name,
-      "date": itinerary_date,
-      "uid": itinerary_uid }
-    ```
+    **Content:** See [Itinerary Object](#itinerary-object)
 
 * **Error Response:**
 
@@ -335,15 +294,11 @@
     ```
 
 * **Success Response Code:** 200 OK  
-    **Content:**
+    **Content:** See [Itinerary Object](#itinerary-object)
     ```javascript
     { "itineraries":
       [
-        // This is an itinerary object
-        { "createdBy": username,
-          "name": itinerary_name,
-          "date": itinerary_date,
-          "uid": itinerary_uid }
+        itinerary_objects
       ]
     }
     ```
@@ -399,6 +354,7 @@
   "uid":"2216454809391438062",
   "name":"itin1",
   "createdBy":"alex",
+  "date":"2015-08-21T00:00:00.000Z",
   "_id":{
     "$oid":"58299d2df5b3ad000a167804"
   },
@@ -407,13 +363,13 @@
 ## Event Object
 ```javascript
 {
+  "uid": event_uid,
   "start": event_start_time,
   "end": event_end_time,
   "date": itinerary_date,
   "yelpId": location_yelp_id,
   "invited": [ user_objects ],
   "acceptedBy": [ user_objects ],
-  "uid": event_uid,
   "_id":{
      "$oid":"580598c52e526e0009738d25"
   },
