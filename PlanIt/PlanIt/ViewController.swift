@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.performSegue(withIdentifier: "loginView", sender: self);
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
     
     //When Protected page loads, present user with login page
     override func viewDidAppear(_ animated: Bool) {
-        self.performSegue(withIdentifier: "loginView", sender: self);
+        //self.performSegue(withIdentifier: "loginView", sender: self);
     }
     
     
