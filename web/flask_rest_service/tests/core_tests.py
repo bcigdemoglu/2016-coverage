@@ -34,8 +34,8 @@ class PlanItTestCase(unittest.TestCase):
     db.itin
         itineraries:
             createdBy: <username>
-            name: itin + <1,2,3,4,5>
-            uid: hash(<username> + "_" + itineraries.name)
+            name: itin + <[1-5]>
+            uid: <username> + "_" + <itineraries.name>
     '''
     def populate(self):
         self.app.post('/testdb/populatedb', data={})
@@ -134,7 +134,7 @@ class PlanItTestCase(unittest.TestCase):
                 name = 'New Day',
                 date = '2015-08-21T00:00:00.000Z'
                 ))
-        itinHash = str(hash('alex' + "_" + '2015-08-21T00:00:00.000Z'))
+        itinHash = str('alex' + "_" + '2015-08-21T00:00:00.000Z')
         assert itinHash in str(rv.data)
 
         rv = self.json_post('/createItinerary/alex', dict(
@@ -186,7 +186,7 @@ class PlanItTestCase(unittest.TestCase):
                 ))
 
         rv = self.json_post('/createEvent/alex', event)
-        uid = str(hash('alex_' + event['start'] + event['end']))
+        uid = str('alex_' + event['start'] + event['end'])
         assert uid in str(rv.data)
 
         rv = self.json_post('/createEvent/alex', eventCollide)
@@ -244,7 +244,7 @@ class PlanItTestCase(unittest.TestCase):
                      end = '2015-08-21T11:25:00.000Z',
                      date = '2015-08-21T00:00:00.000Z')
         rv = self.json_post('/createEvent/alex', event)
-        uid = str(hash('alex_' + event['start'] + event['end']))
+        uid = str('alex_' + event['start'] + event['end'])
         assert uid in str(rv.data)
 
         rv = self.json_post('/inviteToEvent/bbbb', event)
@@ -340,12 +340,12 @@ class PlanItTestCase(unittest.TestCase):
 
         for e in events:
             rv = self.json_post('/createEvent/alex', e)
-            uid = str(hash('alex_' + e['start'] + e['end']))
+            uid = str('alex_' + e['start'] + e['end'])
             assert uid in str(rv.data)
 
         rv = self.json_get('/getEventsForItinerary/alex', date)
         for e in events:
-            uid = str(hash('alex_' + e['start'] + e['end']))
+            uid = str('alex_' + e['start'] + e['end'])
             assert uid in str(rv.data)
             assert e['start'] in str(rv.data)
             assert e['end'] in str(rv.data)
@@ -365,12 +365,12 @@ class PlanItTestCase(unittest.TestCase):
                 date = date['date']
                 ))
 
-        uid = str(hash('alex_' + events[0]['start'] + events[0]['end']))
+        uid = str('alex_' + events[0]['start'] + events[0]['end'])
         invuid = '00000000000000000000000'
 
         for e in events:
             rv = self.json_post('/createEvent/alex', e)
-            uid = str(hash('alex_' + e['start'] + e['end']))
+            uid = str('alex_' + e['start'] + e['end'])
             assert uid in str(rv.data)
 
         rv = self.json_get('/getEventFromId/bbbb', {'uid': uid})
@@ -380,7 +380,7 @@ class PlanItTestCase(unittest.TestCase):
         assert 'Event not found' in str(rv.data)
 
         for e in events:
-            uid = str(hash('alex_' + e['start'] + e['end']))
+            uid = str('alex_' + e['start'] + e['end'])
             rv = self.json_get('/getEventFromId/alex', {'uid': uid})
             assert uid in str(rv.data)
             assert e['start'] in str(rv.data)
@@ -395,7 +395,7 @@ class PlanItTestCase(unittest.TestCase):
                 date = date['date']
                 ))
 
-        uid = str(hash('alex_' + date['date']))
+        uid = str('alex_' + date['date'])
         invuid = '00000000000000000000000'
 
         rv = self.json_get('/getItineraryFromId/bbbb', {'uid': uid})
