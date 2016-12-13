@@ -22,6 +22,7 @@ class Root(restful.Resource):
 class Login(restful.Resource):
     def post(self):
         username  = request.get_json()['username']
+
         user = app.mongo.db.users.find_one({"username": username})
         if not user:
             return {"error": "Invalid username"}, 400
