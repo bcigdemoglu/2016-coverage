@@ -10,6 +10,10 @@
 - [Get Itinerary List](#get-itinerary-list)
 - [Yelp Integration](#yelp-integration)
     - [API Website](#api-websitehttpsgithubcomyelpyelp-python)
+- [Object Mappings](#object-mappings)
+  - [User Object](#user-object)
+  - [Itinerary Object](#itinerary-object)
+  - [Event Object](#event-object)
 
 <!-- TOC END -->
 
@@ -268,8 +272,8 @@
           "end": event_end_time,
           "date": itinerary_date,
           "yelpId": location_yelp_id,
-          "invited": [ invitation_pending_users ],
-          "acceptedBy": [ users_accepted_or_created_the_event ],
+          "invited": [ invitation_pending_user_objects ],
+          "acceptedBy": [ accepted_or_event_creator_user_objects ],
           "uid": event_uid }
       ]
     }
@@ -376,3 +380,42 @@
     ```javascript
     { }
     ```
+
+# Object Mappings
+## User Object
+```javascript
+{
+  "name":"Alex",
+  "password":"b75bd008d5fecb1f50cf026532e8ae67",
+  "username":"alex"
+  "_id":{
+    "$oid":"580598c52e526e0009738d25"
+  },
+}
+```
+## Itinerary Object
+```javascript
+{
+  "uid":"2216454809391438062",
+  "name":"itin1",
+  "createdBy":"alex",
+  "_id":{
+    "$oid":"58299d2df5b3ad000a167804"
+  },
+}
+```
+## Event Object
+```javascript
+{
+  "start": event_start_time,
+  "end": event_end_time,
+  "date": itinerary_date,
+  "yelpId": location_yelp_id,
+  "invited": [ user_objects ],
+  "acceptedBy": [ user_objects ],
+  "uid": event_uid,
+  "_id":{
+     "$oid":"580598c52e526e0009738d25"
+  },
+}
+```
