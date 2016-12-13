@@ -47,24 +47,32 @@ class DateViewController: UIViewController{
         //if saveButton === sender {        }
         
         
-        //let date = NSDate()
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE MMM dd"
         
         let strDate = dateFormatter.string(from: dateField.date)
         let dateChosen = strDate
+        let date : NSDate = self.dateField.date as NSDate
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let dateString = dateFormatter.string(from: date as Date)
+        //let name = dateChosen ?? ""
         
-        let name = dateChosen ?? ""
         //TODO:  Convert Date chosen into the 
-        //createEvent(userID: String, start: <#T##String#>, end: <#T##String#>, date: <#T##String#>, completionHandler: <#T##(Int, String?) -> ()#>)
-        //TODO:  Make sure this get actually set
-        let uid = "newRandomString"
-        itinerary = Itinerary(name: name, uid : uid)
+        postCreateItinerary(userID: User.getUserName()!, itineraryName: strDate, date: dateString) {
+            _ in
+            
+        }
+        
         
                
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    
+    /*func convertChoiceToString(choice: String) -> String {
+        
+    }*/
 
     
     

@@ -69,7 +69,8 @@ class ItineraryTableViewController: UITableViewController {
     }
     
     func loadRealItineraries() {
-        getItineraryListShells(userID: "alex") { list, errormsg in
+   
+        getItineraryListShells(userID: User.getUserName()!) { list, errormsg in
             if (list != nil) {
                 self.itineraries = list!
                 self.tableView.reloadData()
@@ -120,6 +121,7 @@ class ItineraryTableViewController: UITableViewController {
             
             let newIndexPath = IndexPath(row: itineraries.count, section: 0)
             itineraries.append(itinerary)
+            tableView.reloadData()
             //tableView.insertRows(at: [newIndexPath], with: .bottom)
         }
         
