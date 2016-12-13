@@ -58,7 +58,7 @@
                                 <connections>
                                     <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
-                                    <segue destination="SNh-eS-7mD" kind="show" id="ffT-qr-uK7"/>
+                                    <segue destination="SNh-eS-7mD" kind="show" identifier="ShowCalendarSegue" id="ffT-qr-uK7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

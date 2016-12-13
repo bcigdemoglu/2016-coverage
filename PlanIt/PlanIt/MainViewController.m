@@ -7,8 +7,8 @@
 
 #import "MainViewController.h"
 #import "WeekViewController.h"
-#import "MonthViewController.h"
-#import "YearViewController.h"
+//#import "MonthViewController.h"
+//#import "YearViewController.h"
 #import "DayViewController.h"
 #import "NSCalendar+MGCAdditions.h"
 #import "WeekSettingsViewController.h"
@@ -17,14 +17,14 @@
 
 typedef enum : NSUInteger
 {
-    CalendarViewWeekType  = 0,
-    CalendarViewMonthType = 1,
-    CalendarViewYearType = 2,
-    CalendarViewDayType
+    CalendarViewDayType  = 0,
+    CalendarViewWeekType = 0,
+//    CalendarViewYearType = 2,
+//    CalendarViewMonthType
 } CalendarViewType;
 
 
-@interface MainViewController ()<YearViewControllerDelegate, WeekViewControllerDelegate, DayViewControllerDelegate>
+@interface MainViewController ()<WeekViewControllerDelegate, DayViewControllerDelegate>
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic) EKCalendarChooser *calendarChooser;
@@ -32,8 +32,8 @@ typedef enum : NSUInteger
 
 @property (nonatomic) DayViewController *dayViewController;
 @property (nonatomic) WeekViewController *weekViewController;
-@property (nonatomic) MonthViewController *monthViewController;
-@property (nonatomic) YearViewController *yearViewController;
+//@property (nonatomic) MonthViewController *monthViewController;
+//@property (nonatomic) YearViewController *yearViewController;
 
 @end
 
@@ -107,12 +107,12 @@ typedef enum : NSUInteger
         WeekViewController *weekController = (WeekViewController*)self.calendarViewController;
         settingsViewController.weekViewController = weekController;
     }
-    else if ([segue.identifier isEqualToString:@"monthPlannerSettingsSegue"]) {
-        MonthSettingsViewController *settingsViewController = (MonthSettingsViewController*)nc.topViewController;
-        MonthViewController *monthController = (MonthViewController*)self.calendarViewController;
-        settingsViewController.monthPlannerView = monthController.monthPlannerView;
-    }
-    
+//    else if ([segue.identifier isEqualToString:@"monthPlannerSettingsSegue"]) {
+//        MonthSettingsViewController *settingsViewController = (MonthSettingsViewController*)nc.topViewController;
+//        MonthViewController *monthController = (MonthViewController*)self.calendarViewController;
+//        settingsViewController.monthPlannerView = monthController.monthPlannerView;
+//    }
+//    
     BOOL doneButton = (self.traitCollection.verticalSizeClass != UIUserInterfaceSizeClassRegular || self.traitCollection.horizontalSizeClass != UIUserInterfaceSizeClassRegular);
     if (doneButton) {
          nc.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettings:)];
@@ -154,34 +154,34 @@ typedef enum : NSUInteger
     return _weekViewController;
 }
 
-- (MonthViewController*)monthViewController
-{
-    if (_monthViewController == nil) {
-        _monthViewController = [[MonthViewController alloc]initWithEventStore:self.eventStore];
-        _monthViewController.calendar = self.calendar;
-        _monthViewController.delegate = self;
-    }
-    return _monthViewController;
-}
-
-- (YearViewController*)yearViewController
-{
-    if (_yearViewController == nil) {
-        _yearViewController = [[YearViewController alloc]init];
-        _yearViewController.calendar = self.calendar;
-        _yearViewController.delegate = self;
-    }
-    return _yearViewController;
-}
+//- (MonthViewController*)monthViewController
+//{
+//    if (_monthViewController == nil) {
+//        _monthViewController = [[MonthViewController alloc]initWithEventStore:self.eventStore];
+//        _monthViewController.calendar = self.calendar;
+//        _monthViewController.delegate = self;
+//    }
+//    return _monthViewController;
+//}
+//
+//- (YearViewController*)yearViewController
+//{
+//    if (_yearViewController == nil) {
+//        _yearViewController = [[YearViewController alloc]init];
+//        _yearViewController.calendar = self.calendar;
+//        _yearViewController.delegate = self;
+//    }
+//    return _yearViewController;
+//}
 
 - (CalendarViewController*)controllerForViewType:(CalendarViewType)type
 {
     switch (type)
     {
         case CalendarViewDayType:  return self.dayViewController;
-        case CalendarViewWeekType:  return self.weekViewController;
-        case CalendarViewMonthType: return self.monthViewController;
-        case CalendarViewYearType:  return self.yearViewController;
+//        case CalendarViewWeekType:  return self.dayViewController;
+//        case CalendarViewMonthType: return self.monthViewController;
+//        case CalendarViewYearType:  return self.yearViewController;
     }
     return nil;
 }
@@ -216,7 +216,7 @@ typedef enum : NSUInteger
     [self moveToNewController:controller atDate:date];
     
     
-    if ([controller isKindOfClass:WeekViewController.class] || [controller isKindOfClass:MonthViewController.class]) {
+    if ([controller isKindOfClass:WeekViewController.class]) {
         self.settingsButtonItem.enabled = YES;
     }
 }
@@ -262,9 +262,9 @@ typedef enum : NSUInteger
     if ([self.calendarViewController isKindOfClass:WeekViewController.class]) {
         [self performSegueWithIdentifier:@"dayPlannerSettingsSegue" sender:nil];
     }
-    else if ([self.calendarViewController isKindOfClass:MonthViewController.class]) {
-        [self performSegueWithIdentifier:@"monthPlannerSettingsSegue" sender:nil];
-    }
+//    else if ([self.calendarViewController isKindOfClass:MonthViewController.class]) {
+//        [self performSegueWithIdentifier:@"monthPlannerSettingsSegue" sender:nil];
+//    }
 }
 
 - (void)dismissSettings:(UIBarButtonItem*)sender
@@ -284,23 +284,20 @@ typedef enum : NSUInteger
     self.calendarChooser.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(calendarChooserStartEdit)];
 }
 
-#pragma mark - YearViewControllerDelegate
-
-- (void)yearViewController:(YearViewController*)controller didSelectMonthAtDate:(NSDate*)date
-{
-    CalendarViewController *controllerNew = [self controllerForViewType:CalendarViewMonthType];
-    [self moveToNewController:controllerNew atDate:date];
-    self.viewChooser.selectedSegmentIndex = CalendarViewMonthType;
-}
-
+//#pragma mark - YearViewControllerDelegate
+//
+//- (void)yearViewController:(YearViewController*)controller didSelectMonthAtDate:(NSDate*)date
+//{
+//    CalendarViewController *controllerNew = [self controllerForViewType:CalendarViewMonthType];
+//    [self moveToNewController:controllerNew atDate:date];
+//    self.viewChooser.selectedSegmentIndex = CalendarViewMonthType;
+//}
+//
 #pragma mark - CalendarViewControllerDelegate
 
 - (void)calendarViewController:(CalendarViewController*)controller didShowDate:(NSDate*)date
 {
-    if (controller.class == YearViewController.class)
-        [self.dateFormatter setDateFormat:@"yyyy"];
-    else
-        [self.dateFormatter setDateFormat:@"MMMM yyyy"];
+    [self.dateFormatter setDateFormat:@"MMMM yyyy"];
     
     NSString *str = [self.dateFormatter stringFromDate:date];
     self.currentDateLabel.text = str;
