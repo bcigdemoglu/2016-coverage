@@ -42,7 +42,8 @@ class LoginPageViewController: UIViewController {
         sendLoginRequest(username: userEmail!, password: userPassword!) {responseString in
             switch responseString {
             case "success" :
-                 self.performSegue(withIdentifier: "homeSegue", sender: nil)
+                User.createUser(user: userEmail, password: userPassword)
+                self.performSegue(withIdentifier: "homeSegue", sender: nil)
             default :
                 self.displayAlertMessage(myMessage: responseString)
             }
