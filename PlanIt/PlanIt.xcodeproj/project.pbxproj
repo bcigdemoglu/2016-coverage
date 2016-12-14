@@ -20,9 +20,6 @@
 		BC08F0581DFB4FC700AFA3DC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */; };
 		BC08F05A1DFB60BA00AFA3DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC08F0591DFB60BA00AFA3DC /* Main.storyboard */; };
 		F93D8A161E00BF0000559E3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A151E00BF0000559E3D /* Images.xcassets */; };
-		F93D8A1E1E00BF0E00559E3D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A171E00BF0E00559E3D /* Settings.bundle */; };
-		F93D8A1F1E00BF0E00559E3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A1A1E00BF0E00559E3D /* InfoPlist.strings */; };
-		F93D8A201E00BF0E00559E3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A1B1E00BF0E00559E3D /* main.m */; };
 		F93D8A511E00D2E600559E3D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4C1E00D2E600559E3D /* DayViewController.m */; };
 		F93D8A521E00D2E600559E3D /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4E1E00D2E600559E3D /* WeekViewController.m */; };
 		F93D8A531E00D2E600559E3D /* WeekSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A501E00D2E600559E3D /* WeekSettingsViewController.m */; };
@@ -45,6 +42,9 @@
 		F93D8A881E00DF3B00559E3D /* MGCDayPlannerEKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A871E00DF3B00559E3D /* MGCDayPlannerEKViewController.m */; };
 		F93D8A8B1E00DF6800559E3D /* MGCEventKitSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A891E00DF6800559E3D /* MGCEventKitSupport.m */; };
 		F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */; };
+		F93D8A8F1E01ABD100559E3D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A8E1E01ABD100559E3D /* Settings.bundle */; };
+		F93D8A911E01AC4200559E3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A901E01AC4200559E3D /* main.m */; };
+		F93D8A951E01ADEE00559E3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A931E01ADEE00559E3D /* InfoPlist.strings */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
 		F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF091DC920AC00F59D53 /* ViewController.swift */; };
 		F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F944DF0E1DC920AC00F59D53 /* PlanIt.xcdatamodeld */; };
@@ -105,11 +105,6 @@
 		CD6EC06CD1C8F28A2D610C30 /* Pods-PlanItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.release.xcconfig"; sourceTree = "<group>"; };
 		E00277539C039736CB83B76A /* Pods-PlanItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F93D8A151E00BF0000559E3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F93D8A171E00BF0E00559E3D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		F93D8A181E00BF0E00559E3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F93D8A191E00BF0E00559E3D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F93D8A1B1E00BF0E00559E3D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F93D8A1C1E00BF0E00559E3D /* Calendar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
 		F93D8A221E00BF9300559E3D /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		F93D8A4A1E00D2E600559E3D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		F93D8A4B1E00D2E600559E3D /* DayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
@@ -154,6 +149,11 @@
 		F93D8A871E00DF3B00559E3D /* MGCDayPlannerEKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCDayPlannerEKViewController.m; sourceTree = "<group>"; };
 		F93D8A891E00DF6800559E3D /* MGCEventKitSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCEventKitSupport.m; sourceTree = "<group>"; };
 		F93D8A8A1E00DF6800559E3D /* MGCEventKitSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCEventKitSupport.h; sourceTree = "<group>"; };
+		F93D8A8E1E01ABD100559E3D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F93D8A901E01AC4200559E3D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F93D8A921E01AC8300559E3D /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
+		F93D8A941E01ADEE00559E3D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F93D8A961E01ADF600559E3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F944DF041DC920AC00F59D53 /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F944DF071DC920AC00F59D53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F944DF091DC920AC00F59D53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +253,7 @@
 				F93D8A4F1E00D2E600559E3D /* WeekSettingsViewController.h */,
 				F93D8A501E00D2E600559E3D /* WeekSettingsViewController.m */,
 				F93D8A151E00BF0000559E3D /* Images.xcassets */,
+				F93D8A8D1E01AB8B00559E3D /* Supporting  */,
 				F93D8A1D1E00BF0E00559E3D /* Supporting Files */,
 			);
 			name = Calendar;
@@ -261,10 +262,7 @@
 		F93D8A1D1E00BF0E00559E3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F93D8A171E00BF0E00559E3D /* Settings.bundle */,
-				F93D8A1A1E00BF0E00559E3D /* InfoPlist.strings */,
-				F93D8A1B1E00BF0E00559E3D /* main.m */,
-				F93D8A1C1E00BF0E00559E3D /* Calendar-Prefix.pch */,
+				F93D8A931E01ADEE00559E3D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			path = "../../../../../Downloads/Calendar-master-2/CalendarDemo";
@@ -352,6 +350,16 @@
 				F93D8A871E00DF3B00559E3D /* MGCDayPlannerEKViewController.m */,
 			);
 			name = "Event Kit";
+			sourceTree = "<group>";
+		};
+		F93D8A8D1E01AB8B00559E3D /* Supporting  */ = {
+			isa = PBXGroup;
+			children = (
+				F93D8A901E01AC4200559E3D /* main.m */,
+				F93D8A921E01AC8300559E3D /* Calendar-Prefix.pch */,
+				F93D8A8E1E01ABD100559E3D /* Settings.bundle */,
+			);
+			name = "Supporting ";
 			sourceTree = "<group>";
 		};
 		F944DEFB1DC920AB00F59D53 = {
@@ -539,6 +547,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = F944DEFB1DC920AB00F59D53;
 			productRefGroup = F944DF051DC920AC00F59D53 /* Products */;
@@ -557,14 +566,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F93D8A1E1E00BF0E00559E3D /* Settings.bundle in Resources */,
 				F9BB36701DFE45BE00868664 /* Calendar.storyboard in Resources */,
+				F93D8A8F1E01ABD100559E3D /* Settings.bundle in Resources */,
 				F944DF4F1DC9289300F59D53 /* PlanIt-Logo.png in Resources */,
 				F93D8A161E00BF0000559E3D /* Images.xcassets in Resources */,
 				F944DF411DC9221700F59D53 /* LaunchScreen.storyboard in Resources */,
 				F9BB36761DFE45BE00868664 /* settings.storyboard in Resources */,
 				F944DF3F1DC9220600F59D53 /* Assets.xcassets in Resources */,
-				F93D8A1F1E00BF0E00559E3D /* InfoPlist.strings in Resources */,
+				F93D8A951E01ADEE00559E3D /* InfoPlist.strings in Resources */,
 				BC08F05A1DFB60BA00AFA3DC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -728,7 +737,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F93D8A201E00BF0E00559E3D /* main.m in Sources */,
 				F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */,
 				F93D8A6E1E00DAF300559E3D /* MGCEventCell.m in Sources */,
 				F93D8A651E00DACF00559E3D /* MGCTimedEventsViewLayout.m in Sources */,
@@ -755,6 +763,7 @@
 				5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */,
 				F93D8A7E1E00DB6400559E3D /* MGCAlignedGeometry.m in Sources */,
 				F93D8A561E00D37900559E3D /* MGCCalendarHeaderView.m in Sources */,
+				F93D8A911E01AC4200559E3D /* main.m in Sources */,
 				F93D8A5C1E00D94800559E3D /* MGCDayPlannerView.m in Sources */,
 				F944DF491DC9222E00F59D53 /* LoginPageViewController.swift in Sources */,
 				5F4DAE231DD666FA00450083 /* ConnectionHandler.swift in Sources */,
@@ -806,11 +815,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F93D8A1A1E00BF0E00559E3D /* InfoPlist.strings */ = {
+		F93D8A931E01ADEE00559E3D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F93D8A181E00BF0E00559E3D /* en */,
-				F93D8A191E00BF0E00559E3D /* fr */,
+				F93D8A941E01ADEE00559E3D /* fr */,
+				F93D8A961E01ADF600559E3D /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
