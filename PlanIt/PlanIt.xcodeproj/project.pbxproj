@@ -12,6 +12,7 @@
 		5F4DAE251DD9206000450083 /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */; };
 		5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE261DD948B400450083 /* ItineraryManager.swift */; };
 		5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE281DD94D9900450083 /* ItineraryShell.swift */; };
+		5F62B1AF1E011118008395DD /* SuggestionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62B1AE1E011118008395DD /* SuggestionInfo.swift */; };
 		5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E7461DFF736C009F83A1 /* Event.swift */; };
 		5FB2E7491E006872009F83A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E7481E006872009F83A1 /* User.swift */; };
 		5FB2E74B1E007F1E009F83A1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */; };
@@ -92,6 +93,7 @@
 		5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 		5F4DAE261DD948B400450083 /* ItineraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryManager.swift; sourceTree = "<group>"; };
 		5F4DAE281DD94D9900450083 /* ItineraryShell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryShell.swift; sourceTree = "<group>"; };
+		5F62B1AE1E011118008395DD /* SuggestionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionInfo.swift; sourceTree = "<group>"; };
 		5FB2E7461DFF736C009F83A1 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5FB2E7481E006872009F83A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 		F944DF061DC920AC00F59D53 /* PlanIt */ = {
 			isa = PBXGroup;
 			children = (
+				5F62B1AE1E011118008395DD /* SuggestionInfo.swift */,
 				F93D8A211E00BF8000559E3D /* CalendarLib */,
 				F93D8A011E00BDCC00559E3D /* Calendar */,
 				5F4DAE221DD666FA00450083 /* ConnectionHandler.swift */,
@@ -736,6 +739,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */,
+				5F62B1AF1E011118008395DD /* SuggestionInfo.swift in Sources */,
 				F93D8A6E1E00DAF300559E3D /* MGCEventCell.m in Sources */,
 				F93D8A651E00DACF00559E3D /* MGCTimedEventsViewLayout.m in Sources */,
 				5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */,
