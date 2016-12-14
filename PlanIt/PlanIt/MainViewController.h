@@ -43,7 +43,7 @@ typedef  UIViewController<CalendarViewControllerNavigation> CalendarViewControll
 
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic, weak) IBOutlet UILabel *currentDateLabel;
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *settingsButtonItem;
+//@property (nonatomic, weak) IBOutlet UIBarButtonItem *settingsButtonItem;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *viewChooser;
 
 @property (nonatomic) NSCalendar *calendar;

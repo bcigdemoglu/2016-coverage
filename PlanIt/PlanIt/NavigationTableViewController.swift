@@ -9,7 +9,7 @@
 import UIKit
 
 class NavigationTableViewController: UITableViewController {
-
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
