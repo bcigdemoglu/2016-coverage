@@ -13,8 +13,8 @@
 		5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE261DD948B400450083 /* ItineraryManager.swift */; };
 		5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE281DD94D9900450083 /* ItineraryShell.swift */; };
 		5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E7461DFF736C009F83A1 /* Event.swift */; };
-		5FB2E74B1E007F1E009F83A1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */; };
 		5FB2E7491E006872009F83A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E7481E006872009F83A1 /* User.swift */; };
+		5FB2E74B1E007F1E009F83A1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */; };
 		84AAEAC1797DB61C96BBC033 /* Pods_PlanItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */; };
 		A81D2829E2EA60AB2A211AA8 /* Pods_PlanIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71674194458DDE13383221ED /* Pods_PlanIt.framework */; };
 		BC08F0581DFB4FC700AFA3DC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */; };
@@ -44,6 +44,7 @@
 		F93D8A841E00DD6100559E3D /* MGCDayPlannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A831E00DD6100559E3D /* MGCDayPlannerViewController.m */; };
 		F93D8A881E00DF3B00559E3D /* MGCDayPlannerEKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A871E00DF3B00559E3D /* MGCDayPlannerEKViewController.m */; };
 		F93D8A8B1E00DF6800559E3D /* MGCEventKitSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A891E00DF6800559E3D /* MGCEventKitSupport.m */; };
+		F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
 		F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF091DC920AC00F59D53 /* ViewController.swift */; };
 		F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F944DF0E1DC920AC00F59D53 /* PlanIt.xcdatamodeld */; };
@@ -60,7 +61,6 @@
 		F944DF4C1DC9222E00F59D53 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF461DC9222E00F59D53 /* Itinerary.swift */; };
 		F944DF4D1DC9222E00F59D53 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF471DC9222E00F59D53 /* DateViewController.swift */; };
 		F944DF4F1DC9289300F59D53 /* PlanIt-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F944DF4E1DC9289300F59D53 /* PlanIt-Logo.png */; };
-		F944DF7F1DD4DC5700F59D53 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */; };
 		F9AFF5081DFFC21C0099EA6E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AFF5061DFFC21C0099EA6E /* EventKit.framework */; };
 		F9AFF5091DFFC21C0099EA6E /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AFF5071DFFC21C0099EA6E /* EventKitUI.framework */; };
 		F9BB36701DFE45BE00868664 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9BB36661DFE45BE00868664 /* Calendar.storyboard */; };
@@ -93,8 +93,8 @@
 		5F4DAE261DD948B400450083 /* ItineraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryManager.swift; sourceTree = "<group>"; };
 		5F4DAE281DD94D9900450083 /* ItineraryShell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryShell.swift; sourceTree = "<group>"; };
 		5FB2E7461DFF736C009F83A1 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5FB2E7481E006872009F83A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		68F773566CFD9695C55FD734 /* Pods-PlanIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanIt/Pods-PlanIt.debug.xcconfig"; sourceTree = "<group>"; };
 		71674194458DDE13383221ED /* Pods_PlanIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -767,12 +767,10 @@
 				5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */,
 				F93D8A681E00DAD600559E3D /* MGCAllDayEventsViewLayout.m in Sources */,
 				F93D8A591E00D38E00559E3D /* MGCCalendarHeaderCell.m in Sources */,
-				F944DF7F1DD4DC5700F59D53 /* SWRevealViewController.m in Sources */,
+				F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */,
 				F93D8A531E00D2E600559E3D /* WeekSettingsViewController.m in Sources */,
 				5FB2E74B1E007F1E009F83A1 /* LocationManager.swift in Sources */,
-				F944DF7F1DD4DC5700F59D53 /* SWRevealViewController.m in Sources */,
 				5FB2E7491E006872009F83A1 /* User.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +822,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -838,6 +837,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -874,6 +874,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -888,6 +889,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -917,6 +919,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68F773566CFD9695C55FD734 /* Pods-PlanIt.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -937,6 +940,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B661A13B28D47183FFBD0B43 /* Pods-PlanIt.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

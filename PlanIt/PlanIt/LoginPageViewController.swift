@@ -31,7 +31,6 @@ class LoginPageViewController: UIViewController {
             return;
         }
         
-        self.performSegue(withIdentifier: "homeSegue", sender: nil)
         /*if isValidEmail(testStr: userEmail!) == false {
             displayAlertMessage(myMessage:"Not a valid email");
             return;
