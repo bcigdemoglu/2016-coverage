@@ -160,7 +160,7 @@ class ItineraryTableViewController: UITableViewController {
         // Do my conditional logic - this was the whole point of changing the segue
         let calendarIndex = tableView.indexPathForSelectedRow?.row
         let iten = itineraries[calendarIndex!]
-        self.performSegue(withIdentifier: "SegueIdentifer", sender: cell)
+        self.performSegue(withIdentifier: "ShowCalendarSegue", sender: cell)
         
             //            destination.calendarName = iten.name
         print("iten.name is", iten.name)

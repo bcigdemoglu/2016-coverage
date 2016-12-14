@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -59,6 +58,7 @@
                                 <connections>
                                     <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
+                                    <segue destination="SNh-eS-7mD" kind="show" identifier="ShowCalendarSegue" id="zvJ-bC-XUg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -79,7 +79,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="46F-UA-nPg" id="Bel-01-Ne3"/>
-                        <segue destination="O7n-SM-M5G" kind="show" id="RgE-rK-3tz"/>
+                        <segue destination="O7n-SM-M5G" kind="show" identifier="ShowCalendarSegue" id="RgE-rK-3tz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aK-ni-JGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -623,8 +623,7 @@
                     <connections>
                         <outlet property="userEmailTextField" destination="lBU-fY-RM4" id="43E-OP-9GL"/>
                         <outlet property="userPasswordTextField" destination="E4G-n6-uER" id="e8e-PP-vvg"/>
-                        <segue destination="WaV-0I-OMP" kind="presentation" identifier="homeSegue1" id="IjD-Zp-SC9"/>
-                        <segue destination="SNh-eS-7mD" kind="presentation" identifier="homeSegue" id="kv5-wc-cM2"/>
+                        <segue destination="WaV-0I-OMP" kind="presentation" identifier="homeSegue" id="IjD-Zp-SC9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuH-Wd-ZZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -666,142 +665,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfa-W6-18a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3559" y="1576"/>
-        </scene>
-        <!--Main View Controller-->
-        <scene sceneID="SSY-72-3zW">
-            <objects>
-                <viewController id="Bhb-cO-b3j" customClass="MainViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9w7-zz-hVH"/>
-                        <viewControllerLayoutGuide type="bottom" id="2a1-JD-bj2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YGs-VU-uKS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <containerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4kH-JR-dmF">
-                                <frame key="frameInset" minY="64" width="600" height="492"/>
-                                <color key="backgroundColor" red="0.94793570039999997" green="0.94793570039999997" blue="0.94793570039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </containerView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pia-kw-78E">
-                                <frame key="frameInset" minY="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Today" id="S89-cm-Mpt">
-                                        <connections>
-                                            <action selector="showToday:" destination="Bhb-cO-b3j" id="zni-Rt-lnh"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="On1-Cd-N5s"/>
-                                    <barButtonItem title="Calendars" id="HoT-1Q-MaP">
-                                        <connections>
-                                            <action selector="showCalendars:" destination="Bhb-cO-b3j" id="22h-97-vIa"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="F26-Xq-khD"/>
-                                    <barButtonItem title="⚙" id="cxG-Al-kFb">
-                                        <connections>
-                                            <action selector="showSettings:" destination="Bhb-cO-b3j" id="9FC-KP-rrD"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" red="0.94782161710000001" green="0.94782161710000001" blue="0.94782161710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="pia-kw-78E" firstAttribute="leading" secondItem="YGs-VU-uKS" secondAttribute="leading" id="Hu4-Y6-ryt"/>
-                            <constraint firstItem="4kH-JR-dmF" firstAttribute="leading" secondItem="YGs-VU-uKS" secondAttribute="leading" id="Kdm-g4-GbR"/>
-                            <constraint firstItem="4kH-JR-dmF" firstAttribute="bottom" secondItem="pia-kw-78E" secondAttribute="top" id="VBZ-MP-0CU"/>
-                            <constraint firstItem="4kH-JR-dmF" firstAttribute="top" secondItem="9w7-zz-hVH" secondAttribute="bottom" id="a6X-R5-52B"/>
-                            <constraint firstAttribute="trailing" secondItem="pia-kw-78E" secondAttribute="trailing" id="nCR-fr-3wT"/>
-                            <constraint firstAttribute="trailing" secondItem="4kH-JR-dmF" secondAttribute="trailing" id="vpA-zj-Wnb"/>
-                            <constraint firstAttribute="bottom" secondItem="pia-kw-78E" secondAttribute="bottom" id="xfw-ud-af2"/>
-                        </constraints>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" id="bHT-52-5BJ">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="2016" id="scU-RC-BUm"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" id="jGl-e5-wqV">
-                            <rect key="frame" x="74" y="7" width="215" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Day"/>
-                                <segment title="Day"/>
-                            </segments>
-                            <connections>
-                                <action selector="switchControllers:" destination="Bhb-cO-b3j" eventType="valueChanged" id="2c5-d4-DAF"/>
-                            </connections>
-                        </segmentedControl>
-                        <rightBarButtonItems>
-                            <barButtonItem title="&gt;&gt;" id="ago-bT-SAy">
-                                <connections>
-                                    <action selector="nextPage:" destination="Bhb-cO-b3j" id="fqh-xK-LG7"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="&lt;&lt;" id="XsA-5x-bHB">
-                                <connections>
-                                    <action selector="previousPage:" destination="Bhb-cO-b3j" id="fbT-qq-wrU"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="containerView" destination="4kH-JR-dmF" id="7NR-AQ-g73"/>
-                        <outlet property="currentDateLabel" destination="7LD-3o-0EN" id="IXP-Qj-66Y"/>
-                        <outlet property="settingsButtonItem" destination="cxG-Al-kFb" id="8RJ-Wb-dtf"/>
-                        <outlet property="viewChooser" destination="jGl-e5-wqV" id="Qaj-77-DrF"/>
-                        <segue destination="8NR-Oi-GY8" kind="popoverPresentation" identifier="dayPlannerSettingsSegue" popoverAnchorBarButtonItem="cxG-Al-kFb" id="6aP-Hj-1tv">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
-                        <segue destination="bTa-T5-Gco" kind="popoverPresentation" identifier="monthPlannerSettingsSegue" popoverAnchorBarButtonItem="cxG-Al-kFb" id="Xao-5M-3Ov">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="afM-6u-eJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7LD-3o-0EN">
-                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </objects>
-            <point key="canvasLocation" x="4705" y="433"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="tkZ-9w-bNh">
-            <objects>
-                <navigationController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="41M-Au-9Ah" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O3h-Lu-loW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Bhb-cO-b3j" kind="relationship" relationship="rootViewController" id="v2K-wL-usx"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u1a-Yd-ROz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3894" y="433"/>
-        </scene>
-        <!--dayPlannerSettings-->
-        <scene sceneID="A14-EF-rJz">
-            <objects>
-                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="dayPlannerSettings" id="8NR-Oi-GY8" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9GK-EA-1Op" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4554" y="902"/>
-        </scene>
-        <!--monthPlannerSettings-->
-        <scene sceneID="6GP-y1-RAx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="monthPlannerSettings" id="bTa-T5-Gco" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i5m-Ac-hGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4878" y="902"/>
         </scene>
     </scenes>
     <resources>
