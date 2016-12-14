@@ -40,14 +40,15 @@ class LoginPageViewController: UIViewController {
         //Alex: send userName, userEmail, and userPassword to the server here
         //When login not successful, call displayAlertMessage()
         //When login successful, call change page to the ListView
-//        sendLoginRequest(username: userEmail!, password: userPassword!) {responseString in
-//            switch responseString {
-//            case "success" :
-//                 self.performSegue(withIdentifier: "homeSegue", sender: nil)
-//            default :
-//                self.displayAlertMessage(myMessage: responseString)
-//            }
-//        }
+        sendLoginRequest(username: userEmail!, password: userPassword!) {responseString in
+            switch responseString {
+            case "success" :
+                User.createUser(user: userEmail, password: userPassword)
+                self.performSegue(withIdentifier: "homeSegue", sender: nil)
+            default :
+                self.displayAlertMessage(myMessage: responseString)
+            }
+        }
     }
     
     func displayAlertMessage(myMessage:String) {
