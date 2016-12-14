@@ -148,6 +148,7 @@ func postCreateEvent( userID: String, parameters : Parameters, completionHandler
             let json = JSON(value)
             print("JSON: \(json)")
             var uid : String?
+            //might need just the full json here, as its just one thing.
             for (_,subJson):(String, JSON) in json {
                 uid = subJson[0]["uid"].string
             }
@@ -219,6 +220,16 @@ func getEventFromID(userID: String, eventID : String, completionHandler : @escap
     }
 }
 
+
+func getSuggestionsForEvent(eventID: String, completionHandler : @escaping (SuggestionInfo, String?) -> ()) {
+    let parameters : Parameters = [
+        "uid" : eventID
+    ]
+    Alamofire.request(baseURL + getEvent + User.getUserName()!, method : .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+        response in
+        
+    }
+}
 //func getEventFromItinerary(userID: String, )
 
 
