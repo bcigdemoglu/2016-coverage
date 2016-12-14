@@ -147,13 +147,29 @@ class ItineraryTableViewController: UITableViewController {
             let calendarIndex = tableView.indexPathForSelectedRow?.row
         {
             let iten = itineraries[calendarIndex]
-            destination.calendarName = iten.name
+//            destination.calendarName = iten.name
             print("iten.name is", iten.name)
             print(calendarIndex)
         }
     }
 
-    //TO implement later for storage of itineraries
+    //Test if this works 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Find the selected cell in the usual way
+        var cell = self.tableView.cellForRow(at: indexPath as IndexPath)!
+        // Check if this is the cell I want to segue from by using the reuseIdenifier
+        // which I set in the "Identifier" field in Interface Builder
+        // Do my conditional logic - this was the whole point of changing the segue
+        let calendarIndex = tableView.indexPathForSelectedRow?.row
+        let iten = itineraries[calendarIndex!]
+        self.performSegue(withIdentifier: "ShowCalendarSegue", sender: cell)
+        
+            //            destination.calendarName = iten.name
+        print("iten.name is", iten.name)
+        print(calendarIndex)
+        
+    }
+        //TO implement later for storage of itineraries
 /**
     private func loadItems() {
         if let filePath = pathForItems() , FileManager.default.fileExists(atPath: filePath) {

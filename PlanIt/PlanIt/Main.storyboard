@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jH2-r5-NCJ">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jH2-r5-NCJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -58,7 +58,7 @@
                                 <connections>
                                     <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
-                                    <segue destination="O7n-SM-M5G" kind="show" identifier="ShowCalendarSegue" id="JZr-nX-Zv1"/>
+                                    <segue destination="SNh-eS-7mD" kind="show" identifier="ShowCalendarSegue" id="zvJ-bC-XUg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -79,11 +79,20 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="46F-UA-nPg" id="Bel-01-Ne3"/>
+                        <segue destination="O7n-SM-M5G" kind="show" identifier="ShowCalendarSegue" id="RgE-rK-3tz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aK-ni-JGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2589.5999999999999" y="1130.2848575712144"/>
+        </scene>
+        <!--MainViewController-->
+        <scene sceneID="Ze7-qC-4Xi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Calendar" referencedIdentifier="MainViewController" id="SNh-eS-7mD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Avf-5K-dcl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3586" y="903"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="HNl-8v-zkg">
@@ -121,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KsV-g1-iLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5928.8000000000002" y="1365.9670164917543"/>
+            <point key="canvasLocation" x="4705" y="1576"/>
         </scene>
         <!--Choose Date-->
         <scene sceneID="le3-Ma-U11">
@@ -655,7 +664,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfa-W6-18a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4989.6000000000004" y="1365.9670164917543"/>
+            <point key="canvasLocation" x="3559" y="1576"/>
         </scene>
     </scenes>
     <resources>
@@ -664,6 +673,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y2f-BY-ffE"/>
-        <segue reference="JZr-nX-Zv1"/>
+        <segue reference="RgE-rK-3tz"/>
     </inferredMetricsTieBreakers>
 </document>

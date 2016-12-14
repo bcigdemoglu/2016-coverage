@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A92891EB28C6E15668C1DA560C8EA947"
+               BlueprintIdentifier = "E4D5D6240870A176C82B631D7AAAFC03"
                BuildableName = "Pods_PlanIt.framework"
                BlueprintName = "Pods-PlanIt"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A92891EB28C6E15668C1DA560C8EA947"
+            BlueprintIdentifier = "E4D5D6240870A176C82B631D7AAAFC03"
             BuildableName = "Pods_PlanIt.framework"
             BlueprintName = "Pods-PlanIt"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A92891EB28C6E15668C1DA560C8EA947"
-            BuildableName = "Pods_PlanIt.framework"
-            BlueprintName = "Pods-PlanIt"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
