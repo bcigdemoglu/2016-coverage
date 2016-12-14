@@ -2,7 +2,6 @@
 //  DayViewController.h
 //  Calendar
 //
-//  Copyright © 2016 Julien Martin. All rights reserved.
 //
 
 #import "DayViewController.h"

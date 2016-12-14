@@ -2,7 +2,7 @@
 //  MainViewController.m
 //  CalendarDemo - Graphical Calendars Library for iOS
 //
-//  Copyright (c) 2014-2015 Julien Martin. All rights reserved.
+//  Distributed under the MIT License
 //
 
 #import "MainViewController.h"
@@ -93,6 +93,7 @@ typedef enum : NSUInteger
         [self.calendarViewController moveToDate:date animated:NO];
         self.firstTimeAppears = NO;
     }
+    [self.calendarViewController moveToDate:[NSDate date] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

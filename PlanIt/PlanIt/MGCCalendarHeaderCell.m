@@ -2,7 +2,7 @@
 //  MGCCalendarHeaderCell.m
 //  Calendar
 //
-//  Copyright © 2016 Julien Martin. All rights reserved.
+//  Distributed under the MIT License
 //
 
 #import "MGCCalendarHeaderCell.h"

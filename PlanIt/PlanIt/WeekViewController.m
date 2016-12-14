@@ -1,8 +1,6 @@
 //
 //  WeekViewController.m
-//  CalendarDemo - Graphical Calendars Library for iOS
-//
-//  Copyright (c) 2014-2015 Julien Martin. All rights reserved.
+//  Calendar
 //
 
 #import "WeekViewController.h"
