@@ -12,9 +12,10 @@
 		5F4DAE251DD9206000450083 /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */; };
 		5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE261DD948B400450083 /* ItineraryManager.swift */; };
 		5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAE281DD94D9900450083 /* ItineraryShell.swift */; };
+		5F62B1AF1E011118008395DD /* SuggestionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62B1AE1E011118008395DD /* SuggestionInfo.swift */; };
 		5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E7461DFF736C009F83A1 /* Event.swift */; };
-		5FB2E74B1E007F1E009F83A1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */; };
 		5FB2E7491E006872009F83A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E7481E006872009F83A1 /* User.swift */; };
+		5FB2E74B1E007F1E009F83A1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */; };
 		84AAEAC1797DB61C96BBC033 /* Pods_PlanItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */; };
 		A81D2829E2EA60AB2A211AA8 /* Pods_PlanIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71674194458DDE13383221ED /* Pods_PlanIt.framework */; };
 		BC08F0581DFB4FC700AFA3DC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */; };
@@ -62,9 +63,10 @@
 		5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 		5F4DAE261DD948B400450083 /* ItineraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryManager.swift; sourceTree = "<group>"; };
 		5F4DAE281DD94D9900450083 /* ItineraryShell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryShell.swift; sourceTree = "<group>"; };
+		5F62B1AE1E011118008395DD /* SuggestionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionInfo.swift; sourceTree = "<group>"; };
 		5FB2E7461DFF736C009F83A1 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5FB2E7481E006872009F83A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5FB2E74A1E007F1E009F83A1 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		68F773566CFD9695C55FD734 /* Pods-PlanIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanIt/Pods-PlanIt.debug.xcconfig"; sourceTree = "<group>"; };
 		71674194458DDE13383221ED /* Pods_PlanIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E91D34BA20286BB7C5B848 /* Pods_PlanItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 		F944DF061DC920AC00F59D53 /* PlanIt */ = {
 			isa = PBXGroup;
 			children = (
+				5F62B1AE1E011118008395DD /* SuggestionInfo.swift */,
 				5F4DAE221DD666FA00450083 /* ConnectionHandler.swift */,
 				5FB2E7461DFF736C009F83A1 /* Event.swift */,
 				F944DF4E1DC9289300F59D53 /* PlanIt-Logo.png */,
@@ -518,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */,
+				5F62B1AF1E011118008395DD /* SuggestionInfo.swift in Sources */,
 				5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */,
 				BC08F0581DFB4FC700AFA3DC /* CalendarViewController.swift in Sources */,
 				F944DF4A1DC9222E00F59D53 /* ItineraryTableViewCell.swift in Sources */,
