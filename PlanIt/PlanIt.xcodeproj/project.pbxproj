@@ -44,7 +44,7 @@
 		F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F944DF7E1DD4DC5700F59D53 /* SWRevealViewController.m */; };
 		F93D8A8F1E01ABD100559E3D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A8E1E01ABD100559E3D /* Settings.bundle */; };
 		F93D8A911E01AC4200559E3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A901E01AC4200559E3D /* main.m */; };
-		F93D8A951E01ADEE00559E3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A931E01ADEE00559E3D /* InfoPlist.strings */; };
+		F93D8AA01E01B29600559E3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A9F1E01B29600559E3D /* InfoPlist.strings */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
 		F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF091DC920AC00F59D53 /* ViewController.swift */; };
 		F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F944DF0E1DC920AC00F59D53 /* PlanIt.xcdatamodeld */; };
@@ -152,8 +152,7 @@
 		F93D8A8E1E01ABD100559E3D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F93D8A901E01AC4200559E3D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F93D8A921E01AC8300559E3D /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
-		F93D8A941E01ADEE00559E3D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F93D8A961E01ADF600559E3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F93D8A9F1E01B29600559E3D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		F944DF041DC920AC00F59D53 /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F944DF071DC920AC00F59D53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F944DF091DC920AC00F59D53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -254,18 +253,8 @@
 				F93D8A501E00D2E600559E3D /* WeekSettingsViewController.m */,
 				F93D8A151E00BF0000559E3D /* Images.xcassets */,
 				F93D8A8D1E01AB8B00559E3D /* Supporting  */,
-				F93D8A1D1E00BF0E00559E3D /* Supporting Files */,
 			);
 			name = Calendar;
-			sourceTree = "<group>";
-		};
-		F93D8A1D1E00BF0E00559E3D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F93D8A931E01ADEE00559E3D /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			path = "../../../../../Downloads/Calendar-master-2/CalendarDemo";
 			sourceTree = "<group>";
 		};
 		F93D8A211E00BF8000559E3D /* CalendarLib */ = {
@@ -355,11 +344,20 @@
 		F93D8A8D1E01AB8B00559E3D /* Supporting  */ = {
 			isa = PBXGroup;
 			children = (
+				F93D8A9E1E01B24C00559E3D /* en.lproj */,
 				F93D8A901E01AC4200559E3D /* main.m */,
 				F93D8A921E01AC8300559E3D /* Calendar-Prefix.pch */,
 				F93D8A8E1E01ABD100559E3D /* Settings.bundle */,
 			);
 			name = "Supporting ";
+			sourceTree = "<group>";
+		};
+		F93D8A9E1E01B24C00559E3D /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				F93D8A9F1E01B29600559E3D /* InfoPlist.strings */,
+			);
+			name = en.lproj;
 			sourceTree = "<group>";
 		};
 		F944DEFB1DC920AB00F59D53 = {
@@ -573,7 +571,7 @@
 				F944DF411DC9221700F59D53 /* LaunchScreen.storyboard in Resources */,
 				F9BB36761DFE45BE00868664 /* settings.storyboard in Resources */,
 				F944DF3F1DC9220600F59D53 /* Assets.xcassets in Resources */,
-				F93D8A951E01ADEE00559E3D /* InfoPlist.strings in Resources */,
+				F93D8AA01E01B29600559E3D /* InfoPlist.strings in Resources */,
 				BC08F05A1DFB60BA00AFA3DC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,18 +811,6 @@
 			targetProxy = F944DF271DC920AD00F59D53 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F93D8A931E01ADEE00559E3D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F93D8A941E01ADEE00559E3D /* fr */,
-				F93D8A961E01ADF600559E3D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F944DF2D1DC920AD00F59D53 /* Debug */ = {
