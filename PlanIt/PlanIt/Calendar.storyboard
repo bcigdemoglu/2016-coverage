@@ -65,8 +65,8 @@
                             <rect key="frame" x="74" y="7" width="215" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Day"/>
                                 <segment title="Week"/>
+                                <segment title="Day"/>
                             </segments>
                             <connections>
                                 <action selector="switchControllers:" destination="2hR-lJ-uEz" eventType="valueChanged" id="4Tb-tc-Ttf"/>
