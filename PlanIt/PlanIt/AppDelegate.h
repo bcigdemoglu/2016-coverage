@@ -1,14 +1,14 @@
+////
+////  AppDelegate.h
+////  CalendarDemo - Graphical Calendars Library for iOS
+////
+////  Copyright (c) 2014-2015 Julien Martin. All rights reserved.
+////
 //
-//  AppDelegate.h
-//  CalendarDemo - Graphical Calendars Library for iOS
+//#import <UIKit/UIKit.h>
 //
-//  Copyright (c) 2014-2015 Julien Martin. All rights reserved.
+//@interface AppDelegate : UIResponder <UIApplicationDelegate>
 //
-
-#import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (nonatomic) UIWindow *window;
-
-@end
+//@property (nonatomic) UIWindow *window;
+//
+//@end

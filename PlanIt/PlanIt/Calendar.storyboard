@@ -66,7 +66,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Day"/>
-                                <segment title="Day"/>
+                                <segment title="Week"/>
                             </segments>
                             <connections>
                                 <action selector="switchControllers:" destination="2hR-lJ-uEz" eventType="valueChanged" id="4Tb-tc-Ttf"/>

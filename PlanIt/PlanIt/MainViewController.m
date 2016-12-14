@@ -12,15 +12,14 @@
 #import "DayViewController.h"
 #import "NSCalendar+MGCAdditions.h"
 #import "WeekSettingsViewController.h"
-#import "MonthSettingsViewController.h"
+//#import "MonthSettingsViewController.h"
+
 
 
 typedef enum : NSUInteger
 {
-    CalendarViewDayType  = 0,
-    CalendarViewWeekType = 0,
-//    CalendarViewYearType = 2,
-//    CalendarViewMonthType
+    CalendarViewWeekType  = 0,
+    CalendarViewDayType = 1,
 } CalendarViewType;
 
 
@@ -67,17 +66,21 @@ typedef enum : NSUInteger
     self.dateFormatter = [NSDateFormatter new];
     self.dateFormatter.calendar = self.calendar;
     
-   
+//    if (isiPad) {
+//        //NSLog(@"---------------- iPAD ------------------");
+//    }
+    //else{
+        //NSLog(@"---------------- iPhone ------------------");
         self.navigationItem.leftBarButtonItem.customView = self.currentDateLabel;
+ //   }
     
-	
-	CalendarViewController *controller = [self controllerForViewType:CalendarViewWeekType];
-	[self addChildViewController:controller];
-	[self.containerView addSubview:controller.view];
-	controller.view.frame = self.containerView.bounds;
-	[controller didMoveToParentViewController:self];
-	
-	self.calendarViewController = controller;
+    CalendarViewController *controller = [self controllerForViewType:CalendarViewWeekType];
+    [self addChildViewController:controller];
+    [self.containerView addSubview:controller.view];
+    controller.view.frame = self.containerView.bounds;
+    [controller didMoveToParentViewController:self];
+    
+    self.calendarViewController = controller;
     self.firstTimeAppears = YES;
 }
 
@@ -112,10 +115,10 @@ typedef enum : NSUInteger
 //        MonthViewController *monthController = (MonthViewController*)self.calendarViewController;
 //        settingsViewController.monthPlannerView = monthController.monthPlannerView;
 //    }
-//    
+    
     BOOL doneButton = (self.traitCollection.verticalSizeClass != UIUserInterfaceSizeClassRegular || self.traitCollection.horizontalSizeClass != UIUserInterfaceSizeClassRegular);
     if (doneButton) {
-         nc.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettings:)];
+        nc.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettings:)];
     }
 }
 
@@ -137,9 +140,9 @@ typedef enum : NSUInteger
     if (_dayViewController == nil) {
         _dayViewController = [[DayViewController alloc]initWithEventStore:self.eventStore];
         _dayViewController.calendar = self.calendar;
-        _dayViewController.showsWeekHeaderView = YES;
+        //_dayViewController.showsWeekHeaderView = YES;
         _dayViewController.delegate = self;
-        _dayViewController.dayPlannerView.eventCoveringType = MGCDayPlannerCoveringTypeComplex;
+        //_dayViewController.dayPlannerView.eventCoveringType = MGCDayPlannerCoveringTypeComplex;
     }
     return _dayViewController;
 }
@@ -153,7 +156,7 @@ typedef enum : NSUInteger
     }
     return _weekViewController;
 }
-
+//
 //- (MonthViewController*)monthViewController
 //{
 //    if (_monthViewController == nil) {
@@ -163,7 +166,7 @@ typedef enum : NSUInteger
 //    }
 //    return _monthViewController;
 //}
-//
+
 //- (YearViewController*)yearViewController
 //{
 //    if (_yearViewController == nil) {
@@ -179,9 +182,7 @@ typedef enum : NSUInteger
     switch (type)
     {
         case CalendarViewDayType:  return self.dayViewController;
-//        case CalendarViewWeekType:  return self.dayViewController;
-//        case CalendarViewMonthType: return self.monthViewController;
-//        case CalendarViewYearType:  return self.yearViewController;
+        case CalendarViewWeekType:  return self.weekViewController;
     }
     return nil;
 }
@@ -249,7 +250,7 @@ typedef enum : NSUInteger
         UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:self.calendarChooser];
         self.calendarChooser.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(calendarChooserStartEdit)];
         nc.modalPresentationStyle = UIModalPresentationPopover;
- 
+        
         [self showDetailViewController:nc sender:self];
         
         UIPopoverPresentationController *popController = nc.popoverPresentationController;
@@ -292,12 +293,15 @@ typedef enum : NSUInteger
 //    [self moveToNewController:controllerNew atDate:date];
 //    self.viewChooser.selectedSegmentIndex = CalendarViewMonthType;
 //}
-//
+
 #pragma mark - CalendarViewControllerDelegate
 
 - (void)calendarViewController:(CalendarViewController*)controller didShowDate:(NSDate*)date
 {
-    [self.dateFormatter setDateFormat:@"MMMM yyyy"];
+//    if (controller.class == YearViewController.class)
+//        [self.dateFormatter setDateFormat:@"yyyy"];
+//    else
+        [self.dateFormatter setDateFormat:@"MMMM yyyy"];
     
     NSString *str = [self.dateFormatter stringFromDate:date];
     self.currentDateLabel.text = str;
@@ -313,9 +317,9 @@ typedef enum : NSUInteger
 
 - (UINavigationController*)navigationControllerForEKEventViewController
 {
-//    if (!isiPad) {
-//        return self.navigationController;
-//    }
+    //    if (!isiPad) {
+    //        return self.navigationController;
+    //    }
     return nil;
 }
 
