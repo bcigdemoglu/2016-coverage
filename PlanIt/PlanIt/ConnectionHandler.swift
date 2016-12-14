@@ -15,8 +15,10 @@ let baseURL = "https://oose-2016-group-13.herokuapp.com/"
 let createItinerary = "createItinerary/"
 let createEvent = "createEvent/"
 let inviteToEvent = "inviteToEvent/"
+let suggestions = "suggestions/"
 let getEvent = "getEvent/"
 let searchYelp = "searchYelp/"
+let respond = "respond/"
 
 //local mode: comment previous line and uncomment next line
 //let baseURL = "https://localhost:5000/"
@@ -24,22 +26,6 @@ let searchYelp = "searchYelp/"
 let defaultHeaders : HTTPHeaders = [
     "Content-Type": "application/json"
     ]
-/*func sendRequest() -> Int{
-    //let printValue = "Didn't work!"
-    var statusCode = 12340
-    Alamofire.request(baseURL).responseJSON { response in
-        print(response.request.)  // original URL request
-        print(response.response) // HTTP URL response
-        print(response.data)     // server data
-        print(response.result)   // result of response serialization
-        print("request body: \(request.HTTPBody)")
-        if let JSON = response.result.value {
-            print("JSON: \(JSON)")
-        }
-        //print((response.response?.statusCode)!)
-    }
-    return statusCode
-}*/
 
 func sendLoginRequest(username: String, password: String, completionHandler : @escaping (String) -> () ) {
     let params: Parameters = [
@@ -82,7 +68,7 @@ func getItineraryListShells(userID : String, completionHandler: @escaping ([Itin
             let json = JSON(value)
             print("JSON: \(json)")
             
-            for (index,subJson) in json["itineraries"] {
+            for (_,subJson) in json["itineraries"] {
                 let name = subJson["name"].string
                 let uid = subJson["uid"].string
                 let shell = Itinerary(name: name!, uid: uid!)
@@ -200,12 +186,12 @@ func getEventFromID(userID: String, eventID : String, completionHandler : @escap
             let date = json["date"].string
             let yelpId = json["yelpId"].string
             var invitedByUsers = [String]()
-            for(index, subjson) : (String, JSON) in json["invited"] {
+            for(_, subjson) : (String, JSON) in json["invited"] {
                 let user : String = subjson["invitedUser"].stringValue
                 invitedByUsers += [user]
             }
             var usersAcceptedOrCreated = [String]()
-            for(index, subjson) : (String, JSON) in json["accepted"] {
+            for(_, subjson) : (String, JSON) in json["accepted"] {
                 let user = subjson["acceptededUser"].stringValue
                 usersAcceptedOrCreated += [user]
             }
@@ -221,15 +207,67 @@ func getEventFromID(userID: String, eventID : String, completionHandler : @escap
 }
 
 
-func getSuggestionsForEvent(eventID: String, completionHandler : @escaping (SuggestionInfo, String?) -> ()) {
+func getSuggestionsForEvent(eventID: String, longitude: Double, latitude: Double, completionHandler : @escaping ([SuggestionInfo]?, String?) -> ()) {
+    let longString: String = String(format: "%f", longitude)
+    let latString: String = String(format: "%f", latitude)
     let parameters : Parameters = [
-        "uid" : eventID
+        "longitude" : longString,
+        "latitude" : latString
     ]
-    Alamofire.request(baseURL + getEvent + User.getUserName()!, method : .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+    Alamofire.request(baseURL + suggestions + User.getUserName()! + "/" + eventID, method : .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
         response in
+        switch response.result {
+        case .success (let value) :
+            let json = JSON(value)
+            var array = [SuggestionInfo]()
+            for (_,subJson) in json["suggestions"] {
+                let name = subJson["name"].string
+                let stars = subJson["stars"].intValue
+                let sI = SuggestionInfo(name: name, numberStars: stars)
+                array.append(sI)
+            }
+            completionHandler(array, nil)
+        case .failure(let error) :
+            completionHandler(nil, error.localizedDescription)
+        }
         
     }
 }
+
+func sendChoice(eventID: String, choiceName: String, completionHandler: @escaping (String?) -> ()) {
+    let parameters : Parameters = [
+        "choice" : choiceName
+    ]
+    Alamofire.request(baseURL + suggestions + User.getUserName()! + "/" + eventID, method : .post, parameters: parameters,  encoding: JSONEncoding.default).responseJSON {
+        response in
+        switch response.result {
+        case .success:
+            completionHandler("Success")
+        case .failure(let error):
+            completionHandler(error.localizedDescription)
+            
+        }
+        
+    }
+}
+
+
+func sendRating(eventID: String, choiceName: String, rating: Int, completionHandler: @escaping (String?) -> ()) {
+    let parameters : Parameters = [
+        "choice" : choiceName,
+        "rating" : rating
+    ]
+    Alamofire.request(baseURL + suggestions + respond + User.getUserName()! + "/" + eventID, method : .post, parameters: parameters,  encoding: JSONEncoding.default).responseJSON {
+        response in
+        switch response.result {
+        case .success:
+            completionHandler("Success")
+        case .failure(let error):
+            completionHandler(error.localizedDescription)
+            
+        }
+        
+    }}
 //func getEventFromItinerary(userID: String, )
 
 
