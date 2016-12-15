@@ -36,6 +36,8 @@
 	</array>
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app has read and write access to your calendars</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app has read and write access to your contacts</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

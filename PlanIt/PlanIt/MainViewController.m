@@ -106,11 +106,11 @@ typedef enum : NSUInteger
 {
     UINavigationController *nc = (UINavigationController*)[segue destinationViewController];
     
-    if ([segue.identifier isEqualToString:@"dayPlannerSettingsSegue"]) {
-        WeekSettingsViewController *settingsViewController = (WeekSettingsViewController*)nc.topViewController;
-        WeekViewController *weekController = (WeekViewController*)self.calendarViewController;
-        settingsViewController.weekViewController = weekController;
-    }
+//    if ([segue.identifier isEqualToString:@"dayPlannerSettingsSegue"]) {
+//        WeekSettingsViewController *settingsViewController = (WeekSettingsViewController*)nc.topViewController;
+//        WeekViewController *weekController = (WeekViewController*)self.calendarViewController;
+//        settingsViewController.weekViewController = weekController;
+//    }
 //    else if ([segue.identifier isEqualToString:@"monthPlannerSettingsSegue"]) {
 //        MonthSettingsViewController *settingsViewController = (MonthSettingsViewController*)nc.topViewController;
 //        MonthViewController *monthController = (MonthViewController*)self.calendarViewController;
@@ -211,16 +211,16 @@ typedef enum : NSUInteger
 
 -(IBAction)switchControllers:(UISegmentedControl*)sender
 {
-    self.settingsButtonItem.enabled = NO;
+    //self.settingsButtonItem.enabled = NO;
     
     NSDate *date = [self.calendarViewController centerDate];
     CalendarViewController *controller = [self controllerForViewType:sender.selectedSegmentIndex];
     [self moveToNewController:controller atDate:date];
     
     
-    if ([controller isKindOfClass:WeekViewController.class]) {
-        self.settingsButtonItem.enabled = YES;
-    }
+    //if ([controller isKindOfClass:WeekViewController.class]) {
+   //     self.settingsButtonItem.enabled = YES;
+    //}
 }
 
 - (IBAction)showToday:(id)sender
@@ -259,20 +259,20 @@ typedef enum : NSUInteger
     }
 }
 
-- (IBAction)showSettings:(id)sender
-{
-    if ([self.calendarViewController isKindOfClass:WeekViewController.class]) {
-        [self performSegueWithIdentifier:@"dayPlannerSettingsSegue" sender:nil];
-    }
+//- (IBAction)showSettings:(id)sender
+//{
+//    if ([self.calendarViewController isKindOfClass:WeekViewController.class]) {
+//        [self performSegueWithIdentifier:@"dayPlannerSettingsSegue" sender:nil];
+//    }
 //    else if ([self.calendarViewController isKindOfClass:MonthViewController.class]) {
 //        [self performSegueWithIdentifier:@"monthPlannerSettingsSegue" sender:nil];
 //    }
-}
+//}
 
-- (void)dismissSettings:(UIBarButtonItem*)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void)dismissSettings:(UIBarButtonItem*)sender
+//{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (void)calendarChooserStartEdit
 {
