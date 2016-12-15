@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "72B665C1ABFCDD86D4A2CE2AE8E118C1363821B3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "72B665C1ABFCDD86D4A2CE2AE8E118C1363821B3" : 9223372036854775807,
+    "01529694042D8C98B30DC19F4D4370A306884FE4" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "ECD97DEC-9239-4B59-9610-957D1CA3AB85",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "72B665C1ABFCDD86D4A2CE2AE8E118C1363821B3" : "2016-group-13\/",
+    "01529694042D8C98B30DC19F4D4370A306884FE4" : "SWRevealViewController\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PlanIt",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PlanIt\/PlanIt.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/John-Lluch\/SWRevealViewController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "01529694042D8C98B30DC19F4D4370A306884FE4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jhu-oose\/2016-group-13",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "72B665C1ABFCDD86D4A2CE2AE8E118C1363821B3"
+    }
+  ]
+}

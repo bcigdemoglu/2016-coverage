@@ -20,6 +20,10 @@
 		A81D2829E2EA60AB2A211AA8 /* Pods_PlanIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71674194458DDE13383221ED /* Pods_PlanIt.framework */; };
 		BC08F0581DFB4FC700AFA3DC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */; };
 		BC08F05A1DFB60BA00AFA3DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC08F0591DFB60BA00AFA3DC /* Main.storyboard */; };
+		BC9A7BF01E031DD400CF2390 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC9A7BEF1E031DD400CF2390 /* Images.xcassets */; };
+		BC9A7BF21E03224D00CF2390 /* RatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7BF11E03224D00CF2390 /* RatingsViewController.swift */; };
+		BC9A7BF41E03257B00CF2390 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7BF31E03257B00CF2390 /* SettingsViewController.swift */; };
+		BC9A7BF61E0325A800CF2390 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7BF51E0325A800CF2390 /* LogoutViewController.swift */; };
 		F93D8A161E00BF0000559E3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A151E00BF0000559E3D /* Images.xcassets */; };
 		F93D8A511E00D2E600559E3D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4C1E00D2E600559E3D /* DayViewController.m */; };
 		F93D8A521E00D2E600559E3D /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4E1E00D2E600559E3D /* WeekViewController.m */; };
@@ -103,6 +107,10 @@
 		B661A13B28D47183FFBD0B43 /* Pods-PlanIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanIt/Pods-PlanIt.release.xcconfig"; sourceTree = "<group>"; };
 		BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		BC08F0591DFB60BA00AFA3DC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BC9A7BEF1E031DD400CF2390 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../../../Downloads/SidebarMenu/SidebarMenu/Images.xcassets; sourceTree = "<group>"; };
+		BC9A7BF11E03224D00CF2390 /* RatingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsViewController.swift; sourceTree = "<group>"; };
+		BC9A7BF31E03257B00CF2390 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BC9A7BF51E0325A800CF2390 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		C75A2822C57D4F284206F040 /* Pods-PlanItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItUITests/Pods-PlanItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CD6EC06CD1C8F28A2D610C30 /* Pods-PlanItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.release.xcconfig"; sourceTree = "<group>"; };
 		E00277539C039736CB83B76A /* Pods-PlanItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -387,6 +395,7 @@
 		F944DF061DC920AC00F59D53 /* PlanIt */ = {
 			isa = PBXGroup;
 			children = (
+				BC9A7BEF1E031DD400CF2390 /* Images.xcassets */,
 				5F62B1AE1E011118008395DD /* SuggestionInfo.swift */,
 				F93D8A211E00BF8000559E3D /* CalendarLib */,
 				F93D8A011E00BDCC00559E3D /* Calendar */,
@@ -417,6 +426,9 @@
 				F944DF461DC9222E00F59D53 /* Itinerary.swift */,
 				5F4DAE281DD94D9900450083 /* ItineraryShell.swift */,
 				F944DF471DC9222E00F59D53 /* DateViewController.swift */,
+				BC9A7BF11E03224D00CF2390 /* RatingsViewController.swift */,
+				BC9A7BF31E03257B00CF2390 /* SettingsViewController.swift */,
+				BC9A7BF51E0325A800CF2390 /* LogoutViewController.swift */,
 			);
 			path = PlanIt;
 			sourceTree = "<group>";
@@ -568,6 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9BB36701DFE45BE00868664 /* Calendar.storyboard in Resources */,
+				BC9A7BF01E031DD400CF2390 /* Images.xcassets in Resources */,
 				F93D8A8F1E01ABD100559E3D /* Settings.bundle in Resources */,
 				F944DF4F1DC9289300F59D53 /* PlanIt-Logo.png in Resources */,
 				F93D8A161E00BF0000559E3D /* Images.xcassets in Resources */,
@@ -739,10 +752,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */,
+				BC9A7BF61E0325A800CF2390 /* LogoutViewController.swift in Sources */,
 				5F62B1AF1E011118008395DD /* SuggestionInfo.swift in Sources */,
 				F93D8A6E1E00DAF300559E3D /* MGCEventCell.m in Sources */,
 				F93D8A651E00DACF00559E3D /* MGCTimedEventsViewLayout.m in Sources */,
 				5F4DAE271DD948B400450083 /* ItineraryManager.swift in Sources */,
+				BC9A7BF21E03224D00CF2390 /* RatingsViewController.swift in Sources */,
 				F93D8A6B1E00DAE000559E3D /* MGCDayColumnCell.m in Sources */,
 				BC08F0581DFB4FC700AFA3DC /* CalendarViewController.swift in Sources */,
 				F944DF4A1DC9222E00F59D53 /* ItineraryTableViewCell.swift in Sources */,
@@ -752,6 +767,7 @@
 				F9BB36721DFE45BE00868664 /* MainViewController.m in Sources */,
 				F93D8A841E00DD6100559E3D /* MGCDayPlannerViewController.m in Sources */,
 				F93D8A7B1E00DB5800559E3D /* MGCTimeRowsView.m in Sources */,
+				BC9A7BF41E03257B00CF2390 /* SettingsViewController.swift in Sources */,
 				F93D8A881E00DF3B00559E3D /* MGCDayPlannerEKViewController.m in Sources */,
 				F944DF4B1DC9222E00F59D53 /* ItineraryTableViewController.swift in Sources */,
 				F93D8A511E00D2E600559E3D /* DayViewController.m in Sources */,
