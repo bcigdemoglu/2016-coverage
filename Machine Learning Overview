@@ -1,0 +1,40 @@
+Machine Learning overview
+
+Display Suggestion Algorithm Parameters:
+
+Initial Parameters(No learning/training)
+Time
+Location
+Global Yelp Rating
+All of Planit User's Ratings of Place/Venue (as we accumulate them), given time and location constraints
+Friends user ratings of Place/venue
+Previous ratings of the Venue from that user
+
+Training Parameter:
+Personal Rating of event
+
+
+Ordering Algorithm:
+Premise:  We want to have better suggestions tailored to what the user selects.  
+Thus, we will learn about what factors lead each user to select a Place.
+
+Implementation has not started yet, but will be building according to this page.
+We will have the Suggestion Algorithm use a Cost function, in which each User will have a set of values 
+that correspond to the Initial Parameters, and how much they (hopefully positively) impact the User's experience.  
+We may go a step further in granularity and include all these values per user, per Venue (clearly the previous ratings 
+that Venue will be on a per venue basis)
+Most of our algorithm will have already done the selecting before the previos ratings of Venues is even considered,
+as this pears down the total amount of suggestions to consider the per venue rating
+
+The algorithm will not only determine the ranking, but also give a numerical expression to display on the UI in the form of stars
+
+This part of the algorithm will be assisted by a similar one that is for the global set of users with the same values,
+to make sure that we don't get too fine with our predictions.
+
+Choice Algorithm
+Also, we want to be able to make sure that the user chooses the event that we think they will enjoy the most.  
+So, we will play with the ordering on the UI of the suggestions, learning more about where each user (and the global set of users)
+tend to select the most (Is it about stars or the position on the screen?)
+
+
+
