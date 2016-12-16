@@ -28,6 +28,7 @@ typedef enum : NSUInteger
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic) EKCalendarChooser *calendarChooser;
 @property (nonatomic) BOOL firstTimeAppears;
+@property (nonatomic, strong) NSDate *date;
 
 @property (nonatomic) DayViewController *dayViewController;
 @property (nonatomic) WeekViewController *weekViewController;

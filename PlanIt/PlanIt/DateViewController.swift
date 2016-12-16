@@ -53,6 +53,7 @@ class DateViewController: UIViewController{
         
         let strDate = dateFormatter.string(from: dateField.date)
         let dateChosen = strDate
+       
         let date : NSDate = self.dateField.date as NSDate
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let dateString = dateFormatter.string(from: date as Date)

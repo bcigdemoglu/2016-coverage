@@ -61,9 +61,24 @@ class ItineraryTableViewController: UITableViewController {
 
     
     func loadSampleItineraries() {
-        let it1 = Itinerary(name: "Mon Oct 31", uid : "1234567")!
+        let dataString1 = "April 1, 2017"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let dateValue1 = dateFormatter.date(from: dataString1) as NSDate!
+        
+        let dataString2 = "December 31, 2017"
+        //var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let dateValue2 = dateFormatter.date(from: dataString2) as NSDate!
 
-        let it2 = Itinerary(name: "Halloween", uid : "12345678910xasdf")!
+
+        let it1 = Itinerary(name: "Sample1", date: dateValue1!, uid : "1234567")!
+        
+        let it2 = Itinerary(name: "Sample2", date: dateValue2!, uid : "12345678910xasdf")!
+        
+//        let it1 = Itinerary(name: "Mon Oct 31", uid : "1234567")!
+
+//        let it2 = Itinerary(name: "Halloween", uid : "12345678910xasdf")!
         
         self.itineraries = [it1, it2]
     }
@@ -110,8 +125,12 @@ class ItineraryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ItineraryTableViewCell
         
         let iten = itineraries[indexPath.row]
-        cell.nameLabel.text = iten.name
-
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE MMM dd"
+        let strDate = dateFormatter.string(from: (iten.date as NSDate) as Date)
+        
+        cell.nameLabel.text = strDate
 
         return cell
     }
@@ -169,6 +188,13 @@ class ItineraryTableViewController: UITableViewController {
         print(calendarIndex)
         
     }
+    
+    @IBAction func showCalendarView(_ sender: AnyObject) {
+        let calendarIndex = tableView.indexPathForSelectedRow?.row
+        let iten = itineraries[calendarIndex!]
+        self.performSegue(withIdentifier: "showCalendar", sender: iten.name)
+    }
+
         //TO implement later for storage of itineraries
 /**
     private func loadItems() {

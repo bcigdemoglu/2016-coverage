@@ -9,6 +9,8 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    
+    var date:NSDate?
 
     @IBOutlet var calendarNameLabel: UILabel!
     

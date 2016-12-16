@@ -14,22 +14,34 @@ class Itinerary{
     
     //MARK: Properties
     
-    var name: String
+    var name:String
     //var name: String = ""
     var uid: String
+    var date:NSDate = NSDate() 
     
 // MARK: Initialization
 
-    init?(name: String, uid: String) {
+    init(name: String, uid: String) {
         self.name = name
         self.uid = uid
-        if name.isEmpty {
+    }
+
+    init?(name: String, date: NSDate, uid: String) {
+        self.name = name
+        self.uid = uid
+        if name.isEqual(nil) {
             return nil
         }
         if uid.isEmpty {
             return nil
         }
+        if date.isEqual(nil) {
+            return nil
+        } else {
+            self.date = date
+        }
     }
+    
     
     //To implement later for storage
   /**  required init?(coder decoder: NSCoder) {

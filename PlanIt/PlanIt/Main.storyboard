@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jH2-r5-NCJ">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jH2-r5-NCJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -44,11 +44,15 @@
                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeA-KG-Zf7">
-                                            <frame key="frameInset" minX="288" minY="9" width="46" height="30"/>
+                                            <frame key="frameInset" minX="293" minY="8" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Delete">
                                                 <color key="titleColor" red="0.89815414510000002" green="0.31222277329999998" blue="0.26824596080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="showCalendarView:" destination="533-5k-2kJ" eventType="touchUpInside" id="wvC-nV-4wL"/>
+                                                <segue destination="hqI-14-Qpm" kind="show" identifier="showCalendar" id="gUE-6I-sWz"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -79,7 +83,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="46F-UA-nPg" id="Bel-01-Ne3"/>
-                        <segue destination="O7n-SM-M5G" kind="show" identifier="ShowCalendarSegue" id="RgE-rK-3tz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aK-ni-JGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -778,6 +781,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="y2f-BY-ffE"/>
         <segue reference="uh2-E7-yAC"/>
-        <segue reference="RgE-rK-3tz"/>
     </inferredMetricsTieBreakers>
 </document>

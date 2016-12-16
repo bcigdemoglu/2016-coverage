@@ -69,10 +69,24 @@ func getItineraryListShells(userID : String, completionHandler: @escaping ([Itin
             print("JSON: \(json)")
             
             for (_,subJson) in json["itineraries"] {
+                //Changed so the name returned is of NSDate type, not a string. 
                 let name = subJson["name"].string
                 let uid = subJson["uid"].string
-                let shell = Itinerary(name: name!, uid: uid!)
-                array!.append(shell!)
+                var dateJSON = subJson["date"].string
+                let shell:Itinerary
+                if (dateJSON == nil ) {
+                    shell = Itinerary(name: name!, uid: uid!)
+                   // array!.append(shell)
+                } else {
+                    let dateFor: DateFormatter = DateFormatter()
+                    dateFor.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                    var date: NSDate? = dateFor.date(from: dateJSON!) as NSDate?
+                
+                //let uid = subJson["uid"].string
+                    shell = Itinerary(name: name!, date: date!, uid: uid!)!
+                    //array!.append(shell!)
+                }
+                array!.append(shell)
             }
             completionHandler(array, "")
         case .failure(let error):
