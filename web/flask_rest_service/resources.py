@@ -186,6 +186,24 @@ class GetEventFromId(restful.Resource):
 
         return event, 200
 
+class DeleteItineraryFromId(restful.Resource):
+    '''
+        uid -> itinerary uid
+    '''
+    def delete(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        itinerary = app.mongo.db.itin.find_one({'uid': request.get_json()['uid'],
+                                                'createdBy': username})
+
+        if not itinerary:
+            return {"error": "Itinerary not found"}, 400
+
+        app.mongo.db.itin.delete_one({'uid': request.get_json()['uid'],
+                                      'createdBy': username})
+
+        return itinerary, 200
 
 class GetEventsForItinerary(restful.Resource):
     '''
@@ -269,4 +287,5 @@ api.add_resource(InviteToEvent, '/inviteToEvent/<username>')
 api.add_resource(GetEventsForItinerary, '/getEventsForItinerary/<username>')
 api.add_resource(GetEventFromId, '/getEventFromId/<username>')
 api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
+api.add_resource(DeleteItineraryFromId, '/deleteItineraryFromId/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
