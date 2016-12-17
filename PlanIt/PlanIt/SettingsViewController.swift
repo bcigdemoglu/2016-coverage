@@ -9,10 +9,20 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
+    @IBOutlet var nameText: UITextField!
+    @IBOutlet var emailText: UITextField!
+    @IBOutlet var passwordText: UITextField!
     @IBOutlet var menuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Alex: get real user info here
+        nameText.text = "Amy"
+        emailText.text = "amy@gmail.com"
+        passwordText.text = "amy"
+        
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -20,11 +30,45 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func onSaveButtonTapped(_ sender: AnyObject) {
+        
+        let userName = nameText.text;
+        let userEmail = emailText.text;
+        let userPassword = passwordText.text;
+        
+        if (userName == "" || userEmail == "" || userPassword == "") {
+            displayAlertMessage(myMessage:"All fields are required.");
+            return;
+        }
+        
+        if isValidEmail(testStr: userEmail!) == false {
+            displayAlertMessage(myMessage:"Not a valid email");
+            return;
+        }
+        
+        //Alex: change user info here
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func displayAlertMessage(myMessage:String) {
+        let alertController = UIAlertController(title: "Alert", message: myMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
 
     /*
     // MARK: - Navigation
