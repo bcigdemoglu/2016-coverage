@@ -1191,6 +1191,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	if ([self.dataSource respondsToSelector:@selector(dayPlannerView:canCreateNewEventOfType:atDate:)]) {
 		if (![self.dataSource dayPlannerView:self canCreateNewEventOfType:type atDate:date]) {
 			self.interactiveCell.forbiddenSignVisible = YES;
+            //Change this to YES
 			self.acceptsTarget = NO;
 		}
 	}
