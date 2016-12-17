@@ -11,7 +11,7 @@ from .. import app
 from flask import json
 
 class PlanItTestCase(unittest.TestCase):
-
+    json_header = {'Content-Type' : 'application/json'}
     '''
     Pretty print json data
     '''
@@ -19,12 +19,13 @@ class PlanItTestCase(unittest.TestCase):
     #     print(json.dumps(json.loads(data), indent=indent))
 
     def json_post(self, handler, raw_dict):
-        json_header = {'Content-Type' : 'application/json'}
-        return self.app.post(handler, data=json.dumps(raw_dict), headers=json_header)
+        return self.app.post(handler, data=json.dumps(raw_dict), headers=self.json_header)
 
     def json_get(self, handler, raw_dict):
-        json_header = {'Content-Type' : 'application/json'}
-        return self.app.get(handler, data=json.dumps(raw_dict), headers=json_header)
+        return self.app.get(handler, data=json.dumps(raw_dict), headers=self.json_header)
+
+    def json_delete(self, handler, raw_dict):
+        return self.app.delete(handler, data=json.dumps(raw_dict), headers=self.json_header)
 
     '''
     db.users
@@ -406,6 +407,33 @@ class PlanItTestCase(unittest.TestCase):
 
         rv = self.json_get('/getItineraryFromId/alex', {'uid': uid})
         assert uid in str(rv.data)
+
+    def test_deleteItinerary(self):
+        """Test removal of itinerary data from uid"""
+        date = {'date': '2015-08-21T00:00:00.000Z'}
+        # Create sample itinerary for alex for the event day
+        self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date = date['date']
+                ))
+
+        uid = str('alex_' + date['date'])
+        invuid = '00000000000000000000000'
+
+        rv = self.json_delete('/deleteItinerary/bbbb', {'uid': uid})
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_delete('/deleteItinerary/alex', {'uid': invuid})
+        assert 'Itinerary not found' in str(rv.data)
+
+        rv = self.json_get('/getItineraryFromId/alex', {'uid': uid})
+        assert uid in str(rv.data)
+
+        rv = self.json_delete('/deleteItinerary/alex', {'uid': uid})
+        assert uid in str(rv.data)
+
+        rv = self.json_get('/getItineraryFromId/alex', {'uid': uid})
+        assert 'Itinerary not found' in str(rv.data)
 
     @unittest.skipIf(os.environ.get('YELP_CONSUMER_KEY') is None,
                      "Please get Yelp secret keys from Bugrahan")

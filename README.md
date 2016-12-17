@@ -10,6 +10,10 @@ Run from root '/'
 [sudo] pip install virtualenv
 web/local
 ```
+Only fire up the servers for manual API calls to localhost
+```bash
+web/local r
+```
 
 ## Guidelines
 <!-- TOC START min:2 max:5 link:true update:true -->
