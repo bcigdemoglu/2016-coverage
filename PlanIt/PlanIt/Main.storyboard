@@ -61,7 +61,7 @@
                                 <connections>
                                     <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
-                                    <segue destination="SNh-eS-7mD" kind="presentation" id="lPD-mw-VFV"/>
+                                    <segue destination="SNh-eS-7mD" kind="presentation" identifier="showCalendarSegue" id="lPD-mw-VFV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -191,7 +191,7 @@
         <!--Navigation Controller-->
         <scene sceneID="1qT-HL-NX8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1H5-Xi-yTD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ItineraryTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="1H5-Xi-yTD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DzX-2u-Sj1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -451,7 +451,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="uat-je-ac7">
             <objects>
-                <viewController id="WaV-0I-OMP" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SWRevealViewController" id="WaV-0I-OMP" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UBi-f4-caC"/>
                         <viewControllerLayoutGuide type="bottom" id="BC0-Yt-bWd"/>

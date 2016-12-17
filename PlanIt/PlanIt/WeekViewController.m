@@ -12,6 +12,7 @@
 
 @implementation WeekViewController
 
+@synthesize centerDate;
 @dynamic delegate;
 
 #pragma mark - UIViewController

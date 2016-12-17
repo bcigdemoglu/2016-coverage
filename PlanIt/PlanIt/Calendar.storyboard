@@ -53,6 +53,7 @@
                         <barButtonItem key="rightBarButtonItem" title="X" id="PXg-Kw-8sZ">
                             <connections>
                                 <action selector="nextPage:" destination="2hR-lJ-uEz" id="6X8-LZ-mEo"/>
+                                <segue destination="vE0-SO-0oV" kind="presentation" modalTransitionStyle="crossDissolve" id="MOT-H4-aVs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,6 +72,14 @@
                 </label>
             </objects>
             <point key="canvasLocation" x="495" y="-1560"/>
+        </scene>
+        <!--SWRevealViewController-->
+        <scene sceneID="Ege-Ff-0h7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SWRevealViewController" id="vE0-SO-0oV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gZP-SB-cQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="-1690"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WxE-et-L5N">

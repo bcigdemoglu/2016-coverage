@@ -23,14 +23,11 @@ class ItineraryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        
 
         loadRealItineraries()
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
-        
     
         
  /**       if revealViewController() != nil {
@@ -165,13 +162,14 @@ class ItineraryTableViewController: UITableViewController {
         print("INTO PREPAREFORSEGUE")
         if (segue.identifier == "showCalendarSegue") {
             //let destination = segue.destination as? CalendarViewController
-            let destination = (segue.destination as! UINavigationController).topViewController as! CalendarViewController
+            let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
+            //let destination = segue.destination as! MainViewController
             let row = tableView.indexPathForSelectedRow?.row
             //let row = (sender as! IndexPath).row;
-        
+            
             let iten = itineraries[row!]
-            destination.calendarName = iten.name
-            destination.date = iten.date
+            //destination.calendarName = iten.name
+            destination.calDate = iten.date as Date!
             print("iten.name is", iten.name)
         }
     }

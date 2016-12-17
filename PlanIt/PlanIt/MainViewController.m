@@ -25,10 +25,13 @@ typedef enum : NSUInteger
 
 @interface MainViewController ()<WeekViewControllerDelegate, DayViewControllerDelegate>
 
+
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic) EKCalendarChooser *calendarChooser;
 @property (nonatomic) BOOL firstTimeAppears;
-@property (nonatomic, strong) NSDate *date;
+//@property (nonatomic, strong) NSDate* date;
+
+
 
 @property (nonatomic) DayViewController *dayViewController;
 @property (nonatomic) WeekViewController *weekViewController;
@@ -39,6 +42,9 @@ typedef enum : NSUInteger
 
 
 @implementation MainViewController
+
+@synthesize calDate;
+
 
 #pragma mark - UIViewController
 
@@ -51,7 +57,7 @@ typedef enum : NSUInteger
 }
 
 - (void)viewDidLoad
-{
+ {
     [super viewDidLoad];
     
     NSString *calID = [[NSUserDefaults standardUserDefaults]stringForKey:@"calendarIdentifier"];
@@ -90,11 +96,12 @@ typedef enum : NSUInteger
     [super viewDidAppear:animated];
     
     if (self.firstTimeAppears) {
-        NSDate *date = [self.calendar mgc_startOfWeekForDate:[NSDate date]];
-        [self.calendarViewController moveToDate:date animated:NO];
+        //NSDate *date = [self.calendar mgc_startOfWeekForDate:[NSDate date]];
+        NSDate *date = self.calDate;
+        [self.calendarViewController moveToDate:self.calDate animated:NO];
         self.firstTimeAppears = NO;
     }
-    [self.calendarViewController moveToDate:[NSDate date] animated:YES];
+    [self.calendarViewController moveToDate:[self calDate] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,10 +125,10 @@ typedef enum : NSUInteger
 //        settingsViewController.monthPlannerView = monthController.monthPlannerView;
 //    }
     
-    BOOL doneButton = (self.traitCollection.verticalSizeClass != UIUserInterfaceSizeClassRegular || self.traitCollection.horizontalSizeClass != UIUserInterfaceSizeClassRegular);
-    if (doneButton) {
-        nc.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettings:)];
-    }
+//    BOOL doneButton = (self.traitCollection.verticalSizeClass != UIUserInterfaceSizeClassRegular || self.traitCollection.horizontalSizeClass != UIUserInterfaceSizeClassRegular);
+//    if (doneButton) {
+//        nc.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettings:)];
+//    }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -153,6 +160,7 @@ typedef enum : NSUInteger
 {
     if (_weekViewController == nil) {
         _weekViewController = [[WeekViewController alloc]initWithEventStore:self.eventStore];
+        _weekViewController.centerDate = self.calDate;
         _weekViewController.calendar = self.calendar;
         _weekViewController.delegate = self;
     }
@@ -203,7 +211,7 @@ typedef enum : NSUInteger
          [self.calendarViewController removeFromParentViewController];
          [newController didMoveToParentViewController:self];
          self.calendarViewController = newController;
-         [newController moveToDate:date animated:NO];
+         [newController moveToDate:calDate animated:NO];
          newController.view.hidden = NO;
      }];
 }
@@ -216,7 +224,7 @@ typedef enum : NSUInteger
     
     NSDate *date = [self.calendarViewController centerDate];
     CalendarViewController *controller = [self controllerForViewType:sender.selectedSegmentIndex];
-    [self moveToNewController:controller atDate:date];
+    [self moveToNewController:controller atDate:self.calDate];
     
     
     //if ([controller isKindOfClass:WeekViewController.class]) {
@@ -226,7 +234,7 @@ typedef enum : NSUInteger
 
 - (IBAction)showToday:(id)sender
 {
-    [self.calendarViewController moveToDate:[NSDate date] animated:YES];
+    [self.calendarViewController moveToDate:[self calDate] animated:YES];
 }
 
 - (IBAction)nextPage:(id)sender
@@ -305,7 +313,7 @@ typedef enum : NSUInteger
 //    else
         [self.dateFormatter setDateFormat:@"MMMM yyyy"];
     
-    NSString *str = [self.dateFormatter stringFromDate:date];
+    NSString *str = [self.dateFormatter stringFromDate:calDate];
     self.currentDateLabel.text = str;
     [self.currentDateLabel sizeToFit];
 }

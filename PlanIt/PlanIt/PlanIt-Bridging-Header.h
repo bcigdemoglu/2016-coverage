@@ -4,6 +4,7 @@
 
 #import "SWRevealViewController.h"
 
+#import "MainViewController.h"
 //hi
 
 //
@@ -32,11 +33,10 @@
 //#import "MGCYearCalendarView.h"
 //
 //
-//#import "YearViewController.h"
-//#import "MonthViewController.h"
-//#import "WeekViewController.h"
-//
-//#import "MainViewController.h"
-//#import "AppDelegate.h"
-//#import "WeekViewController.h"
-//#import "DayViewController.h"
+
+#import "WeekViewController.h"
+
+
+#import "AppDelegate.h"
+#import "WeekViewController.h"
+#import "DayViewController.h"
