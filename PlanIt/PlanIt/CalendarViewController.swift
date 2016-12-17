@@ -25,7 +25,7 @@ class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         calendarNameLabel.text = calendarName
         print("caledarName:")
-        print(calendarName)
+        print(date)
     }
 
     override func didReceiveMemoryWarning() {

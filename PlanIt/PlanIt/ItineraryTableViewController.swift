@@ -135,6 +135,10 @@ class ItineraryTableViewController: UITableViewController {
         return cell
     }
     
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.performSegue(withIdentifier: "showCalendarSegue", sender: indexPath)
+//    }
+    
     @IBAction func unwindToItineraryList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? DateViewController, let itinerary = sourceViewController.itinerary {
             
@@ -155,45 +159,23 @@ class ItineraryTableViewController: UITableViewController {
     }
     
     
-    let calendarSegueIdentifier = "ShowCalendarSegue"
-    
     // MARK: - Navigation
     //Segue to the calendar view from each itinerary
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("INTO PREPAREFORSEGUE")
-        if  segue.identifier == calendarSegueIdentifier,
-            let destination = segue.destination as? CalendarViewController,
-            let calendarIndex = tableView.indexPathForSelectedRow?.row
-        {
-            let iten = itineraries[calendarIndex]
-//            destination.calendarName = iten.name
+        if (segue.identifier == "showCalendarSegue") {
+            //let destination = segue.destination as? CalendarViewController
+            let destination = (segue.destination as! UINavigationController).topViewController as! CalendarViewController
+            let row = tableView.indexPathForSelectedRow?.row
+            //let row = (sender as! IndexPath).row;
+        
+            let iten = itineraries[row!]
+            destination.calendarName = iten.name
+            destination.date = iten.date
             print("iten.name is", iten.name)
-            print(calendarIndex)
         }
     }
-
-    //Test if this works 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Find the selected cell in the usual way
-        var cell = self.tableView.cellForRow(at: indexPath as IndexPath)!
-        // Check if this is the cell I want to segue from by using the reuseIdenifier
-        // which I set in the "Identifier" field in Interface Builder
-        // Do my conditional logic - this was the whole point of changing the segue
-        let calendarIndex = tableView.indexPathForSelectedRow?.row
-        let iten = itineraries[calendarIndex!]
-        self.performSegue(withIdentifier: "ShowCalendarSegue", sender: cell)
-        
-            //            destination.calendarName = iten.name
-        print("iten.name is", iten.name)
-        print(calendarIndex)
-        
-    }
     
-    @IBAction func showCalendarView(_ sender: AnyObject) {
-        let calendarIndex = tableView.indexPathForSelectedRow?.row
-        let iten = itineraries[calendarIndex!]
-        self.performSegue(withIdentifier: "showCalendar", sender: iten.name)
-    }
 
         //TO implement later for storage of itineraries
 /**

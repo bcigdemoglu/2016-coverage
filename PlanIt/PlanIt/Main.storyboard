@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Itineraries-->
+        <!--ItineraryTableViewController-->
         <scene sceneID="8pK-Bc-Vj6">
             <objects>
-                <tableViewController id="533-5k-2kJ" customClass="ItineraryTableViewController" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="533-5k-2kJ" userLabel="ItineraryTableViewController" customClass="ItineraryTableViewController" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="70" sectionFooterHeight="28" id="6qE-40-qAe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,6 @@
                                             </state>
                                             <connections>
                                                 <action selector="showCalendarView:" destination="533-5k-2kJ" eventType="touchUpInside" id="wvC-nV-4wL"/>
-                                                <segue destination="hqI-14-Qpm" kind="show" identifier="showCalendar" id="gUE-6I-sWz"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -62,7 +61,7 @@
                                 <connections>
                                     <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
-                                    <segue destination="SNh-eS-7mD" kind="show" identifier="ShowCalendarSegue" id="zvJ-bC-XUg"/>
+                                    <segue destination="SNh-eS-7mD" kind="presentation" id="lPD-mw-VFV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -133,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KsV-g1-iLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4705" y="1576"/>
+            <point key="canvasLocation" x="3913" y="1576"/>
         </scene>
         <!--Choose Date-->
         <scene sceneID="le3-Ma-U11">
@@ -717,7 +716,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfa-W6-18a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3559" y="1576"/>
+            <point key="canvasLocation" x="3374" y="1576"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fx8-L1-Q04">
@@ -780,6 +779,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y2f-BY-ffE"/>
-        <segue reference="uh2-E7-yAC"/>
+        <segue reference="1Qy-a9-yOI"/>
     </inferredMetricsTieBreakers>
 </document>

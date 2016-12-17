@@ -19,7 +19,6 @@ class DateViewController: UIViewController{
      */
     
     var itineraries = [Itinerary]()
-    
     var itinerary: Itinerary?
     
     override func viewDidLoad() {
@@ -45,21 +44,22 @@ class DateViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         //if saveButton === sender {        }
-        
-        
+        _ = segue.destination as! ItineraryTableViewController
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE MMM dd"
         
         let strDate = dateFormatter.string(from: dateField.date)
-        let dateChosen = strDate
+        _ = strDate
        
         let date : NSDate = self.dateField.date as NSDate
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let dateString = dateFormatter.string(from: date as Date)
         //let name = dateChosen ?? ""
+        let userID = User.getUserName()
+        itinerary = Itinerary(name: strDate, date: dateField.date as NSDate, uid: userID!)
         
-        //TODO:  Convert Date chosen into the 
+        //TODO:  Convert Date chosen into the
         postCreateItinerary(userID: User.getUserName()!, itineraryName: strDate, date: dateString) {
             _ in
             
