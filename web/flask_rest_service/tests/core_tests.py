@@ -408,7 +408,7 @@ class PlanItTestCase(unittest.TestCase):
         rv = self.json_get('/getItineraryFromId/alex', {'uid': uid})
         assert uid in str(rv.data)
 
-    def test_DeleteItineraryFromId(self):
+    def test_deleteItinerary(self):
         """Test removal of itinerary data from uid"""
         date = {'date': '2015-08-21T00:00:00.000Z'}
         # Create sample itinerary for alex for the event day
@@ -420,16 +420,16 @@ class PlanItTestCase(unittest.TestCase):
         uid = str('alex_' + date['date'])
         invuid = '00000000000000000000000'
 
-        rv = self.json_delete('/deleteItineraryFromId/bbbb', {'uid': uid})
+        rv = self.json_delete('/deleteItinerary/bbbb', {'uid': uid})
         assert 'Invalid username' in str(rv.data)
 
-        rv = self.json_delete('/deleteItineraryFromId/alex', {'uid': invuid})
+        rv = self.json_delete('/deleteItinerary/alex', {'uid': invuid})
         assert 'Itinerary not found' in str(rv.data)
 
         rv = self.json_get('/getItineraryFromId/alex', {'uid': uid})
         assert uid in str(rv.data)
 
-        rv = self.json_delete('/deleteItineraryFromId/alex', {'uid': uid})
+        rv = self.json_delete('/deleteItinerary/alex', {'uid': uid})
         assert uid in str(rv.data)
 
         rv = self.json_get('/getItineraryFromId/alex', {'uid': uid})

@@ -7,7 +7,7 @@
 - [Get Event from ID](#get-event-from-id)
 - [Get Events For Itinerary](#get-events-for-itinerary)
 - [Get Itinerary from ID](#get-itinerary-from-id)
-- [Delete Itinerary from ID](#delete-itinerary-from-id)
+- [Delete Itinerary](#delete-itinerary)
 - [Get Itinerary List](#get-itinerary-list)
 - [Yelp Integration](#yelp-integration)
     - [API Website](#api-websitehttpsgithubcomyelpyelp-python)
@@ -276,13 +276,13 @@
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{ error : "Itinerary not found" }`
 
-# Delete Itinerary from ID
+# Delete Itinerary
 ----
   Deletes itinerary object data if the user created the itinerary.
 
 * **URL**
 
-  /deleteItineraryFromId/\<username\>
+  /deleteItinerary/\<username\>
 
 * **Method:**
 

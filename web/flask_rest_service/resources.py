@@ -186,7 +186,7 @@ class GetEventFromId(restful.Resource):
 
         return event, 200
 
-class DeleteItineraryFromId(restful.Resource):
+class DeleteItinerary(restful.Resource):
     '''
         uid -> itinerary uid
     '''
@@ -287,5 +287,5 @@ api.add_resource(InviteToEvent, '/inviteToEvent/<username>')
 api.add_resource(GetEventsForItinerary, '/getEventsForItinerary/<username>')
 api.add_resource(GetEventFromId, '/getEventFromId/<username>')
 api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
-api.add_resource(DeleteItineraryFromId, '/deleteItineraryFromId/<username>')
+api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
