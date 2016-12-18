@@ -1195,6 +1195,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 				[self endInteraction];
 			}
 			else if (date && [self.dataSource respondsToSelector:@selector(dayPlannerView:createNewEventOfType:atDate:)]) {
+                //Put in new controller here 
 				[self.dataSource dayPlannerView:self createNewEventOfType:self.interactiveCellType atDate:date];
 			}
 		}
@@ -1208,6 +1209,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	}
 }
 
+//Add the blue New Event box to the UI
 - (BOOL)beginCreateEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
 	NSAssert([self.visibleDays containsDate:date], @"beginCreateEventOfType:atDate for non visible date");

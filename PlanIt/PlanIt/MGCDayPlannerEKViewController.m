@@ -98,6 +98,77 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     }
 }
 
+//TRying to add buttons to the Edit View Controller
+#pragma mark - Cancel/Done Events
+-(void)suggestedLocationsTapped:(UIButton*)eventSender
+{
+    NSLog(@"left Click");
+//    UIViewController * vc = [[UIViewController alloc] init];
+//    [self presentViewController:vc animated:YES completion:nil];
+//    
+//    NSString * storyboardName = @"MainStoryboard";
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+//   // UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"IDENTIFIER_OF_YOUR_VIEWCONTROLLER"];
+//    [self presentViewController:vc animated:YES completion:nil];
+//    
+//    UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerInfo"];
+//    [self.navigationController pushViewController:infoController animated:YES];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.dayPlannerView endInteraction];
+    self.createdEventDate = nil;
+    
+}
+-(void)doneDidTapped:(UIBarButtonItem*)eventSender
+{
+    NSLog(@"right Click");
+    [self dismissViewControllerAnimated:TRUE completion:nil];
+}
+#pragma mark - Extra
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    if ([viewController isKindOfClass:[UITableViewController class]]) {
+        UITableView *tableView = ((UITableViewController *)viewController).tableView;
+        
+        for (NSInteger j = 0; j < [tableView numberOfSections]; ++j){
+            for (NSInteger i = 0; i < [tableView numberOfRowsInSection:j]; ++i)
+            {
+                UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]];
+                
+                NSLog(@"cell => %@, row => %d, section => %d", cell.textLabel.text, i, j);
+                
+                if(j == 4) {
+                    [cell removeFromSuperview];
+
+                }else if((i == 1 && j == 0) || j == 4){
+
+                    UIButton *suggestedLocations = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+
+                    CGFloat width = cell.frame.size.width;
+                    CGFloat height = cell.frame.size.height;
+                    CGFloat x = cell.frame.origin.x;
+                    suggestedLocations.frame = CGRectMake(x, 4.7f, width, height);
+                    suggestedLocations.backgroundColor = [UIColor redColor];
+                    [suggestedLocations addTarget:self action:@selector(suggestedLocationsTapped:) forControlEvents:UIControlEventTouchUpInside];
+                    [suggestedLocations setTitle:@"Suggested Loc" forState:UIControlStateNormal];
+                    [cell addSubview:suggestedLocations];
+                }
+            }
+        }
+    }
+    
+   // [viewController.navigationItem setLeftBarButtonItem:nil animated:NO];
+    
+//    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc]initWithTitle:[@"cancel" uppercaseString] style:UIBarButtonItemStylePlain target:self action:@selector(cancelDidTapped:)];
+ //   [viewController.navigationItem setRightBarButtonItem:btnCancel];
+    
+   // [viewController.navigationItem setTitle:@"Testing"];
+    
+}
+
+
+
+//Edit controller for New events here!!!
 - (void)showPopoverForNewEvent:(EKEvent*)ev
 {
     EKEventEditViewController *eventController = [EKEventEditViewController new];
@@ -107,6 +178,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     eventController.modalInPopover = YES;
     eventController.modalPresentationStyle = UIModalPresentationPopover;
     eventController.presentationController.delegate = self;
+    eventController.delegate = self;
     
     [self showDetailViewController:eventController sender:self];
     
@@ -470,17 +542,17 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 #pragma mark - UIPopoverPresentationControllerDelegate
 
-//- (UIViewController*)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style
-//{
-//    if ([controller.presentedViewController isKindOfClass:EKEventEditViewController.class]) {
-//        return controller.presentedViewController;
-//    }
-//    else {
-//        UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:controller.presentedViewController];
-//        nc.delegate = self;
-//        return nc;
-//    }
-//}
+- (UIViewController*)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style
+{
+    if ([controller.presentedViewController isKindOfClass:EKEventEditViewController.class]) {
+        return controller.presentedViewController;
+    }
+    else {
+        UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:controller.presentedViewController];
+        nc.delegate = self;
+        return nc;
+    }
+}
 
 
 - (void)popoverPresentationController:(UIPopoverPresentationController *)popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect inView:(inout UIView *__autoreleasing  _Nonnull *)view
