@@ -50,6 +50,8 @@
 		F93D8A8F1E01ABD100559E3D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A8E1E01ABD100559E3D /* Settings.bundle */; };
 		F93D8A911E01AC4200559E3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A901E01AC4200559E3D /* main.m */; };
 		F93D8AA01E01B29600559E3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A9F1E01B29600559E3D /* InfoPlist.strings */; };
+		F943DE821E07393C00F0028A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE811E07393C00F0028A /* LocationSearchTable.swift */; };
+		F943DE841E07423500F0028A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE831E07423500F0028A /* SearchViewController.swift */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
 		F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF091DC920AC00F59D53 /* ViewController.swift */; };
 		F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F944DF0E1DC920AC00F59D53 /* PlanIt.xcdatamodeld */; };
@@ -163,6 +165,8 @@
 		F93D8A901E01AC4200559E3D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F93D8A921E01AC8300559E3D /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
 		F93D8A9F1E01B29600559E3D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		F943DE811E07393C00F0028A /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		F943DE831E07423500F0028A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F944DF041DC920AC00F59D53 /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F944DF071DC920AC00F59D53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F944DF091DC920AC00F59D53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -409,6 +413,8 @@
 				BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */,
 				F944DF3C1DC921EB00F59D53 /* DatePicker.swift */,
 				5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */,
+				F943DE831E07423500F0028A /* SearchViewController.swift */,
+				F943DE811E07393C00F0028A /* LocationSearchTable.swift */,
 				F9BB366F1DFE45BE00868664 /* settings.storyboard */,
 				F9BB36661DFE45BE00868664 /* Calendar.storyboard */,
 				BC08F0591DFB60BA00AFA3DC /* Main.storyboard */,
@@ -778,6 +784,7 @@
 				F93D8A721E00DB2700559E3D /* MGCEventView.m in Sources */,
 				F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */,
 				F93D8A621E00DA8F00559E3D /* MGCDateRange.m in Sources */,
+				F943DE821E07393C00F0028A /* LocationSearchTable.swift in Sources */,
 				5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */,
 				F93D8A7E1E00DB6400559E3D /* MGCAlignedGeometry.m in Sources */,
 				F93D8A561E00D37900559E3D /* MGCCalendarHeaderView.m in Sources */,
@@ -793,6 +800,7 @@
 				F944DF4D1DC9222E00F59D53 /* DateViewController.swift in Sources */,
 				5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */,
 				F93D8A681E00DAD600559E3D /* MGCAllDayEventsViewLayout.m in Sources */,
+				F943DE841E07423500F0028A /* SearchViewController.swift in Sources */,
 				F93D8A591E00D38E00559E3D /* MGCCalendarHeaderCell.m in Sources */,
 				F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */,
 				F93D8A531E00D2E600559E3D /* WeekSettingsViewController.m in Sources */,

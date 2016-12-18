@@ -97,7 +97,6 @@ typedef enum : NSUInteger
     
     if (self.firstTimeAppears) {
         //NSDate *date = [self.calendar mgc_startOfWeekForDate:[NSDate date]];
-        NSDate *date = self.calDate;
         [self.calendarViewController moveToDate:self.calDate animated:NO];
         self.firstTimeAppears = NO;
     }

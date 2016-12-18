@@ -105,18 +105,18 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     NSLog(@"left Click");
 //    UIViewController * vc = [[UIViewController alloc] init];
 //    [self presentViewController:vc animated:YES completion:nil];
-//    
-//    NSString * storyboardName = @"MainStoryboard";
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-//   // UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"IDENTIFIER_OF_YOUR_VIEWCONTROLLER"];
-//    [self presentViewController:vc animated:YES completion:nil];
-//    
-//    UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewControllerInfo"];
+    
+    NSString * storyboardName = @"Calendar";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+//    UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuggestedLocations"];
 //    [self.navigationController pushViewController:infoController animated:YES];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.dayPlannerView endInteraction];
-    self.createdEventDate = nil;
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.dayPlannerView endInteraction];
+//    self.createdEventDate = nil;
     
 }
 -(void)doneDidTapped:(UIBarButtonItem*)eventSender
@@ -172,6 +172,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 - (void)showPopoverForNewEvent:(EKEvent*)ev
 {
     EKEventEditViewController *eventController = [EKEventEditViewController new];
+    EKStructuredLocation* structuredLocation = [EKStructuredLocation locationWithTitle:@"Location"]; // locationWithTitle has the same behavior as event.location
+    CLLocation* location = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
+    structuredLocation.geoLocation = location;
+    
+    [ev setValue:structuredLocation forKey:@"structuredLocation"];
+    //ev.location = structuredLocation;
     eventController.event = ev;
     eventController.eventStore = self.eventStore;
     eventController.editViewDelegate = self; // called only when event is deleted
@@ -410,7 +416,6 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 - (MGCEventView*)dayPlannerView:(MGCDayPlannerView*)view viewForEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date
 {
     EKEvent *ev = [self eventOfType:type atIndex:index date:date];
-    
     MGCStandardEventView *evCell = (MGCStandardEventView*)[view dequeueReusableViewWithIdentifier:EventCellReuseIdentifier forEventOfType:type atIndex:index date:date];
     evCell.font = [UIFont systemFontOfSize:11];
     evCell.title = ev.title;
@@ -479,6 +484,16 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (void)dayPlannerView:(MGCDayPlannerView *)view createNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
+    // CONTROLLER HERE FOR LOCATION TRY THIS
+    // and ADD LOCATION HERE
+    
+    /**
+    NSString * storyboardName = @"Calendar";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
+    [self.navigationController pushViewController:vc animated:YES];
+    **/
+    
     self.createdEventType = type;
     self.createdEventDate = date;
     
@@ -493,6 +508,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
     ev.endDate = [self.calendar dateByAddingComponents:comps toDate:date options:0];
     ev.allDay = (type == MGCAllDayEventType) ? YES : NO;
+    //Add location here
     
     [self showPopoverForNewEvent:ev];
 }
