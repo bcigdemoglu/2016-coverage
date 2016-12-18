@@ -133,8 +133,7 @@ class InviteToEvent(restful.Resource):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
-        event = app.mongo.db.event.find_one({'uid': request.get_json()['uid'],
-                                             'acceptedBy': username})
+        event = findEvent(username)
 
         if not event:
             return {"error": "Invalid event id"}, 400
@@ -178,11 +177,32 @@ class GetEventFromId(restful.Resource):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
-        event = app.mongo.db.event.find_one({'uid': request.get_json()['uid'],
-                                             'acceptedBy': username})
+
+        event = findEvent(username)
 
         if not event:
             return {"error": "Event not found"}, 400
+
+        return event, 200
+
+class UpdateEvent(restful.Resource):
+    '''
+        uid -> event uid
+    '''
+    def post(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        event = findEvent(username)
+
+        if not event:
+            return {"error": "Event not found"}, 400
+
+        #Only alter yelpId:
+        if request.get_json().get('yelpId'):
+            event["yelpId"] = request.get_json()['yelpId']
+
+        app.mongo.db.event.update({'uid': event['uid']}, event)
 
         return event, 200
 
@@ -275,6 +295,10 @@ class PopulateItineraries(restful.Resource):
     def get(self):
         return self.post()
 
+def findEvent(username):
+    return app.mongo.db.event.find_one({'uid': request.get_json()['uid'],
+                                        'acceptedBy': username})
+
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
 api.add_resource(Root, '/')
@@ -286,6 +310,7 @@ api.add_resource(CreateEvent, '/createEvent/<username>')
 api.add_resource(InviteToEvent, '/inviteToEvent/<username>')
 api.add_resource(GetEventsForItinerary, '/getEventsForItinerary/<username>')
 api.add_resource(GetEventFromId, '/getEventFromId/<username>')
+api.add_resource(UpdateEvent, '/updateEvent/<username>')
 api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')

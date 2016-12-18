@@ -387,6 +387,38 @@ class PlanItTestCase(unittest.TestCase):
             assert e['start'] in str(rv.data)
             assert e['end'] in str(rv.data)
 
+    def test_updateEvent(self):
+        """Test retrieval of event data from uid"""
+        date = {'date': '2015-08-21T00:00:00.000Z'}
+        event = dict(start = '2015-08-21T01:23:00.000Z',
+                     end = '2015-08-21T01:25:00.000Z',
+                     date = '2015-08-21T00:00:00.000Z')
+
+        # Create sample itinerary for alex for the event day
+        self.json_post('/createItinerary/alex', dict(
+                name = 'New Day',
+                date = date['date']
+                ))
+
+        uid = str('alex_' + event['start'] + event['end'])
+        invuid = '00000000000000000000000'
+
+        rv = self.json_post('/createEvent/alex', event)
+        assert uid in str(rv.data)
+
+        rv = self.json_post('/updateEvent/bbbb', {'uid': uid})
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_post('/updateEvent/alex', {'uid': invuid})
+        assert 'Event not found' in str(rv.data)
+
+        rv = self.json_post('/updateEvent/alex', {'uid': uid,
+                                                  'yelpId': '12344321'})
+        assert '12344321' in str(rv.data)
+
+        rv = self.json_get('/getEventFromId/alex', {'uid': invuid})
+        assert 'Event not found' in str(rv.data)
+
     def test_getItineraryFromId(self):
         """Test retrieval of itinerary data from uid"""
         date = {'date': '2015-08-21T00:00:00.000Z'}
