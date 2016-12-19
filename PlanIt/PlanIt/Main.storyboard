@@ -804,7 +804,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="177-d4-jML" id="05e-yS-ceK"/>
-                                    <segue destination="egq-3U-YI7" kind="presentation" identifier="showRatingsSegue" id="EET-1O-PVR"/>
+                                    <segue destination="egq-3U-YI7" kind="custom" identifier="showRatingsSegue" customClass="SWRevealViewControllerSeguePushController" id="8Md-IV-jne"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -850,16 +850,34 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNX-Hz-osX">
+                                <frame key="frameInset" minX="130" minY="372" width="114" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSaveButtonTapped:" destination="PPg-97-YYx" eventType="touchUpInside" id="fth-lT-9zF"/>
+                                    <segue destination="giA-G4-bYg" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="4ic-tY-AyE"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="69F-k9-E4V">
+                                <frame key="frameInset" minY="117" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.42533339780000001" green="0.49288786179999999" blue="0.58077639250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="MdO-xH-0KJ"/>
                     <connections>
                         <outlet property="locationName" destination="FBO-Ez-FoN" id="Icd-2L-kyw"/>
+                        <outlet property="ratingPicker" destination="69F-k9-E4V" id="44n-Ug-UwS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAO-N2-esu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8354.3999999999996" y="-570.76461769115451"/>
+            <point key="canvasLocation" x="8569" y="-525"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="crA-ED-Esr">
@@ -923,5 +941,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="BUr-7N-9BG"/>
         <segue reference="uh2-E7-yAC"/>
+        <segue reference="4ic-tY-AyE"/>
     </inferredMetricsTieBreakers>
 </document>
