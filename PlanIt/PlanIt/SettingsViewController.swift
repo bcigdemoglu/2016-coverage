@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Class Description: View Controller for the personal settings page
 class SettingsViewController: UIViewController {
     
     @IBOutlet var nameText: UITextField!
@@ -19,10 +20,13 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         //Alex: get real user info here
-        nameText.text = "Amy"
-        emailText.text = "amy@gmail.com"
-        passwordText.text = "amy"
         
+        //Sets up to User's saved settings
+        nameText.text = User.getDisplayName()
+        emailText.text = User.getUserName()
+        passwordText.text = User.getUserPassword()
+        
+        //Sets up Navigation side bar
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -30,6 +34,7 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    //Networks the changes to the user's saved personal settings
     @IBAction func onSaveButtonTapped(_ sender: AnyObject) {
         
         let userName = nameText.text;
@@ -45,9 +50,22 @@ class SettingsViewController: UIViewController {
             displayAlertMessage(myMessage:"Not a valid email");
             return;
         }
-        
-        //Alex: change user info here
-        
+        if (userName != User.getDisplayName()) {
+            sendChangeDisplayName(newDisplayName: userName!) {
+                str in
+                if str != nil {
+                    self.displayAlertMessage(myMessage: str!)
+                }
+            }
+        }
+        if(userPassword != User.getUserPassword()) {
+            sendChangePassword(newPassword: userPassword!) {
+                str in
+                if str != nil {
+                    self.displayAlertMessage(myMessage: str!)
+                }
+            }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,6 +80,7 @@ class SettingsViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //Function to check email is in appropriate format
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Class Description: Controller that connects a specific Itinerary Cell
 class ItineraryTableViewCell: UITableViewCell {
     
     // MARK: Properties 

@@ -14,7 +14,7 @@
 @implementation DayViewController
 
 @dynamic delegate;
-
+@dynamic centerDate;
 #pragma mark - UIViewController
 
 - (void)viewDidLoad

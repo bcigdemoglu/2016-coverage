@@ -8,6 +8,8 @@
 
 import UIKit
 
+//Class Description: Parent class for all the view controllers of this project
+
 class ViewController: UIViewController {
     
     
