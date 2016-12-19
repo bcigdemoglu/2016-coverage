@@ -176,6 +176,10 @@ class ItineraryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            deleteItinerary(itineraryID: itineraries[indexPath.row].uid) {
+                response in
+                return
+            }
             itineraries.remove(at: indexPath.row)
             //Alex: LOOK OVER HERE
             tableView.deleteRows(at: [indexPath], with: .fade)
