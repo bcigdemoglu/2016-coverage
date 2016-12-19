@@ -13,6 +13,7 @@
 #import "MGCDateRange.h"
 #import "OSCache.h"
 #import "MGCEventKitSupport.h"
+#import "PlanIt-Swift.h"
 
 
 typedef enum {
@@ -35,12 +36,17 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 @property (nonatomic) NSUInteger createdEventType;
 @property (nonatomic, copy) NSDate *createdEventDate;
 
+@property (nonatomic) EKEvent* event;
+@property (nonatomic) EKEventEditViewController* vcEdit;
+
 @end
 
 
 @implementation MGCDayPlannerEKViewController
 
 @synthesize calendar = _calendar;
+@synthesize event;
+@synthesize vcEdit;
 
 - (instancetype)initWithEventStore:(EKEventStore*)eventStore
 {
@@ -103,27 +109,102 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 -(void)suggestedLocationsTapped:(UIButton*)eventSender
 {
     NSLog(@"left Click");
-//    UIViewController * vc = [[UIViewController alloc] init];
-//    [self presentViewController:vc animated:YES completion:nil];
+     NSString * storyboardName = @"Calendar";
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController *sug =[[UIViewController alloc] init];
+    sug = (UIViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TEST"];
+    [self displayContentController:sug];
+}
+
+
+
+-(void)aTapped:(UIButton*)eventSender
+{
+    NSLog(@"left Click");
+        UIStoryboard *sb =  [UIStoryboard storyboardWithName:@"Calendar" bundle:NULL];
+        UIViewController *Vc = [sb instantiateViewControllerWithIdentifier:@"TEST"];
+    
+    
+        //Vc.view.frame =CGRectMake(0, 0,  self.view.frame.size.width,self.view.frame.size.height);
+//    UIViewController* presentingViewController = self.presentingViewController;
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        [presentingViewController presentViewController:Vc animated:YES completion:nil];
+//        
+//    }];
+    
+    
+    LocationSearchTable *search = [sb instantiateViewControllerWithIdentifier:@"TEST"];
+    search.event = self.event;
+    search.vcEdit = self.vcEdit;
+    search.mgcView = self;
+    search.mgc = self.delegate;
+
+    
+    //[[LocationSearchTable alloc] init];
+    [self.navigationController pushViewController:search animated:YES];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+   // [self showPopoverForNewEvent:event];
+    [self.dayPlannerView endInteraction];
+    self.createdEventDate = nil;
+    
+//    [self.dayPlannerView deselectEvent];
+//    if (self.navigationController.presentingViewController) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    } else {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+
+    
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    //[self.delegate signupViewControllerDidCancel:self];
+   // [self showDetailViewController:Vc sender:nil];
+     //   [self.containerView addSubview:Vc.view];
+
+      //  [self addChildViewController:Vc];
+
+     //   [self.view addSubview:Vc.view];
+     //   [self addChildViewController:Vc];
+    //
+    //self.view.hidden = TRUE;
+     //   [Vc didMoveToParentViewController:self];
+    
+       // [self showDetailViewController:Vc sender:self];
+}
+
+-(void)bTapped:(UIButton*)eventSender
+{
+    NSLog(@"left Click");
+
+    UIViewController *test = [self.storyboard instantiateViewControllerWithIdentifier:@"TEST"];
+    test.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:test.view];
+    [test didMoveToParentViewController:self];
+    
     
     NSString * storyboardName = @"Calendar";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-//    UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuggestedLocations"];
-//    [self.navigationController pushViewController:infoController animated:YES];
-    
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.dayPlannerView endInteraction];
-//    self.createdEventDate = nil;
+
+        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
+        [self displayContentController:vc];
+ //       [self.navigationController displayViewController:vc animated:YES];
+        vc.view.hidden = YES;
+      //  [self.navigationController.topViewController.view addSubview:vc.view];
+       // [self displayContentController:vc];
     
 }
--(void)doneDidTapped:(UIBarButtonItem*)eventSender
+
+- (void) displayContentController: (UIViewController*) controller;
 {
-    NSLog(@"right Click");
-    [self dismissViewControllerAnimated:TRUE completion:nil];
+    [self addChildViewController:controller];
+    [self.view addSubview:controller.view];
+    //[self.containerView addSubview:controller.view];
+    //controller.view.frame = self.view.frame;
+    [controller didMoveToParentViewController:self];
+    //[self.view bringSubviewToFront:self.childViewControllers[0].view];
+    
 }
+
 #pragma mark - Extra
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
@@ -137,47 +218,41 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
                 
                 NSLog(@"cell => %@, row => %d, section => %d", cell.textLabel.text, i, j);
                 
-                if(j == 4) {
-                    [cell removeFromSuperview];
-
-                }else if((i == 1 && j == 0) || j == 4){
-
-                    UIButton *suggestedLocations = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-
+                if(j == 1 && i == 0) {
+                  //  [cell removeFromSuperview];
+                    UIButton *a = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                     CGFloat width = cell.frame.size.width;
                     CGFloat height = cell.frame.size.height;
                     CGFloat x = cell.frame.origin.x;
-                    suggestedLocations.frame = CGRectMake(x, 4.7f, width, height);
-                    suggestedLocations.backgroundColor = [UIColor redColor];
-                    [suggestedLocations addTarget:self action:@selector(suggestedLocationsTapped:) forControlEvents:UIControlEventTouchUpInside];
-                    [suggestedLocations setTitle:@"Suggested Loc" forState:UIControlStateNormal];
-                    [cell addSubview:suggestedLocations];
+                    //CGFloat y = cell.frame.origin.y;
+                    a.frame = CGRectMake(x, 4.5f, width, height);
+                    a.backgroundColor = [UIColor whiteColor];
+                    [a addTarget:self action:@selector(aTapped:) forControlEvents:UIControlEventTouchUpInside];
+                    [a setTitle:@"See Suggestions" forState:UIControlStateNormal];
+                    [cell addSubview:a];
+                    
+                    UISwitch *switchBtn = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 20, 10)];
+                    cell.accessoryView = switchBtn;
+                    switchBtn.backgroundColor = [UIColor whiteColor];
+                    [switchBtn addTarget:self action:@selector(aTapped:) forControlEvents:UIControlEventValueChanged];
+                    cell.textLabel.font = [UIFont systemFontOfSize:14];
+                   
+
+                }else if (i == 4 && j == 1) {
+
                 }
             }
         }
-    }
-    
-   // [viewController.navigationItem setLeftBarButtonItem:nil animated:NO];
-    
-//    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc]initWithTitle:[@"cancel" uppercaseString] style:UIBarButtonItemStylePlain target:self action:@selector(cancelDidTapped:)];
- //   [viewController.navigationItem setRightBarButtonItem:btnCancel];
-    
-   // [viewController.navigationItem setTitle:@"Testing"];
-    
-}
 
+    }
+}
 
 
 //Edit controller for New events here!!!
 - (void)showPopoverForNewEvent:(EKEvent*)ev
 {
+
     EKEventEditViewController *eventController = [EKEventEditViewController new];
-    EKStructuredLocation* structuredLocation = [EKStructuredLocation locationWithTitle:@"Location"]; // locationWithTitle has the same behavior as event.location
-    CLLocation* location = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
-    structuredLocation.geoLocation = location;
-    
-    [ev setValue:structuredLocation forKey:@"structuredLocation"];
-    //ev.location = structuredLocation;
     eventController.event = ev;
     eventController.eventStore = self.eventStore;
     eventController.editViewDelegate = self; // called only when event is deleted
@@ -185,6 +260,9 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     eventController.modalPresentationStyle = UIModalPresentationPopover;
     eventController.presentationController.delegate = self;
     eventController.delegate = self;
+
+    self.event = ev;
+    self.vcEdit = eventController;
     
     [self showDetailViewController:eventController sender:self];
     
@@ -487,13 +565,6 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     // CONTROLLER HERE FOR LOCATION TRY THIS
     // and ADD LOCATION HERE
     
-    /**
-    NSString * storyboardName = @"Calendar";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
-    [self.navigationController pushViewController:vc animated:YES];
-    **/
-    
     self.createdEventType = type;
     self.createdEventDate = date;
     
@@ -539,6 +610,8 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
 {
+
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.dayPlannerView endInteraction];
     self.createdEventDate = nil;

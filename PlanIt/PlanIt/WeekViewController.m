@@ -35,6 +35,28 @@
         self.dayPlannerView.dateFormat = @"eee\nd \nMMM";
         self.dayPlannerView.dayHeaderHeight = 60;
     }
+    
+//    NSString * storyboardName = @"Calendar";
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+//    
+//    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
+  //  [self.navigationController pushViewController:vc animated:YES];
+    
+  //  [self addChildViewController:vc];
+ //   [self.view addSubview:vc.view];
+    //[vc didMoveToParentViewController:self];
+
+
+}
+
+- (void) displayContentController: (UIViewController*) controller;
+{
+    [self addChildViewController:controller];
+    [self.containerView addSubview:controller.view];
+    controller.view.frame = self.containerView.bounds;
+    [controller didMoveToParentViewController:self];
+    // [self.view bringSubviewToFront:self.childViewControllers[0]];
+    
 }
 
 #pragma mark - MGCDayPlannerViewController

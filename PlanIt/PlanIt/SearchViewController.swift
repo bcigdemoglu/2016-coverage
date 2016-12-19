@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     var selectedPin: MKPlacemark?
     var resultSearchController: UISearchController!
     
-    let locationManager = CLLocationManager()
+   // let locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -27,12 +27,12 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         //locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestLocation()
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-        resultSearchController.searchResultsUpdater = locationSearchTable
+        //resultSearchController.searchResultsUpdater = locationSearchTable
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
