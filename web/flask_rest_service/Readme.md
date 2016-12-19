@@ -155,6 +155,33 @@
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{ error : "User is not invited" }`
 
+# Update Event
+----
+  Updates the event with the Yelp location ID.
+
+* **URL**
+
+  /updateEvent/\<username\>
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+    ```javascript
+    { "uid": event_uid,
+      "yelpId": yelpId}
+    ```
+
+* **Success Response Code:** 200 OK  
+    **Content:** See [Event Object](#event-object)
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Event not found" }`
+
 # Invite to Event
 ----
   Invites another user to an event.
@@ -180,7 +207,7 @@
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "Invalid event id" }`
+    **Content:** `{ error : "Event not found" }`
 
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{ error : "Shared user does not exist" }`

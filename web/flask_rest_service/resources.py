@@ -136,7 +136,7 @@ class InviteToEvent(restful.Resource):
         event = findEvent(username)
 
         if not event:
-            return {"error": "Invalid event id"}, 400
+            return {"error": "Event not found"}, 400
 
         sharedUser = request.get_json()['invited']
 
