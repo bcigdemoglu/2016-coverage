@@ -3,7 +3,9 @@ python:
   - "2.7"
 # - "3.5"
 # command to install dependencies
-install: "pip install -r web/requirements.txt"
+install:
+  - "pip install scipy"
+  - "pip install -r web/requirements.txt"
 services:
   - mongodb
 # command to run tests
