@@ -8,6 +8,8 @@
 
 import UIKit
 
+//Class Description: Controller for the Navigational Elements of the sidebar
+
 class NavigationTableViewController: UITableViewController {
         
     override func viewDidLoad() {

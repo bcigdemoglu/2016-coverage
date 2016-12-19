@@ -8,6 +8,9 @@
 
 import UIKit
 
+//Class Description: View Controller for the calendar view -- the view an itinerary directly leads to 
+//in order to see the 24-hr timeline 
+
 class CalendarViewController: UIViewController {
     
     var date:NSDate?

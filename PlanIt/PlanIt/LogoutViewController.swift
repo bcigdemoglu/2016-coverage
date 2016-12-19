@@ -8,11 +8,14 @@
 
 import UIKit
 
+//Class Description: Controller for the Logout page
 class LogoutViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Sets up Navigation side bar
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

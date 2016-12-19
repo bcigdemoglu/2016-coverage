@@ -8,6 +8,8 @@
 
 import UIKit
 
+//Class Description: Controller for the register page
+
 class RegisterPageViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
@@ -26,27 +28,33 @@ class RegisterPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Networks register button to API calls that creates the new user 
+    //Also displays appropriate error alerts
     @IBAction func registerButtonTapped(_ sender: AnyObject) {
         let userName = userNameTextField.text;
         let userEmail = userEmailTextField.text;
         let userPassword = userPasswordTextField.text;
         let repeatPassword = userPasswordRepeatTextField.text;
         
+        //Check whether all fields are filled out
         if (userName == "" || userEmail == "" || userPassword == "" || repeatPassword == "") {
             displayAlertMessage(myMessage:"All fields are required.");
             return;
         }
         
+        //Check whether password and repeat password match
         if (userPassword != repeatPassword) {
             displayAlertMessage(myMessage:"Passwords do not match.");
             return;
         }
         
+        //Checks whether string is in appropriate email format
         if isValidEmail(testStr: userEmail!) == false {
             displayAlertMessage(myMessage:"Not a valid email");
             return;
         }
-        //ALEX: Send registration information to server here. Make sure to check whether the userEmail is already registered. If it is, call displayAlertMessage() with the appropriate error message.
+        
+        //Send registration information to server here. Make sure to check whether the userEmail is already registered. If it is, call displayAlertMessage() with the appropriate error message.
         sendRegisterRequest(username: userEmail!, password: userPassword!, name: userName!) { code in
             switch code {
             case 201:
