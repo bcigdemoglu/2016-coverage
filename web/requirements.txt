@@ -16,6 +16,6 @@ coverage>=4.2
 pylint>=1.6.4
 yelp>=1.0.2
 numpy>=1.11.3
-sklearn>=0.0
 scipy>=0.18.1
+sklearn>=0.0
 requests>=2.12.4
