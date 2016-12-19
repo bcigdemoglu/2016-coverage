@@ -45,7 +45,8 @@ class Register(restful.Resource):
     def post(self):
         user = {"username": request.get_json()['username'],
                 "password": hashpwd(request.get_json()['password']),
-                "name": request.get_json()['name']}
+                "name": request.get_json()['name'],
+                "displayName": request.get_json().get('displayName') or request.get_json()['name']}
 
         if app.mongo.db.users.find_one({"username": user["username"]}):
             return {"error": "User already exists"}, 400
@@ -53,6 +54,36 @@ class Register(restful.Resource):
         # Sucess
         app.mongo.db.users.insert(user)
         return user, 201
+
+class ChangePassword(restful.Resource):
+    def post(self, username):
+        user = app.mongo.db.users.find_one({"username": username})
+        if not user:
+            return {"error": "Invalid username"}, 400
+
+        if not hashpwd(request.get_json()['old_password']) == user["password"]:
+            return {"error": "Incorrect password"}, 400
+
+        user["password"] = hashpwd(request.get_json()['new_password'])
+
+        # Sucess
+        app.mongo.db.users.update({"username": username}, user)
+        return user, 200
+
+class ChangeDisplayName(restful.Resource):
+    def post(self, username):
+        user = app.mongo.db.users.find_one({"username": username})
+        if not user:
+            return {"error": "Invalid username"}, 400
+
+        if not hashpwd(request.get_json()['password']) == user["password"]:
+            return {"error": "Incorrect password"}, 400
+
+        user["displayName"] = request.get_json()['displayName']
+
+        # Sucess
+        app.mongo.db.users.update({"username": username}, user)
+        return user, 200
 
 class CreateItinerary(restful.Resource):
     def post(self, username):
@@ -186,6 +217,23 @@ class GetEventFromId(restful.Resource):
 
         if not event:
             return {"error": "Event not found"}, 400
+
+        return event, 200
+
+class DeleteEvent(restful.Resource):
+    '''
+        uid -> event uid
+    '''
+    def delete(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        event = findEvent(username)
+
+        if not event:
+            return {"error": "Event not found"}, 400
+
+        app.mongo.db.event.delete_one({'uid': event['uid']})
 
         return event, 200
 
@@ -386,6 +434,8 @@ def findEvent(username):
 
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
+api.add_resource(ChangePassword, '/changePassword/<username>')
+api.add_resource(ChangeDisplayName, '/changeDisplayName/<username>')
 api.add_resource(Root, '/')
 api.add_resource(PopulateDB, '/testdb/populatedb')
 api.add_resource(PopulateItineraries, '/testdb/populateItineraries')
@@ -398,6 +448,7 @@ api.add_resource(GetEventFromId, '/getEventFromId/<username>')
 api.add_resource(UpdateEvent, '/updateEvent/<username>')
 api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
+api.add_resource(DeleteEvent, '/deleteEvent/<username>')
 api.add_resource(GetSuggestions, '/getSuggestions/<username>')
 api.add_resource(RatePlace, '/ratePlace/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')

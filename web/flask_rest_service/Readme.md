@@ -1,6 +1,8 @@
 <!-- TOC START min:1 max:3 link:true update:true -->
 - [Login](#login)
 - [Register](#register)
+- [Change Password](#change-password)
+- [Change Display Name](#change-display-name)
 - [Create Itinerary](#create-itinerary)
 - [Create Event](#create-event)
 - [Update Event](#update-event)
@@ -73,7 +75,8 @@
     ```javascript
     { "username": username,
       "password": password,
-      "name": name}
+      "name": name,
+      "displayName": displayName }
     ```
 
 * **Success Response Code:** 201 CREATED  
@@ -85,6 +88,66 @@
     **Content:** `{ error : "User already exists" }`
 
 * **Sample Call:**
+
+# Change Password
+----
+  Returns user info if change password successful.
+
+* **URL**
+
+  /changePassword/<username>
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+    ```javascript
+    { "old_password": old_password,
+      "new_password": new_password }
+    ```
+
+* **Success Response Code:** 200 OK  
+    **Content:** See [User Object](#user-object)
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Invalid username" }`
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Incorrect password" }`
+
+# Change Display Name
+----
+  Returns user info if change display name successful.
+
+* **URL**
+
+  /changeDisplayName/<username>
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+    ```javascript
+    { "password": old_password,
+      "displayName": display_name }
+    ```
+
+* **Success Response Code:** 200 OK  
+    **Content:** See [User Object](#user-object)
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Invalid username" }`
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Incorrect password" }`
 
 # Create Itinerary
 ----
@@ -481,7 +544,8 @@
 {
   "name":"Alex",
   "password":"b75bd008d5fecb1f50cf026532e8ae67",
-  "username":"alex"
+  "username":"alex",
+  "displayName": "Alex",
   "_id":{
     "$oid":"580598c52e526e0009738d25"
   },
