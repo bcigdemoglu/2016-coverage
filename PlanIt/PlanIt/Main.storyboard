@@ -43,23 +43,12 @@
                                             <color key="backgroundColor" red="0.0" green="0.14471531413612571" blue="0.13729273205499873" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeA-KG-Zf7">
-                                            <frame key="frameInset" minX="293" minY="8" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Delete">
-                                                <color key="titleColor" red="0.89815414510000002" green="0.31222277329999998" blue="0.26824596080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="showCalendarView:" destination="533-5k-2kJ" eventType="touchUpInside" id="wvC-nV-4wL"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.59999695717990631" green="0.69868978765269407" blue="0.83029064119170981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
                                     <segue destination="SNh-eS-7mD" kind="presentation" identifier="showCalendarSegue" id="lPD-mw-VFV"/>
                                 </connections>
