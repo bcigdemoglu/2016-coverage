@@ -95,7 +95,7 @@
 
 * **URL**
 
-  /changePassword/<username>
+  /changePassword/\<username\>
 
 * **Method:**
 
@@ -125,7 +125,7 @@
 
 * **URL**
 
-  /changeDisplayName/<username>
+  /changeDisplayName/\<username\>
 
 * **Method:**
 
