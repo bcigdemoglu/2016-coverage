@@ -8,7 +8,7 @@ from . import api, hashpwd
 from bson.objectid import ObjectId
 from . import app
 from datetime import datetime
-from yelpClient import client as yelp_client
+from yelpClient import client as yelp
 
 class Root(restful.Resource):
     def get(self):
@@ -255,7 +255,7 @@ class GetItineraryList(restful.Resource):
 
 class SearchYelp(restful.Resource):
     def get(self, query):
-        return {'yelpResponse': str(yelp_client.search(query).businesses[0].__dict__)}, 201
+        return {'yelpResponse': yelp.getBusinessInfo(query, 1)}, 201
 
 class PopulateDB(restful.Resource):
     def post(self):

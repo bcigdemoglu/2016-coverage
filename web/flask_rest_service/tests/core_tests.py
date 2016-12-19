@@ -472,7 +472,11 @@ class PlanItTestCase(unittest.TestCase):
     def test_searchYelp(self):
         ''' Test yelp integration '''
         rv = self.json_get('/searchYelp/San%20Francisco', {})
-        assert 'https://www.yelp.com' in str(rv.data)
+        print(rv.data)
+        assert 'rating' in str(rv.data)
+        assert 'id' in str(rv.data)
+        assert 'coord' in str(rv.data)
+        assert 'name' in str(rv.data)
 
 
     # def test_login_logout(self):
