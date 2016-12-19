@@ -19,6 +19,10 @@ let suggestions = "suggestions/"
 let getEvent = "getEvent/"
 let searchYelp = "searchYelp/"
 let respond = "respond/"
+let changeDisplayName = "changeDisplayName"
+let changePassword = "changePassword"
+let deleteItinerary = "deleteItinerary"
+
 
 //local mode: comment previous line and uncomment next line
 //let baseURL = "https://localhost:5000/"
@@ -115,6 +119,57 @@ func postCreateItinerary(userID: String, itineraryName: String, date: String, co
         case .failure(let error):
             print(error)
             completionHandler(response.response!.statusCode, error.localizedDescription)
+        }
+    }
+}
+
+func deleteItinerary(itineraryID: String,  completionHandler : @escaping (String?) -> ()) {
+    let parameters : Parameters = [
+        "uid" : itineraryID
+    ]
+    Alamofire.request(baseURL + deleteItinerary + User.getUserName()!, method: .delete, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+        response in
+        switch response.result {
+        case .success :
+            completionHandler(nil)
+        case .failure (let error) :
+            completionHandler (error.localizedDescription)
+        }
+    }
+}
+
+func sendChangePassword(newPassword: String, completionHandler: @escaping (String?) -> ()) {
+    let parameters : Parameters =
+    [
+        "old_password" : User.getUserPassword()!,
+        "new_password" : newPassword
+    ]
+    Alamofire.request(baseURL + changePassword + User.getUserName()!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+        response in
+        switch response.result {
+        case .success:
+            completionHandler(nil)
+        case .failure (let error) :
+            completionHandler(error.localizedDescription)
+            
+        }
+    }
+}
+
+func sendChangeDisplayName(newDisplayName: String, completionHandler: @escaping (String?) -> ()) {
+    let parameters : Parameters =
+        [
+            "password" : User.getUserPassword()!,
+            "displayName" : newDisplayName
+    ]
+    Alamofire.request(baseURL + changeDisplayName + User.getUserName()!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+        response in
+        switch response.result {
+        case .success:
+            completionHandler(nil)
+        case .failure (let error) :
+            completionHandler(error.localizedDescription)
+            
         }
     }
 }
