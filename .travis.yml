@@ -4,8 +4,8 @@ python:
 # - "3.5"
 # command to install dependencies
 install:
-  - "pip install scipy"
   - "pip install -r web/requirements.txt"
+  - "pip install scikit-learn[alldeps]"
 services:
   - mongodb
 # command to run tests
