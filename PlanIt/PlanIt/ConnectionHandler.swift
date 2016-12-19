@@ -19,9 +19,9 @@ let suggestions = "suggestions/"
 let getEvent = "getEvent/"
 let searchYelp = "searchYelp/"
 let respond = "respond/"
-let changeDisplayName = "changeDisplayName"
-let changePassword = "changePassword"
-let deleteItinerary = "deleteItinerary"
+let changeDisplayName = "changeDisplayName/"
+let changePassword = "changePassword/"
+let deleteItinerary = "deleteItinerary/"
 
 
 //local mode: comment previous line and uncomment next line

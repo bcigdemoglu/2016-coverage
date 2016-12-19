@@ -53,6 +53,10 @@ class User {
         return onlyUser.currentPassword
     }
     
+    static func getDisplayName() -> String? {
+        return onlyUser.displayName
+    }
+    
     static func changeUserPassword(newPassword : String, completionHandler : @escaping (String?) -> ()) {
         setPotentialPassword(newPass: newPassword)
         sendChangePassword(newPassword: newPassword) { responseString in

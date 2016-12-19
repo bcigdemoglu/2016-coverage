@@ -19,10 +19,11 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         //Alex: get real user info here
-        nameText.text = "Amy"
-        emailText.text = "amy@gmail.com"
-        passwordText.text = "amy"
         
+        
+        nameText.text = User.getDisplayName()
+        emailText.text = User.getUserName()
+        passwordText.text = User.getUserPassword()
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -45,9 +46,22 @@ class SettingsViewController: UIViewController {
             displayAlertMessage(myMessage:"Not a valid email");
             return;
         }
-        
-        //Alex: change user info here
-        
+        if (userName != User.getDisplayName()) {
+            sendChangeDisplayName(newDisplayName: userName!) {
+                str in
+                if str != nil {
+                    self.displayAlertMessage(myMessage: str!)
+                }
+            }
+        }
+        if(userPassword != User.getUserPassword()) {
+            sendChangePassword(newPassword: userPassword!) {
+                str in
+                if str != nil {
+                    self.displayAlertMessage(myMessage: str!)
+                }
+            }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
