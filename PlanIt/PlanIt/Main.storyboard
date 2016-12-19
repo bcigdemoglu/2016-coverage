@@ -22,7 +22,7 @@
                         <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationLevel="5" indentationWidth="10" reuseIdentifier="ItineraryTableViewCell" rowHeight="50" id="SRQ-IQ-KlO" customClass="ItineraryTableViewCell" customModule="PlanIt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="134" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SRQ-IQ-KlO" id="wsf-fa-mmW">
                                     <frame key="frameInset" width="342" height="49"/>
@@ -43,23 +43,12 @@
                                             <color key="backgroundColor" red="0.0" green="0.14471531413612571" blue="0.13729273205499873" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeA-KG-Zf7">
-                                            <frame key="frameInset" minX="293" minY="8" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Delete">
-                                                <color key="titleColor" red="0.89815414510000002" green="0.31222277329999998" blue="0.26824596080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="showCalendarView:" destination="533-5k-2kJ" eventType="touchUpInside" id="wvC-nV-4wL"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.59999695717990631" green="0.69868978765269407" blue="0.83029064119170981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
                                     <segue destination="SNh-eS-7mD" kind="presentation" identifier="showCalendarSegue" id="lPD-mw-VFV"/>
                                 </connections>
@@ -132,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KsV-g1-iLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3913" y="1576"/>
+            <point key="canvasLocation" x="4254" y="1764"/>
         </scene>
         <!--Choose Date-->
         <scene sceneID="le3-Ma-U11">
@@ -372,7 +361,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjg-7E-QNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3528.8000000000002" y="-358.4707646176912"/>
+            <point key="canvasLocation" x="3543" y="-483"/>
         </scene>
         <!--Ratings-->
         <scene sceneID="Hcv-lU-G3Q">
@@ -398,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUS-Qy-9BY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5900" y="-394.45277361319341"/>
+            <point key="canvasLocation" x="5498" y="-484"/>
         </scene>
         <!--Personal Settings-->
         <scene sceneID="uBR-qX-bXn">
@@ -477,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dy6-Tb-OWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6812" y="326.98650674662673"/>
+            <point key="canvasLocation" x="5497" y="271"/>
         </scene>
         <!--Logoff-->
         <scene sceneID="Adr-Eb-HZc">
@@ -528,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4K-Vb-lgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6812" y="1086.2068965517242"/>
+            <point key="canvasLocation" x="5497" y="985"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="uat-je-ac7">
@@ -798,7 +787,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfa-W6-18a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3374" y="1576"/>
+            <point key="canvasLocation" x="3430" y="1764"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fx8-L1-Q04">
@@ -816,7 +805,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOd-VZ-A8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4960.8000000000002" y="-394.45277361319341"/>
+            <point key="canvasLocation" x="4577" y="-483"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="crA-ED-Esr">
@@ -834,7 +823,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kev-Vi-RUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5872.8000000000002" y="326.98650674662673"/>
+            <point key="canvasLocation" x="4577" y="272"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rCP-LZ-gqA">
@@ -852,7 +841,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETP-o0-z0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5872.8000000000002" y="1086.2068965517242"/>
+            <point key="canvasLocation" x="4577" y="966"/>
         </scene>
     </scenes>
     <resources>
