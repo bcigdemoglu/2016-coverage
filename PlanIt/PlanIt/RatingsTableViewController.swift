@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class RatingsTableViewController: UITableViewController {
 
@@ -32,18 +33,9 @@ class RatingsTableViewController: UITableViewController {
     }
     
     func loadSampleRatings() {
-        let dataString1 = "April 1, 2017"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let dateValue1 = dateFormatter.date(from: dataString1) as NSDate!
         
-        let dataString2 = "December 31, 2017"
-        //var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let dateValue2 = dateFormatter.date(from: dataString2) as NSDate!
-        
-        let it1 = Rating(location: "Sample1", time: dateValue1!)
-        let it2 = Rating(location: "Sample2", time: dateValue2!)
+        let it1 = Rating(location: "Sample1", uid : "1234567")
+        let it2 = Rating(location: "Sample2", uid : "12345678910xasdf")
         
         self.ratings = [it1, it2]
     }
@@ -57,7 +49,7 @@ class RatingsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,17 +66,12 @@ class RatingsTableViewController: UITableViewController {
         
         let rating = ratings[indexPath.row]
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EE MMM dd"
-        let strDate = dateFormatter.string(from: (rating.time as NSDate) as Date)
         let location = rating.location
         
-        cell.timeLabel.text = strDate
         cell.nameLabel.text = location
         
         return cell
     }
-
 
     /*
     // Override to support conditional editing of the table view.

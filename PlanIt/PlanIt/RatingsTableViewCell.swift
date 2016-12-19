@@ -10,7 +10,6 @@ import UIKit
 
 class RatingsTableViewCell: UITableViewCell {
 
-    @IBOutlet var timeLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     
     override func awakeFromNib() {

@@ -159,7 +159,6 @@ class ItineraryTableViewController: UITableViewController {
     // MARK: - Navigation
     //Segue to the calendar view from each itinerary
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("INTO PREPAREFORSEGUE")
         if (segue.identifier == "showCalendarSegue") {
             //let destination = segue.destination as? CalendarViewController
             let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController

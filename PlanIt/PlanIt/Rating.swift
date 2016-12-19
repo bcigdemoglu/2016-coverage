@@ -13,36 +13,12 @@ class Rating {
     //MARK: Properties
     
     var location:String
-    var rating: Int
-    var time:NSDate = NSDate()
-    var interval:NSDateInterval = NSDateInterval()
-    
+    var uid: String
     // MARK: Initialization
     
-    init(location: String, time: NSDate) {
+    init(location: String, uid: String) {
         self.location = location
-        self.time = time
-        self.rating = 0
-    }
-    
-    init?(location: String, rating: Int, time: NSDate, interval: NSDateInterval) {
-        self.location = location
-        self.time = time
-        self.rating = rating
-        self.interval = interval
-        
-        if location.isEqual(nil) {
-            return nil
-        }
-        if rating == 0 {
-            return nil
-        }
-        if time.isEqual(nil) {
-            return nil
-        }
-        if interval.isEqual(nil) {
-            return nil
-        }
+        self.uid = uid
     }
     
     

@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KsV-g1-iLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3913" y="1576"/>
+            <point key="canvasLocation" x="4366" y="1576"/>
         </scene>
         <!--Choose Date-->
         <scene sceneID="le3-Ma-U11">
@@ -783,33 +783,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="66" id="Mk9-Gi-Vdh" customClass="RatingsTableViewCell" customModule="PlanIt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="66"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationLevel="5" indentationWidth="10" reuseIdentifier="RatingsTableViewCell" rowHeight="50" id="Mk9-Gi-Vdh" customClass="RatingsTableViewCell" customModule="PlanIt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mk9-Gi-Vdh" id="Xs4-5k-l4Y">
-                                    <frame key="frameInset" width="342" height="65"/>
+                                    <frame key="frameInset" width="342" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="177-d4-jML">
-                                            <frame key="frameInset" minX="25" minY="8" width="266" height="21"/>
+                                            <frame key="frameInset" minX="17" minY="8" width="358" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.59999695720000001" green="0.69868978770000001" blue="0.83029064119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I3-hD-MBn">
-                                            <frame key="frameInset" minX="25" minY="36" width="244" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.59999695720000001" green="0.69868978770000001" blue="0.83029064119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.59999695720000001" green="0.69868978770000001" blue="0.83029064119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="177-d4-jML" id="05e-yS-ceK"/>
-                                    <outlet property="timeLabel" destination="9I3-hD-MBn" id="n43-2B-eaM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
