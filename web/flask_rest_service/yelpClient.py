@@ -15,18 +15,28 @@ class YelpClient:
       )
       self.client = Client(auth)
 
-  def getBusinessInfo(self, query, num):
+  def getBusinessList(self, query, num):
     if self.client is None: return []
     bizList = []
-    for i in range(num):
-      biz = self.client.search(query).businesses[i].__dict__
-      biz_lat = str(biz['location'].coordinate.latitude)
-      biz_long = str(biz['location'].coordinate.longitude)
-      biz['coord'] = biz_lat + ", " + biz_long
-      bizList.append({'id':     biz['id'],
-                      'rating': biz['rating'],
-                      'name':   biz['name'],
-                      'coord':  biz['coord']})
+    yelp_data = self.client.search(query).businesses
+    limit = num if len(yelp_data) > num else len(yelp_data)
+    for i in range(limit):
+      biz = self.getBizObj(yelp_data[i].__dict__)
+      bizList.append(biz)
     return bizList
+
+  def getBusiness(self, biz_id):
+    return self.getBizObj(self.client.get_business(biz_id).business.__dict__)
+
+  @staticmethod
+  def getBizObj(biz):
+    biz_lat = str(biz['location'].coordinate.latitude)
+    biz_long = str(biz['location'].coordinate.longitude)
+    biz['coord'] = biz_lat + ", " + biz_long
+    return {'id':     biz['id'],
+            'rating': biz['rating'],
+            'name':   biz['name'],
+            'coord':  biz['coord'],
+            'display_address': biz['location'].display_address}
 
 client = YelpClient()

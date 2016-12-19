@@ -3,6 +3,7 @@
 - [Register](#register)
 - [Create Itinerary](#create-itinerary)
 - [Create Event](#create-event)
+- [Update Event](#update-event)
 - [Invite to Event](#invite-to-event)
 - [Get Event from ID](#get-event-from-id)
 - [Get Events For Itinerary](#get-events-for-itinerary)

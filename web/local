@@ -37,9 +37,6 @@ localstop() {
 localrun() {
   localstop > /dev/null 2>&1
 
-  echo "Import yelp credentials if exists"
-  . "$root/yelp_secret.config"
-
   echo "Installing virtual environment"
   pip install virtualenv
 
@@ -77,6 +74,9 @@ localrun() {
 }
 
 localtest() {
+  echo "Import yelp credentials if exists"
+  . "$root/yelp_secret.config"
+
   nosetests --with-coverage --cover-erase --cover-package="$root/flask_rest_service" --cover-html --cover-html-dir="$root/htmlcov" --verbosity=2
 }
 

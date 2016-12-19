@@ -9,14 +9,18 @@ from bson.objectid import ObjectId
 from . import app
 from datetime import datetime
 from yelpClient import client as yelp
+from random_forest_classifier import classifier
 
 class Root(restful.Resource):
     def get(self):
         return {
             'mongo': str(app.mongo.db),
-            'users': list(app.mongo.db.users.find()),
-            'events': list(app.mongo.db.event.find()),
-            'itinenaries': list(app.mongo.db.itin.find())
+            'users': list(app.mongo.db.users.find({}, {'_id': False})),
+            'events': list(app.mongo.db.event.find({}, {'_id': False})),
+            'itinenaries': list(app.mongo.db.itin.find({}, {'_id': False})),
+            'rfctrainers': list(app.mongo.db.rfctrainers.find({}, {'_id': False})),
+            'rfcchoices': list(app.mongo.db.rfcchoices.find({}, {'_id': False})),
+            'userrating': list(app.mongo.db.yelp.find({}, {'_id': False}))
         }, 200
 
 class Login(restful.Resource):
@@ -198,13 +202,66 @@ class UpdateEvent(restful.Resource):
         if not event:
             return {"error": "Event not found"}, 400
 
-        #Only alter yelpId:
-        if request.get_json().get('yelpId'):
-            event["yelpId"] = request.get_json()['yelpId']
+        event["yelpId"] = request.get_json()['yelpId']
 
         app.mongo.db.event.update({'uid': event['uid']}, event)
 
+        if not event:
+            return {"error": "Event not found"}, 400
+
+        # Now update the ML model
+        choice = request.get_json()['choice']
+        suggestionId = request.get_json()['suggestionId']
+
+        classifier.updateModel(choice, suggestionId)
+
         return event, 200
+
+class GetSuggestions(restful.Resource):
+    '''
+        uid -> event uid
+    '''
+    def get(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        event = findEvent(username)
+        if not event:
+            return {"error": "Event not found"}, 400
+
+        date = event['date']
+
+        query = request.get_json()['query']
+
+        events = list(app.mongo.db.event.find({'date': date,
+                                                'acceptedBy': username},
+                                              {'_id': False}))
+        [prev_event, next_event] = classifier.getPrevAndNextEvent(events, event)
+
+        bizList = yelp.getBusinessList(query, 10)
+        all_suggestions = []
+        for biz in bizList:
+            suggestion = classifier.getSuggestionArray(yelp,
+                                                       biz['id'],
+                                                       prev_event, next_event)
+            all_suggestions.append(suggestion)
+
+        suggested = classifier.pickSuggestions(bizList, all_suggestions)
+
+        top_biz = suggested['business']
+        top_ids = suggested['ids']
+        top_sugs = suggested['sugs']
+        top_probs = suggested['probs']
+
+        suggestionId = username + "_" + str(app.mongo.db.suggestions.count() + 1)
+
+        app.mongo.db.suggestions.insert({'uid': suggestionId,
+                                         'sugs': top_sugs,
+                                         'yelpId': top_ids})
+
+        return {'uid': suggestionId,
+                'business': top_biz,
+                'scores': top_probs}, 200
 
 class DeleteItinerary(restful.Resource):
     '''
@@ -222,6 +279,16 @@ class DeleteItinerary(restful.Resource):
 
         app.mongo.db.itin.delete_one({'uid': request.get_json()['uid'],
                                       'createdBy': username})
+
+        # Remove acceptance of events
+        events = app.mongo.db.event.find({'date': itinerary['date'],
+                                          'acceptedBy': username})
+        for e in events:
+            e['acceptedBy'].remove(username)
+            if e['acceptedBy'] is []:
+                app.mongo.db.event.delete_one({'uid': e['uid']})
+            else:
+                app.mongo.db.event.update({'uid': e['uid']}, e)
 
         return itinerary, 200
 
@@ -255,7 +322,7 @@ class GetItineraryList(restful.Resource):
 
 class SearchYelp(restful.Resource):
     def get(self, query):
-        return {'yelpResponse': yelp.getBusinessInfo(query, 1)}, 201
+        return {'yelpResponse': yelp.getBusinessList(query, 1)}, 201
 
 class PopulateDB(restful.Resource):
     def post(self):
@@ -313,4 +380,5 @@ api.add_resource(GetEventFromId, '/getEventFromId/<username>')
 api.add_resource(UpdateEvent, '/updateEvent/<username>')
 api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
+api.add_resource(GetSuggestions, '/getSuggestions/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
