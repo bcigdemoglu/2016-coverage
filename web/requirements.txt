@@ -17,3 +17,4 @@ pylint>=1.6.4
 yelp>=1.0.2
 numpy>=1.6.1
 requests>=2.12.4
+scikit-learn[alldeps]>=0.0

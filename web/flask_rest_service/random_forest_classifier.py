@@ -34,7 +34,12 @@ class ML:
           [t_f, t_n, d_f, d_n, r_y, r_u],
           [t_f, t_n, d_f, d_n, r_y, r_u]
         ]
-
+      yelpId:
+        [
+          id0,
+          id1,
+          id2
+        ]
     }
     '''
 
@@ -122,14 +127,14 @@ class ML:
     if userrating is not None:
       r_u = sum(userrating["ratings"])/len(userrating["ratings"])
     # Get previous event data
-    if prev_event is not None:
+    if prev_event is not None and prev_event.get('yelpId'):
       prev_yelp = prev_event.get('yelpId')
       prev_coords = yelp.getBusiness(prev_yelp)['coord']
       prev_google = google.getInfo(prev_coords, curr['coord'])
       t_f = prev_google['dur']
       d_f = prev_google['dist']
     # Get next event data
-    if next_event is not None:
+    if next_event is not None and next_event.get('yelpId'):
       next_yelp = next_event.get('yelpId')
       next_coords = yelp.getBusiness(next_yelp)['coord']
       next_google = google.getInfo(curr['coord'], next_coords)

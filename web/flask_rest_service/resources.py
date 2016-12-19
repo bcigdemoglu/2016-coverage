@@ -202,16 +202,13 @@ class UpdateEvent(restful.Resource):
         if not event:
             return {"error": "Event not found"}, 400
 
-        event["yelpId"] = request.get_json()['yelpId']
-
-        app.mongo.db.event.update({'uid': event['uid']}, event)
-
-        if not event:
-            return {"error": "Event not found"}, 400
-
-        # Now update the ML model
+        # Update the ML classifier
         choice = request.get_json()['choice']
         suggestionId = request.get_json()['suggestionId']
+
+        # Update event
+        event["yelpId"] = app.mongo.db.suggestions.find_one({'uid': suggestionId})['yelpId'][int(choice)]
+        app.mongo.db.event.update({'uid': event['uid']}, event)
 
         classifier.updateModel(choice, suggestionId)
 
@@ -285,7 +282,7 @@ class DeleteItinerary(restful.Resource):
                                           'acceptedBy': username})
         for e in events:
             e['acceptedBy'].remove(username)
-            if e['acceptedBy'] is []:
+            if e['acceptedBy'] == []:
                 app.mongo.db.event.delete_one({'uid': e['uid']})
             else:
                 app.mongo.db.event.update({'uid': e['uid']}, e)
@@ -323,6 +320,27 @@ class GetItineraryList(restful.Resource):
 class SearchYelp(restful.Resource):
     def get(self, query):
         return {'yelpResponse': yelp.getBusinessList(query, 1)}, 201
+
+class RatePlace(restful.Resource):
+    def post(self, username):
+        rating = request.get_json().get('rating')
+        uid = request.get_json().get('uid')
+        ratings = []
+        stored_yelp = app.mongo.db.yelp.find_one({'uid': uid})
+        if stored_yelp:
+            ratings = stored_yelp['ratings']
+
+        ratings.append(rating)
+
+        yelp_rating = {'uid': uid,
+                       'ratings': ratings}
+
+        # Sucess
+        if stored_yelp:
+            app.mongo.db.yelp.update({'uid': uid}, yelp_rating)
+        else:
+            app.mongo.db.yelp.insert(yelp_rating)
+        return yelp_rating, 200
 
 class PopulateDB(restful.Resource):
     def post(self):
@@ -381,4 +399,5 @@ api.add_resource(UpdateEvent, '/updateEvent/<username>')
 api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
 api.add_resource(GetSuggestions, '/getSuggestions/<username>')
+api.add_resource(RatePlace, '/ratePlace/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')

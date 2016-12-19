@@ -388,24 +388,37 @@ class PlanItTestCase(unittest.TestCase):
             assert e['end'] in str(rv.data)
 
     def test_updateEvent(self):
-        """Test update of event data"""
+        """Test suggestions and update event data"""
         date = {'date': '2015-08-21T00:00:00.000Z'}
-        event = dict(start = '2015-08-21T01:23:00.000Z',
-                     end = '2015-08-21T01:25:00.000Z',
-                     date = '2015-08-21T00:00:00.000Z')
-        sugId = 'alex_1'
-
+        eventprev = dict(start = '2015-08-21T01:23:00.000Z',
+                         end =   '2015-08-21T01:25:00.000Z',
+                         date =  '2015-08-21T00:00:00.000Z')
+        eventcurr = dict(start = '2015-08-21T02:23:00.000Z',
+                         end =   '2015-08-21T02:25:00.000Z',
+                         date =  '2015-08-21T00:00:00.000Z')
+        eventnext = dict(start = '2015-08-21T03:23:00.000Z',
+                         end =   '2015-08-21T03:25:00.000Z',
+                         date =  '2015-08-21T00:00:00.000Z')
+        i=0
         # Create sample itinerary for alex for the event day
         self.json_post('/createItinerary/alex', dict(
                 name = 'New Day',
                 date = date['date']
                 ))
 
-        uid = str('alex_' + event['start'] + event['end'])
+        uid = str('alex_' + eventprev['start'] + eventprev['end'])
+        uidcurr = str('alex_' + eventcurr['start'] + eventcurr['end'])
+        uidnext = str('alex_' + eventnext['start'] + eventnext['end'])
         invuid = '00000000000000000000000'
 
-        rv = self.json_post('/createEvent/alex', event)
+        rv = self.json_post('/createEvent/alex', eventprev)
         assert uid in str(rv.data)
+
+        rv = self.json_post('/createEvent/alex', eventnext)
+        assert uidnext in str(rv.data)
+
+        rv = self.json_post('/createEvent/alex', eventcurr)
+        assert uidcurr in str(rv.data)
 
         rv = self.json_post('/updateEvent/bbbb', {'uid': uid})
         assert 'Invalid username' in str(rv.data)
@@ -413,17 +426,73 @@ class PlanItTestCase(unittest.TestCase):
         rv = self.json_post('/updateEvent/alex', {'uid': invuid})
         assert 'Event not found' in str(rv.data)
 
+        rv = self.json_get('/getSuggestions/bbbb', {'uid': uid,
+                                                     'query': 'Homewood Campus, Baltimore'})
+        assert 'Invalid username' in str(rv.data)
+
+        rv = self.json_get('/getSuggestions/bbbb', {'uid': uid,
+                                                     'query': 'Homewood Campus, Baltimore'})
+        assert 'Invalid username' in str(rv.data)
+
+        # Set prev event
         rv = self.json_get('/getSuggestions/alex', {'uid': uid,
-                                                    'query': 'San Francisco'})
+                                                    'query': 'Homewood Campus, Baltimore'})
+        sugId = json.loads(rv.data)['uid']
+        placeId = json.loads(rv.data)['business'][1]['id']
         assert 'business' in str(rv.data)
 
         rv = self.json_post('/updateEvent/alex', {'uid': uid,
-                                                  'yelpId': '12344321',
                                                   'choice': '1',
                                                   'suggestionId': sugId})
-        assert '12344321' in str(rv.data)
+        assert 'yelpId' in str(rv.data)
+
+        rv = self.json_post('/ratePlace/alex', {'uid': placeId,
+                                                'rating': 5})
+        assert 'ratings' in str(rv.data)
+
+        rv = self.json_post('/ratePlace/alex', {'uid': placeId,
+                                                'rating': 4})
+        assert 'ratings' in str(rv.data)
+
+        # Reset prev event
+        rv = self.json_get('/getSuggestions/alex', {'uid': uid,
+                                                    'query': 'Homewood Campus, Baltimore'})
+        sugId = json.loads(rv.data)['uid']
+        assert 'business' in str(rv.data)
+
+        rv = self.json_post('/updateEvent/alex', {'uid': uid,
+                                                  'choice': '0',
+                                                  'suggestionId': sugId})
+        assert 'yelpId' in str(rv.data)
+
+        # Set next event
+        rv = self.json_get('/getSuggestions/alex', {'uid': uidnext,
+                                                    'query': 'Homewood Campus, Baltimore'})
+        sugId = json.loads(rv.data)['uid']
+        assert 'business' in str(rv.data)
+
+        rv = self.json_post('/updateEvent/alex', {'uid': uidnext,
+                                                  'choice': '2',
+                                                  'suggestionId': sugId})
+        assert 'yelpId' in str(rv.data)
+
+        # Set curr event
+        rv = self.json_get('/getSuggestions/alex', {'uid': uidcurr,
+                                                    'query': 'Towson, MD'})
+        print(rv.data)
+        sugId = json.loads(rv.data)['uid']
+        assert 'business' in str(rv.data)
+
+        rv = self.json_post('/updateEvent/alex', {'uid': uidnext,
+                                                  'choice': '0',
+                                                  'suggestionId': sugId})
+        assert 'yelpId' in str(rv.data)
 
         rv = self.json_get('/getEventFromId/alex', {'uid': invuid})
+        assert 'Event not found' in str(rv.data)
+
+        rv = self.json_get('/getSuggestions/alex', {'uid': invuid,
+                                                     'query': 'Homewood Campus, Baltimore'})
         assert 'Event not found' in str(rv.data)
 
     def test_getItineraryFromId(self):

@@ -8,6 +8,3 @@ def getInfo(orig_coord, dest_coord):
   info = requests.get(url).json()["rows"][0]["elements"][0]
   return {'dur': info["duration"]['value'],
           'dist': info["distance"]['value']}
-
-def makeCoord(latitude, longitude):
-  return str(latitude) + ", " + str(longitude)
