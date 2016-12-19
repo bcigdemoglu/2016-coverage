@@ -16,7 +16,6 @@ This is the Python-Flask backend repo for 2016-group-13.
 <!-- TOC END -->
 
 ## Testing Backend
-Inside '/web' folder.  
 Must have virtualenv and MongoDB setup. See [Setting up the environment](#setting-up-the-environment).
 
 ### Quickstart
