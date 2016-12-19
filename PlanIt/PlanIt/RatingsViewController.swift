@@ -8,23 +8,30 @@
 
 import UIKit
 
-class RatingsViewController: UIViewController, UIPickerViewDelegate{//, UIPickerViewDataSource {
+class RatingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    //@available(iOS 2.0, *)
 
     @IBOutlet var locationName: UILabel!
     
     @IBOutlet var ratingPicker: UIPickerView!
     
-    var pickerData: [String] = [String]()
+   // var pickerData: [Int] = [Int]()
+    var pickerDataInt = [1, 2, 3, 4, 5];
+    var pickerDataStrings = ["1", "2", "3", "4", "5"];
+    
+    var location: String?
+    var event: EKEvent?
+    var rating: Rating?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.ratingPicker.dataSource = self;
+        self.ratingPicker.delegate = self;
         // Do any additional setup after loading the view.
         
         // Input data into Array:
-        pickerData = ["1","2","3","4","5"]
     }
     
-    var location = String()
     override func viewWillAppear(_ animated: Bool) {
         locationName.text = location
     }
@@ -35,20 +42,26 @@ class RatingsViewController: UIViewController, UIPickerViewDelegate{//, UIPicker
     }
     
     // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     // The number of rows of data
-    func pickerView(_pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDataInt.count;
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        //let rowString = String(pickerDataInt[row])
+        return pickerDataStrings[row]
+        //return pickerDataSource[row]
     }
-
+    
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        self.rating?.rating = row
+    }
     
     // MARK: - Navigation
 
@@ -56,7 +69,7 @@ class RatingsViewController: UIViewController, UIPickerViewDelegate{//, UIPicker
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let strDate = ratingPicker.selectedRow(inComponent: <#T##Int#>)
+        //let strDate =
         
     }
     

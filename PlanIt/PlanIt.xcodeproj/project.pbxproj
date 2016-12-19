@@ -418,7 +418,6 @@
 				F9BB366F1DFE45BE00868664 /* settings.storyboard */,
 				F9BB36661DFE45BE00868664 /* Calendar.storyboard */,
 				BC08F0591DFB60BA00AFA3DC /* Main.storyboard */,
-				BC9A7BFF1E07521500CF2390 /* RatingsTableViewController.swift */,
 				F944DF3E1DC9220600F59D53 /* Assets.xcassets */,
 				F944DF401DC9221700F59D53 /* LaunchScreen.storyboard */,
 				F944DF161DC920AC00F59D53 /* Info.plist */,
@@ -436,6 +435,7 @@
 				BC9A7BF31E03257B00CF2390 /* SettingsViewController.swift */,
 				BC9A7BF51E0325A800CF2390 /* LogoutViewController.swift */,
 				BC9A7BFD1E07514000CF2390 /* Rating.swift */,
+				BC9A7BFF1E07521500CF2390 /* RatingsTableViewController.swift */,
 				BC9A7C011E07534F00CF2390 /* RatingsTableViewCell.swift */,
 				BC9A7C031E085A5E00CF2390 /* RatingsViewController.swift */,
 			);

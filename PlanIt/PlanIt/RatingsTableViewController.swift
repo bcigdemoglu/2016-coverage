@@ -12,9 +12,13 @@ import Foundation
 class RatingsTableViewController: UITableViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
-    var ratings = [Rating]()
+    //var ratings = [Rating]()
     
+    var events = [EKEvent]()
+    
+    var ratings = [Rating]()
     var rating: Rating?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -34,10 +38,23 @@ class RatingsTableViewController: UITableViewController {
     
     func loadSampleRatings() {
         
-        let it1 = Rating(location: "Sample1", uid : "1234567")
-        let it2 = Rating(location: "Sample2", uid : "12345678910xasdf")
+        let eventStore = EKEventStore();
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
         
-        self.ratings = [it1, it2]
+        let event1 = EKEvent(eventStore: eventStore)
+        event1.location = "GIANT"
+        event1.startDate = dateFormatter.date(from: "2015-01-01")!
+
+        let event2 = EKEvent(eventStore: eventStore)
+        event2.location = "GIANT"
+        event1.startDate = dateFormatter.date(from: "2016-01-01")!
+        
+        let rating1 = Rating(event: event1, location: "Giant", uid: "123", rating: 3)
+        let rating2 = Rating(event: event2, location: "Brody Learning Commons", uid: "12345", rating: 3)
+        self.ratings = [rating1!, rating2!]
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +102,8 @@ class RatingsTableViewController: UITableViewController {
             let rating = ratings[row!]
             //destination.calendarName = iten.name
             destination.location = rating.location
+            destination.event = rating.event
+            destination.rating = rating
         }
     }
 

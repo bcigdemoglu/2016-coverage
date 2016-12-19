@@ -12,13 +12,17 @@ class Rating {
     
     //MARK: Properties
     
+    var event: EKEvent
     var location:String
     var uid: String
+    var rating: Int
     // MARK: Initialization
     
-    init(location: String, uid: String) {
+    init?(event: EKEvent, location: String, uid: String, rating: Int) {
+        self.event = event
         self.location = location
         self.uid = uid
+        self.rating = rating
     }
     
     
