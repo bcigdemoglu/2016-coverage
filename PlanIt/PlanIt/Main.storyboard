@@ -804,6 +804,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="177-d4-jML" id="05e-yS-ceK"/>
+                                    <segue destination="egq-3U-YI7" kind="presentation" identifier="showRatingsSegue" id="EET-1O-PVR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -822,6 +823,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhZ-PD-Sk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7175.1999999999998" y="-524.8875562218891"/>
+        </scene>
+        <!--Ratings View Controller-->
+        <scene sceneID="zfZ-JB-T43">
+            <objects>
+                <viewController id="egq-3U-YI7" customClass="RatingsViewController" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fg5-uf-kt9"/>
+                        <viewControllerLayoutGuide type="bottom" id="lmI-vr-h1L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="69c-kW-PdH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-vP-sLk">
+                                <frame key="frameInset" minX="29" minY="50" width="49" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBO-Ez-FoN">
+                                <frame key="frameInset" minX="81" minY="50" width="278" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42533339780000001" green="0.49288786179999999" blue="0.58077639250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="locationName" destination="FBO-Ez-FoN" id="Icd-2L-kyw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZAO-N2-esu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8354.3999999999996" y="-570.76461769115451"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="crA-ED-Esr">

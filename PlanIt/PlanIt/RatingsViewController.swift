@@ -2,7 +2,7 @@
 //  RatingsViewController.swift
 //  PlanIt
 //
-//  Created by CS Student on 12/15/16.
+//  Created by CS Student on 12/19/16.
 //  Copyright © 2016 oosegroup13. All rights reserved.
 //
 
@@ -10,14 +10,16 @@ import UIKit
 
 class RatingsViewController: UIViewController {
 
-    @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet var locationName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.menuButton.target = self.revealViewController()
-        self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
         // Do any additional setup after loading the view.
+    }
+    
+    var location = String()
+    override func viewWillAppear(_ animated: Bool) {
+        locationName.text = location
     }
 
     override func didReceiveMemoryWarning() {

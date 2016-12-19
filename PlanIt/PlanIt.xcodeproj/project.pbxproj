@@ -26,6 +26,7 @@
 		BC9A7BFE1E07514000CF2390 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7BFD1E07514000CF2390 /* Rating.swift */; };
 		BC9A7C001E07521500CF2390 /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7BFF1E07521500CF2390 /* RatingsTableViewController.swift */; };
 		BC9A7C021E07534F00CF2390 /* RatingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7C011E07534F00CF2390 /* RatingsTableViewCell.swift */; };
+		BC9A7C041E085A5E00CF2390 /* RatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7C031E085A5E00CF2390 /* RatingsViewController.swift */; };
 		F93D8A161E00BF0000559E3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A151E00BF0000559E3D /* Images.xcassets */; };
 		F93D8A511E00D2E600559E3D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4C1E00D2E600559E3D /* DayViewController.m */; };
 		F93D8A521E00D2E600559E3D /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4E1E00D2E600559E3D /* WeekViewController.m */; };
@@ -115,6 +116,7 @@
 		BC9A7BFD1E07514000CF2390 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		BC9A7BFF1E07521500CF2390 /* RatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
 		BC9A7C011E07534F00CF2390 /* RatingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsTableViewCell.swift; sourceTree = "<group>"; };
+		BC9A7C031E085A5E00CF2390 /* RatingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsViewController.swift; sourceTree = "<group>"; };
 		C75A2822C57D4F284206F040 /* Pods-PlanItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItUITests/Pods-PlanItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CD6EC06CD1C8F28A2D610C30 /* Pods-PlanItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.release.xcconfig"; sourceTree = "<group>"; };
 		E00277539C039736CB83B76A /* Pods-PlanItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				BC9A7BF51E0325A800CF2390 /* LogoutViewController.swift */,
 				BC9A7BFD1E07514000CF2390 /* Rating.swift */,
 				BC9A7C011E07534F00CF2390 /* RatingsTableViewCell.swift */,
+				BC9A7C031E085A5E00CF2390 /* RatingsViewController.swift */,
 			);
 			path = PlanIt;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */,
 				F93D8A681E00DAD600559E3D /* MGCAllDayEventsViewLayout.m in Sources */,
 				F93D8A591E00D38E00559E3D /* MGCCalendarHeaderCell.m in Sources */,
+				BC9A7C041E085A5E00CF2390 /* RatingsViewController.swift in Sources */,
 				F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */,
 				F93D8A531E00D2E600559E3D /* WeekSettingsViewController.m in Sources */,
 				5FB2E74B1E007F1E009F83A1 /* LocationManager.swift in Sources */,
