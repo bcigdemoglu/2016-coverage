@@ -3,7 +3,10 @@ python:
   - "2.7"
 # - "3.5"
 # command to install dependencies
-install: "pip install -r web/requirements.txt"
+install:
+  - "sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran"
+  - "pip install -r web/requirements.txt"
+  - "pip install scikit-learn[alldeps]"
 services:
   - mongodb
 # command to run tests

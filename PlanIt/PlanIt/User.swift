@@ -15,6 +15,11 @@ class User {
     
     var currentPassword : String?
     
+    var displayName : String?
+    
+    private var nextPassword : String?
+    
+    private var nextDisplayName : String?
     
     static var onlyUser : User = User()!
     
@@ -47,4 +52,53 @@ class User {
     static func getUserPassword() -> String? {
         return onlyUser.currentPassword
     }
+    
+    static func getDisplayName() -> String? {
+        return onlyUser.displayName
+    }
+    
+    static func changeUserPassword(newPassword : String, completionHandler : @escaping (String?) -> ()) {
+        setPotentialPassword(newPass: newPassword)
+        sendChangePassword(newPassword: newPassword) { responseString in
+            if (responseString == nil) {
+                cementNewPassword()
+            }
+            completionHandler(responseString)
+        }
+    }
+    
+    private static func setPotentialPassword(newPass : String) {
+        onlyUser.nextPassword = newPass
+    }
+    
+    private static func cementNewPassword() {
+        guard (onlyUser.nextPassword == nil) else {
+            onlyUser.currentPassword = onlyUser.nextPassword
+            return
+        }
+    }
+    
+    static func changeDisplayName(newDisplayName : String, completionHandler : @escaping (String?) -> ()) {
+        setPotentialDisplayName(newName : newDisplayName)
+        sendChangeDisplayName(newDisplayName: newDisplayName) { responseString in
+            if (responseString == nil) {
+                cementNewDisplayName()
+            }
+            completionHandler(responseString)
+        }
+    }
+    
+    private static func setPotentialDisplayName(newName : String) {
+        onlyUser.nextDisplayName = newName
+    }
+    
+    private static func cementNewDisplayName() {
+        guard (onlyUser.nextDisplayName == nil) else {
+            onlyUser.displayName = onlyUser.nextDisplayName
+            onlyUser.nextDisplayName = nil
+            return
+        }
+    }
+    
+    
 }
