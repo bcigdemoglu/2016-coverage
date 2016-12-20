@@ -13,7 +13,15 @@ from random_forest_classifier import classifier
 
 @app.before_request
 def log_request():
-    printRequests()
+    if request.get_json():
+        print(request.get_json())
+    print(request.get_data())
+
+@app.after_request
+def after(response):
+  # todo with response
+  print(response.get_data())
+  print("\n")
 
 class Root(restful.Resource):
     def get(self):
@@ -494,10 +502,6 @@ class PopulateItineraries(restful.Resource):
 def findEvent(username):
     return app.mongo.db.event.find_one({'uid': request.get_json()['uid'],
                                         'acceptedBy': username})
-
-def printRequests():
-    if request.get_json():
-        print(request.get_json())
 
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
