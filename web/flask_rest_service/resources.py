@@ -11,6 +11,10 @@ from datetime import datetime
 from yelpClient import client as yelp
 from random_forest_classifier import classifier
 
+@app.before_request
+def log_request():
+    printRequests()
+
 class Root(restful.Resource):
     def get(self):
         return {
@@ -209,7 +213,6 @@ class GetEventFromId(restful.Resource):
         uid -> event uid
     '''
     def get(self, username):
-        printRequests()
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
