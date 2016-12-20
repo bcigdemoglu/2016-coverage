@@ -56,7 +56,6 @@
 		F943DE841E07423500F0028A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE831E07423500F0028A /* SearchViewController.swift */; };
 		F943DE861E075D4400F0028A /* SuggestionsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE851E075D4400F0028A /* SuggestionsTableController.swift */; };
 		F943DE891E08A49E00F0028A /* MGCReusableObjectQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F943DE881E08A49E00F0028A /* MGCReusableObjectQueue.m */; };
-		F943DE8E1E09179600F0028A /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F943DE8D1E09179600F0028A /* DataSource.m */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
 		F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF091DC920AC00F59D53 /* ViewController.swift */; };
 		F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F944DF0E1DC920AC00F59D53 /* PlanIt.xcdatamodeld */; };
@@ -80,7 +79,6 @@
 		F9BB36761DFE45BE00868664 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9BB366F1DFE45BE00868664 /* settings.storyboard */; };
 		F9EF9CFB1E09B07A00288FE8 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EF9CFA1E09B07A00288FE8 /* Suggestion.swift */; };
 		F9EF9CFD1E09B36100288FE8 /* SuggestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EF9CFC1E09B36100288FE8 /* SuggestionsTableViewCell.swift */; };
-		F9EF9CFF1E09B53300288FE8 /* EventoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EF9CFE1E09B53300288FE8 /* EventoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,8 +178,6 @@
 		F943DE851E075D4400F0028A /* SuggestionsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsTableController.swift; sourceTree = "<group>"; };
 		F943DE871E08A49E00F0028A /* MGCReusableObjectQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCReusableObjectQueue.h; sourceTree = "<group>"; };
 		F943DE881E08A49E00F0028A /* MGCReusableObjectQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCReusableObjectQueue.m; sourceTree = "<group>"; };
-		F943DE8A1E09120000F0028A /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
-		F943DE8D1E09179600F0028A /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		F944DF041DC920AC00F59D53 /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F944DF071DC920AC00F59D53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F944DF091DC920AC00F59D53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -214,8 +210,6 @@
 		F9BB366F1DFE45BE00868664 /* settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		F9EF9CFA1E09B07A00288FE8 /* Suggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		F9EF9CFC1E09B36100288FE8 /* SuggestionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewCell.swift; sourceTree = "<group>"; };
-		F9EF9CFE1E09B53300288FE8 /* EventoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventoViewController.m; sourceTree = "<group>"; };
-		F9EF9D001E09B54D00288FE8 /* EventoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventoViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,8 +270,6 @@
 		F93D8A011E00BDCC00559E3D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				F9EF9D001E09B54D00288FE8 /* EventoViewController.h */,
-				F9EF9CFE1E09B53300288FE8 /* EventoViewController.m */,
 				F9BB36691DFE45BE00868664 /* MainViewController.m */,
 				F93D8A4A1E00D2E600559E3D /* MainViewController.h */,
 				F93D8A4B1E00D2E600559E3D /* DayViewController.h */,
@@ -370,8 +362,6 @@
 		F93D8A851E00DF1400559E3D /* Event Kit */ = {
 			isa = PBXGroup;
 			children = (
-				F943DE8A1E09120000F0028A /* DataSource.h */,
-				F943DE8D1E09179600F0028A /* DataSource.m */,
 				F93D8A891E00DF6800559E3D /* MGCEventKitSupport.m */,
 				F93D8A8A1E00DF6800559E3D /* MGCEventKitSupport.h */,
 				F93D8A861E00DF3B00559E3D /* MGCDayPlannerEKViewController.h */,
@@ -803,7 +793,6 @@
 				BC9A7C021E07534F00CF2390 /* RatingsTableViewCell.swift in Sources */,
 				F9BB36721DFE45BE00868664 /* MainViewController.m in Sources */,
 				F93D8A841E00DD6100559E3D /* MGCDayPlannerViewController.m in Sources */,
-				F943DE8E1E09179600F0028A /* DataSource.m in Sources */,
 				F93D8A7B1E00DB5800559E3D /* MGCTimeRowsView.m in Sources */,
 				BC9A7BF41E03257B00CF2390 /* SettingsViewController.swift in Sources */,
 				F943DE891E08A49E00F0028A /* MGCReusableObjectQueue.m in Sources */,
@@ -837,7 +826,6 @@
 				5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */,
 				F93D8A681E00DAD600559E3D /* MGCAllDayEventsViewLayout.m in Sources */,
 				F943DE841E07423500F0028A /* SearchViewController.swift in Sources */,
-				F9EF9CFF1E09B53300288FE8 /* EventoViewController.m in Sources */,
 				F93D8A591E00D38E00559E3D /* MGCCalendarHeaderCell.m in Sources */,
 				BC9A7C041E085A5E00CF2390 /* RatingsViewController.swift in Sources */,
 				F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */,
