@@ -490,7 +490,8 @@ def findEvent(username):
                                         'acceptedBy': username})
 
 def printRequests():
-    print(request.get_json().__dict__)
+    if request.get_json():
+        print(request.get_json())
 
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
