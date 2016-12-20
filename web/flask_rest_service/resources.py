@@ -19,9 +19,10 @@ def log_request():
 
 @app.after_request
 def after(response):
-  # todo with response
-  print(response.get_data())
-  print("\n")
+    # todo with response
+    print(response.get_data())
+    print("\n")
+    return response
 
 class Root(restful.Resource):
     def get(self):
