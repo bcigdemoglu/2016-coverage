@@ -43,6 +43,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 @property (nonatomic) NSString* eventLocation;
 @property (nonatomic) NSString* eventName;
 @property (nonatomic) EventType* eventType;
+@property (nonatomic) EKEventStore* store;
 
 @end
 
@@ -111,44 +112,18 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     }
 }
 
-//TRying to add buttons to the Edit View Controller
-#pragma mark - Cancel/Done Events
--(void)suggestedLocationsTapped:(UIButton*)eventSender
+
+-(void)seeSuggestions:(UIButton*)eventSender
 {
-    NSLog(@"left Click");
-     NSString * storyboardName = @"Calendar";
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-    UIViewController *sug =[[UIViewController alloc] init];
-    sug = (UIViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TEST"];
-    [self displayContentController:sug];
-}
+    NSLog(@"Click");
+    //[UIPopoverController dismissPopoverAnimated:NO];
+    UIStoryboard *sb =  [UIStoryboard storyboardWithName:@"Calendar" bundle:NULL];
 
-
-
--(void)aTapped:(UIButton*)eventSender
-{
-    NSLog(@"left Click");
-        UIStoryboard *sb =  [UIStoryboard storyboardWithName:@"Calendar" bundle:NULL];
-        //UIViewController *Vc = [sb instantiateViewControllerWithIdentifier:@"TEST"];
-    
-    
-        //Vc.view.frame =CGRectMake(0, 0,  self.view.frame.size.width,self.view.frame.size.height);
-//    UIViewController* presentingViewController = self.presentingViewController;
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        [presentingViewController presentViewController:Vc animated:YES completion:nil];
-//        
-//    }];
-    NSDate *dayEnd = [self.calendar mgc_nextStartOfDayForDate:self.eventDate];
-    NSArray *events = [self fetchEventsFrom:self.eventDate to:dayEnd calendars:nil];
-    EKEvent *ev = [self eventOfType:self.createdEventType atIndex:0 date:self.createdEventDate];
-    
-    
     LocationSearchTable *search = [sb instantiateViewControllerWithIdentifier:@"TEST"];
     search.date = self.eventDate;
     search.eventTypeNum = self.createdEventType;
     
     [self.vcEdit.editViewDelegate eventEditViewController:self.vcEdit didCompleteWithAction:1];
-    ev = [self eventOfType:self.createdEventType atIndex:0 date:search.date];
     
     search.event = self.event;
     search.vcEdit = self.vcEdit;
@@ -157,61 +132,25 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     search.location = self.eventLocation;
     search.eventKit = self.eventKitSupport;
     search.mgcPlanView = self.dayPlannerView;
+    search.mgcParent = self.parentViewController;
     
     [self.navigationController pushViewController:search animated:YES];
     //search.eventType = self.mgcEventType;
     
     [self.eventKitSupport saveEvent:self.event completion:^(BOOL completion){
-      //[self.dayPlannerView endInteraction];
+      [self.dayPlannerView endInteraction];
     }];
-    
-    
-   // [self dismissViewControllerAnimated:YES completion:nil];
-   // [self.dayPlannerView endInteraction];
- //   self.createdEventDate = nil;
-    
-    //[[LocationSearchTable alloc] init];
    
 }
 
--(void)bTapped:(UIButton*)eventSender
-{
-    NSLog(@"left Click");
-
-    UIViewController *test = [self.storyboard instantiateViewControllerWithIdentifier:@"TEST"];
-    test.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:test.view];
-    [test didMoveToParentViewController:self];
-    
-    
-    NSString * storyboardName = @"Calendar";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-
-    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
-        [self displayContentController:vc];
- //       [self.navigationController displayViewController:vc animated:YES];
-        vc.view.hidden = YES;
-      //  [self.navigationController.topViewController.view addSubview:vc.view];
-       // [self displayContentController:vc];
-    
-}
-
-- (void) displayContentController: (UIViewController*) controller;
-{
-    [self addChildViewController:controller];
-    [self.view addSubview:controller.view];
-    //[self.containerView addSubview:controller.view];
-    //controller.view.frame = self.view.frame;
-    [controller didMoveToParentViewController:self];
-    //[self.view bringSubviewToFront:self.childViewControllers[0].view];
-    
-}
 
 #pragma mark - Extra
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
     if ([viewController isKindOfClass:[UITableViewController class]]) {
         UITableView *tableView = ((UITableViewController *)viewController).tableView;
+        UIBarButtonItem *rightBar = [[UIBarButtonItem alloc]initWithTitle:@"Coin" style:UIBarButtonItemStylePlain target:self action:@selector(changeToInAppScene:)];
+        self.navigationItem.rightBarButtonItem = rightBar;
         
         for (NSInteger j = 0; j < [tableView numberOfSections]; ++j){
             for (NSInteger i = 0; i < [tableView numberOfRowsInSection:j]; ++i)
@@ -229,14 +168,14 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
                     //CGFloat y = cell.frame.origin.y;
                     a.frame = CGRectMake(x, 4.5f, width, height);
                     a.backgroundColor = [UIColor whiteColor];
-                    [a addTarget:self action:@selector(aTapped:) forControlEvents:UIControlEventTouchUpInside];
+                    [a addTarget:self action:@selector(seeSuggestions:) forControlEvents:UIControlEventTouchUpInside];
                     [a setTitle:@"See Suggestions" forState:UIControlStateNormal];
                     [cell addSubview:a];
                     
                     UISwitch *switchBtn = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 20, 10)];
                     cell.accessoryView = switchBtn;
                     switchBtn.backgroundColor = [UIColor whiteColor];
-                    [switchBtn addTarget:self action:@selector(aTapped:) forControlEvents:UIControlEventValueChanged];
+                    [switchBtn addTarget:self action:@selector(seeSuggestions:) forControlEvents:UIControlEventValueChanged];
                     cell.textLabel.font = [UIFont systemFontOfSize:14];
                    
 
@@ -265,6 +204,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     eventController.delegate = self;
 
     self.eventDate = ev.startDate;
+    self.store = self.eventStore;
     self.event = ev;
     self.vcEdit = eventController;
     
@@ -631,6 +571,11 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     self.eventLocation = self.event.location;
     self.eventName = self.event.title;
     self.event = controller.event;
+    if (action == 1) {
+        //ADD RATING HERE
+       // Rating rating = Rating(
+    }
+    
     [self.dayPlannerView endInteraction];
     //self.event = controller.event;
     self.createdEventDate = nil;

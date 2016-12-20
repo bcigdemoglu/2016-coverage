@@ -54,8 +54,9 @@
 		F93D8A911E01AC4200559E3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A901E01AC4200559E3D /* main.m */; };
 		F93D8AA01E01B29600559E3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A9F1E01B29600559E3D /* InfoPlist.strings */; };
 		F943DE841E07423500F0028A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE831E07423500F0028A /* SearchViewController.swift */; };
-		F943DE861E075D4400F0028A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE851E075D4400F0028A /* LocationSearchTable.swift */; };
+		F943DE861E075D4400F0028A /* SuggestionsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE851E075D4400F0028A /* SuggestionsTableController.swift */; };
 		F943DE891E08A49E00F0028A /* MGCReusableObjectQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F943DE881E08A49E00F0028A /* MGCReusableObjectQueue.m */; };
+		F943DE8E1E09179600F0028A /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F943DE8D1E09179600F0028A /* DataSource.m */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
 		F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF091DC920AC00F59D53 /* ViewController.swift */; };
 		F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F944DF0E1DC920AC00F59D53 /* PlanIt.xcdatamodeld */; };
@@ -173,9 +174,11 @@
 		F93D8A921E01AC8300559E3D /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
 		F93D8A9F1E01B29600559E3D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		F943DE831E07423500F0028A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		F943DE851E075D4400F0028A /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		F943DE851E075D4400F0028A /* SuggestionsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsTableController.swift; sourceTree = "<group>"; };
 		F943DE871E08A49E00F0028A /* MGCReusableObjectQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCReusableObjectQueue.h; sourceTree = "<group>"; };
 		F943DE881E08A49E00F0028A /* MGCReusableObjectQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCReusableObjectQueue.m; sourceTree = "<group>"; };
+		F943DE8A1E09120000F0028A /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		F943DE8D1E09179600F0028A /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		F944DF041DC920AC00F59D53 /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F944DF071DC920AC00F59D53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F944DF091DC920AC00F59D53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 		F93D8A851E00DF1400559E3D /* Event Kit */ = {
 			isa = PBXGroup;
 			children = (
+				F943DE8A1E09120000F0028A /* DataSource.h */,
+				F943DE8D1E09179600F0028A /* DataSource.m */,
 				F93D8A891E00DF6800559E3D /* MGCEventKitSupport.m */,
 				F93D8A8A1E00DF6800559E3D /* MGCEventKitSupport.h */,
 				F93D8A861E00DF3B00559E3D /* MGCDayPlannerEKViewController.h */,
@@ -425,7 +430,7 @@
 				F944DF3C1DC921EB00F59D53 /* DatePicker.swift */,
 				5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */,
 				F943DE831E07423500F0028A /* SearchViewController.swift */,
-				F943DE851E075D4400F0028A /* LocationSearchTable.swift */,
+				F943DE851E075D4400F0028A /* SuggestionsTableController.swift */,
 				F9BB366F1DFE45BE00868664 /* settings.storyboard */,
 				F9BB36661DFE45BE00868664 /* Calendar.storyboard */,
 				BC08F0591DFB60BA00AFA3DC /* Main.storyboard */,
@@ -787,6 +792,7 @@
 				BC9A7C021E07534F00CF2390 /* RatingsTableViewCell.swift in Sources */,
 				F9BB36721DFE45BE00868664 /* MainViewController.m in Sources */,
 				F93D8A841E00DD6100559E3D /* MGCDayPlannerViewController.m in Sources */,
+				F943DE8E1E09179600F0028A /* DataSource.m in Sources */,
 				F93D8A7B1E00DB5800559E3D /* MGCTimeRowsView.m in Sources */,
 				BC9A7BF41E03257B00CF2390 /* SettingsViewController.swift in Sources */,
 				F943DE891E08A49E00F0028A /* MGCReusableObjectQueue.m in Sources */,
@@ -814,7 +820,7 @@
 				F944DF4C1DC9222E00F59D53 /* Itinerary.swift in Sources */,
 				F93D8A8B1E00DF6800559E3D /* MGCEventKitSupport.m in Sources */,
 				F944DF4D1DC9222E00F59D53 /* DateViewController.swift in Sources */,
-				F943DE861E075D4400F0028A /* LocationSearchTable.swift in Sources */,
+				F943DE861E075D4400F0028A /* SuggestionsTableController.swift in Sources */,
 				5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */,
 				F93D8A681E00DAD600559E3D /* MGCAllDayEventsViewLayout.m in Sources */,
 				F943DE841E07423500F0028A /* SearchViewController.swift in Sources */,
