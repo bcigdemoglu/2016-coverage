@@ -37,8 +37,6 @@ class Event {
         self.accpetedByUsers = accepted
     }
     
-    
-    
 }
 
 

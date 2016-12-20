@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Class Description: View Controller for the personal settings page
 class SettingsViewController: UIViewController {
     
     @IBOutlet var nameText: UITextField!
@@ -20,10 +21,12 @@ class SettingsViewController: UIViewController {
         
         //Alex: get real user info here
         
-        
+        //Sets up to User's saved settings
         nameText.text = User.getDisplayName()
         emailText.text = User.getUserName()
         passwordText.text = User.getUserPassword()
+        
+        //Sets up Navigation side bar
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -31,6 +34,7 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    //Networks the changes to the user's saved personal settings
     @IBAction func onSaveButtonTapped(_ sender: AnyObject) {
         
         let userName = nameText.text;
@@ -76,6 +80,7 @@ class SettingsViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //Function to check email is in appropriate format
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"

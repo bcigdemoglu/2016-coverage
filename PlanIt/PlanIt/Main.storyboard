@@ -22,7 +22,7 @@
                         <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationLevel="5" indentationWidth="10" reuseIdentifier="ItineraryTableViewCell" rowHeight="50" id="SRQ-IQ-KlO" customClass="ItineraryTableViewCell" customModule="PlanIt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="134" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SRQ-IQ-KlO" id="wsf-fa-mmW">
                                     <frame key="frameInset" width="342" height="49"/>
@@ -43,23 +43,12 @@
                                             <color key="backgroundColor" red="0.0" green="0.14471531413612571" blue="0.13729273205499873" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeA-KG-Zf7">
-                                            <frame key="frameInset" minX="293" minY="8" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Delete">
-                                                <color key="titleColor" red="0.89815414510000002" green="0.31222277329999998" blue="0.26824596080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="showCalendarView:" destination="533-5k-2kJ" eventType="touchUpInside" id="wvC-nV-4wL"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.59999695717990631" green="0.69868978765269407" blue="0.83029064119170981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="deleteItinerary" destination="FeA-KG-Zf7" id="idT-sD-bfx"/>
                                     <outlet property="nameLabel" destination="lwJ-cH-HBS" id="JAC-FQ-V9Y"/>
                                     <segue destination="SNh-eS-7mD" kind="presentation" identifier="showCalendarSegue" id="lPD-mw-VFV"/>
                                 </connections>
@@ -132,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KsV-g1-iLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3913" y="1576"/>
+            <point key="canvasLocation" x="4366" y="1576"/>
         </scene>
         <!--Choose Date-->
         <scene sceneID="le3-Ma-U11">
@@ -311,7 +300,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="22V-BS-XPK" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="c8j-Fn-khY"/>
+                                            <segue destination="giA-G4-bYg" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="U6b-0r-4xy"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -373,32 +362,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjg-7E-QNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3528.8000000000002" y="-358.4707646176912"/>
-        </scene>
-        <!--Ratings-->
-        <scene sceneID="Hcv-lU-G3Q">
-            <objects>
-                <viewController id="uCe-fl-mlA" customClass="RatingsViewController" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TSt-11-zZ2"/>
-                        <viewControllerLayoutGuide type="bottom" id="Rz4-Y4-45s"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jc8-g9-USW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Ratings" id="xNq-kG-LDL">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="00f-B8-xht"/>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="00f-B8-xht" id="wrF-sC-41E"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jUS-Qy-9BY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5900" y="-394.45277361319341"/>
         </scene>
         <!--Personal Settings-->
         <scene sceneID="uBR-qX-bXn">
@@ -801,23 +764,115 @@
             </objects>
             <point key="canvasLocation" x="3374" y="1576"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fx8-L1-Q04">
+        <!--Ratings-->
+        <scene sceneID="LBk-eD-ONI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="22V-BS-XPK" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bDz-pE-G2W">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <tableViewController id="WL7-0g-BHn" customClass="RatingsTableViewController" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Gd-K0-3si">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationLevel="5" indentationWidth="10" reuseIdentifier="RatingsTableViewCell" rowHeight="50" id="Mk9-Gi-Vdh" customClass="RatingsTableViewCell" customModule="PlanIt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mk9-Gi-Vdh" id="Xs4-5k-l4Y">
+                                    <frame key="frameInset" width="342" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="177-d4-jML">
+                                            <frame key="frameInset" minX="17" minY="8" width="358" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.59999695720000001" green="0.69868978770000001" blue="0.83029064119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.59999695720000001" green="0.69868978770000001" blue="0.83029064119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="177-d4-jML" id="05e-yS-ceK"/>
+                                    <segue destination="egq-3U-YI7" kind="custom" identifier="showRatingsSegue" customClass="SWRevealViewControllerSeguePushController" id="8Md-IV-jne"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WL7-0g-BHn" id="jOa-Ii-8im"/>
+                            <outlet property="delegate" destination="WL7-0g-BHn" id="eQo-fg-3Ls"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Ratings" id="6k7-Hi-vnz">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="OxE-UL-FT5"/>
+                    </navigationItem>
                     <connections>
-                        <segue destination="uCe-fl-mlA" kind="relationship" relationship="rootViewController" id="ZsL-ZV-KZz"/>
+                        <outlet property="menuButton" destination="OxE-UL-FT5" id="e22-Ip-opx"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cOd-VZ-A8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhZ-PD-Sk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4960.8000000000002" y="-394.45277361319341"/>
+            <point key="canvasLocation" x="7175.1999999999998" y="-524.8875562218891"/>
+        </scene>
+        <!--Ratings View Controller-->
+        <scene sceneID="zfZ-JB-T43">
+            <objects>
+                <viewController id="egq-3U-YI7" customClass="RatingsViewController" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fg5-uf-kt9"/>
+                        <viewControllerLayoutGuide type="bottom" id="lmI-vr-h1L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="69c-kW-PdH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-vP-sLk">
+                                <frame key="frameInset" minX="29" minY="50" width="49" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBO-Ez-FoN">
+                                <frame key="frameInset" minX="81" minY="50" width="278" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="69F-k9-E4V">
+                                <frame key="frameInset" minX="16" minY="134" height="176" maxX="89"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="egq-3U-YI7" id="fvD-7H-ADl"/>
+                                    <outlet property="delegate" destination="egq-3U-YI7" id="jkh-TM-mzB"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNX-Hz-osX">
+                                <frame key="frameInset" minX="130" minY="338" width="114" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSaveButtonTapped:" destination="PPg-97-YYx" eventType="touchUpInside" id="fth-lT-9zF"/>
+                                    <action selector="saveButtonTapped:" destination="egq-3U-YI7" eventType="touchUpInside" id="HX4-07-Mx0"/>
+                                    <segue destination="giA-G4-bYg" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="4ic-tY-AyE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42533339780000001" green="0.49288786179999999" blue="0.58077639250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MdO-xH-0KJ"/>
+                    <connections>
+                        <outlet property="locationName" destination="FBO-Ez-FoN" id="Icd-2L-kyw"/>
+                        <outlet property="ratingPicker" destination="69F-k9-E4V" id="44n-Ug-UwS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZAO-N2-esu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8192.7999999999993" y="-525.78710644677665"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="crA-ED-Esr">
@@ -855,6 +910,24 @@
             </objects>
             <point key="canvasLocation" x="5872.8000000000002" y="1086.2068965517242"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4bF-rk-oOk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="giA-G4-bYg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjy-bw-Hzk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WL7-0g-BHn" kind="relationship" relationship="rootViewController" id="pX2-Bh-bu3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eY4-R5-ODU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6236" y="-524.8875562218891"/>
+        </scene>
     </scenes>
     <resources>
         <image name="PlanIt-Logo.png" width="512" height="512"/>
@@ -862,6 +935,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y2f-BY-ffE"/>
+
         <segue reference="uh2-E7-yAC"/>
+        <segue reference="BUr-7N-9BG"/>
+        <segue reference="4ic-tY-AyE"/>
     </inferredMetricsTieBreakers>
 </document>

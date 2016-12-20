@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+//Class Description: View that controls the Date Picker when user wants to add an itinerary
+
 class DatePicker: UIView {
     
     required init?(coder aDecoder: NSCoder) {

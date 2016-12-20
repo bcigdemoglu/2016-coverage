@@ -9,22 +9,25 @@
 import UIKit
 import Foundation
 
+//Class Description: Controller for table view of all itineraries
 
 class ItineraryTableViewController: UITableViewController {
 
     // MARK: Properties 
     
-    @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet var menuButton: UIBarButtonItem! //Navigation Side Bar Button
     
-    var itineraries = [Itinerary]()
+    var itineraries = [Itinerary]() //array of all itineraries to display
     
-    var itinerary: Itinerary?
+    var itinerary: Itinerary? //a specific itinerary
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
 
         loadRealItineraries()
+        
+        //Sets up the side bar
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -80,6 +83,7 @@ class ItineraryTableViewController: UITableViewController {
         self.itineraries = [it1, it2]
     }
     
+    //Function to complete network call to retreive a user's itineraries
     func loadRealItineraries() {
    
         getItineraryListShells(userID: User.getUserName()!) { list, errormsg in
@@ -115,7 +119,7 @@ class ItineraryTableViewController: UITableViewController {
         return itineraries.count
     }
 
-    
+    //Function to link the cell to appropriate identified and labels of cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ItineraryTableViewCell"
@@ -136,6 +140,7 @@ class ItineraryTableViewController: UITableViewController {
 //        self.performSegue(withIdentifier: "showCalendarSegue", sender: indexPath)
 //    }
     
+    //Unwind segue that updates list whenever itinerary is added or removed
     @IBAction func unwindToItineraryList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? DateViewController, let itinerary = sourceViewController.itinerary {
             
@@ -148,6 +153,7 @@ class ItineraryTableViewController: UITableViewController {
         
     }
 
+    //Function to display alert message when errors occur after itineries are shown
     func displayAlertMessage(myMessage:String) {
         let alertController = UIAlertController(title: "Alert", message: myMessage, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
@@ -159,7 +165,6 @@ class ItineraryTableViewController: UITableViewController {
     // MARK: - Navigation
     //Segue to the calendar view from each itinerary
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("INTO PREPAREFORSEGUE")
         if (segue.identifier == "showCalendarSegue") {
             //let destination = segue.destination as? CalendarViewController
             let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
@@ -174,6 +179,7 @@ class ItineraryTableViewController: UITableViewController {
         }
     }
     
+    //Enables itinerary cell to swipe and delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteItinerary(itineraryID: itineraries[indexPath.row].uid) {
