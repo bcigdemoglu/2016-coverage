@@ -6,8 +6,6 @@
 ////  Copyright © 2016 oosegroup13. All rights reserved.
 ////
 //
-//#ifndef DataSource_h
-//#define DataSource_h
 //
 //#import <UIKit/UIKit.h>
 //#import <EventKit/EventKit.h>

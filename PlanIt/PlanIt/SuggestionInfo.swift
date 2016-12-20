@@ -16,6 +16,7 @@ class SuggestionInfo {
     var longitude : Double?
     
     var latitude : Double?
+    
     init(name : String?, numberStars : Int?) {
         self.displayName = name
         self.numberStars = numberStars
