@@ -17,10 +17,12 @@ import MapKit
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView?
     
+    public var mgcPlanView: MGCDayPlannerView?
     public var mgcView: MGCDayPlannerEKViewController?
     public var mgc: MGCDayPlannerEKViewControllerDelegate?
     public var data: MGCDayPlannerViewDataSource?
     public var event: EKEvent?
+    public var ekVC: EKEventViewController?
     public var vcEdit: EKEventEditViewController?
     //let store: EKEventStore
   //  public var eventType: MGCEventType = MGCEventType(rawValue:0)!
@@ -44,8 +46,9 @@ import MapKit
         
         tableView.tableFooterView = UIView()
         NSLog("Opening Suggestions");
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -57,12 +60,35 @@ import MapKit
     }
 
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
-        self.event?.location = "CHANGED"
-        eventKit.save(self.event, completion: nil)
+               //self.event?.location = "CHANGED"
+        print(self.location)
+        print(String(describing: self.date) as String?)
+        print(self.event?.eventIdentifier)
+        print(self.event?.calendarItemIdentifier)
+        //eventKit.save(self.event, completion: nil)
+        performSegue(withIdentifier: "backToCalendarView", sender: self)
+
+        
+        
+        // Experimenting to bring up view controller.
+       // mgcPlanView?.selectEvent(of: MGCEventType(rawValue: UInt(1))!, at: 0, date: self.date as Date!)
+        //vcEditDel?.eventEditViewController(vcEdit!, didCompleteWith: EKEventEditViewAction(rawValue: 1)!)
+
         
     }
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
-     //   mgc.pop
+        self.event?.location = "CHANGED"
+        
+        
+        eventKit.save(self.event, completion: nil)
+        print(self.location)
+        print(String(describing: self.date) as String?)
+        eventKit.save(self.event, completion: nil)
+        
+        performSegue(withIdentifier: "backToCalendarView", sender: self)
+
+       // mgcPlanView?.allowsSelection = true
+       // mgcPlanView?.selectEvent(of: MGCEventType(rawValue: UInt(1))!, at: 0, date: self.date as Date!)
         
     }
     // MARK: - Table view data source
@@ -77,6 +103,22 @@ import MapKit
         return 0
     }
 
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
+        destination.calDate = self.date as Date!
+        
+        //mgcPlanView?.selectEvent(of: MGCEventType(rawValue: UInt(1))!, at: 1, date: self.date as Date!)
+       // let mgcevent: MGCEKEventViewController = MGCEKEventViewController()
+        //mgcevent.event = self.event!
+
+        //mgcPlanView?.selectEvent(of: MGCEventType(rawValue: self.eventTypeNum)!, at: 0, date: self.date as Date!)
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -122,16 +164,7 @@ import MapKit
     }
     */
 
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
-        destination.calDate = self.date as Date!
-    }
+}
     
     //
     //  LocationSearchTable.swift
@@ -141,59 +174,7 @@ import MapKit
     //  Copyright © 2015 Thorn Technologies. All rights reserved.
     //
     
-    
-        
-        func parseAddress(_ selectedItem:MKPlacemark) -> String {
-            
-            // put a space between "4" and "Melrose Place"
-            let firstSpace = (selectedItem.subThoroughfare != nil &&
-                selectedItem.thoroughfare != nil) ? " " : ""
-            
-            // put a comma between street and city/state
-            let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) &&
-                (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
-            
-            // put a space between "Washington" and "DC"
-            let secondSpace = (selectedItem.subAdministrativeArea != nil &&
-                selectedItem.administrativeArea != nil) ? " " : ""
-            
-            let addressLine = String(
-                format:"%@%@%@%@%@%@%@",
-                // street number
-                selectedItem.subThoroughfare ?? "",
-                firstSpace,
-                // street name
-                selectedItem.thoroughfare ?? "",
-                comma,
-                // city
-                selectedItem.locality ?? "",
-                secondSpace,
-                // state
-                selectedItem.administrativeArea ?? ""
-            )
-            
-            return addressLine
-        }
-        
-    }
-    
 
-    
-    extension LocationSearchTable {
-        
-//        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: IndexPath) -> NSIndexPath{
-//            return matchingItems.count
-//        }
-        
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-            let selectedItem = matchingItems[(indexPath as NSIndexPath).row].placemark
-            cell.textLabel?.text = selectedItem.name
-            cell.detailTextLabel?.text = parseAddress(selectedItem)
-            return cell
-        }
-        
-    }
 
         
  

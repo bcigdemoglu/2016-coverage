@@ -39,8 +39,10 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 @property (nonatomic) EKEvent* event;
 @property (nonatomic) EKEventEditViewController* vcEdit;
-@property (nonatomic) MGCEventType* mgcType;
+@property (nonatomic) MGCEventType* mgcEvType;
 @property (nonatomic) NSString* eventLocation;
+@property (nonatomic) NSString* eventName;
+@property (nonatomic) EventType* eventType;
 
 @end
 
@@ -83,6 +85,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     eventController.delegate = self;
     eventController.allowsEditing = YES;
     eventController.allowsCalendarPreview = YES;
+    eventController.delegate = self;
     
     UINavigationController *nc = nil;
     if ([self.delegate respondsToSelector:@selector(dayPlannerEKViewController:navigationControllerForPresentingEventViewController:)]) {
@@ -139,6 +142,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     NSArray *events = [self fetchEventsFrom:self.eventDate to:dayEnd calendars:nil];
     EKEvent *ev = [self eventOfType:self.createdEventType atIndex:0 date:self.createdEventDate];
     
+    
     LocationSearchTable *search = [sb instantiateViewControllerWithIdentifier:@"TEST"];
     search.date = self.eventDate;
     search.eventTypeNum = self.createdEventType;
@@ -152,7 +156,9 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     search.mgc = self.delegate;
     search.location = self.eventLocation;
     search.eventKit = self.eventKitSupport;
-
+    search.mgcPlanView = self.dayPlannerView;
+    
+    [self.navigationController pushViewController:search animated:YES];
     //search.eventType = self.mgcEventType;
     
     [self.eventKitSupport saveEvent:self.event completion:^(BOOL completion){
@@ -165,7 +171,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
  //   self.createdEventDate = nil;
     
     //[[LocationSearchTable alloc] init];
-    [self.navigationController pushViewController:search animated:YES];
+   
 }
 
 -(void)bTapped:(UIButton*)eventSender
@@ -244,6 +250,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 }
 
 
+/// public
 //Edit controller for New events here!!!
 - (void)showPopoverForNewEvent:(EKEvent*)ev
 {
@@ -483,6 +490,8 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
         }
         else {
             count = [[self eventsOfType:TimedEventType forDay:date]count];
+            self.mgcEvType = type;
+            self.eventType = TimedEventType;
         }
     }
     return count;
@@ -558,7 +567,14 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 }
 
 /**
- * Check the date to make sure it is correct and for popovercontroller 
+ * Check the date to make sure it is correct and for popovercontroller
+ */
+- (void)dayPlannerView:(MGCDayPlannerView *)view createNewEventOfType:(EKEvent*)ev
+{
+    [self showPopoverForNewEvent:ev];
+}
+/**
+ * Check the date to make sure it is correct and for popovercontroller
  */
 - (void)dayPlannerView:(MGCDayPlannerView *)view createNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
@@ -613,8 +629,10 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     self.eventLocation = self.event.location;
-    [self.dayPlannerView endInteraction];
+    self.eventName = self.event.title;
     self.event = controller.event;
+    [self.dayPlannerView endInteraction];
+    //self.event = controller.event;
     self.createdEventDate = nil;
 }
 

@@ -1195,12 +1195,6 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 				[self endInteraction];
 			}
 			else if (date && [self.dataSource respondsToSelector:@selector(dayPlannerView:createNewEventOfType:atDate:)]) {
-                //Put in new controller here
-//                NSString * storyboardName = @"Calendar";
-//                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-//                UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SuggestedLocations"];
-//                [self.navigationController presentViewController:vc animated:YES];
-                
 				[self.dataSource dayPlannerView:self createNewEventOfType:self.interactiveCellType atDate:date];
 			}
 		}

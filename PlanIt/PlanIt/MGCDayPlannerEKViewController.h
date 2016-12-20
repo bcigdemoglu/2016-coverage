@@ -33,7 +33,10 @@
 
 @optional
 
-- (void)dayPlannerEKEViewController:(MGCDayPlannerEKViewController*)vc willPresentEventViewController:(EKEventViewController*)eventViewController;                                     
+- (void)showEditControllerForEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date;
+
+- (void)dayPlannerEKEViewController:(MGCDayPlannerEKViewController*)vc willPresentEventViewController:(EKEventViewController*)eventViewController;
+
 - (UINavigationController*)dayPlannerEKViewController:(MGCDayPlannerEKViewController*)vc navigationControllerForPresentingEventViewController:(EKEventViewController*)eventViewController;
 
 @end
