@@ -348,6 +348,9 @@ class PostSuggestions(restful.Resource):
         app.mongo.db.unratedSuggestions.insert(chosenSuggestion)
         return {"message" : "Choice received."}, 200
 
+    def post(self, username):
+        return self.get(username)
+
 class DeleteItinerary(restful.Resource):
     '''
         uid -> itinerary uid
@@ -393,6 +396,9 @@ class GetEventsForItinerary(restful.Resource):
                                           'acceptedBy': username})
 
         return {'events': events}, 200
+
+    def post(self, username):
+        return self.get(username)
 
 
 class GetItineraryList(restful.Resource):
