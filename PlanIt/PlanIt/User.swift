@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User {
+@objc public class User : NSObject {
     
     //Mark:  Properties
     var currentUser : String?
@@ -21,16 +21,20 @@ class User {
     
     private var nextDisplayName : String?
     
-    static var onlyUser : User = User()!
+    static var onlyUser : User = User()
+    
+    public var events : [Event?]
     
     private init?(user : String?, password : String?) {
         self.currentUser = user
         self.currentPassword = password
+        self.events = [Event]()
     }
     
-    private init?() {
+    private override init() {
         self.currentUser = nil
         self.currentPassword = nil
+        self.events = [Event]()
     }
     
     static func createUser(user : String?, password : String?) {
@@ -100,5 +104,15 @@ class User {
         }
     }
     
+   public static func getEvents(date : String, completionHandler: @escaping (String?) -> Void) {
+        sendGetEvents(itineraryDate : date) {
+            str, eventArray in
+            onlyUser.events = eventArray
+            completionHandler(nil)
+        }
+    }
     
+    public static func fetchCurrentEvents() -> [Event?]{
+        return onlyUser.events
+    }
 }
