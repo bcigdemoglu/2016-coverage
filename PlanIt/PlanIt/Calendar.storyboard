@@ -92,7 +92,7 @@
         <!--Location Search Table-->
         <scene sceneID="lFQ-1S-sUv">
             <objects>
-                <tableViewController storyboardIdentifier="TEST" id="qZ8-Ed-FRb" customClass="LocationSearchTable" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TEST" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="qZ8-Ed-FRb" customClass="LocationSearchTable" customModule="PlanIt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fbW-VS-TUG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,6 +126,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Oax-nI-cYC">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="qZ8-Ed-FRb" id="HZe-gf-fJk"/>
+                                <segue destination="Rig-xm-09W" kind="presentation" id="YZ4-2b-FcI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Zfh-Tl-V7Q">

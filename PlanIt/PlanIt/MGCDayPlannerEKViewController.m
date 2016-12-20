@@ -35,9 +35,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 @property (nonatomic) NSCache *eventsCache;
 @property (nonatomic) NSUInteger createdEventType;
 @property (nonatomic, copy) NSDate *createdEventDate;
+@property (nonatomic) NSDate *eventDate;
 
 @property (nonatomic) EKEvent* event;
 @property (nonatomic) EKEventEditViewController* vcEdit;
+@property (nonatomic) MGCEventType* mgcType;
+@property (nonatomic) NSString* eventLocation;
 
 @end
 
@@ -47,6 +50,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 @synthesize calendar = _calendar;
 @synthesize event;
 @synthesize vcEdit;
+//@synthesize mgcEventType = TimedEventType;
 
 - (instancetype)initWithEventStore:(EKEventStore*)eventStore
 {
@@ -122,7 +126,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 {
     NSLog(@"left Click");
         UIStoryboard *sb =  [UIStoryboard storyboardWithName:@"Calendar" bundle:NULL];
-        UIViewController *Vc = [sb instantiateViewControllerWithIdentifier:@"TEST"];
+        //UIViewController *Vc = [sb instantiateViewControllerWithIdentifier:@"TEST"];
     
     
         //Vc.view.frame =CGRectMake(0, 0,  self.view.frame.size.width,self.view.frame.size.height);
@@ -131,45 +135,37 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 //        [presentingViewController presentViewController:Vc animated:YES completion:nil];
 //        
 //    }];
-    
+    NSDate *dayEnd = [self.calendar mgc_nextStartOfDayForDate:self.eventDate];
+    NSArray *events = [self fetchEventsFrom:self.eventDate to:dayEnd calendars:nil];
+    EKEvent *ev = [self eventOfType:self.createdEventType atIndex:0 date:self.createdEventDate];
     
     LocationSearchTable *search = [sb instantiateViewControllerWithIdentifier:@"TEST"];
+    search.date = self.eventDate;
+    search.eventTypeNum = self.createdEventType;
+    
+    [self.vcEdit.editViewDelegate eventEditViewController:self.vcEdit didCompleteWithAction:1];
+    ev = [self eventOfType:self.createdEventType atIndex:0 date:search.date];
+    
     search.event = self.event;
     search.vcEdit = self.vcEdit;
     search.mgcView = self;
     search.mgc = self.delegate;
+    search.location = self.eventLocation;
+    search.eventKit = self.eventKitSupport;
 
+    //search.eventType = self.mgcEventType;
+    
+    [self.eventKitSupport saveEvent:self.event completion:^(BOOL completion){
+      //[self.dayPlannerView endInteraction];
+    }];
+    
+    
+   // [self dismissViewControllerAnimated:YES completion:nil];
+   // [self.dayPlannerView endInteraction];
+ //   self.createdEventDate = nil;
     
     //[[LocationSearchTable alloc] init];
     [self.navigationController pushViewController:search animated:YES];
-
-    [self dismissViewControllerAnimated:YES completion:nil];
-   // [self showPopoverForNewEvent:event];
-    [self.dayPlannerView endInteraction];
-    self.createdEventDate = nil;
-    
-//    [self.dayPlannerView deselectEvent];
-//    if (self.navigationController.presentingViewController) {
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//    } else {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-
-    
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    //[self.delegate signupViewControllerDidCancel:self];
-   // [self showDetailViewController:Vc sender:nil];
-     //   [self.containerView addSubview:Vc.view];
-
-      //  [self addChildViewController:Vc];
-
-     //   [self.view addSubview:Vc.view];
-     //   [self addChildViewController:Vc];
-    //
-    //self.view.hidden = TRUE;
-     //   [Vc didMoveToParentViewController:self];
-    
-       // [self showDetailViewController:Vc sender:self];
 }
 
 -(void)bTapped:(UIButton*)eventSender
@@ -185,7 +181,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     NSString * storyboardName = @"Calendar";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
 
-        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TEST"];
         [self displayContentController:vc];
  //       [self.navigationController displayViewController:vc animated:YES];
         vc.view.hidden = YES;
@@ -261,6 +257,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     eventController.presentationController.delegate = self;
     eventController.delegate = self;
 
+    self.eventDate = ev.startDate;
     self.event = ev;
     self.vcEdit = eventController;
     
@@ -560,6 +557,9 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     return evCell;
 }
 
+/**
+ * Check the date to make sure it is correct and for popovercontroller 
+ */
 - (void)dayPlannerView:(MGCDayPlannerView *)view createNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
     // CONTROLLER HERE FOR LOCATION TRY THIS
@@ -570,6 +570,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     
     EKEvent *ev = [EKEvent eventWithEventStore:self.eventStore];
     ev.startDate = date;
+    ev.location = @"default";
     
     NSDateComponents *comps = [NSDateComponents new];
     comps.day = ((NSInteger) view.durationForNewTimedEvent) / (60 * 60 * 24);
@@ -610,10 +611,10 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
 {
-
-    
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.eventLocation = self.event.location;
     [self.dayPlannerView endInteraction];
+    self.event = controller.event;
     self.createdEventDate = nil;
 }
 

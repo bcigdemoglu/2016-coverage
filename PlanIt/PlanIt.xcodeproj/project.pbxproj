@@ -52,6 +52,7 @@
 		F93D8AA01E01B29600559E3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A9F1E01B29600559E3D /* InfoPlist.strings */; };
 		F943DE841E07423500F0028A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE831E07423500F0028A /* SearchViewController.swift */; };
 		F943DE861E075D4400F0028A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943DE851E075D4400F0028A /* LocationSearchTable.swift */; };
+		F943DE891E08A49E00F0028A /* MGCReusableObjectQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F943DE881E08A49E00F0028A /* MGCReusableObjectQueue.m */; };
 		F944DF081DC920AC00F59D53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF071DC920AC00F59D53 /* AppDelegate.swift */; };
 		F944DF0A1DC920AC00F59D53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944DF091DC920AC00F59D53 /* ViewController.swift */; };
 		F944DF101DC920AC00F59D53 /* PlanIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F944DF0E1DC920AC00F59D53 /* PlanIt.xcdatamodeld */; };
@@ -167,6 +168,8 @@
 		F93D8A9F1E01B29600559E3D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		F943DE831E07423500F0028A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F943DE851E075D4400F0028A /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		F943DE871E08A49E00F0028A /* MGCReusableObjectQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCReusableObjectQueue.h; sourceTree = "<group>"; };
+		F943DE881E08A49E00F0028A /* MGCReusableObjectQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCReusableObjectQueue.m; sourceTree = "<group>"; };
 		F944DF041DC920AC00F59D53 /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F944DF071DC920AC00F59D53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F944DF091DC920AC00F59D53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				F93D8A5E1E00DA8500559E3D /* NSCalendar+MGCAdditions.m */,
 				F93D8A601E00DA8F00559E3D /* MGCDateRange.h */,
 				F93D8A611E00DA8F00559E3D /* MGCDateRange.m */,
+				F943DE871E08A49E00F0028A /* MGCReusableObjectQueue.h */,
+				F943DE881E08A49E00F0028A /* MGCReusableObjectQueue.m */,
 				F93D8A851E00DF1400559E3D /* Event Kit */,
 				F93D8A6F1E00DB0D00559E3D /* Event view */,
 				F93D8A231E00C09F00559E3D /* Day Planner */,
@@ -774,6 +779,7 @@
 				F93D8A841E00DD6100559E3D /* MGCDayPlannerViewController.m in Sources */,
 				F93D8A7B1E00DB5800559E3D /* MGCTimeRowsView.m in Sources */,
 				BC9A7BF41E03257B00CF2390 /* SettingsViewController.swift in Sources */,
+				F943DE891E08A49E00F0028A /* MGCReusableObjectQueue.m in Sources */,
 				F93D8A881E00DF3B00559E3D /* MGCDayPlannerEKViewController.m in Sources */,
 				F944DF4B1DC9222E00F59D53 /* ItineraryTableViewController.swift in Sources */,
 				F93D8A511E00D2E600559E3D /* DayViewController.m in Sources */,

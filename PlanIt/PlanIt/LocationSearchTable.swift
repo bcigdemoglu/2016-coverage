@@ -22,30 +22,25 @@ import MapKit
     public var data: MGCDayPlannerViewDataSource?
     public var event: EKEvent?
     public var vcEdit: EKEventEditViewController?
+    //let store: EKEventStore
+  //  public var eventType: MGCEventType = MGCEventType(rawValue:0)!
+    public var vcEditDel: EKEventEditViewDelegate?
+    public var eventTypeNum: UInt = 1
+    public var date: NSDate?
+    public var eventKit: MGCEventKitSupport = MGCEventKitSupport()
+    public var location: String?
+    
 
     convenience init() {
         self.init(nibName:nil, bundle:nil)
     }
     
     override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        self.currentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA")
-//        self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
-//        self.addChildViewController(self.currentViewController!)
-//        self.addSubview(self.currentViewController!.view, toView: self.containerView)
-//        super.viewDidLoad()
-        
-//        let btn2 = UIButton(type: .custom)
-//        btn2.setImage(UIImage(named: "Done"), for: .normal)
-//        btn2.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        btn2.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
-//        let item2 = UIBarButtonItem(customView: btn2)
-//        
-//        let testUIBarButtonItem = UIBarButtonItem(image: UIImage(named: "test.png"), style: .plain, target: self, action: nil)
-//        self.navigationItem.rightBarButtonItem  = testUIBarButtonItem
-//        
-//        self.navigationItem.setRightBarButton(item2, animated: true)
+        super.viewDidLoad()
+        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        //var vcEditDel: EKEventEditViewDelegate = (vcEdit?.editViewDelegate)!
+        //vcEditDel.didCompleteWithAction(1)
         
         tableView.tableFooterView = UIView()
         NSLog("Opening Suggestions");
@@ -62,6 +57,8 @@ import MapKit
     }
 
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
+        self.event?.location = "CHANGED"
+        eventKit.save(self.event, completion: nil)
         
     }
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
@@ -125,15 +122,17 @@ import MapKit
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
+        destination.calDate = self.date as Date!
     }
-    */
+    
     //
     //  LocationSearchTable.swift
     //  MapKitTutorial
