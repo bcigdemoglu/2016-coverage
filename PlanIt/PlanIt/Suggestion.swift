@@ -18,16 +18,13 @@ class Suggestion{
     var location:String
     //var name: String = ""
     var locationID: String
-    var date:NSDate = NSDate()
+    var date: String
     
     // MARK: Initialization
     
-    init(location: String, locationID: String) {
-        self.location = location
-        self.locationID = locationID
-    }
+
     
-    init?(location: String, date: NSDate, locationID: String) {
+    init?(location: String, date: String, locationID: String) {
         self.location = location
         self.locationID = locationID
         self.date = date
@@ -44,7 +41,7 @@ class Suggestion{
             self.date = date
         }
     }
-    
+
     
     //To implement later for storage
     /**  required init?(coder decoder: NSCoder) {

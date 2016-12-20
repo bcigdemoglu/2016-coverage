@@ -33,8 +33,8 @@ import MapKit
     public var location: String?
     
     
-    var suggestions = [Suggestion]()
-    var suggestion: Suggestion? //a specific itinerary
+    var suggestions = [SuggestionInfo]()
+    var suggestion: SuggestionInfo? //a specific itinerary
 
     
     convenience init() {
@@ -73,16 +73,16 @@ import MapKit
         let dataString2 = "December 31, 2017"
         //var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateValue2 = dateFormatter.date(from: dataString2) as NSDate!
+      //  let dateValue2 = dateFormatter.date(from: dataString2) as NSDate!
         
         
-        let sug1 = Suggestion(location: "Location 1", date: dateValue1!, locationID : "1234567")!
+        let sug1 = SuggestionInfo(name: "Location 1", numberStars: 5)
         
-        let sug2 = Suggestion(location: "Location 2", date: dateValue2!, locationID : "12345678910xasdf")!
+        let sug2 = SuggestionInfo(name: "Location 2",numberStars: 4)
         
-        let sug3 = Suggestion(location: self.location!, date: self.date!, locationID: (self.event?.eventIdentifier)!)
+        let sug3 = SuggestionInfo(name:self.location!, numberStars: 3)
 
-        self.suggestions = [sug1, sug2, sug3!]
+        self.suggestions = [sug1, sug2, sug3]
     }
     
     // MARK: - Table view data source
@@ -110,22 +110,16 @@ import MapKit
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE MMM dd"
-        let strDate = dateFormatter.string(from: (sug.date as NSDate) as Date)
+        //let strDate = dateFormatter.string(from: (sug.date as NSDate) as Date as Date)
         
-        cell.nameLabel.text = sug.location
+        cell.nameLabel.text = sug.displayName
         
         return cell
     }
 
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
-               //self.event?.location = "CHANGED"
-
-        print(self.location)
-        print(String(describing: self.date) as String?)
-        print(self.event?.eventIdentifier)
-        print(self.event?.calendarItemIdentifier)
-
-        //self.backToEdit()
+        //self.event?.location = "CHANGED"
+        self.bringEditController()
         //vcEditDel?.eventEditViewController(vcEdit!, didCompleteWith: EKEventEditViewAction(rawValue: 1)!)
     }
     
@@ -134,9 +128,6 @@ import MapKit
         
         eventKit.save(self.event, completion: nil)
         print(self.location)
-        print(String(describing: self.date) as String?)
-        eventKit.save(self.event, completion: nil)
-        
         performSegue(withIdentifier: "backToCalendarView", sender: self)
 
         //mgcPlanView?.allowsSelection = true
@@ -173,6 +164,24 @@ import MapKit
         eventController.didMove(toParentViewController: self)
     }
 
+    func bringEditController() {
+        
+        var eventStore = EKEventStore()
+        var event = EKEvent(eventStore: eventStore)
+        event.startDate = (self.event?.startDate)!
+        event.endDate = (self.event?.endDate)!
+        event.location = self.location
+        
+        //event.notes = event_note
+        var addController = EKEventEditViewController(nibName: nil, bundle: nil)
+        // set the addController's event store to the current event store.
+        addController.eventStore = eventStore
+        addController.event = event
+        // present EventsAddViewController as a modal view controller
+        parent?.present(addController, animated: true, completion: nil)
+        addController.editViewDelegate = self.mgcView as! EKEventEditViewDelegate?
+
+    }
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -187,6 +196,18 @@ import MapKit
         //mgcevent.event = self.event!
 
         //mgcPlanView?.selectEvent(of: MGCEventType(rawValue: self.eventTypeNum)!, at: 0, date: self.date as Date!)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let row = tableView.indexPathForSelectedRow?.row
+        
+        //let sugg = tableView.cellForRow(at: indexPath)
+        //let cellIdentifier = "ItineraryTableViewCell"
+        //let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ItineraryTableViewCell
+        
+        let sugg = suggestions[indexPath.row]
+        self.event?.location = sugg.displayName
+       // cell.nameLabel.text = strDate
     }
     
     /*
@@ -235,18 +256,7 @@ import MapKit
     */
 
 }
-    
-    //
-    //  LocationSearchTable.swift
-    //  MapKitTutorial
-    //
-    //  Created by Robert Chen on 12/28/15.
-    //  Copyright © 2015 Thorn Technologies. All rights reserved.
-    //
-    
 
-
-        
  
 
 
