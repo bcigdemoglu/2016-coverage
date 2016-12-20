@@ -75,8 +75,8 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     MGCDateRange *adays = self.dayPlannerView.visibleDays;
     NSDate *d =[self.calendar mgc_nextStartOfDayForDate:adays.end];
     
-    [self fetchEventsForDate: d];
-    //[self fetchEventsInDateRange:self.dayPlannerView.visibleDays];
+    //[self fetchEventsForDate: d];
+    [self fetchEventsInDateRange:self.dayPlannerView.visibleDays];
     [self.dayPlannerView reloadAllEvents];
 }
 
@@ -307,7 +307,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     }];
 }
 
-- (void) fetchEventsForDate:(NSDate*) date
+/*- (void) fetchEventsForDate:(NSDate*) date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -317,7 +317,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
         [self.eventsCache setObject:events forKey:date];
     }];
     
-}
+}*/
 - (NSArray*)fetchEventsFrom:(NSDate*)startDate to:(NSDate*)endDate calendars:(NSArray*)calendars
 {
     NSPredicate *predicate = [self.eventStore predicateForEventsWithStartDate:startDate endDate:endDate calendars:calendars];

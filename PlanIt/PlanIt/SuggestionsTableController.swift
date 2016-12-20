@@ -39,6 +39,27 @@ import MapKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let d : String = formatter.string(from : date as! Date)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let st : String = formatter.string(from : event!.startDate)
+        let en : String = formatter.string(from : event!.endDate)
+        
+        createEvent(start:st, end: en, date: d) {
+            intCode, responseString in
+            switch intCode {
+            case 200:
+                self.askSuggestions(eventId : responseString!, eventQ: self.event!.title) {
+                    arrayResponse, responseString in
+                    //func askSuggestions(eventId : String, eventQuery : String) {
+                    self.tableView.reloadData()
+                }
+            default:
+                print(responseString!)
+            }
+            
+        }
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         //var vcEditDel: EKEventEditViewDelegate = (vcEdit?.editViewDelegate)!
@@ -150,6 +171,19 @@ import MapKit
 //        }
 //        
 //    }
+    func askSuggestions(eventId : String, eventQ : String, completionHandler : @escaping ([SuggestionInfo]?, String?) -> ()) {
+        getSuggestionsForEvent(eventId: eventId, eventQuery: eventQ ) {
+            array, responseString in
+            if array != nil {
+                completionHandler(array, nil)
+            } else {
+                completionHandler(nil, responseString)
+            }
+            
+        }
+    }
+    
+    
     
     // MARK: - Table view data source
 
