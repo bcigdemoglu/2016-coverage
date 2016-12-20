@@ -209,6 +209,7 @@ class GetEventFromId(restful.Resource):
         uid -> event uid
     '''
     def get(self, username):
+        printRequests()
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
@@ -484,6 +485,9 @@ class PopulateItineraries(restful.Resource):
 def findEvent(username):
     return app.mongo.db.event.find_one({'uid': request.get_json()['uid'],
                                         'acceptedBy': username})
+
+def printRequests():
+    print(request.get_json().__dict__)
 
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
