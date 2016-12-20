@@ -13,6 +13,7 @@ import MapKit
 
     @IBOutlet var doneButton: UIBarButtonItem!
     @IBOutlet weak var containerView: UIView!
+    
     weak var currentViewController: UIViewController?
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView?
@@ -33,6 +34,9 @@ import MapKit
     public var location: String?
     
     
+    var fullStarImage: UIImage = UIImage(named: "starFull.png")!
+    //var halfStarImage: UIImage = UIImage(named: "starHalf.png")!
+    var emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
     var suggestions = [SuggestionInfo]()
     var suggestion: SuggestionInfo? //a specific itinerary
 
@@ -65,17 +69,6 @@ import MapKit
     }
 
     func loadSampleSuggestions() {
-        let dataString1 = "April 1, 2017"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateValue1 = dateFormatter.date(from: dataString1) as NSDate!
-        
-        let dataString2 = "December 31, 2017"
-        //var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-      //  let dateValue2 = dateFormatter.date(from: dataString2) as NSDate!
-        
-        
         let sug1 = SuggestionInfo(name: "Location 1", numberStars: 5)
         
         let sug2 = SuggestionInfo(name: "Location 2",numberStars: 4)
@@ -103,6 +96,7 @@ import MapKit
     //Function to link the cell to appropriate identified and labels of cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+
         let cellIdentifier = "SuggestionCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SuggestionsTableViewCell
         
@@ -113,10 +107,23 @@ import MapKit
         //let strDate = dateFormatter.string(from: (sug.date as NSDate) as Date as Date)
         
         cell.nameLabel.text = sug.displayName
+        for (index, imageView) in [cell.star1, cell.star2, cell.star3, cell.star4, cell.star5].enumerated() {
+            let stars = index + 1
+            imageView?.image = getStarImage(starNumber:(stars), forRating: sug.getStars()!)
+        }
         
         return cell
     }
 
+    func getStarImage(starNumber: Int, forRating rating: Int) -> UIImage {
+        if rating >= starNumber {
+            return fullStarImage
+        } else {
+            return emptyStarImage
+        }
+    }
+    
+    
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
         //self.event?.location = "CHANGED"
         self.bringEditController()
@@ -165,15 +172,23 @@ import MapKit
     }
 
     func bringEditController() {
-        
-        var eventStore = EKEventStore()
-        var event = EKEvent(eventStore: eventStore)
+        var btn2 = UIBarButtonItem(
+            title: "Dead",
+            style: .plain,
+            target: self,
+            action: #selector(doneButtonPressed(_:))
+        )
+
+        let eventStore = EKEventStore()
+        let event = EKEvent(eventStore: eventStore)
         event.startDate = (self.event?.startDate)!
         event.endDate = (self.event?.endDate)!
         event.location = self.location
+        event.title = self.title!
         
         //event.notes = event_note
         var addController = EKEventEditViewController(nibName: nil, bundle: nil)
+        
         // set the addController's event store to the current event store.
         addController.eventStore = eventStore
         addController.event = event
@@ -190,26 +205,17 @@ import MapKit
         // Pass the selected object to the new view controller.
         let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
         destination.calDate = self.date as Date!
-        
-        //mgcPlanView?.selectEvent(of: MGCEventType(rawValue: UInt(1))!, at: 1, date: self.date as Date!)
-       // let mgcevent: MGCEKEventViewController = MGCEKEventViewController()
-        //mgcevent.event = self.event!
-
-        //mgcPlanView?.selectEvent(of: MGCEventType(rawValue: self.eventTypeNum)!, at: 0, date: self.date as Date!)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let row = tableView.indexPathForSelectedRow?.row
-        
-        //let sugg = tableView.cellForRow(at: indexPath)
-        //let cellIdentifier = "ItineraryTableViewCell"
-        //let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ItineraryTableViewCell
-        
         let sugg = suggestions[indexPath.row]
         self.event?.location = sugg.displayName
        // cell.nameLabel.text = strDate
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

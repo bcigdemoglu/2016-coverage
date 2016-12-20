@@ -27,6 +27,8 @@
 		BC9A7C001E07521500CF2390 /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7BFF1E07521500CF2390 /* RatingsTableViewController.swift */; };
 		BC9A7C021E07534F00CF2390 /* RatingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7C011E07534F00CF2390 /* RatingsTableViewCell.swift */; };
 		BC9A7C041E085A5E00CF2390 /* RatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7C031E085A5E00CF2390 /* RatingsViewController.swift */; };
+		F93BCE741E09D42C0092A16D /* starEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = F93BCE721E09D42C0092A16D /* starEmpty.png */; };
+		F93BCE751E09D42C0092A16D /* starFull.png in Resources */ = {isa = PBXBuildFile; fileRef = F93BCE731E09D42C0092A16D /* starFull.png */; };
 		F93D8A161E00BF0000559E3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A151E00BF0000559E3D /* Images.xcassets */; };
 		F93D8A511E00D2E600559E3D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4C1E00D2E600559E3D /* DayViewController.m */; };
 		F93D8A521E00D2E600559E3D /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4E1E00D2E600559E3D /* WeekViewController.m */; };
@@ -125,6 +127,8 @@
 		C75A2822C57D4F284206F040 /* Pods-PlanItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItUITests/Pods-PlanItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CD6EC06CD1C8F28A2D610C30 /* Pods-PlanItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.release.xcconfig"; sourceTree = "<group>"; };
 		E00277539C039736CB83B76A /* Pods-PlanItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F93BCE721E09D42C0092A16D /* starEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starEmpty.png; sourceTree = "<group>"; };
+		F93BCE731E09D42C0092A16D /* starFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starFull.png; sourceTree = "<group>"; };
 		F93D8A151E00BF0000559E3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F93D8A221E00BF9300559E3D /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		F93D8A4A1E00D2E600559E3D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -265,6 +269,15 @@
 				C75A2822C57D4F284206F040 /* Pods-PlanItUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F93BCE711E09D4060092A16D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F93BCE721E09D42C0092A16D /* starEmpty.png */,
+				F93BCE731E09D42C0092A16D /* starFull.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		F93D8A011E00BDCC00559E3D /* Calendar */ = {
@@ -424,6 +437,7 @@
 				F944DF381DC9214600F59D53 /* DatePickerDialog.swift */,
 				F944DF071DC920AC00F59D53 /* AppDelegate.swift */,
 				F944DF781DD4DB9F00F59D53 /* Supporting Files */,
+				F93BCE711E09D4060092A16D /* Images */,
 				F944DF091DC920AC00F59D53 /* ViewController.swift */,
 				BC08F0571DFB4FC600AFA3DC /* CalendarViewController.swift */,
 				F944DF3C1DC921EB00F59D53 /* DatePicker.swift */,
@@ -613,6 +627,8 @@
 				F944DF411DC9221700F59D53 /* LaunchScreen.storyboard in Resources */,
 				F9BB36761DFE45BE00868664 /* settings.storyboard in Resources */,
 				F944DF3F1DC9220600F59D53 /* Assets.xcassets in Resources */,
+				F93BCE751E09D42C0092A16D /* starFull.png in Resources */,
+				F93BCE741E09D42C0092A16D /* starEmpty.png in Resources */,
 				F93D8AA01E01B29600559E3D /* InfoPlist.strings in Resources */,
 				BC08F05A1DFB60BA00AFA3DC /* Main.storyboard in Resources */,
 			);

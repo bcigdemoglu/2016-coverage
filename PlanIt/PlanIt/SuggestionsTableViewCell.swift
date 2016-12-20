@@ -11,6 +11,11 @@ import UIKit
 class SuggestionsTableViewCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var star1: UIImageView!
+    @IBOutlet var star2: UIImageView!
+    @IBOutlet var star3: UIImageView!
+    @IBOutlet var star4: UIImageView!
+    @IBOutlet var star5: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
