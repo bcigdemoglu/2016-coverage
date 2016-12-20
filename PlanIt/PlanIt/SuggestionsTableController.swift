@@ -32,7 +32,11 @@ import MapKit
     public var eventKit: MGCEventKitSupport = MGCEventKitSupport()
     public var location: String?
     
-    var index: UInt = 1
+    
+    var suggestions = [Suggestion]()
+    var suggestion: Suggestion? //a specific itinerary
+
+    
     convenience init() {
         self.init(nibName:nil, bundle:nil)
     }
@@ -49,6 +53,7 @@ import MapKit
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
+        loadSampleSuggestions()
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -57,6 +62,59 @@ import MapKit
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func loadSampleSuggestions() {
+        let dataString1 = "April 1, 2017"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateValue1 = dateFormatter.date(from: dataString1) as NSDate!
+        
+        let dataString2 = "December 31, 2017"
+        //var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateValue2 = dateFormatter.date(from: dataString2) as NSDate!
+        
+        
+        let sug1 = Suggestion(location: "Location 1", date: dateValue1!, locationID : "1234567")!
+        
+        let sug2 = Suggestion(location: "Location 2", date: dateValue2!, locationID : "12345678910xasdf")!
+        
+        let sug3 = Suggestion(location: self.location!, date: self.date!, locationID: (self.event?.eventIdentifier)!)
+
+        self.suggestions = [sug1, sug2, sug3!]
+    }
+    
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if self.suggestions == nil {
+            return 0
+        }
+        return suggestions.count
+    }
+    
+    //Function to link the cell to appropriate identified and labels of cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "SuggestionCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SuggestionsTableViewCell
+        
+        let sug = suggestions[indexPath.row]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE MMM dd"
+        let strDate = dateFormatter.string(from: (sug.date as NSDate) as Date)
+        
+        cell.nameLabel.text = sug.location
+        
+        return cell
     }
 
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
@@ -81,8 +139,8 @@ import MapKit
         
         performSegue(withIdentifier: "backToCalendarView", sender: self)
 
-        mgcPlanView?.allowsSelection = true
-        mgcPlanView?.selectEvent(of: MGCEventType(rawValue: index)!, at: index, date: self.date as Date!)
+        //mgcPlanView?.allowsSelection = true
+       // mgcPlanView?.selectEvent(of: MGCEventType(rawValue: index)!, at: index, date: self.date as Date!)
         //mgcPlanView?.selectEvent(of: MGCEventType: index, at: 0, date: self.date as Date!)
         
     }
@@ -113,54 +171,6 @@ import MapKit
         eventController.view.frame = CGRect(x:0, y:0, width:self.containerView.frame.size.width, height: self.containerView.frame.size.height);
         self.containerView.addSubview(eventController.view)
         eventController.didMove(toParentViewController: self)
-    }
-
-//    func navigationController(_ navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-//        if (viewController is UITableViewController) {
-//            var tableView = (viewController as! UITableViewController).tableView
-//            for j in 0..<tableView?.numberOfSections {
-//                for i in 0..<tableView.numberOfRowsInSection(j) {
-//                    var cell = tableView.cellForRow(at: IndexPath(row: i, section: j))!
-//                    
-//                    print("cell => \(cell.textLabel!.text), row => \(i), section => \(j)")
-//                    if j == 1 && i == 0 {
-//                        //  [cell removeFromSuperview];
-//                        var a = UIButton(type: .roundedRect)
-//                        var width: CGFloat = cell.frame.size.width
-//                        var height: CGFloat = cell.frame.size.height
-//                        var x: CGFloat = cell.frame.origin.x
-//                        //CGFloat y = cell.frame.origin.y;
-//                        a.frame = CGRect(x: x, y: CGFloat(4.5), width: width, height: height)
-//                        a.backgroundColor = UIColor.white
-//                        a.addTarget(self, action: #selector(self.seeSuggestions), for: .touchUpInside)
-//                        a.setTitle("See Suggestions", for: .normal)
-//                        cell.addSubview(a)
-//                        var switchBtn = UISwitch(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(20), height: CGFloat(10)))
-//                        cell.accessoryView! = switchBtn
-//                        switchBtn.backgroundColor = UIColor.white
-//                        switchBtn.addTarget(self, action: #selector(self.seeSuggestions), for: .valueChanged)
-//                        cell.textLabel!.font = UIFont.systemFont(ofSize: CGFloat(14))
-//                    }
-//
-//                }
-//            }
-//        }
-//        else if i == 4 && j == 1 {
-//            
-//        }
-//        
-//    }
-    
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
     }
 
     // MARK: - Navigation

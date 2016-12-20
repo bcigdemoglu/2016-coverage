@@ -78,6 +78,9 @@
 		F9BB36701DFE45BE00868664 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9BB36661DFE45BE00868664 /* Calendar.storyboard */; };
 		F9BB36721DFE45BE00868664 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BB36691DFE45BE00868664 /* MainViewController.m */; };
 		F9BB36761DFE45BE00868664 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9BB366F1DFE45BE00868664 /* settings.storyboard */; };
+		F9EF9CFB1E09B07A00288FE8 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EF9CFA1E09B07A00288FE8 /* Suggestion.swift */; };
+		F9EF9CFD1E09B36100288FE8 /* SuggestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EF9CFC1E09B36100288FE8 /* SuggestionsTableViewCell.swift */; };
+		F9EF9CFF1E09B53300288FE8 /* EventoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EF9CFE1E09B53300288FE8 /* EventoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +212,10 @@
 		F9BB36661DFE45BE00868664 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		F9BB36691DFE45BE00868664 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F9BB366F1DFE45BE00868664 /* settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
+		F9EF9CFA1E09B07A00288FE8 /* Suggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
+		F9EF9CFC1E09B36100288FE8 /* SuggestionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewCell.swift; sourceTree = "<group>"; };
+		F9EF9CFE1E09B53300288FE8 /* EventoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventoViewController.m; sourceTree = "<group>"; };
+		F9EF9D001E09B54D00288FE8 /* EventoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventoViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +276,8 @@
 		F93D8A011E00BDCC00559E3D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				F9EF9D001E09B54D00288FE8 /* EventoViewController.h */,
+				F9EF9CFE1E09B53300288FE8 /* EventoViewController.m */,
 				F9BB36691DFE45BE00868664 /* MainViewController.m */,
 				F93D8A4A1E00D2E600559E3D /* MainViewController.h */,
 				F93D8A4B1E00D2E600559E3D /* DayViewController.h */,
@@ -431,6 +440,8 @@
 				5F4DAE241DD9206000450083 /* NavigationTableViewController.swift */,
 				F943DE831E07423500F0028A /* SearchViewController.swift */,
 				F943DE851E075D4400F0028A /* SuggestionsTableController.swift */,
+				F9EF9CFA1E09B07A00288FE8 /* Suggestion.swift */,
+				F9EF9CFC1E09B36100288FE8 /* SuggestionsTableViewCell.swift */,
 				F9BB366F1DFE45BE00868664 /* settings.storyboard */,
 				F9BB36661DFE45BE00868664 /* Calendar.storyboard */,
 				BC08F0591DFB60BA00AFA3DC /* Main.storyboard */,
@@ -810,10 +821,12 @@
 				5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */,
 				F93D8A7E1E00DB6400559E3D /* MGCAlignedGeometry.m in Sources */,
 				F93D8A561E00D37900559E3D /* MGCCalendarHeaderView.m in Sources */,
+				F9EF9CFB1E09B07A00288FE8 /* Suggestion.swift in Sources */,
 				F93D8A911E01AC4200559E3D /* main.m in Sources */,
 				F93D8A5C1E00D94800559E3D /* MGCDayPlannerView.m in Sources */,
 				F944DF491DC9222E00F59D53 /* LoginPageViewController.swift in Sources */,
 				5F4DAE231DD666FA00450083 /* ConnectionHandler.swift in Sources */,
+				F9EF9CFD1E09B36100288FE8 /* SuggestionsTableViewCell.swift in Sources */,
 				F944DF3D1DC921EB00F59D53 /* DatePicker.swift in Sources */,
 				F93D8A781E00DB4900559E3D /* MGCInteractiveEventView.m in Sources */,
 				F93D8A751E00DB3400559E3D /* MGCStandardEventView.m in Sources */,
@@ -824,6 +837,7 @@
 				5F4DAE291DD94D9900450083 /* ItineraryShell.swift in Sources */,
 				F93D8A681E00DAD600559E3D /* MGCAllDayEventsViewLayout.m in Sources */,
 				F943DE841E07423500F0028A /* SearchViewController.swift in Sources */,
+				F9EF9CFF1E09B53300288FE8 /* EventoViewController.m in Sources */,
 				F93D8A591E00D38E00559E3D /* MGCCalendarHeaderCell.m in Sources */,
 				BC9A7C041E085A5E00CF2390 /* RatingsViewController.swift in Sources */,
 				F93D8A8C1E0125D100559E3D /* SWRevealViewController.m in Sources */,

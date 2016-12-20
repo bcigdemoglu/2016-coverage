@@ -83,7 +83,7 @@ func getItineraryListShells(userID : String, completionHandler: @escaping ([Itin
                    // array!.append(shell)
                 } else {
                     let dateFor: DateFormatter = DateFormatter()
-                    dateFor.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                    dateFor.dateFormat = "yyyy-MM-dd"
                     var date: NSDate? = dateFor.date(from: dateJSON!) as NSDate?
                 
                 //let uid = subJson["uid"].string
