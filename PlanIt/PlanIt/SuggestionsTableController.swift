@@ -53,14 +53,18 @@ import MapKit
         createEvent(start:st, end: en, date: d) {
             intCode, responseString in
             switch intCode {
-            case 200:
+            case 201:
                 self.askSuggestions(eventId : responseString!, eventQ: self.event!.title) {
                     arrayResponse, responseString in
                     //func askSuggestions(eventId : String, eventQuery : String) {
-                    self.tableView.reloadData()
+                    if (arrayResponse != nil) {
+                        self.suggestions = arrayResponse!
+                        self.tableView.reloadData()
+                    }
                 }
             default:
-                print(responseString!)
+                break;
+                //print(responseString!)
             }
             
         }
@@ -237,12 +241,13 @@ import MapKit
     
     
     // MARK: - Table view data source
-
+/*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
-
+*/
+    
     func bringEditController() {
         
         var eventStore = EKEventStore()

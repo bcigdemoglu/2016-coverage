@@ -204,11 +204,7 @@ func postCreateEvent(parameters : Parameters, completionHandler : @escaping (Int
         case .success(let value):
             let json = JSON(value)
             print("JSON: \(json)")
-            var uid : String?
-            //might need just the full json here, as its just one thing.
-            for (_,subJson):(String, JSON) in json {
-                uid = subJson[0]["uid"].string
-            }
+            var uid = json["uid"].string
             completionHandler(response.response!.statusCode, uid)
         case .failure(let error):
             print(error)
@@ -289,15 +285,18 @@ func getSuggestionsForEvent(eventId : String, eventQuery: String, completionHand
     "uid" : eventId,
     "query" : eventQuery
     ]
-    Alamofire.request(baseURL + suggestions + User.getUserName()!, method : .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+    Alamofire.request(baseURL + suggestions + User.getUserName()!, method : .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
         response in
         switch response.result {
         case .success (let value) :
             let json = JSON(value)
+            print("JSON: \(json)")
             var array = [SuggestionInfo]()
-            for (_,subJson) in json["suggestions"] {
+            for (_,subJson) in json["business"] {
                 let name = subJson["name"].string
-                let stars = subJson["stars"].intValue
+                let stars = subJson["score"].doubleValue * 5
+                let uid = subJson["id"].string
+                //round this
                 let sI = SuggestionInfo(name: name, numberStars: stars)
                 array.append(sI)
             }
@@ -354,7 +353,6 @@ func sendGetEvents(itineraryDate : String?, completionHandler: @escaping (String
         switch response.result {
         case .success (let value):
             let json = JSON(value)
-            
             for(_, subJson) in json["events"] {
                 let uid = subJson["uid"].string
                 let start = subJson["start"].string
