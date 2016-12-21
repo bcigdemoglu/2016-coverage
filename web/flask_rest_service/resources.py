@@ -407,7 +407,7 @@ class RatePlace(restful.Resource):
             return {"error": "Invalid username"}, 400
 
         places = app.mongo.db.outstandingSuggestions.find({'username' : username})
-        return {'place' : places}, 200
+        return {'places' : places}, 200
 
 class PopulateDB(restful.Resource):
     def post(self):
