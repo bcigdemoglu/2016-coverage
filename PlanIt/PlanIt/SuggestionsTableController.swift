@@ -83,7 +83,8 @@ import MapKit
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-        loadSampleSuggestions()
+        
+        //loadSampleSuggestions()
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -94,15 +95,15 @@ import MapKit
         // Dispose of any resources that can be recreated.
     }
 
-    func loadSampleSuggestions() {
-        let sug1 = SuggestionInfo(name: "Location 1", numberStars: 5)
+    /*func loadSampleSuggestions() {
+        let sug1 = SuggestionInfo(name: "Location 1", numberStars: 5, uid: "asdf")
         
-        let sug2 = SuggestionInfo(name: "Location 2",numberStars: 4)
+        let sug2 = SuggestionInfo(name: "Location 2",numberStars: 4, uid : "asdf2")
         
-        let sug3 = SuggestionInfo(name:self.location!, numberStars: 3)
+        let sug3 = SuggestionInfo(name:self.location!, numberStars: 3, uid : "asdf3")
 
         self.suggestions = [sug1, sug2, sug3]
-    }
+    }*/
     
     // MARK: - Table view data source
 

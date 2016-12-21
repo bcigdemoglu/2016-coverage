@@ -23,8 +23,8 @@ class RatingsTableViewController: UITableViewController {
         
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        
-        loadSampleRatings()
+        loadRealRatings()
+        //loadSampleRatings()
         self.menuButton.target = self.revealViewController()
         self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -55,6 +55,33 @@ class RatingsTableViewController: UITableViewController {
         let rating1 = Rating(event: event1, location: "Giant", rating: 3)
         let rating2 = Rating(event: event2, location: "Brody Learning Commons", rating: 3)
         self.ratings = [rating1!, rating2!]
+    }
+    
+    func loadRealRatings() {
+        let eventStore = EKEventStore()
+        sendGetOutstandingRatings() {
+            array, str in
+            if str == nil
+            {
+                for rtgNES in array {
+                    self.ratings.append(self.getRatingFromRatingNoEventStore(rtgNES: rtgNES, es: eventStore))
+                }
+            }
+            else {
+                print("bad data")
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    func getRatingFromRatingNoEventStore(rtgNES : RatingNoEventStore, es : EKEventStore) -> Rating {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let event = EKEvent(eventStore: es)
+        event.location = rtgNES.location
+        event.startDate = dateFormatter.date(from: rtgNES.date)!
+        return Rating(event: event, location: rtgNES.location, rating: 2)!
+        
     }
 
     override func didReceiveMemoryWarning() {

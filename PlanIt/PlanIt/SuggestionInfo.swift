@@ -13,14 +13,15 @@ class SuggestionInfo {
     
     var numberStars : Int?
     
-    var longitude : Double?
+    var uid : String?
     
-    var latitude : Double?
     
-    init(name : String?, numberStars : Int?) {
+    init(name : String?, numberStars : Int?, uid : String?) {
         self.displayName = name
         self.numberStars = numberStars
+        self.uid = uid
     }
+    
     
     func getName() -> String? {
         return self.displayName
@@ -28,5 +29,9 @@ class SuggestionInfo {
     
     func getStars() -> Int? {
         return self.numberStars
+    }
+    
+    func getuid() -> String? {
+        return self.uid
     }
 }
