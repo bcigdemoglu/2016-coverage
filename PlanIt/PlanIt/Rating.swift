@@ -22,4 +22,17 @@ class Rating: NSObject {
         self.location = location
         self.rating = rating
     }
+    
+    
+}
+class RatingNoEventStore {
+    public var location : String
+    public var rating : Int
+    public var date : String
+    
+    init(location: String, rating : Int, date : String) {
+        self.location = location
+        self.rating = rating
+        self.date = date
+    }
 }
