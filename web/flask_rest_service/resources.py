@@ -259,6 +259,8 @@ class UpdateEvent(restful.Resource):
         app.mongo.db.event.update({'uid': event['uid']}, event)
 
         classifier.updateModel(choice, suggestionId)
+        # Alex's code
+        app.mongo.db.unchosenSuggestions.remove_one({uid: suggestionId})
 
         return event, 200
 
@@ -313,7 +315,7 @@ class GetSuggestions(restful.Resource):
         return {'uid': suggestionId,
                 'business': top_biz,
                 'scores': top_probs}, 200
-                ''' This post(self, username) also done by Alex'''
+    ''' This post(self, username) also done by Alex'''
     def post(self, username):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
@@ -325,8 +327,10 @@ class GetSuggestions(restful.Resource):
         choice = request.get_json().get('choice')
         suggestionId = request.get_json().get('uid')
         chosenSuggestion = app.mongo.db.unchosenSuggestions.remove({'username' : username,
-                                                                    'date' : date
+                                                                    'date' : date,
                                                                     'uid' : suggestionId})
+        
+
         app.mongo.db.unratedSuggestions.insert(chosenSuggestion)
         return {"message" : "Choice received."}, 200
 
@@ -400,9 +404,9 @@ class RatePlace(restful.Resource):
         ratings = []
         stored_yelp = app.mongo.db.yelp.find_one({'uid': uid})
         date = request.get_json().get('date')
-        app.mongo.db.unratedSuggestions.remove{'username' : username,
+        app.mongo.db.unratedSuggestions.remove({'username' : username,
                                                     'date' : date,
-                                                    'uid' : uid}
+                                                    'uid' : uid})
         if stored_yelp:
             ratings = stored_yelp['ratings']
 
