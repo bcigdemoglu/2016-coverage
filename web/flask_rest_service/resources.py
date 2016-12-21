@@ -260,7 +260,7 @@ class UpdateEvent(restful.Resource):
 
         classifier.updateModel(choice, suggestionId)
         # Alex's code
-        app.mongo.db.unchosenSuggestions.remove_one({uid: suggestionId})
+        app.mongo.db.unchosenSuggestions.delete_one({'uid': suggestionId})
 
         return event, 200
 
@@ -307,7 +307,7 @@ class GetSuggestions(restful.Resource):
         app.mongo.db.unchosenSuggestions.insert({'username' : username,
                                                      'date' : date,
                                                      'uid' : suggestionId})
-        
+
         app.mongo.db.suggestions.insert({'uid': suggestionId,
                                          'sugs': top_sugs,
                                          'yelpId': top_ids})
@@ -329,7 +329,7 @@ class GetSuggestions(restful.Resource):
         chosenSuggestion = app.mongo.db.unchosenSuggestions.remove({'username' : username,
                                                                     'date' : date,
                                                                     'uid' : suggestionId})
-        
+
 
         app.mongo.db.unratedSuggestions.insert(chosenSuggestion)
         return {"message" : "Choice received."}, 200
