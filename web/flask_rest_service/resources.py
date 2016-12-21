@@ -383,7 +383,9 @@ class RatePlace(restful.Resource):
         uid = request.get_json().get('uid')
         ratings = []
         stored_yelp = app.mongo.db.yelp.find_one({'uid': uid})
+        date = request.get_json().get('date')
         app.mongo.db.outstandingSuggestions.remove{'username' : username,
+                                                    'date' : 
                                                     'uid' : uid}
         if stored_yelp:
             ratings = stored_yelp['ratings']
