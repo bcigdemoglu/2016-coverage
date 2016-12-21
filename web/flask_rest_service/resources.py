@@ -299,7 +299,14 @@ class GetSuggestions(restful.Resource):
         top_probs = suggested['probs']
 
         suggestionId = username + "_" + str(app.mongo.db.suggestions.count() + 1)
-
+        '''
+            Alex editted this below here
+        '''
+        app.mongo.db.outstandingSuggestions.insert({'username' : username,
+                                                     'ids' : top_ids,
+                                                     'date' : date,
+                                                     'uid' : suggestionId})
+        
         app.mongo.db.suggestions.insert({'uid': suggestionId,
                                          'sugs': top_sugs,
                                          'yelpId': top_ids})
@@ -369,12 +376,15 @@ class SearchYelp(restful.Resource):
     def get(self, query):
         return {'yelpResponse': yelp.getBusinessList(query, 1)}, 201
 
+
 class RatePlace(restful.Resource):
     def post(self, username):
         rating = request.get_json().get('rating')
         uid = request.get_json().get('uid')
         ratings = []
         stored_yelp = app.mongo.db.yelp.find_one({'uid': uid})
+        app.mongo.db.outstandingSuggestions.remove{'username' : username,
+                                                    'uid' : uid}
         if stored_yelp:
             ratings = stored_yelp['ratings']
 
@@ -389,6 +399,13 @@ class RatePlace(restful.Resource):
         else:
             app.mongo.db.yelp.insert(yelp_rating)
         return yelp_rating, 200
+        #Alex made this method
+    def get(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        places = app.mongo.db.outstandingSuggestions.find({'username' : username})
+        return places
 
 class PopulateDB(restful.Resource):
     def post(self):
