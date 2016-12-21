@@ -35,6 +35,7 @@
 //
 
 #import "WeekViewController.h"
+#import "EventoViewController.h"
 
 
 #import "AppDelegate.h"

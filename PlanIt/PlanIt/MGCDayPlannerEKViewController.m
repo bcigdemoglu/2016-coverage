@@ -89,7 +89,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     MGCEKEventViewController *eventController = [MGCEKEventViewController new];
     eventController.event = ev;
     eventController.delegate = self;
-    eventController.allowsEditing = YES;
+    eventController.allowsEditing = NO;
     eventController.allowsCalendarPreview = YES;
     eventController.delegate = self;
     
@@ -138,6 +138,8 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     search.eventKit = self.eventKitSupport;
     search.mgcPlanView = self.dayPlannerView;
     search.mgcParent = self.parentViewController;
+    search.eventName = self.eventName;
+    //search.store = self.store;
     
     [self.navigationController pushViewController:search animated:YES];
     //search.eventType = self.mgcEventType;
@@ -589,11 +591,10 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     self.event = controller.event;
     if (action == 1) {
         //ADD RATING HERE
-       // Rating rating = Rating(
     }
     
     [self.dayPlannerView endInteraction];
-    //self.event = controller.event;
+    self.event = controller.event;
     self.createdEventDate = nil;
 }
 

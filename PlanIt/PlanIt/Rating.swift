@@ -8,22 +8,18 @@
 
 import UIKit
 
-class Rating {
+class Rating: NSObject {
     
     //MARK: Properties
     
-    var event: EKEvent
-    var location:String
-    var uid: String
-    var rating: Int
+    public var event: EKEvent
+    public var location:String
+    public var rating: Int
     // MARK: Initialization
     
-    init?(event: EKEvent, location: String, uid: String, rating: Int) {
+    init?(event: EKEvent, location: String, rating: Int) {
         self.event = event
         self.location = location
-        self.uid = uid
         self.rating = rating
     }
-    
-    
 }

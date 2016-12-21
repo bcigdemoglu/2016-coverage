@@ -52,8 +52,8 @@ class RatingsTableViewController: UITableViewController {
         event2.location = "GIANT"
         event1.startDate = dateFormatter.date(from: "2016-01-01")!
         
-        let rating1 = Rating(event: event1, location: "Giant", uid: "123", rating: 3)
-        let rating2 = Rating(event: event2, location: "Brody Learning Commons", uid: "12345", rating: 3)
+        let rating1 = Rating(event: event1, location: "Giant", rating: 3)
+        let rating2 = Rating(event: event2, location: "Brody Learning Commons", rating: 3)
         self.ratings = [rating1!, rating2!]
     }
 
