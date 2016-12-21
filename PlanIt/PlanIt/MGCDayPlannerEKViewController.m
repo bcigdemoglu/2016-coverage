@@ -575,7 +575,6 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     self.event = controller.event;
     if (action == 1) {
         //ADD RATING HERE
-       // Rating rating = Rating(
     }
     
     [self.dayPlannerView endInteraction];
