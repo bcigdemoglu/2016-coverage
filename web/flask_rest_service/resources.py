@@ -13,15 +13,11 @@ from random_forest_classifier import classifier
 
 @app.before_request
 def log_request():
-    if request.get_json():
-        print(request.get_json())
     print(request.get_data())
 
 @app.after_request
 def after(response):
-    # todo with response
     print(response.get_data())
-    print("\n")
     return response
 
 class Root(restful.Resource):
