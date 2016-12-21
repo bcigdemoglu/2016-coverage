@@ -302,8 +302,7 @@ class GetSuggestions(restful.Resource):
         '''
             Alex editted this below here
         '''
-        app.mongo.db.outstandingSuggestions.insert({'username' : username,
-                                                     'ids' : top_ids,
+        app.mongo.db.unchosenSuggestions.insert({'username' : username,
                                                      'date' : date,
                                                      'uid' : suggestionId})
         
@@ -314,6 +313,21 @@ class GetSuggestions(restful.Resource):
         return {'uid': suggestionId,
                 'business': top_biz,
                 'scores': top_probs}, 200
+                ''' This post(self, username) also done by Alex'''
+    def post(self, username):
+        event = findEvent()
+        if not event :
+            return {"error": "Event not found"}, 400
+
+        date = event['date']
+        choice = request.get_json().get('choice')
+        suggestionId = request.get_json().get('uid')
+        chosenSuggestion = app.mongo.db.unchosenSuggestions.remove({'username' : username,
+                                                                    'date' : date
+                                                                    'uid' : suggestionId})
+        app.mongo.db.unratedSuggestions.insert(chosenSuggestion)
+        return {"message" : "Choice received."}, 200
+
 
 class DeleteItinerary(restful.Resource):
     '''
@@ -384,8 +398,8 @@ class RatePlace(restful.Resource):
         ratings = []
         stored_yelp = app.mongo.db.yelp.find_one({'uid': uid})
         date = request.get_json().get('date')
-        app.mongo.db.outstandingSuggestions.remove{'username' : username,
-                                                    'date' : 
+        app.mongo.db.unratedSuggestions.remove{'username' : username,
+                                                    'date' : date,
                                                     'uid' : uid}
         if stored_yelp:
             ratings = stored_yelp['ratings']
@@ -406,7 +420,7 @@ class RatePlace(restful.Resource):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
 
-        places = app.mongo.db.outstandingSuggestions.find({'username' : username})
+        places = app.mongo.db.unratedSuggestions.find({'username' : username})
         return {'places' : places}, 200
 
 class PopulateDB(restful.Resource):
