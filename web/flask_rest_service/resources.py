@@ -315,6 +315,8 @@ class GetSuggestions(restful.Resource):
                 'scores': top_probs}, 200
                 ''' This post(self, username) also done by Alex'''
     def post(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
         event = findEvent()
         if not event :
             return {"error": "Event not found"}, 400
@@ -421,6 +423,8 @@ class RatePlace(restful.Resource):
             return {"error": "Invalid username"}, 400
 
         places = app.mongo.db.unratedSuggestions.find({'username' : username})
+        if not places:
+            return {"message" : "No places to Rate!"}, 201
         return {'places' : places}, 200
 
 class PopulateDB(restful.Resource):
