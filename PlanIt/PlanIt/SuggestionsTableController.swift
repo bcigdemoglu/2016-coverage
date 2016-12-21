@@ -26,12 +26,13 @@ import MapKit
     public var event: EKEvent?
     public var ekVC: EKEventViewController?
     public var vcEdit: EKEventEditViewController?
-    //public var store: EKEventStore = EKEventStore()
+    
     public var vcEditDel: EKEventEditViewDelegate?
     public var eventTypeNum: UInt = 1
     public var date: NSDate?
     public var eventKit: MGCEventKitSupport = MGCEventKitSupport()
     public var location: String?
+    public var eventName: String = String()
     
     
     var fullStarImage: UIImage = UIImage(named: "starFull.png")!
@@ -126,8 +127,11 @@ import MapKit
     
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
         //self.event?.location = "CHANGED"
-        self.bringEditController()
+        //self.bringEditController()
         //vcEditDel?.eventEditViewController(vcEdit!, didCompleteWith: EKEventEditViewAction(rawValue: 1)!)
+        eventKit.save(self.event, completion: nil)
+        print(self.event?.title)
+        performSegue(withIdentifier: "backToCalendarView", sender: self)
     }
     
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
@@ -171,6 +175,7 @@ import MapKit
         eventController.didMove(toParentViewController: self)
     }
 
+
     func bringEditController() {
         var btn2 = UIBarButtonItem(
             title: "Dead",
@@ -179,22 +184,28 @@ import MapKit
             action: #selector(doneButtonPressed(_:))
         )
 
-        let eventStore = EKEventStore()
-        let event = EKEvent(eventStore: eventStore)
+        let delegate = EventoViewController()
+        var eventStore = self.mgcView?.eventStore
+        let event = EKEvent(eventStore: eventStore!)
+
         event.startDate = (self.event?.startDate)!
         event.endDate = (self.event?.endDate)!
         event.location = self.location
-        event.title = self.title!
+        //event.title = self.title!
         
         //event.notes = event_note
         var addController = EKEventEditViewController(nibName: nil, bundle: nil)
         
+        addController.cancelEditing()
         // set the addController's event store to the current event store.
-        addController.eventStore = eventStore
+        //delegate.prs
+        addController.eventStore = eventStore!
         addController.event = event
+        //addController.title = self.title!
         // present EventsAddViewController as a modal view controller
         parent?.present(addController, animated: true, completion: nil)
-        addController.editViewDelegate = self.mgcView as! EKEventEditViewDelegate?
+        addController.editViewDelegate = delegate
+        //self.mgcView as! EKEventEditViewDelegate?
 
     }
     // MARK: - Navigation

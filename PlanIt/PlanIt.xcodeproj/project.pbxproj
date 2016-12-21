@@ -29,6 +29,7 @@
 		BC9A7C041E085A5E00CF2390 /* RatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9A7C031E085A5E00CF2390 /* RatingsViewController.swift */; };
 		F93BCE741E09D42C0092A16D /* starEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = F93BCE721E09D42C0092A16D /* starEmpty.png */; };
 		F93BCE751E09D42C0092A16D /* starFull.png in Resources */ = {isa = PBXBuildFile; fileRef = F93BCE731E09D42C0092A16D /* starFull.png */; };
+		F93BCE781E09DB580092A16D /* EventoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93BCE771E09DB580092A16D /* EventoViewController.m */; };
 		F93D8A161E00BF0000559E3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93D8A151E00BF0000559E3D /* Images.xcassets */; };
 		F93D8A511E00D2E600559E3D /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4C1E00D2E600559E3D /* DayViewController.m */; };
 		F93D8A521E00D2E600559E3D /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93D8A4E1E00D2E600559E3D /* WeekViewController.m */; };
@@ -129,6 +130,8 @@
 		E00277539C039736CB83B76A /* Pods-PlanItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanItTests/Pods-PlanItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F93BCE721E09D42C0092A16D /* starEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starEmpty.png; sourceTree = "<group>"; };
 		F93BCE731E09D42C0092A16D /* starFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starFull.png; sourceTree = "<group>"; };
+		F93BCE761E09DB580092A16D /* EventoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventoViewController.h; sourceTree = "<group>"; };
+		F93BCE771E09DB580092A16D /* EventoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventoViewController.m; sourceTree = "<group>"; };
 		F93D8A151E00BF0000559E3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F93D8A221E00BF9300559E3D /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		F93D8A4A1E00D2E600559E3D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 		F93D8A011E00BDCC00559E3D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				F93BCE761E09DB580092A16D /* EventoViewController.h */,
+				F93BCE771E09DB580092A16D /* EventoViewController.m */,
 				F9BB36691DFE45BE00868664 /* MainViewController.m */,
 				F93D8A4A1E00D2E600559E3D /* MainViewController.h */,
 				F93D8A4B1E00D2E600559E3D /* DayViewController.h */,
@@ -826,6 +831,7 @@
 				5FB2E7471DFF736C009F83A1 /* Event.swift in Sources */,
 				F93D8A7E1E00DB6400559E3D /* MGCAlignedGeometry.m in Sources */,
 				F93D8A561E00D37900559E3D /* MGCCalendarHeaderView.m in Sources */,
+				F93BCE781E09DB580092A16D /* EventoViewController.m in Sources */,
 				F9EF9CFB1E09B07A00288FE8 /* Suggestion.swift in Sources */,
 				F93D8A911E01AC4200559E3D /* main.m in Sources */,
 				F93D8A5C1E00D94800559E3D /* MGCDayPlannerView.m in Sources */,

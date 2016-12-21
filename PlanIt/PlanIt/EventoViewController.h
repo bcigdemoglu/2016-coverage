@@ -1,27 +1,30 @@
-////
-////  DataSource.h
-////  PlanIt
-////
-////  Created by Naina Rao on 12/20/16.
-////  Copyright © 2016 oosegroup13. All rights reserved.
-////
 //
+//  EventoViewController.h
+//  PlanIt
 //
-//#import <UIKit/UIKit.h>
-//#import <EventKit/EventKit.h>
-//#import <EventKitUI/EventKitUI.h>
+//  Created by Naina Rao on 12/20/16.
+//  Copyright © 2016 oosegroup13. All rights reserved.
 //
-//@interface EventoViewController : UIViewController <EKEventEditViewDelegate>
-//
-//@property (weak, nonatomic) IBOutlet UILabel *eventDetailTitleLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *eventDetailDateLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *eventDetailDescriptionLabel;
-//
-//
-//- (IBAction)closeModalView:(id)sender;
-//- (IBAction)addEventToNative:(id)sender;
-//
-//
-//@end
-//
-//#endif /* DataSource_h */
+
+
+#import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
+
+@interface EventoViewController : UIViewController <EKEventEditViewDelegate>
+
+//@property (strong, nonatomic) IBOutlet UILabel *eventDetailTitleLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *eventDetailDateLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *eventDetailDescriptionLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *eventDetailTitleLabel;
+
+
+- (IBAction)closeModalView:(id)sender;
+- (IBAction)addEventToNative:(id)sender;
+
+
+@end
+
