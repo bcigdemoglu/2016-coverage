@@ -260,7 +260,8 @@ class UpdateEvent(restful.Resource):
 
         classifier.updateModel(choice, suggestionId)
         # Alex's code
-        app.mongo.db.unchosenSuggestions.delete_one({'uid': suggestionId})
+        sug = app.mongo.db.unchosenSuggestions.delete_one({'uid': suggestionId})
+        app.mongo.db.unratedSuggestions.insert(sug)
 
         return event, 200
 
@@ -422,6 +423,9 @@ class RatePlace(restful.Resource):
             app.mongo.db.yelp.insert(yelp_rating)
         return yelp_rating, 200
         #Alex made this method
+        
+class Unrated(restful.Resource)
+        
     def get(self, username):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
