@@ -316,11 +316,16 @@ class GetSuggestions(restful.Resource):
         return {'uid': suggestionId,
                 'business': top_biz,
                 'scores': top_probs}, 200
+    def post(self, username):
+        return self.get(username)
+
+
+class PostSuggestions(restful.Resource):
     ''' This post(self, username) also done by Alex'''
     def post(self, username):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
-        event = findEvent()
+        event = findEvent(username)
         if not event :
             return {"error": "Event not found"}, 400
 
@@ -334,7 +339,6 @@ class GetSuggestions(restful.Resource):
 
         app.mongo.db.unratedSuggestions.insert(chosenSuggestion)
         return {"message" : "Choice received."}, 200
-
 
 class DeleteItinerary(restful.Resource):
     '''
@@ -433,7 +437,7 @@ class Unrated(restful.Resource)
         places = app.mongo.db.unratedSuggestions.find({'username' : username})
         if not places:
             return {"message" : "No places to Rate!"}, 201
-        return {'places' : places}, 200
+        return {'places' : list(places)}, 200
 
 class PopulateDB(restful.Resource):
     def post(self):
@@ -495,6 +499,7 @@ api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
 api.add_resource(DeleteEvent, '/deleteEvent/<username>')
 api.add_resource(GetSuggestions, '/getSuggestions/<username>')
+api.add_resource(PostSuggestions, '/postSuggestions/<username>')
 api.add_resource(RatePlace, '/ratePlace/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
 api.add_resource(Unrated, '/unrated/<username>')
