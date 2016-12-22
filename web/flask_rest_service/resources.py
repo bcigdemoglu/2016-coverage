@@ -327,7 +327,7 @@ class GetSuggestions(restful.Resource):
         date = event['date']
         choice = request.get_json().get('choice')
         suggestionId = request.get_json().get('uid')
-        chosenSuggestion = app.mongo.db.unchosenSuggestions.remove({'username' : username,
+        chosenSuggestion = app.mongo.db.unchosenSuggestions.delete_one({'username' : username,
                                                                     'date' : date,
                                                                     'uid' : suggestionId})
 
