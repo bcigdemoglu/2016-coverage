@@ -51,15 +51,17 @@ class RatingsTableViewController: UITableViewController {
         let event2 = EKEvent(eventStore: eventStore)
         event2.location = "GIANT"
         event1.startDate = dateFormatter.date(from: "2016-01-01")!
+        let id1 = "asdfasdf"
+        let id2 = "hjlnhuilnlo"
         
-        let rating1 = Rating(event: event1, location: "Giant", rating: 3)
-        let rating2 = Rating(event: event2, location: "Brody Learning Commons", rating: 3)
+        let rating1 = Rating(event: event1, location: "Giant", rating: 3, suggestionID: id1)
+        let rating2 = Rating(event: event2, location: "Brody Learning Commons", rating: 3, suggestionID: id1)
         self.ratings = [rating1!, rating2!]
     }
     
     func loadRealRatings() {
         let eventStore = EKEventStore()
-        sendGetOutstandingRatings() {
+        getOutstandingRatings() {
             array, str in
             if str == nil
             {
@@ -80,7 +82,7 @@ class RatingsTableViewController: UITableViewController {
         let event = EKEvent(eventStore: es)
         event.location = rtgNES.location
         event.startDate = dateFormatter.date(from: rtgNES.date)!
-        return Rating(event: event, location: rtgNES.location, rating: 2)!
+        return Rating(event: event, location: rtgNES.location, rating: 2, suggestionID : rtgNES.suggestionID)!
         
     }
 

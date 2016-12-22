@@ -13,13 +13,9 @@ class SuggestionInfo {
     
     var numberStars : Int?
     
-    var uid : String?
-    
-    
-    init(name : String?, numberStars : Int?, uid : String?) {
+    init(name : String?, numberStars : Int?) {
         self.displayName = name
         self.numberStars = numberStars
-        self.uid = uid
     }
     
     
@@ -31,7 +27,4 @@ class SuggestionInfo {
         return self.numberStars
     }
     
-    func getuid() -> String? {
-        return self.uid
-    }
 }

@@ -34,7 +34,15 @@ class RatingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @IBAction func saveButtonTapped(_ sender: AnyObject) {
             //Network call to save rating
-        
+        if (self.rating != nil) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.string(from: (self.rating?.event.startDate)!)
+            sendRating(suggestionID: self.rating!.suggestionID, rating: self.rating!.rating, date : date) {
+                str in
+                print(str)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

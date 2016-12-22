@@ -23,8 +23,8 @@ let respond = "respond/"
 let changeDisplayName = "changeDisplayName/"
 let changePassword = "changePassword/"
 let deleteItinerary = "deleteItinerary/"
-let ratePlace = "rateplace/"
-let updateEvent = "updateEvent"
+let ratePlace = "ratePlace/"
+let updateEvent = "updateEvent/"
 
 
 //local mode: comment previous line and uncomment next line
@@ -240,43 +240,7 @@ func postInviteToEvent (userID: String, inviteeUserID : String, eventUID : Strin
     
 }
 
-/*func getEventFromID(userID: String, eventID : String, completionHandler : @escaping (Event, String?) -> ()) {
-    let parameters : Parameters = [
-    "uid" : eventID
-    ]
-    Alamofire.request(baseURL + getEvent + userID, method : .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
-        response in
-        switch response.result {
-        case .success(let value):
-            let json = JSON(value)
-            print("JSON: \(json)")
-            let startDate = json["start"].string
-            let endDate = json["end"].string
-            let date = json["date"].string
-            let yelpId = json["yelpId"].string
-            var invitedByUsers = [String]()
-            for(_, subjson) : (String, JSON) in json["invited"] {
-                let user : String = subjson["invitedUser"].stringValue
-                invitedByUsers += [user]
-            }
-            var usersAcceptedOrCreated = [String]()
-            for(_, subjson) : (String, JSON) in json["accepted"] {
-                let user = subjson["acceptededUser"].stringValue
-                usersAcceptedOrCreated += [user]
-            }
-            let uid = json["uid"].stringValue
-            let event = Event(start: startDate!, end: endDate!, date: date!, yelpId: yelpId!, invited: invitedByUsers, accepted: usersAcceptedOrCreated, uid: uid)
-            completionHandler(event!, uid)
-        case .failure(let error):
-            print(error)
-            let nilEvent = Event(start: "", end: "", date: "", yelpId: "", invited: [String](), accepted: [String](), uid: "")
-            completionHandler(nilEvent!, error.localizedDescription)
-        }
-    }
-}*/
-
-
-func getSuggestionsForEvent(eventId : String, eventQuery: String, completionHandler : @escaping ([SuggestionInfo]?, String?) -> ()) {
+func getSuggestionsForEvent(eventId : String, eventQuery: String, completionHandler : @escaping ([SuggestionInfo]?, String?, String?) -> ()) {
     let parameters : Parameters = [
     "uid" : eventId,
     "query" : eventQuery
@@ -290,11 +254,9 @@ func getSuggestionsForEvent(eventId : String, eventQuery: String, completionHand
             var array = [SuggestionInfo]()
             var nameArray = [String]()
             var starArray = [Int]()
-            var uidArray = [String]()
+            var uid = json["uid"].string!
             for (_,subJson) in json["business"] {
                 nameArray.append(subJson["name"].string!)
-                uidArray.append(subJson["uid"].string!)
-
             }
             var scoreJsonArray = json["scores"].arrayValue
             for (str) in scoreJsonArray  {
@@ -302,19 +264,20 @@ func getSuggestionsForEvent(eventId : String, eventQuery: String, completionHand
                 starArray.append(lround(stars))
             }
             for i in 0...2 {
-                let si = SuggestionInfo(name: nameArray[i], numberStars: starArray[i], uid : uidArray[i])
+                let si = SuggestionInfo(name: nameArray[i], numberStars: starArray[i])
                 array.append(si)
             }
-            completionHandler(array, nil)
+            completionHandler(array, uid, nil)
         case .failure(let error) :
-            completionHandler(nil, error.localizedDescription)
+            completionHandler(nil, nil, error.localizedDescription)
         }
         
     }
 }
 
-func sendChoice(suggestionID: String, choiceName: String, completionHandler: @escaping (String?) -> ()) {
+func sendChoice(eventID : String, suggestionID: String, choiceName: Int, completionHandler: @escaping (String?) -> ()) {
     let parameters : Parameters = [
+        "uid" : eventID,
         "suggestionId" : suggestionID,
         "choice" : choiceName
     ]
@@ -332,10 +295,11 @@ func sendChoice(suggestionID: String, choiceName: String, completionHandler: @es
 }
 
 
-func sendRating(choiceuid: String, rating: Int, completionHandler: @escaping (String?) -> ()) {
+func sendRating(suggestionID: String, rating: Int, date : String, completionHandler: @escaping (String?) -> ()) {
     let parameters : Parameters = [
-        "choice" : choiceuid,
-        "rating" : rating
+        "uid" : suggestionID,
+        "rating" : rating,
+        "date" : date
     ]
     Alamofire.request(baseURL + ratePlace + User.getUserName()!, method : .post, parameters: parameters,  encoding: JSONEncoding.default).responseJSON {
         response in
@@ -349,19 +313,21 @@ func sendRating(choiceuid: String, rating: Int, completionHandler: @escaping (St
         
     }}
 
-func sendGetOutstandingRatings(completionHandler : @escaping ([RatingNoEventStore], String?) -> ()) {
+func getOutstandingRatings(completionHandler : @escaping ([RatingNoEventStore], String?) -> ()) {
     Alamofire.request(baseURL + ratePlace + User.getUserName()!, method : .get, encoding: JSONEncoding.default).responseJSON {
         response in
         var array = [RatingNoEventStore]()
         switch response.result {
         case .success (let value):
             let json = JSON(value)
+            print(json)
             for (_, subJSON) in json["places"] {
                 let loc = subJSON["name"].string
                 let date = subJSON["date"].string
                 //not sure why these are necessary
                 let rating = 1
-                array.append(RatingNoEventStore(location: loc!, rating: rating, date: date!))
+                let uid = subJSON["uid"].string
+                array.append(RatingNoEventStore(location: loc!, rating: rating, date: date!, suggestionID: uid!))
             }
             completionHandler(array, nil)
         case .failure(let error): 

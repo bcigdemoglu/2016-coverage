@@ -40,7 +40,8 @@ import MapKit
     var emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
     var suggestions = [SuggestionInfo]()
     var suggestion: SuggestionInfo? //a specific itinerary
-
+    var suggestionID: String?
+    var eventID : String?
     
     convenience init() {
         self.init(nibName:nil, bundle:nil)
@@ -59,8 +60,10 @@ import MapKit
             intCode, responseString in
             switch intCode {
             case 201:
+                self.eventID = responseString
                 self.askSuggestions(eventId : responseString!, eventQ: self.event!.title) {
                     arrayResponse, responseString in
+                    
                     //func askSuggestions(eventId : String, eventQuery : String) {
                     if (arrayResponse != nil) {
                         self.suggestions = arrayResponse!
@@ -164,8 +167,17 @@ import MapKit
         //self.event?.location = "CHANGED"
         
         eventKit.save(self.event, completion: nil)
-        print(self.location)
-        performSegue(withIdentifier: "backToCalendarView", sender: self)
+        
+        let row = tableView.indexPathForSelectedRow?.row
+        if row != nil {
+            sendChoice(eventID: self.eventID!, suggestionID: self.suggestionID!, choiceName: row!) { responseString in
+                print(responseString!)
+                self.performSegue(withIdentifier: "backToCalendarView", sender: self)
+            }
+        }
+        
+        
+        
 
         //mgcPlanView?.allowsSelection = true
        // mgcPlanView?.selectEvent(of: MGCEventType(rawValue: index)!, at: index, date: self.date as Date!)
@@ -241,8 +253,9 @@ import MapKit
     
     func askSuggestions(eventId : String, eventQ : String, completionHandler : @escaping ([SuggestionInfo]?, String?) -> ()) {
         getSuggestionsForEvent(eventId: eventId, eventQuery: eventQ ) {
-            array, responseString in
+            array, uid, responseString in
             if array != nil {
+                self.suggestionID = uid
                 completionHandler(array, nil)
             } else {
                 completionHandler(nil, responseString)
@@ -299,7 +312,7 @@ import MapKit
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let rating = Rating(event: self.event!, location: self.location!, rating: 3)
+        //let rating = Rating(event: self.event!, location: self.location!, rating: 3)
         
         let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
         destination.calDate = self.date as Date!
