@@ -319,7 +319,7 @@ class GetSuggestions(restful.Resource):
     def post(self, username):
         if not app.mongo.db.users.find_one({"username": username}):
             return {"error": "Invalid username"}, 400
-        event = findEvent()
+        event = findEvent(username)
         if not event :
             return {"error": "Event not found"}, 400
 
