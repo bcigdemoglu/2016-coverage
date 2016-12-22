@@ -429,7 +429,7 @@ class RatePlace(restful.Resource):
         places = app.mongo.db.unratedSuggestions.find({'username' : username})
         if not places:
             return {"message" : "No places to Rate!"}, 201
-        return {'places' : places}, 200
+        return {'places' : list(places)}, 200
 
 class PopulateDB(restful.Resource):
     def post(self):
