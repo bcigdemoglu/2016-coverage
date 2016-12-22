@@ -315,6 +315,11 @@ class GetSuggestions(restful.Resource):
         return {'uid': suggestionId,
                 'business': top_biz,
                 'scores': top_probs}, 200
+    def post(self, username):
+        return self.get(username)
+
+
+class PostSuggestions(restful.Resource):
     ''' This post(self, username) also done by Alex'''
     def post(self, username):
         if not app.mongo.db.users.find_one({"username": username}):
@@ -333,7 +338,6 @@ class GetSuggestions(restful.Resource):
 
         app.mongo.db.unratedSuggestions.insert(chosenSuggestion)
         return {"message" : "Choice received."}, 200
-
 
 class DeleteItinerary(restful.Resource):
     '''
@@ -491,5 +495,6 @@ api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
 api.add_resource(DeleteEvent, '/deleteEvent/<username>')
 api.add_resource(GetSuggestions, '/getSuggestions/<username>')
+api.add_resource(PostSuggestions, '/postSuggestions/<username>')
 api.add_resource(RatePlace, '/ratePlace/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
