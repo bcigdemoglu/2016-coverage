@@ -16,7 +16,8 @@ let baseURL = "https://oose-2016-group-13.herokuapp.com/"
 let createItinerary = "createItinerary/"
 let createEvent = "createEvent/"
 let inviteToEvent = "inviteToEvent/"
-let suggestions = "getSuggestions/"
+let getSuggestions = "getSuggestions/"
+let postSuggestions = "postSuggestions/"
 let getEvent = "getEvent/"
 let searchYelp = "searchYelp/"
 let respond = "respond/"
@@ -245,7 +246,7 @@ func getSuggestionsForEvent(eventId : String, eventQuery: String, completionHand
     "uid" : eventId,
     "query" : eventQuery
     ]
-    Alamofire.request(baseURL + suggestions + User.getUserName()!, method : .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+    Alamofire.request(baseURL + getSuggestions + User.getUserName()!, method : .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
         response in
         switch response.result {
         case .success (let value) :
@@ -281,7 +282,7 @@ func sendChoice(eventID : String, suggestionID: String, choiceName: Int, complet
         "suggestionId" : suggestionID,
         "choice" : choiceName
     ]
-    Alamofire.request(baseURL + updateEvent + User.getUserName()!, method : .post, parameters: parameters,  encoding: JSONEncoding.default).responseJSON {
+    Alamofire.request(baseURL + postSuggestions + User.getUserName()!, method : .post, parameters: parameters,  encoding: JSONEncoding.default).responseJSON {
         response in
         switch response.result {
         case .success:
@@ -314,7 +315,7 @@ func sendRating(suggestionID: String, rating: Int, date : String, completionHand
     }}
 
 func getOutstandingRatings(completionHandler : @escaping ([RatingNoEventStore], String?) -> ()) {
-    Alamofire.request(baseURL + "unrated/" + User.getUserName()!, method : .get, encoding: JSONEncoding.default).responseJSON {
+    Alamofire.request(baseURL + "ratePlace/" + User.getUserName()!, method : .get, encoding: JSONEncoding.default).responseJSON {
         response in
         var array = [RatingNoEventStore]()
         switch response.result {
