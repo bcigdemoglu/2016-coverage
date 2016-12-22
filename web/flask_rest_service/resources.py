@@ -423,7 +423,7 @@ class RatePlace(restful.Resource):
             app.mongo.db.yelp.insert(yelp_rating)
         return yelp_rating, 200
         #Alex made this method
-        
+
 class Unrated(restful.Resource)
         
     def get(self, username):
@@ -497,3 +497,4 @@ api.add_resource(DeleteEvent, '/deleteEvent/<username>')
 api.add_resource(GetSuggestions, '/getSuggestions/<username>')
 api.add_resource(RatePlace, '/ratePlace/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
+api.add_resource(Unrated, '/unrated/<username>')

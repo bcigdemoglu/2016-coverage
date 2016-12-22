@@ -314,7 +314,7 @@ func sendRating(suggestionID: String, rating: Int, date : String, completionHand
     }}
 
 func getOutstandingRatings(completionHandler : @escaping ([RatingNoEventStore], String?) -> ()) {
-    Alamofire.request(baseURL + ratePlace + User.getUserName()!, method : .get, encoding: JSONEncoding.default).responseJSON {
+    Alamofire.request(baseURL + "unrated/" + User.getUserName()!, method : .get, encoding: JSONEncoding.default).responseJSON {
         response in
         var array = [RatingNoEventStore]()
         switch response.result {
