@@ -330,7 +330,8 @@ func getOutstandingRatings(completionHandler : @escaping ([RatingNoEventStore], 
                 array.append(RatingNoEventStore(location: loc!, rating: rating, date: date!, suggestionID: uid!))
             }
             completionHandler(array, nil)
-        case .failure(let error): 
+        case .failure(let error):
+            print(error.localizedDescription)
             completionHandler(array, error.localizedDescription)
             
         }
