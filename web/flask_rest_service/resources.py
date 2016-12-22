@@ -263,6 +263,10 @@ class UpdateEvent(restful.Resource):
         sug = app.mongo.db.unchosenSuggestions.delete_one({'uid': suggestionId})
         app.mongo.db.unratedSuggestions.insert(sug)
 
+        app.mongo.db.unratedSuggestions.insert({'username' : username,
+                                                     'date' : event['date'],
+                                                     'uid' : event["yelpId"]})
+
         return event, 200
 
 class GetSuggestions(restful.Resource):
