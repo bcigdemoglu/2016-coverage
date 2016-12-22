@@ -53,7 +53,7 @@ class DateViewController: UIViewController{
         _ = strDate
        
         let date : NSDate = self.dateField.date as NSDate
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: date as Date)
         //let name = dateChosen ?? ""
         let userID = User.getUserName()

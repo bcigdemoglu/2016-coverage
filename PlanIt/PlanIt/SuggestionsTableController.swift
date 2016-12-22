@@ -40,7 +40,8 @@ import MapKit
     var emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
     var suggestions = [SuggestionInfo]()
     var suggestion: SuggestionInfo? //a specific itinerary
-
+    var suggestionID: String?
+    var eventID : String?
     
     convenience init() {
         self.init(nibName:nil, bundle:nil)
@@ -48,6 +49,33 @@ import MapKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let d : String = formatter.string(from : date as! Date)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let st : String = formatter.string(from : event!.startDate)
+        let en : String = formatter.string(from : event!.endDate)
+        
+        createEvent(start:st, end: en, date: d) {
+            intCode, responseString in
+            switch intCode {
+            case 201:
+                self.eventID = responseString
+                self.askSuggestions(eventId : responseString!, eventQ: self.event!.title) {
+                    arrayResponse, responseString in
+                    
+                    //func askSuggestions(eventId : String, eventQuery : String) {
+                    if (arrayResponse != nil) {
+                        self.suggestions = arrayResponse!
+                        self.tableView.reloadData()
+                    }
+                }
+            default:
+                break;
+                //print(responseString!)
+            }
+            
+        }
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         //var vcEditDel: EKEventEditViewDelegate = (vcEdit?.editViewDelegate)!
@@ -58,7 +86,8 @@ import MapKit
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-        loadSampleSuggestions()
+        
+        //loadSampleSuggestions()
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -69,15 +98,15 @@ import MapKit
         // Dispose of any resources that can be recreated.
     }
 
-    func loadSampleSuggestions() {
-        let sug1 = SuggestionInfo(name: "Location 1", numberStars: 5)
+    /*func loadSampleSuggestions() {
+        let sug1 = SuggestionInfo(name: "Location 1", numberStars: 5, uid: "asdf")
         
-        let sug2 = SuggestionInfo(name: "Location 2",numberStars: 4)
+        let sug2 = SuggestionInfo(name: "Location 2",numberStars: 4, uid : "asdf2")
         
-        let sug3 = SuggestionInfo(name:self.location!, numberStars: 3)
+        let sug3 = SuggestionInfo(name:self.location!, numberStars: 3, uid : "asdf3")
 
         self.suggestions = [sug1, sug2, sug3]
-    }
+    }*/
     
     // MARK: - Table view data source
 
@@ -138,8 +167,17 @@ import MapKit
         //self.event?.location = "CHANGED"
         
         eventKit.save(self.event, completion: nil)
-        print(self.location)
-        performSegue(withIdentifier: "backToCalendarView", sender: self)
+        
+        let row = tableView.indexPathForSelectedRow?.row
+        if row != nil {
+            sendChoice(eventID: self.eventID!, suggestionID: self.suggestionID!, choiceName: row!) { responseString in
+                print(responseString!)
+                self.performSegue(withIdentifier: "backToCalendarView", sender: self)
+            }
+        }
+        
+        
+        
 
         //mgcPlanView?.allowsSelection = true
        // mgcPlanView?.selectEvent(of: MGCEventType(rawValue: index)!, at: index, date: self.date as Date!)
@@ -176,6 +214,65 @@ import MapKit
     }
 
 
+
+//    func navigationController(_ navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+//        if (viewController is UITableViewController) {
+//            var tableView = (viewController as! UITableViewController).tableView
+//            for j in 0..<tableView?.numberOfSections {
+//                for i in 0..<tableView.numberOfRowsInSection(j) {
+//                    var cell = tableView.cellForRow(at: IndexPath(row: i, section: j))!
+//                    
+//                    print("cell => \(cell.textLabel!.text), row => \(i), section => \(j)")
+//                    if j == 1 && i == 0 {
+//                        //  [cell removeFromSuperview];
+//                        var a = UIButton(type: .roundedRect)
+//                        var width: CGFloat = cell.frame.size.width
+//                        var height: CGFloat = cell.frame.size.height
+//                        var x: CGFloat = cell.frame.origin.x
+//                        //CGFloat y = cell.frame.origin.y;
+//                        a.frame = CGRect(x: x, y: CGFloat(4.5), width: width, height: height)
+//                        a.backgroundColor = UIColor.white
+//                        a.addTarget(self, action: #selector(self.seeSuggestions), for: .touchUpInside)
+//                        a.setTitle("See Suggestions", for: .normal)
+//                        cell.addSubview(a)
+//                        var switchBtn = UISwitch(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(20), height: CGFloat(10)))
+//                        cell.accessoryView! = switchBtn
+//                        switchBtn.backgroundColor = UIColor.white
+//                        switchBtn.addTarget(self, action: #selector(self.seeSuggestions), for: .valueChanged)
+//                        cell.textLabel!.font = UIFont.systemFont(ofSize: CGFloat(14))
+//                    }
+//
+//                }
+//            }
+//        }
+//        else if i == 4 && j == 1 {
+//            
+//        }
+//        
+//    }
+    
+    func askSuggestions(eventId : String, eventQ : String, completionHandler : @escaping ([SuggestionInfo]?, String?) -> ()) {
+        getSuggestionsForEvent(eventId: eventId, eventQuery: eventQ ) {
+            array, uid, responseString in
+            if array != nil {
+                self.suggestionID = uid
+                completionHandler(array, nil)
+            } else {
+                completionHandler(nil, responseString)
+            }
+            
+        }
+    }
+    
+    
+    
+    // MARK: - Table view data source
+/*
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+*/
     func bringEditController() {
         var btn2 = UIBarButtonItem(
             title: "Dead",
@@ -207,6 +304,7 @@ import MapKit
         addController.editViewDelegate = delegate
         //self.mgcView as! EKEventEditViewDelegate?
 
+
     }
     // MARK: - Navigation
     
@@ -214,7 +312,7 @@ import MapKit
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let rating = Rating(event: self.event!, location: self.location!, rating: 3)
+        //let rating = Rating(event: self.event!, location: self.location!, rating: 3)
         
         let destination = (segue.destination as! UINavigationController).topViewController as! MainViewController
         destination.calDate = self.date as Date!

@@ -259,6 +259,13 @@ class UpdateEvent(restful.Resource):
         app.mongo.db.event.update({'uid': event['uid']}, event)
 
         classifier.updateModel(choice, suggestionId)
+        # Alex's code
+        sug = app.mongo.db.unchosenSuggestions.delete_one({'uid': suggestionId})
+        app.mongo.db.unratedSuggestions.insert(sug)
+
+        app.mongo.db.unratedSuggestions.insert({'username' : username,
+                                                     'date' : event['date'],
+                                                     'uid' : event["yelpId"]})
 
         return event, 200
 
@@ -299,6 +306,12 @@ class GetSuggestions(restful.Resource):
         top_probs = suggested['probs']
 
         suggestionId = username + "_" + str(app.mongo.db.suggestions.count() + 1)
+        '''
+            Alex editted this below here
+        '''
+        app.mongo.db.unchosenSuggestions.insert({'username' : username,
+                                                     'date' : date,
+                                                     'uid' : suggestionId})
 
         app.mongo.db.suggestions.insert({'uid': suggestionId,
                                          'sugs': top_sugs,
@@ -307,6 +320,29 @@ class GetSuggestions(restful.Resource):
         return {'uid': suggestionId,
                 'business': top_biz,
                 'scores': top_probs}, 200
+    def post(self, username):
+        return self.get(username)
+
+
+class PostSuggestions(restful.Resource):
+    ''' This post(self, username) also done by Alex'''
+    def post(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+        event = findEvent(username)
+        if not event :
+            return {"error": "Event not found"}, 400
+
+        date = event['date']
+        choice = request.get_json().get('choice')
+        suggestionId = request.get_json().get('uid')
+        chosenSuggestion = app.mongo.db.unchosenSuggestions.delete_one({'username' : username,
+                                                                    'date' : date,
+                                                                    'uid' : suggestionId})
+
+
+        app.mongo.db.unratedSuggestions.insert(chosenSuggestion)
+        return {"message" : "Choice received."}, 200
 
 class DeleteItinerary(restful.Resource):
     '''
@@ -369,12 +405,17 @@ class SearchYelp(restful.Resource):
     def get(self, query):
         return {'yelpResponse': yelp.getBusinessList(query, 1)}, 201
 
+
 class RatePlace(restful.Resource):
     def post(self, username):
         rating = request.get_json().get('rating')
         uid = request.get_json().get('uid')
         ratings = []
         stored_yelp = app.mongo.db.yelp.find_one({'uid': uid})
+        date = request.get_json().get('date')
+        app.mongo.db.unratedSuggestions.remove({'username' : username,
+                                                    'date' : date,
+                                                    'uid' : uid})
         if stored_yelp:
             ratings = stored_yelp['ratings']
 
@@ -389,6 +430,18 @@ class RatePlace(restful.Resource):
         else:
             app.mongo.db.yelp.insert(yelp_rating)
         return yelp_rating, 200
+        #Alex made this method
+
+class Unrated(restful.Resource)
+        
+    def get(self, username):
+        if not app.mongo.db.users.find_one({"username": username}):
+            return {"error": "Invalid username"}, 400
+
+        places = app.mongo.db.unratedSuggestions.find({'username' : username})
+        if not places:
+            return {"message" : "No places to Rate!"}, 201
+        return {'places' : list(places)}, 200
 
 class PopulateDB(restful.Resource):
     def post(self):
@@ -450,5 +503,7 @@ api.add_resource(GetItineraryFromId, '/getItineraryFromId/<username>')
 api.add_resource(DeleteItinerary, '/deleteItinerary/<username>')
 api.add_resource(DeleteEvent, '/deleteEvent/<username>')
 api.add_resource(GetSuggestions, '/getSuggestions/<username>')
+api.add_resource(PostSuggestions, '/postSuggestions/<username>')
 api.add_resource(RatePlace, '/ratePlace/<username>')
 api.add_resource(SearchYelp, '/searchYelp/<query>')
+api.add_resource(Unrated, '/unrated/<username>')

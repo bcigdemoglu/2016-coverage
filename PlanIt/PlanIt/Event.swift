@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Event {
+public class Event {
     
     //MARK: Properties
     var start : String
@@ -17,24 +17,17 @@ class Event {
     
     var date : String
     
-    var yelpId : String
-    
-    var invitedByUsers : [String]
-    
-    var accpetedByUsers : [String]
-    
     var uid : String
     
     //MARK: Initialization
     //Full constructor
-    init?(start : String, end : String, date : String, yelpId : String, invited: [String], accepted: [String], uid : String ) {
+    init?(start : String, end : String, date : String,  uid : String ) {
         self.start = start
         self.end = end
         self.date = date
-        self.yelpId = yelpId
+
         self.uid = uid
-        self.invitedByUsers = invited
-        self.accpetedByUsers = accepted
+
     }
     
 }

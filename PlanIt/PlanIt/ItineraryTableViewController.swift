@@ -173,6 +173,10 @@ class ItineraryTableViewController: UITableViewController {
             //let row = (sender as! IndexPath).row;
             
             let iten = itineraries[row!]
+            /*User.getEvents(date: iten.name) {
+                response in
+                print("123")
+            }*/
             //destination.calendarName = iten.name
             destination.calDate = iten.date as Date!
             print("iten.name is", iten.name)
